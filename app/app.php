@@ -7,6 +7,14 @@ use Symfony\Component\Debug\ExceptionHandler;
 ErrorHandler::register();
 ExceptionHandler::register();
 
+
+//  === twig ===
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views',
 ));
+
+//  === doctrine orm===
+use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\EntityManager;
+$config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/../src/Domain"), $app['debug']);
+$app['orm.em'] = EntityManager::create($app['db.options'], $config);
