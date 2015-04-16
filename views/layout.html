@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ app.request.basepath }}/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ app.request.basepath }}/css/style.css" rel="stylesheet">
+    <link href="{{ app.request.basepath }}/lib/toastr/toastr.css" rel="stylesheet"/>
+</body>
+
+    <title>PecheO'Coup - {{title}}</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+          <a class="navbar-brand" href="/">PecheO'Coup</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+
+
+            <li class="active"><a href="/">Accueil</a></li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Articles <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Peche au coup</a></li>
+                <li><a href="#">Carpe au coup</a></li>
+                <li><a href="#">Anglaise/Feeder</a></li>
+                <li><a href="#">Article Général</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">News <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="divider"></li>
+                <li class="dropdown-header">News sur la peche</li>
+                <li><a href="#">Sorties matérielles</a></li>
+                <li><a href="#">compétitions</a></li>
+                <li><a href="#">Journées de peche des membres</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">News sur le site</li>
+                <li><a href="#">Mises à jours</a></li>
+                <li><a href="#">le staff</a></li>
+              </ul>
+            </li>
+
+            <li><a href="#">Forum</a></li>
+            <li><a href="#">Information</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Mon Compte</a></li>
+            <li><a href="#">Notifications</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <script src="{{ app.request.basepath }}/lib/jquery/jquery-1.11.2.min.js"></script>
+    <script src="{{ app.request.basepath }}/lib/toastr/toastr.js"></script>
+    <script src="{{ app.request.basepath }}/lib/toastr/config.js"></script>
+    <script src="{{ app.request.basepath }}/lib/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>
