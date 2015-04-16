@@ -1,0 +1,5 @@
+src   : sources du projet
+app   : fichiers relatifs a l'application silex
+db    : fichiers relatifs a la base de donnée
+web   : fichiers accecibles via le web du projet (index, librairies javascript, css )
+views : vues de l'application
