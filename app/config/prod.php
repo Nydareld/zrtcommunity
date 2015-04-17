@@ -9,3 +9,5 @@ $app['db.options'] = array(
     'user'     => 'pecheocoup_user',
     'password' => 'secret',
 );
+
+$app['monolog.level'] = 'WARNING';
