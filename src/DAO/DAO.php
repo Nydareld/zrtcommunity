@@ -27,7 +27,7 @@ abstract class DAO
      *
      * @return \Doctrine\ORM\EntityManager The entity manager
      */
-    protected function getDb() {
+    protected function getEm() {
         return $this->em;
     }
 
