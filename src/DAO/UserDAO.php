@@ -44,4 +44,14 @@ class UserDAO extends DAO implements UserProviderInterface{
         return $this->loadUserByUsername($user->getUsername());
     }
 
+    public function save(User $user){
+        $class = get_class($user);
+        if (!$this->supportsClass($class)) {
+            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', $class));
+        }else{
+            $this->getEm()->persist($user);
+            $this->getEm()->flush();
+        }
+    }
+
 }
