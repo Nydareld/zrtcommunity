@@ -58,3 +58,8 @@ $app->register(new Silex\Provider\ValidatorServiceProvider());
 $app['dao.user'] = $app->share(function ($app) {
     return new Pecheocoup\DAO\UserDAO($app['orm.em']);
 });
+
+//  === Home controller ===
+$app['Home.controller'] = $app->share(function ($app) {
+    return new Pecheocoup\Controller\HomeController();
+});
