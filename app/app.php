@@ -39,3 +39,9 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 //  === symfony form ===
 $app->register(new Silex\Provider\FormServiceProvider());
 $app->register(new Silex\Provider\TranslationServiceProvider());
+$app->register(new Silex\Provider\ValidatorServiceProvider());
+
+//  === dao User ===
+$app['dao.user'] = $app->share(function ($app) {
+    return new Pecheocoup\DAO\UserDAO($app['orm.em']);
+});
