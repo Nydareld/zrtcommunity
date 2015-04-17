@@ -25,10 +25,12 @@ class UserController{
             $password = $encoder->encodePassword($plainPassword, $user->getSalt());
             $user->setPassword($password);
             $app['dao.user']->save($user);
+            return $app->redirect('/login');
         }
         return $app['twig']->render('register.html', array(
             'title' => 'Inscription',
             'userForm' => $userForm->createView()));
+
     }
 
 }
