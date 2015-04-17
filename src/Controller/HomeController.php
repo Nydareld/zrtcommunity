@@ -14,11 +14,12 @@ class HomeController{
         );
     }
 
-    public function loginAction(Request $request, Application $app) {
+    public function loginAction(Request $request, Application $app, $success=null) {
         return $app['twig']->render('login.html', array(
-            'error'         => $app['security.last_error']($request),
+            'danger'         => $app['security.last_error']($request),
             'last_username' => $app['session']->get('_security.last_username'),
             'title' => "login",
+            'success'=>$success,
             ));
     }
 

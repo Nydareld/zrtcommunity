@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Pecheocoup\Domain\User;
 use Silex\Application;
 use Pecheocoup\Form\Type\UserType;
+use Pecheocoup\Controller\HomeController;
 
 class UserController{
 
@@ -25,7 +26,8 @@ class UserController{
             $password = $encoder->encodePassword($plainPassword, $user->getSalt());
             $user->setPassword($password);
             $app['dao.user']->save($user);
-            return $app->redirect('/login');
+            $success='Vous etes bien inscrits veillez maintenant vous connecter';
+            return $app['Home.controller']->loginAction($request, $app, $success);
         }
         return $app['twig']->render('register.html', array(
             'title' => 'Inscription',
