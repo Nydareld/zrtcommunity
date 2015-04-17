@@ -39,6 +39,12 @@ class User implements UserInterface
      */
     private $role;
 
+    /**
+     * @Column(type="string")
+     * @var string
+     */
+    private $email;
+
     public function getId() {
         return $this->id;
     }
@@ -80,6 +86,16 @@ class User implements UserInterface
     public function setSalt($salt)
     {
         $this->salt = $salt;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
     }
 
     public function getRole()
