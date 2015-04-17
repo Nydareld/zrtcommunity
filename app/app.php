@@ -36,6 +36,19 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     ),
 ));
 
+//  === symfony monolog ===
+$app->register(new Silex\Provider\MonologServiceProvider(), array(
+    'monolog.logfile' => __DIR__.'/../var/logs/pecheocoup.log',
+    'monolog.name' => 'Pecheocoup',
+    'monolog.level' => $app['monolog.level']
+));
+$app->register(new Silex\Provider\ServiceControllerServiceProvider());
+if (isset($app['debug']) && $app['debug']) {
+    $app->register(new Silex\Provider\WebProfilerServiceProvider(), array(
+        'profiler.cache_dir' => __DIR__.'/../var/cache/profiler'
+    ));
+}
+
 //  === symfony form ===
 $app->register(new Silex\Provider\FormServiceProvider());
 $app->register(new Silex\Provider\TranslationServiceProvider());
