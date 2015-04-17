@@ -1,3 +1,32 @@
 body {
   padding-top: 70px;
+  margin-bottom: 60px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color : #333;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #222;
+  border-color: #080808;
+  padding-top:10px;
+}
+
+.footer a{
+    color : #888;
+    font-weight: bold;
+
+}
+
+.footer a:hover{
+  color: #fff;
+  background-color: transparent;
 }
