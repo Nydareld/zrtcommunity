@@ -24,7 +24,7 @@ class UserType extends AbstractType{
             'second_options'  => array('label' => 'repetez votre email'),
         ))
         ->add('role', 'hidden', array(
-            'ROLE_USER' => 'User')
+            'data' => 'ROLE_USER',
         ));
 }
 
