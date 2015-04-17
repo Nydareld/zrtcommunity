@@ -8,7 +8,7 @@ use Silex\Application;
 class HomeController{
 
     public function indexAction(Application $app){
-        return $app['twig']->render( "layout.html",array(
+        return $app['twig']->render( "home.html",array(
             'title' => "accueil",
             )
         );
