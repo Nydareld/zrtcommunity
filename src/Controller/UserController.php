@@ -35,4 +35,14 @@ class UserController{
 
     }
 
+    public function usersAction(Request $request, Application $app){
+
+        $members = $app['orm.em']->getRepository('Pecheocoup\Domain\User')->findall();
+
+        return $app['twig']->render( "users.html",array(
+            'title' => "Membres",
+            'users' => $members,
+            ));
+    }
+
 }
