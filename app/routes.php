@@ -10,4 +10,4 @@ $app->get('/login',"Pecheocoup\Controller\HomeController::loginAction")->bind('l
 $app->match('/inscription', "Pecheocoup\Controller\UserController::addUserAction")->bind('inscription');
 
 //liste des membres
-$app->match('/membres', "Pecheocoup\Controller\UserController::usersAction");
+$app->get('/membres', "Pecheocoup\Controller\UserController::usersAction");
