@@ -1,6 +1,6 @@
 <?php
 
-namespace Pecheocoup\DAO;
+namespace Zrtcommunity\DAO;
 
 use Doctrine\ORM\EntityManager;
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace Pecheocoup\Controller;
+namespace Zrtcommunity\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Pecheocoup\Domain\User;
+use Zrtcommunity\Domain\User;
 use Silex\Application;
-use Pecheocoup\Form\Type\UserType;
-use Pecheocoup\Controller\HomeController;
+use Zrtcommunity\Form\Type\UserType;
+use Zrtcommunity\Controller\HomeController;
 
 class UserController{
 
@@ -37,7 +37,7 @@ class UserController{
 
     public function usersAction(Request $request, Application $app){
 
-        $members = $app['orm.em']->getRepository('Pecheocoup\Domain\User')->findall();
+        $members = $app['orm.em']->getRepository('Zrtcommunity\Domain\User')->findall();
 
         return $app['twig']->render( "users.html",array(
             'title' => "Membres",
@@ -45,4 +45,11 @@ class UserController{
             ));
     }
 
+    public function userProfileAction($id, Request $request, Application $app){
+        $user = $app['dao.user']->find($id);
+        return $app['twig']->render( "users.html",array(
+            'title' => $user->getUsername(),
+            'user' => $user,
+            ));
+    }
 }

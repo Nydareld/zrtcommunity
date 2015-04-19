@@ -1,18 +1,18 @@
 <?php
 
-namespace Pecheocoup\DAO;
+namespace Zrtcommunity\DAO;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
-use Pecheocoup\Domain\User;
+use Zrtcommunity\Domain\User;
 
 class UserDAO extends DAO implements UserProviderInterface{
 
     public function find($id){
 
-        $user = $this->getEm()->find("Pecheocoup\Domain\User", (int)$id);
+        $user = $this->getEm()->find("Zrtcommunity\Domain\User", (int)$id);
 
         if ($user === null){
             throw new \Exception("No user matching id " . $id);
@@ -22,7 +22,7 @@ class UserDAO extends DAO implements UserProviderInterface{
     }
 
     public function loadUserByUsername($username){
-        $user = $this->getEm()->getRepository('Pecheocoup\Domain\User')->findOneBy(array('username' => $username));
+        $user = $this->getEm()->getRepository('Zrtcommunity\Domain\User')->findOneBy(array('username' => $username));
 
         if ($user === null){
             throw new \Exception("No user matching id " . $id);
@@ -32,7 +32,7 @@ class UserDAO extends DAO implements UserProviderInterface{
     }
 
     public function supportsClass($class){
-        return 'Pecheocoup\Domain\User' === $class;
+        return 'Zrtcommunity\Domain\User' === $class;
     }
 
     public function refreshUser(UserInterface $user)

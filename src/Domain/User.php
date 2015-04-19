@@ -1,6 +1,6 @@
 <?php
 
-namespace Pecheocoup\Domain;
+namespace Zrtcommunity\Domain;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 

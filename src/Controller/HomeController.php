@@ -1,6 +1,6 @@
 <?php
 
-namespace Pecheocoup\Controller;
+namespace Zrtcommunity\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Silex\Application;

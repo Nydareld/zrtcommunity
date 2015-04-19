@@ -1,13 +1,16 @@
 <?php
 
 //Page d'accueil
-$app->get('/',"Pecheocoup\Controller\HomeController::indexAction");
+$app->get('/',"Zrtcommunity\Controller\HomeController::indexAction");
 
 //Page de connexion
-$app->get('/login',"Pecheocoup\Controller\HomeController::loginAction")->bind('login');
+$app->get('/login',"Zrtcommunity\Controller\HomeController::loginAction")->bind('login');
 
 //Page d'inscription
-$app->match('/inscription', "Pecheocoup\Controller\UserController::addUserAction")->bind('inscription');
+$app->match('/inscription', "Zrtcommunity\Controller\UserController::addUserAction")->bind('inscription');
 
 //liste des membres
-$app->get('/membres', "Pecheocoup\Controller\UserController::usersAction");
+$app->get('/membres', "Zrtcommunity\Controller\UserController::usersAction");
+
+//Info d'un membere
+$app->match('/membre/{id}', "Zrtcommunity\Controller\UserController::userProfileAction");

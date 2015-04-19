@@ -30,7 +30,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'logout' => true,
             'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
             'users' => $app->share(function () use ($app) {
-                return new Pecheocoup\DAO\UserDAO($app['orm.em']);
+                return new Zrtcommunity\DAO\UserDAO($app['orm.em']);
             }),
         ),
     ),
@@ -38,8 +38,8 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 
 //  === symfony monolog ===
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
-    'monolog.logfile' => __DIR__.'/../var/logs/pecheocoup.log',
-    'monolog.name' => 'Pecheocoup',
+    'monolog.logfile' => __DIR__.'/../var/logs/Zrtcommunity.log',
+    'monolog.name' => 'Zrtcommunity',
     'monolog.level' => $app['monolog.level']
 ));
 $app->register(new Silex\Provider\ServiceControllerServiceProvider());
@@ -56,10 +56,10 @@ $app->register(new Silex\Provider\ValidatorServiceProvider());
 
 //  === dao User ===
 $app['dao.user'] = $app->share(function ($app) {
-    return new Pecheocoup\DAO\UserDAO($app['orm.em']);
+    return new Zrtcommunity\DAO\UserDAO($app['orm.em']);
 });
 
 //  === Home controller ===
 $app['Home.controller'] = $app->share(function ($app) {
-    return new Pecheocoup\Controller\HomeController();
+    return new Zrtcommunity\Controller\HomeController();
 });
