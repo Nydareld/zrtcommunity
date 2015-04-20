@@ -5,20 +5,26 @@
     <link href="{{ app.request.basepath }}/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ app.request.basepath }}/css/style.css" rel="stylesheet">
     <link href="{{ app.request.basepath }}/lib/toastr/toastr.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ app.request.basepath }}/lib/font-awesome/css/font-awesome.min.css">
 </body>
 
     <title>Zrtcommunity - {{title}}</title>
 </head>
 <body>
 
-    <nav class="navbar navbar-fixed-top">
+    <nav id="nav1" class="navbar navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">
+                  <img id="minilogo" alt="ZrtCommunity" src="{{ app.request.basepath }}/img/minilogo.png">
+              </a>
             </div>
-
-            <a class="navbar-brand" href="/">
-                <img id="minilogo" alt="ZrtCommunity" src="{{ app.request.basepath }}/img/minilogo.png">
-            </a>
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="/">Accueil</a></li>
@@ -27,27 +33,41 @@
                 <li><a href="#">Présentation</a></li>
                 <li><a href="#">Documents</a></li>
                 <li><a href="#">Réglment</a></li>
+            </ul>
+        </div>
+    </nav>
+    <nav id="nav2" class="navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="dropdown nav2-li">
+                    <a href="#" class="nav2-item nav2-item-user dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-user fa-lg"></i></span> {{ app.security.token.user.username }}<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('logout') }}">Log out</a></li>
+                        </ul>
+                </li>
+                {% else %}
+                <li class="dropdown nav2-li">
+                    <a href="#" class="nav2-item nav2-item-user dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-user fa-lg"></i></span> Non connecté <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('login') }}">Connexion</a></li>
+                            <li><a href="{{ path('inscription') }}">Inscription</a></li>
+                        </ul>
+                </li>
+                {% endif %}
+                <li class="nav2-li"><a class="nav2-item" href="/"><i id="social" class="fa fa-bell fa-lg social-bell"></i></a></li>
+                <li class="nav2-li"><a class="nav2-item" href="/"><i id="social" class="fa fa-envelope fa-lg social-mess"></i></a></li>
+                <li class="nav2-li"><a class="nav2-item" href="/"><i id="social" class="fa fa-star fa-lg social-star"></i></a></li>
+                <li class="nav2-li"><a class="nav2-item" href="/"><i id="social" class="fa fa-cog fa-lg social-sett"></i></a></l
             </ul>
 
         </div>
     </nav>
-    <!--<nav id="nav2" class="navbar navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-            </div>
-            <a class="navbar-brand" href="/">Zrtcommunity</a>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/">Accueil</a></li>
-                <li><a href="#">Forum</a></li>
-                <li><a href="#">News</a></li>
-                <li><a href="#">Présentation</a></li>
-                <li><a href="#">Documents</a></li>
-                <li><a href="#">Réglment</a></li>
-            </ul>
-
-        </div>
-    </nav>-->
 
     <div class="container">
     {% if success|default(null) %}
