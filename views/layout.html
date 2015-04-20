@@ -28,11 +28,11 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="/">Accueil</a></li>
-                <li><a href="#">Forum</a></li>
-                <li><a href="#">News</a></li>
-                <li><a href="#">Présentation</a></li>
-                <li><a href="#">Documents</a></li>
-                <li><a href="#">Réglment</a></li>
+                <li><a href="/">Forum</a></li>
+                <li><a href="/">News</a></li>
+                <li><a href="/">Présentation</a></li>
+                <li><a href="/">Documents</a></li>
+                <li><a href="/">Réglment</a></li>
             </ul>
         </div>
     </nav>
@@ -44,7 +44,7 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') %}
                 <li class="dropdown nav2-li">
-                    <a href="#" class="nav2-item nav2-item-user dropdown-toggle" data-toggle="dropdown">
+                    <a class="nav2-item nav2-item-user dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-user fa-lg"></i></span> {{ app.security.token.user.username }}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ path('logout') }}">Log out</a></li>
@@ -52,7 +52,7 @@
                 </li>
                 {% else %}
                 <li class="dropdown nav2-li">
-                    <a href="#" class="nav2-item nav2-item-user dropdown-toggle" data-toggle="dropdown">
+                    <a class="nav2-item nav2-item-user dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-user fa-lg"></i></span> Non connecté <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ path('login') }}">Connexion</a></li>
