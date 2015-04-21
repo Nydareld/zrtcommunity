@@ -63,3 +63,8 @@ $app['dao.user'] = $app->share(function ($app) {
 $app['Home.controller'] = $app->share(function ($app) {
     return new Zrtcommunity\Controller\HomeController();
 });
+
+//  === app info ===
+$app['info'] = $app->share(function ($app){
+    return new Zrtcommunity\Domain\Info();
+});
