@@ -13,4 +13,4 @@ $app->match('/inscription', "Zrtcommunity\Controller\UserController::addUserActi
 $app->get('/membres', "Zrtcommunity\Controller\UserController::usersAction");
 
 //Info d'un membere
-$app->match('/membre/{id}', "Zrtcommunity\Controller\UserController::userProfileAction");
+$app->match('/membre/{username}', "Zrtcommunity\Controller\UserController::userProfileAction");

@@ -45,8 +45,8 @@ class UserController{
             ));
     }
 
-    public function userProfileAction($id, Request $request, Application $app){
-        $user = $app['dao.user']->find($id);
+    public function userProfileAction($username, Request $request, Application $app){
+        $user = $app['dao.user']->loadUserByUsername($username);
         return $app['twig']->render( "users.html",array(
             'title' => $user->getUsername(),
             'user' => $user,
