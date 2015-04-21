@@ -164,9 +164,15 @@ header img{
 footer {
     position: absolute;
     width: 100%;
-    color:#fff;
+    color:#99acba;
 }
-
+footer a{
+    color:#757f84;
+    font-weight: bold;
+}
+footer a:hover{
+    color:#8999a2;
+}
 #zrtinfo{
     height:195px;
     bottom:55px;
@@ -183,4 +189,8 @@ footer {
 }
 #copyright p{
     text-align:center;
+}
+.logo-footer{
+    margin:15px;
+    height:150px;
 }
