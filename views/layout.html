@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8">
     <link href="{{ app.request.basepath }}/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ app.request.basepath }}/css/style.css" rel="stylesheet">
     <link href="{{ app.request.basepath }}/lib/toastr/toastr.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="{{ app.request.basepath }}/lib/font-awesome/css/font-awesome.min.css">
+    <link href="{{ app.request.basepath }}/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ app.request.basepath }}/lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    <link href="{{ app.request.basepath }}/css/style.css" rel="stylesheet">
 </body>
 
     <title>Zrtcommunity - {{title}}</title>
@@ -39,7 +40,7 @@
     <header id="rainbow">
         <img src="{{ app.request.basepath }}/img/groslogo.png" alt="Banner Image"/>
     </header>
-    <nav id="nav2" class="navbar navbar-fixed-top">
+    <nav id="nav2" class="navbar">
         <div class="container">
             <div class="navbar-header">
 
@@ -94,7 +95,7 @@
                     <img src="{{ app.request.basepath }}/img/logo.png" class="img-rounded logo-footer">
             </div>
             <div class="col-lg-5 col-xs-12">
-    		<h3>Quelques chiffres::</h3>
+    		<h3>A propos</h3>
                 <ul>
 				<li>Nombre de <a href="#">membres</a> inscrits: {{ app['info'].nbuser }} </li>
 				<li>Nombre de topcs sur le <a href="#">forum</a>: {{ app['info'].nbtopic }}</li>
@@ -104,10 +105,11 @@
            <div class="col-lg-5 col-xs-12">
                 <h3>Reseaux sociaux:</h3>
     			<p>rejoignez-nous sur les reseaux sociaux pour ne rater aucunes informations ou contactez nous dirrectement:</p>
-                <a href="https://www.facebook.com/bootsnipp"><i id="social" class="fa fa-facebook-square fa-3x social-fb"></i></a>
-                <a href="https://www.facebook.com/bootsnipp"><i id="social" class="fa fa-twitter-square fa-3x social-tw"></i></a>
-                <a href="https://www.facebook.com/bootsnipp"><i id="social" class="fa fa-google-plus-square fa-3x social-gp"></i></a>
-                <a href="https://www.facebook.com/bootsnipp"><i id="social" class="fa fa-envelope-square fa-3x social-em"></i></a>
+                <a href="https://www.facebook.com/ZrTCraft"><i id="social" class="fa fa-facebook-square fa-3x social-fb"></i></a>
+                <a href="https://twitter.com/ZrtCraft"><i id="social" class="fa fa-twitter-square fa-3x social-tw"></i></a>
+                <a href="https://plus.google.com/+ZrtCraft/"><i id="social" class="fa fa-google-plus-square fa-3x social-gp"></i></a>
+                <a href="https://www.youtube.com/c/ZrtCraft"><i id="social" class="fa fa-youtube-square fa-3x social-yt"></i></a>
+                <a href="zrtcraft@gmail.com"><i id="social" class="fa fa-envelope-square fa-3x social-em"></i></a>
            </div>
            </div>
            </div>
@@ -134,6 +136,8 @@
     <script src="{{ app.request.basepath }}/lib/toastr/toastr.js"></script>
     <script src="{{ app.request.basepath }}/lib/toastr/config.js"></script>
     <script src="{{ app.request.basepath }}/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ app.request.basepath }}/lib/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="{{ app.request.basepath }}/js/navscroll.js"></script>
     {% block includeJS %}{% endblock %}
 
 </body>
