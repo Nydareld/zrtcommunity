@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+{% if categorie.name!="root" %}
+<h1>{{categorie.name}}</h1>
+{% endif %}
+{% for cat in categorie.childs %}
+    {{cat.name}}
+{% endfor %}
+
+{% for topic in categorie.topics  %}
+    {{topic.name}}
+{% endfor %}
+
+{% endblock %}
