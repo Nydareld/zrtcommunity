@@ -26,7 +26,7 @@ class Topic{
     private $description;
 
     /**
-     * @ManyToOne(targetEntity="User", inversedBy="childs")
+     * @ManyToOne(targetEntity="User", inversedBy="topics")
      **/
     private $creator;
 
