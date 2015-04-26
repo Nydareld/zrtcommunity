@@ -36,6 +36,16 @@ class Categorie{
      **/
     private $parent;
 
+    /**
+     * @OneToMany(targetEntity="Categorie", mappedBy="parent")
+     **/
+    private $childs;
+
+    /**
+     * @OneToMany(targetEntity="Topic", mappedBy="categorie")
+     **/
+    private $topics;
+
     public function getId(){
 		return $this->id;
 	}
@@ -70,5 +80,13 @@ class Categorie{
 
 	public function setParent($parent){
 		$this->parent = $parent;
+	}
+
+    public function getChilds(){
+		return $this->childs;
+	}
+
+    public function getTopics(){
+		return $this->topics;
 	}
 }

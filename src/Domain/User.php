@@ -45,6 +45,11 @@ class User implements UserInterface
      */
     private $email;
 
+    /**
+     * @OneToMany(targetEntity="Topic", mappedBy="creator")
+     **/
+    private $topics;
+
     public function getId() {
         return $this->id;
     }
