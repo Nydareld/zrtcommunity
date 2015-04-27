@@ -228,3 +228,17 @@ footer a:hover{
     margin-left:-5px;
     margin-right:-5px;
 }
+.item-panel-gauche{
+    border-radius: 10px;
+    background-color:#384148;
+}
+.item-panel-gauche p{
+    padding:5px;
+    color:#798289;
+}
+.item-panel-gauche h3{
+    border-radius: 10px 10px 0 0;
+    padding:5px;
+    color:#52bc72;
+    background-color:#2f333e;
+}

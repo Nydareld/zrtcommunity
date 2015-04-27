@@ -1,15 +1,33 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-{% if categorie.name!="root" %}
-<h1>{{categorie.name}}</h1>
-{% endif %}
-{% for cat in categorie.childs %}
-    {{cat.name}}
-{% endfor %}
+<div id="panel-gauche" class="col-md-3">
+    <div class="item-panel-gauche">
+        <h3>Lorem ipsum</h3>
+        <p>
+            Homines enim eruditos et sobrios ut infaustos et inutiles vitant, eo quoque accedente quod et nomenclatores adsueti haec et talia venditare, mercede accepta lucris quosdam et prandiis inserunt subditicios ignobiles et obscuros.
+        </p>
+    </div>
+    <div class="item-panel-gauche">
+        <h3>Lipsum motrem</h3>
+        <p>
+            Post haec Gallus Hierapolim profecturus ut expeditioni specie tenus adesset, Antiochensi plebi suppliciter obsecranti ut inediae dispelleret metum, quae per multas difficilisque causas adfore iam sperabatur, non ut mos est principibus, quorum diffusa potestas localibus subinde medetur aerumnis, disponi quicquam statuit vel ex provinciis alimenta transferri conterminis, sed consularem Syriae Theophilum prope adstantem ultima metuenti multitudini dedit id adsidue replicando quod invito rectore nullus egere poterit victu.
+        </p>
+    </div>
+</div>
 
-{% for topic in categorie.topics  %}
-    {{topic.name}}
-{% endfor %}
+<div id="panel-droit" class="col-md-9">
+    {% if categorie.name!="root" %}
+    <h1>{{categorie.name}}</h1>
+    {% endif %}
+
+    {% for cat in categorie.childs %}
+        {{cat.name}}
+    {% endfor %}
+
+    {% for topic in categorie.topics  %}
+        {{topic.name}}
+    {% endfor %}
+</div>
 
 {% endblock %}
