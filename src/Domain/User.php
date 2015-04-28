@@ -12,13 +12,13 @@ class User implements UserInterface
     /**
      * @Id @GeneratedValue @Column(type="integer")
      * @var int
-     **/
+     */
     private $id;
 
     /**
      * @Column(type="string")
      * @var string
-     **/
+     */
     private $username;
 
     /**
@@ -47,8 +47,13 @@ class User implements UserInterface
 
     /**
      * @OneToMany(targetEntity="Topic", mappedBy="creator")
-     **/
+     */
     private $topics;
+
+    /**
+     * @OneToMany(targetEntity="MessageForum", mappedBy="auteur")
+     */
+    private $messagesforum;
 
     public function getId() {
         return $this->id;
@@ -125,5 +130,10 @@ class User implements UserInterface
      */
     public function eraseCredentials() {
         // Nothing to do here
+    }
+
+    public function getMessagesForum()
+    {
+        return $this->messagesforum;
     }
 }

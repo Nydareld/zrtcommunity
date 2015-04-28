@@ -1,5 +1,7 @@
 <?php
+
 namespace Zrtcommunity\Domain;
+
 /**
  * @Entity @Table(name="topics")
  **/
@@ -7,26 +9,33 @@ class Topic{
     /**
      * @Id @GeneratedValue @Column(type="integer")
      * @var int
-     **/
+     */
     private $id;
     /**
      * @Column(type="string")
      * @var string
-     **/
+     */
     private $name;
     /**
      * @Column(type="string")
      * @var string
-     **/
+     */
     private $description;
     /**
      * @ManyToOne(targetEntity="User", inversedBy="topics")
-     **/
+     */
     private $creator;
+
     /**
-     * @ManyToOne(targetEntity="Categorie", inversedBy="topics")
-     **/
-    private $categorie;
+     * @ManyToOne(targetEntity="SousCategorie", inversedBy="topics")
+     */
+    private $sousCategorie;
+
+    /**
+     * @OneToMany(targetEntity="MessageForum", mappedBy="topic")
+     */
+    protected $messages;
+
     public function getId(){
 		return $this->id;
 	}
@@ -51,4 +60,7 @@ class Topic{
 	public function setCategorie($categorie){
 		$this->categorie = $categorie;
 	}
+    public function getMessages(){
+        return $this->messages;
+    }
 }

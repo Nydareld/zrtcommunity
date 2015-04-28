@@ -10,12 +10,12 @@ class Categorie extends ForumContainer{
     /**
      * @Id @GeneratedValue @Column(type="integer")
      * @var int
-     **/
+     */
     private $id;
 
     /**
      * @OneToMany(targetEntity="SousCategorie", mappedBy="parentCategorie")
-     **/
+     */
     private $childs;
 
     public function getId(){

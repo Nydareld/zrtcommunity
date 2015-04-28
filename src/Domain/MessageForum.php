@@ -10,7 +10,7 @@ class MessageForum{
     /**
      * @Id @GeneratedValue @Column(type="integer")
      * @var int
-     **/
+     */
     private $id;
 
     /**
@@ -22,20 +22,18 @@ class MessageForum{
     /**
      * @Column(type="string")
      * @var string
-     **/
+     */
     private $contenu;
 
     /**
      * @ManyToOne(targetEntity="Topic", inversedBy="messages")
-     **/
+     */
     private $topic;
 
     /**
      * @ManyToOne(targetEntity="User", inversedBy="messagesforum")
-     **/
+     */
     private $auteur;
-
-
 
     public function getId(){
 		return $this->id;
