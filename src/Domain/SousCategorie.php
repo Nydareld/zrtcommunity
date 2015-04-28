@@ -5,7 +5,7 @@ namespace Zrtcommunity\Domain;
 /**
  * @MappedSuperclass
  **/
-abstractclass SousCategorie extends ForumContainer{
+abstract class SousCategorie extends ForumContainer{
 
     /**
      * @Column(type="string")
