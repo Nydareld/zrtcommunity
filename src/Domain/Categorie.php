@@ -5,7 +5,7 @@ namespace Zrtcommunity\Domain;
 /**
  * @Entity @Table(name="categories")
  **/
-class Categorie{
+class Categorie extends ForumContainer{
 
     /**
      * @Id @GeneratedValue @Column(type="integer")
@@ -14,79 +14,15 @@ class Categorie{
     private $id;
 
     /**
-     * @Column(type="string")
-     * @var string
-     **/
-    private $name;
-
-    /**
-     * @Column(type="string")
-     * @var string
-     **/
-    private $description;
-
-    /**
-     * @Column(type="integer")
-     * @var int
-     **/
-    private $order;
-
-    /**
-     * @ManyToOne(targetEntity="Categorie", inversedBy="childs")
-     **/
-    private $parent;
-
-    /**
-     * @OneToMany(targetEntity="Categorie", mappedBy="parent")
+     * @OneToMany(targetEntity="SousCategorie", mappedBy="parent")
      **/
     private $childs;
-
-    /**
-     * @OneToMany(targetEntity="Topic", mappedBy="categorie")
-     **/
-    private $topics;
 
     public function getId(){
 		return $this->id;
 	}
 
-	public function getName(){
-		return $this->name;
-	}
-
-	public function setName($name){
-		$this->name = $name;
-	}
-
-	public function getDescription(){
-		return $this->description;
-	}
-
-	public function setDescription($description){
-		$this->description = $description;
-	}
-
-	public function getOrder(){
-		return $this->order;
-	}
-
-	public function setOrder($order){
-		$this->order = $order;
-	}
-
-	public function getParent(){
-		return $this->parent;
-	}
-
-	public function setParent($parent){
-		$this->parent = $parent;
-	}
-
     public function getChilds(){
 		return $this->childs;
-	}
-
-    public function getTopics(){
-		return $this->topics;
 	}
 }
