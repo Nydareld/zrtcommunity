@@ -7,14 +7,13 @@ use Silex\Application;
 
 class ForumController{
 
-    public function categorieAction($categoriename,Request $request, Application $app){
-        $categorie = $app['dao.categorie']->loadCategorieByName($categoriename);
+    public function forumAction(Request $request, Application $app){
+        $categories = $app['dao.categorie']->loadAllCategories();
 
         return $app['twig']->render( "forum.html",array(
             'title' => "Forum",
-            'categorie' => $categorie,
+            'categories' => $categories,
             )
         );
     }
-
 }

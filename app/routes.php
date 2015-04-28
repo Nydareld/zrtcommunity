@@ -16,4 +16,4 @@ $app->get('/membres', "Zrtcommunity\Controller\UserController::usersAction");
 $app->match('/membre/{username}', "Zrtcommunity\Controller\UserController::userProfileAction");
 
 //forum page d'une catégorie
-$app->match('/forum/{categoriename}', "Zrtcommunity\Controller\ForumController::categorieAction");
+$app->match('/forum', "Zrtcommunity\Controller\ForumController::forumAction");

@@ -15,4 +15,13 @@ class CategorieDAO extends DAO{
             return $categorie;
         }
     }
+    public function loadAllCategories(){
+        $categories= $this->getEm()->getRepository('Zrtcommunity\Domain\Categorie')->findAll();
+        if ($categories === null){
+            throw new \Exception("No Categories");
+        }else{
+            return $categories;
+        }
+    }
+
 }

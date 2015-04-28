@@ -17,16 +17,8 @@
 </div>
 
 <div id="panel-droit" class="col-md-9">
-    {% if categorie.name!="root" %}
-    <h1>{{categorie.name}}</h1>
-    {% endif %}
-
-    {% for cat in categorie.childs %}
+    {% for cat in categories%}
         {{cat.name}}
-    {% endfor %}
-
-    {% for topic in categorie.topics  %}
-        {{topic.name}}
     {% endfor %}
 </div>
 
