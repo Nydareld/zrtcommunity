@@ -253,10 +253,10 @@ table.table.forum{
     padding-bottom:10px;
     background-color:#fff;
 }
-#panel-droit > table > thead > tr > th:nth-child(5){
-        border-radius: 0 10px 0 0;
+.forum thead > tr > th:nth-child(5){
+    border-radius: 0 10px 0 0;
 }
-#panel-droit > table > thead > tr > th:nth-child(1){
+.forum thead > tr > th:nth-child(1){
     border-radius: 10px 0 0 0;
 }
 .forum.table > tbody > tr > td {
@@ -277,4 +277,11 @@ table.table.forum{
 }
 .forum thead,.forum thead{
     margin:0;
+}
+.forum h4 > a{
+    color: #52bc72;
+}
+.forum{
+    color:#838383;
+    font-weight: bold;
 }
