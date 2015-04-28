@@ -10,7 +10,7 @@ class CategorieDAO extends DAO{
         $categorie= $this->getEm()->getRepository('Zrtcommunity\Domain\Categorie')->findOneBy(array('name' => $name));
 
         if ($categorie === null){
-            throw new \Exception("No Categorie matching name " . $id);
+            throw new \Exception("No Categorie matching name " . $name);
         }else{
             return $categorie;
         }
