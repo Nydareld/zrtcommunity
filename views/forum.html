@@ -35,10 +35,16 @@
         <tr>
             <td class="text-center"><i class="fa fa-question fa-2x text-primary"></i></td>
             <td>
-                <h4><a href="#">Frequently Asked Questions</a><br><small>Some description</small></h4>
+                <h4>
+                    <a href="#">{{scat.name}}</a><br>
+                    <p id="scat-desc">{{scat.description}}</p>
+                    {% for sscat in scat.childs %}
+                    <a href="#" class="sscat">{{sscat.name}},</a>
+                    {% endfor %}
+                </h4>
             </td>
-            <td class="text-center hidden-xs hidden-sm">9 542</td>
-            <td class="text-center hidden-xs hidden-sm">89 897</td>
+            <td class="text-center hidden-xs hidden-sm">{{scat.nbTopics}}</td>
+            <td class="text-center hidden-xs hidden-sm">{{scat.nbMessages}}</td>
             <td class="hidden-xs hidden-sm">by <a href="#">John Doe</a><br><small><i class="fa fa-clock-o"></i> 3 months ago</small></td>
         </tr>
     {% endfor %}

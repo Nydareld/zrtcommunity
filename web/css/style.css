@@ -285,3 +285,12 @@ table.table.forum{
     color:#838383;
     font-weight: bold;
 }
+#scat-desc{
+    font-weight: bold;
+    font-size:0.75em;
+    margin-bottom:0;
+}
+.sscat{
+    color: #3a8c55;
+    font-size:0.75em;
+}

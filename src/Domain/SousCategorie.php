@@ -80,4 +80,24 @@ class SousCategorie extends ForumContainer{
         $this->childs = $childs;
     }
 
+    public function nbMessages(){
+        $nb=0;
+        foreach($this->topics as $topic){
+            $nb += count($topic->getMessages());
+        }
+        foreach($this->childs as $child){
+            $nb += $child->nbMessages();
+        }
+        return $nb;
+    }
+
+    public function nbTopics(){
+        $nb=0;
+        $nb+=count($this->topics);
+        foreach($this->childs as $child){
+            $nb += $child->nbTopics();
+        }
+        return $nb;
+    }
+
 }
