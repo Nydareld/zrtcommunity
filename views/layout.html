@@ -7,7 +7,9 @@
     <link href="{{ app.request.basepath }}/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ app.request.basepath }}/lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
     <link href="{{ app.request.basepath }}/css/style.css" rel="stylesheet">
-</body>
+
+    {% block includeJSHead %}
+    {% endblock %}
 
     <title>Zrtcommunity - {{title}}</title>
 </head>
