@@ -63,4 +63,19 @@ class Topic{
     public function getMessages(){
         return $this->messages;
     }
+    public function nbMessages(){
+        return count($this->getMessages());
+    }
+    public function lastMessage(){
+        global $app;
+        $qb= $app['orm.em']->createQueryBuilder();
+        $qb->select('m')
+            ->from('Zrtcommunity\Domain\MessageForum','m')
+            ->join('m.topic','t')
+            ->where('t.id = '.$this->id)
+            ->orderBy('m.date','desc');
+        $query = $qb->getQuery();
+        $single = $query->getResult();
+        return $single[0];
+    }
 }
