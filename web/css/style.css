@@ -6,7 +6,7 @@ html{
 body {
   padding-top: 280px;
   margin-bottom: 250px;
-  background-color: #f5f5f5;
+  background-color: #f4f4f4;
 }
 a {
     text-decoration:none;
@@ -128,6 +128,9 @@ a {
 }
 #nav2 ul.dropdown-menu li a{
     color:#aaa;
+}
+#nav2{
+    border-radius:0px;
 }
 a.nav2-item-user.dropdown-toogle{
     background-color: #384148;
@@ -253,10 +256,10 @@ table.table.forum{
     padding-bottom:10px;
     background-color:#fff;
 }
-.forum thead > tr > th:nth-child(5){
+.forum thead > tr > th:last-child{
     border-radius: 0 10px 0 0;
 }
-.forum thead > tr > th:nth-child(1){
+.forum thead > tr > th:first-child{
     border-radius: 10px 0 0 0;
 }
 .forum.table > tbody > tr > td {
@@ -309,10 +312,10 @@ table.table.sous-categorie{
     padding-bottom:10px;
     background-color:#fff;
 }
-.sous-categorie thead > tr > th:nth-child(4){
+.sous-categorie thead > tr > th:last-child{
     border-radius: 0 10px 0 0;
 }
-.sous-categorie thead > tr > th:nth-child(1){
+.sous-categorie thead > tr > th:first-child{
     border-radius: 10px 0 0 0;
 }
 .sous-categorie.table > tbody > tr > td {
@@ -323,4 +326,36 @@ table.table.sous-categorie{
 }
 .sous-categorie.table th.cell-stat {
     width: 6em;
+}
+.topic-member.cell-stat-2x{
+    background-color:#2f333e;
+    color:#fff;
+    width: 14em;
+}
+.topic-message td:first-child{
+    border-radius:10px 0 0 10px;
+}
+.topic-message td:last-child{
+    border-radius:0 10px 10px 0;
+}
+.topic-message-contenu{
+    background-color:#fff;
+}
+.topic-message{
+    border: solid transparent;
+}
+.topic-message-title{#nav2
+    font-weight:bold;
+    color:#5a646d;
+    margin-bottom:0px;
+}
+.topic-message-date{
+    margin-left:15px;
+    font-weight:bold;
+    font-size:0.8em;
+    color:#95a8b6;
+}
+td.topic-message-contenu > hr{
+    margin-top:5px;
+    margin-bottom:10px;
 }

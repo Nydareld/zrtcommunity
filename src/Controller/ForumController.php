@@ -45,7 +45,7 @@ class ForumController{
             if ( $a->getDate() == $b->getDate() ) {
                 return 0;
             }
-            return ($a->getDate() > $b->getDate() ) ? -1 : 1;
+            return ($a->getDate() < $b->getDate() ) ? -1 : 1;
         });
         $topic->setMessages($messages);
         return $app['twig']->render( "topic.html",array(
