@@ -67,6 +67,10 @@ class SousCategorie extends ForumContainer{
     public function getTopics(){
         return $this->topics;
     }
+    public function setTopics($topics){
+        $this->topics = $topics;
+    }
+
 
     public function getId(){
         return $this->id;
