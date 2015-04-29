@@ -289,8 +289,8 @@ table.table.forum{
     font-weight: bold;
 }
 #scat-desc{
-    font-weight: bold;
-    font-size:0.75em;
+    /*font-weight: bold;
+    */font-size:0.75em;
     margin-bottom:0;
 }
 .sscat{
@@ -344,7 +344,7 @@ table.table.sous-categorie{
 .topic-message{
     border: solid transparent;
 }
-.topic-message-title{#nav2
+.topic-message-title{
     font-weight:bold;
     color:#5a646d;
     margin-bottom:0px;
