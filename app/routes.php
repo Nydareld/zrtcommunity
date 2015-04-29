@@ -20,3 +20,6 @@ $app->match('/forum', "Zrtcommunity\Controller\ForumController::forumAction");
 
 //Forum page de sous catégorie
 $app->match('/forum/souscategorie/{scatid}', "Zrtcommunity\Controller\ForumController::scatAction");
+
+//Forum page d'un topic
+$app->match('/forum/topic/{topicid}', "Zrtcommunity\Controller\ForumController::topicAction");

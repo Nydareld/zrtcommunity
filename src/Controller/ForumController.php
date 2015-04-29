@@ -35,4 +35,23 @@ class ForumController{
             )
         );
     }
+
+    public function topicAction($topicid,Request $request, Application $app){
+        $topic = $app['dao.topic']->loadTopicById($topicid);
+
+        $messages = $topic->getMessages()->getValues();
+
+        usort($messages ,function ($a, $b){
+            if ( $a->getDate() == $b->getDate() ) {
+                return 0;
+            }
+            return ($a->getDate() > $b->getDate() ) ? -1 : 1;
+        });
+        $topic->setMessages($messages);
+        return $app['twig']->render( "topic.html",array(
+            'title' => "Forum",
+            'topic' => $topic,
+            )
+        );
+    }
 }

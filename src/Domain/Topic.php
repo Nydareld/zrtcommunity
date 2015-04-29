@@ -63,6 +63,9 @@ class Topic{
     public function getMessages(){
         return $this->messages;
     }
+    public function setMessages($messages){
+		$this->messages = $messages;
+	}
     public function nbMessages(){
         return count($this->getMessages());
     }
