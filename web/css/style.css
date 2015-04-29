@@ -294,3 +294,7 @@ table.table.forum{
     color: #3a8c55;
     font-size:0.75em;
 }
+.last-message{
+    font-weight:normal;
+    font-size:0.9em;
+}

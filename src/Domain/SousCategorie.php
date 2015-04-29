@@ -100,4 +100,17 @@ class SousCategorie extends ForumContainer{
         return $nb;
     }
 
+    public function lastMessage(){
+        global $app;
+        $qb= $app['orm.em']->createQueryBuilder();
+        $qb->select('m')
+            ->from('Zrtcommunity\Domain\MessageForum','m')
+            ->join('m.topic','t')
+            ->where('t.sousCategorie = '.$this->id)
+            ->orderBy('m.date','desc');
+        $query = $qb->getQuery();
+        $single = $query->getResult();
+        return $single[0];
+    }
+
 }
