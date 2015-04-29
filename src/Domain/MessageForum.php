@@ -20,7 +20,7 @@ class MessageForum{
     private $date;
 
     /**
-     * @Column(type="string")
+     * @Column(type="string",length=5000)
      * @var string
      */
     private $contenu;
