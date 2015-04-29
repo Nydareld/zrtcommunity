@@ -359,3 +359,9 @@ td.topic-message-contenu > hr{
     margin-top:5px;
     margin-bottom:10px;
 }
+.gauche{
+    float: right;
+}
+.decal{
+    margin-left:15px;
+}

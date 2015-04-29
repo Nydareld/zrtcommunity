@@ -28,4 +28,31 @@
     </tr>
 </table>
 {% endfor %}
+
+{% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') %}
+<table class="table topic-message">
+    <tr>
+        <td class="cell-stat-2x topic-member">{{ app.security.token.user.username }}</td>
+        <td class="topic-message-contenu">
+        {{ form(postForm) }}
+        </td>
+    </tr>
+</table>
+{% else %}
+<table class="table topic-message">
+    <tr>
+        <td class="cell-stat-2x topic-member"></td>
+        <td class="topic-message-contenu">
+            <h3>Inscrit toi ou conecte toi pour donner ton avis !</h3>
+            <a class="decal" href="{{ path('login') }}">Connexion</a><br/>
+            <a class="decal" href="{{ path('inscription') }}">Inscription</a>
+        </td>
+    </tr>
+</table>
+{% endif %}
+
+{% endblock %}
+
+{% block includeJSHead %}
+<script src="{{ app.request.basepath }}/lib/ckeditor-standard/ckeditor.js"></script>
 {% endblock %}
