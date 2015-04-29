@@ -4,6 +4,9 @@ namespace Zrtcommunity\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Silex\Application;
+use Zrtcommunity\Domain\MessageForum;
+use Zrtcommunity\Form\Type\MessageForumType;
+use \DateTime;
 
 class ForumController{
 
@@ -48,10 +51,36 @@ class ForumController{
             return ($a->getDate() < $b->getDate() ) ? -1 : 1;
         });
         $topic->setMessages($messages);
+
+        $message = new MessageForum();
+
+        $messageForm = $app['form.factory']->create(new MessageForumType(), $message);
+        $messageForm->handleRequest($request);
+        if ($messageForm->isSubmitted() && $messageForm->isValid()) {
+            $message->setDate(new DateTime());
+            $token = $app['security']->getToken();
+            $message->setAuteur($token->getUser());
+            $message->setTopic($topic);
+            $app['dao.messForum']->save($message);
+
+            return $app->redirect('/forum/topic/'.$topic->getId());
+
+        }
         return $app['twig']->render( "topic.html",array(
             'title' => "Forum",
             'topic' => $topic,
+            'postForm' => $messageForm->createView(),
             )
         );
+    }
+
+    public function postAction(Request $request, Application $app){
+
+
+
+        $app['dao.messForum']->save($message);
+
+        return $app['Forum.controller']->topicAction($topicid, $app, $success);
+
     }
 }

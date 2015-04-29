@@ -74,9 +74,19 @@ $app['dao.topic'] = $app->share(function ($app) {
     return new Zrtcommunity\DAO\TopicDAO($app['orm.em']);
 });
 
+//  === dao MessageForum ===
+$app['dao.messForum'] = $app->share(function ($app) {
+    return new Zrtcommunity\DAO\MessageForumDAO($app['orm.em']);
+});
+
 //  === Home controller ===
 $app['Home.controller'] = $app->share(function ($app) {
     return new Zrtcommunity\Controller\HomeController();
+});
+
+//  === Forum controller ===
+$app['Forum.controller'] = $app->share(function ($app) {
+    return new Zrtcommunity\Controller\ForumController();
 });
 
 //  === app info ===
