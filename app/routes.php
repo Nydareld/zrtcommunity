@@ -17,3 +17,5 @@ $app->match('/membre/{username}', "Zrtcommunity\Controller\UserController::userP
 
 //forum page d'une catégorie
 $app->match('/forum', "Zrtcommunity\Controller\ForumController::forumAction");
+
+$app->match('/forum/{scatname}', "Zrtcommunity\Controller\ForumController::scatAction");

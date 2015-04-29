@@ -16,4 +16,14 @@ class ForumController{
             )
         );
     }
+
+    public function scatAction($scatname,Request $request, Application $app){
+        $categories = $app['dao.categorie']->loadAllCategories();
+
+        return $app['twig']->render( "forum.html",array(
+            'title' => "Forum",
+            'categories' => $categories,
+            )
+        );
+    }
 }

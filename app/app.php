@@ -64,6 +64,11 @@ $app['dao.categorie'] = $app->share(function ($app) {
     return new Zrtcommunity\DAO\CategorieDAO($app['orm.em']);
 });
 
+//  === dao sous Categorie ===
+$app['dao.scat'] = $app->share(function ($app) {
+    return new Zrtcommunity\DAO\SousCategorieDAO($app['orm.em']);
+});
+
 //  === Home controller ===
 $app['Home.controller'] = $app->share(function ($app) {
     return new Zrtcommunity\Controller\HomeController();
