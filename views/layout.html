@@ -52,6 +52,7 @@
                         <i class="fa fa-user fa-lg"></i></span> {{ app.security.token.user.username }}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ path('logout') }}">Log out</a></li>
+                            <li><a href="/user/{{ app.security.token.user.username }}">Mon profil</a></li>
                         </ul>
                 </li>
                 {% else %}
