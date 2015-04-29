@@ -36,10 +36,10 @@
             <td class="text-center"><i class="fa fa-question fa-2x text-primary"></i></td>
             <td>
                 <h4>
-                    <a href="#">{{scat.name}}</a><br>
+                    <a href="/forum/souscategorie/{{scat.id}}">{{scat.name}}</a><br>
                     <p id="scat-desc">{{scat.description}}</p>
                     {% for sscat in scat.childs %}
-                    <a href="#" class="sscat">{{sscat.name}},</a>
+                    <a href="/forum/souscategorie/{{sscat.id}}" class="sscat">{{sscat.name}},</a>
                     {% endfor %}
                 </h4>
             </td>

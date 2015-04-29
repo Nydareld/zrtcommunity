@@ -15,7 +15,8 @@ $app->get('/membres', "Zrtcommunity\Controller\UserController::usersAction");
 //Info d'un membere
 $app->match('/membre/{username}', "Zrtcommunity\Controller\UserController::userProfileAction");
 
-//forum page d'une catégorie
+//forum page d'accueil
 $app->match('/forum', "Zrtcommunity\Controller\ForumController::forumAction");
 
+//Forum page de sous catégorie
 $app->match('/forum/souscategorie/{scatid}', "Zrtcommunity\Controller\ForumController::scatAction");
