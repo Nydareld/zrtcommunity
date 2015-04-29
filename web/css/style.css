@@ -298,3 +298,29 @@ table.table.forum{
     font-weight:normal;
     font-size:0.9em;
 }
+
+.sous-categorie thead{
+    padding:5px;
+    color:#fff;
+    background-color:#2f333e;
+}
+table.table.sous-categorie{
+    margin-top:10px;
+    padding-bottom:10px;
+    background-color:#fff;
+}
+.sous-categorie thead > tr > th:nth-child(4){
+    border-radius: 0 10px 0 0;
+}
+.sous-categorie thead > tr > th:nth-child(1){
+    border-radius: 10px 0 0 0;
+}
+.sous-categorie.table > tbody > tr > td {
+    vertical-align: middle;
+}
+.sous-categorie.table th.cell-stat-2x {
+    width: 14em;
+}
+.sous-categorie.table th.cell-stat {
+    width: 6em;
+}

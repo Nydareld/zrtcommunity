@@ -48,7 +48,7 @@
             <td class="hidden-xs hidden-sm last-message">
             {% if scat.lastMessage is not null %}
                 dans le topic
-                <a href="/topic/{{scat.lastMessage.topic.id}}">{{scat.lastMessage.topic.name}}</a>
+                <a href="/forum/topic/{{scat.lastMessage.topic.id}}">{{scat.lastMessage.topic.name}}</a>
                 par <a href="/membre/{{scat.lastMessage.auteur.username}}">{{scat.lastMessage.auteur.username}}</a><br>
                 le {{scat.lastMessage.date.format('Y-m-d')}} à {{scat.lastMessage.date.format('H:i:s')}}
             {% else%}
