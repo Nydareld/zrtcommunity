@@ -43,6 +43,10 @@ class MessageForum{
 		return $this->date;
 	}
 
+    public function setDate($date){
+        $this->date = $date;
+    }
+
 	public function getContenu(){
 		return $this->contenu;
 	}
@@ -54,9 +58,15 @@ class MessageForum{
 	public function getTopic(){
 		return $this->topic;
 	}
+    public function setTopic($topic){
+        $this->topic = $topic;
+    }
 
 	public function getAuteur(){
 		return $this->auteur;
 	}
+    public function setAuteur($auteur){
+        $this->auteur = $auteur;
+    }
 
 }
