@@ -17,12 +17,12 @@ class ForumController{
         );
     }
 
-    public function scatAction($scatname,Request $request, Application $app){
-        $categories = $app['dao.categorie']->loadAllCategories();
+    public function scatAction($scatid,Request $request, Application $app){
+        $scat = $app['dao.scat']->loadSousCategorieById($scatid);
 
-        return $app['twig']->render( "forum.html",array(
+        return $app['twig']->render( "sousCategorie.html",array(
             'title' => "Forum",
-            'categories' => $categories,
+            'scat' => $scat,
             )
         );
     }
