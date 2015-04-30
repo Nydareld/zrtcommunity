@@ -24,5 +24,8 @@ $app->match('/forum/souscategorie/{scatid}', "Zrtcommunity\Controller\ForumContr
 //Forum page d'un topic
 $app->match('/forum/topic/{topicid}', "Zrtcommunity\Controller\ForumController::topicAction");
 
-//Forum page d'un topic
+//Forum page d'édition d'un message forum
 $app->match('/forum/editmessage/{messageid}', "Zrtcommunity\Controller\ForumController::editMessageAction");
+
+//Forum page d'ajout de topic
+$app->match('/forum/souscategorie/newtopic/{scatid}', "Zrtcommunity\Controller\ForumController::addtopicAction");
