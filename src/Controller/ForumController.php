@@ -63,7 +63,7 @@ class ForumController{
             $message->setTopic($topic);
             $app['dao.messForum']->save($message);
 
-            return $app->redirect('/forum/topic/'.$topic->getId());
+            return $app->redirect($request->getBasePath().'/forum/topic/'.$topic->getId());
 
         }
         return $app['twig']->render( "topic.html",array(

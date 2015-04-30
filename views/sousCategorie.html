@@ -18,13 +18,13 @@
             <td class="text-center"><i class="fa fa-question fa-2x text-primary"></i></td>
             <td>
                 <h4>
-                    <a href="/forum/topic/{{topic.id}}">{{topic.name}}</a><br>
+                    <a href="{{ app.request.basepath }}/forum/topic/{{topic.id}}">{{topic.name}}</a><br>
                     <p id="scat-desc">{{topic.description}}</p>
                 </h4>
             </td>
             <td class="text-center hidden-xs hidden-sm">{{topic.nbMessages-1}}</td>
             <td class="hidden-xs hidden-sm last-message">
-                par <a href="/membre/{{topic.lastMessage.auteur.username}}">{{topic.lastMessage.auteur.username}}</a><br>
+                par <a href="{{ app.request.basepath }}/membre/{{topic.lastMessage.auteur.username}}">{{topic.lastMessage.auteur.username}}</a><br>
                 le {{topic.lastMessage.date.format('Y-m-d')}} à {{topic.lastMessage.date.format('H:i:s')}}
             </td>
         </tr>
