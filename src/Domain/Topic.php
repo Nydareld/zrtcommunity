@@ -54,11 +54,14 @@ class Topic{
 	public function getCreator(){
 		return $this->creator;
 	}
-	public function getCategorie(){
-		return $this->categorie;
+    public function setCreator($creator){
+		$this->creator = $creator;
 	}
-	public function setCategorie($categorie){
-		$this->categorie = $categorie;
+	public function getSousCategorie(){
+		return $this->sousCategorie;
+	}
+	public function setSousCategorie($sousCategorie){
+		$this->sousCategorie = $sousCategorie;
 	}
     public function getMessages(){
         return $this->messages;
