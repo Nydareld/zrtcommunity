@@ -34,6 +34,9 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             }),
         ),
     ),
+    'security.access_rules' => array(
+        array('^/forum/souscategorie/newtopic/1', 'ROLE_USER'),
+    ),
 ));
 
 //  === symfony monolog ===

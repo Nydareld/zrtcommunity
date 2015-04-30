@@ -3,6 +3,8 @@
 namespace Zrtcommunity\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Silex\Application;
 use Zrtcommunity\Domain\Topic;
 use Zrtcommunity\Form\Type\TopicType;
@@ -58,7 +60,7 @@ class ForumController{
 
         $messageForm = $app['form.factory']->create(new MessageForumType(), $message);
         $messageForm->handleRequest($request);
-        if ($messageForm->isSubmitted() && $messageForm->isValid()) {
+        if ($messageForm->isSubmitted() && $messageForm->isValid()&& $app['security']->isGranted('IS_AUTHENTICATED_FULLY') ) {
             $message->setDate(new DateTime());
             $token = $app['security']->getToken();
             $message->setAuteur($token->getUser());
@@ -80,7 +82,7 @@ class ForumController{
         $message = $app['dao.messForum']->loadMessageById($messageid);
         $messageForm = $app['form.factory']->create(new MessageForumType(), $message);
         $messageForm->handleRequest($request);
-        if ($messageForm->isSubmitted() && $messageForm->isValid()) {
+        if ($messageForm->isSubmitted() && $messageForm->isValid() && $app['security']->isGranted('IS_AUTHENTICATED_FULLY')) {
             $app['dao.messForum']->save($message);
             return $app->redirect($request->getBasePath().'/forum/topic/'.$message->getTopic()->getId());
         }
