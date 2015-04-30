@@ -358,7 +358,9 @@ table.table.sous-categorie{
 td.topic-message-contenu > hr{
     margin-top:5px;
     margin-bottom:10px;
+    font-weight:normal;
 }
+
 .gauche{
     float: right;
 }

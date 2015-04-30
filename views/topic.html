@@ -8,9 +8,7 @@
             <h3 class="topic-message-title">{{topic.name}}</h3>
             <p class="topic-message-date">le {{topic.messages[0].date.format('Y-m-d')}} à {{topic.messages[0].date.format('H:i:s')}}</p>
             <hr/>
-            <p>
-                {{topic.messages[0].contenu}}
-            </p>
+            {{topic.messages[0].contenu|raw}}
         </td>
     </tr>
 </table>
@@ -19,9 +17,7 @@
     <tr>
         <td class="cell-stat-2x topic-member">{{message.auteur.username}}</td>
         <td class="topic-message-contenu">
-            <p>
-            {{message.contenu}}
-            </p>
+            {{message.contenu|raw}}
             <hr/>
             <p class="topic-message-date">le {{message.date.format('Y-m-d')}} à {{message.date.format('H:i:s')}}</p>
         </td>
@@ -53,6 +49,7 @@
 
 {% endblock %}
 
-{% block includeJSHead %}
+{% block includeHead %}
+<link href="{{ app.request.basepath }}/lib/ckeditor-standard/contents.css" rel="stylesheet">
 <script src="{{ app.request.basepath }}/lib/ckeditor-standard/ckeditor.js"></script>
 {% endblock %}
