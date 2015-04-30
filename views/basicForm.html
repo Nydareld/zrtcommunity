@@ -1,0 +1,8 @@
+{% extends 'layout.html' %}
+{% block content %}
+{{form(form)}}
+{% endblock %}
+{% block includeHead %}
+<link href="{{ app.request.basepath }}/lib/ckeditor-standard/contents.css" rel="stylesheet">
+<script src="{{ app.request.basepath }}/lib/ckeditor-standard/ckeditor.js"></script>
+{% endblock %}

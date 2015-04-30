@@ -74,13 +74,18 @@ class ForumController{
         );
     }
 
-    public function postAction(Request $request, Application $app){
-
-
-
-        $app['dao.messForum']->save($message);
-
-        return $app['Forum.controller']->topicAction($topicid, $app, $success);
-
+    public function editMessageAction($messageid,Request $request, Application $app){
+        $message = $app['dao.messForum']->loadMessageById($messageid);
+        $messageForm = $app['form.factory']->create(new MessageForumType(), $message);
+        $messageForm->handleRequest($request);
+        if ($messageForm->isSubmitted() && $messageForm->isValid()) {
+            $app['dao.messForum']->save($message);
+            return $app->redirect($request->getBasePath().'/forum/topic/'.$message->getTopic()->getId());
+        }
+        return $app['twig']->render( "basicForm.html",array(
+            'title' => "Forum",
+            'form' => $messageForm->createView(),
+            )
+        );
     }
 }
