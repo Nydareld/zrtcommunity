@@ -4,6 +4,8 @@ namespace Zrtcommunity\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Silex\Application;
+use Zrtcommunity\Domain\Topic;
+use Zrtcommunity\Form\Type\TopicType;
 use Zrtcommunity\Domain\MessageForum;
 use Zrtcommunity\Form\Type\MessageForumType;
 use \DateTime;
@@ -87,5 +89,33 @@ class ForumController{
             'form' => $messageForm->createView(),
             )
         );
+    }
+    public function addtopicAction($scatid,Request $request, Application $app){
+        $topic = new Topic();
+        $message = new MessageForum();
+
+        $topicForm = $app['form.factory']->create(new TopicType(), $topic);
+        $topicForm->handleRequest($request);
+        if ( $topicForm->isSubmitted()&& $topicForm->isValid()) {
+            $user= $app['security']->getToken()->getUser();
+            $topic->setCreator($user);
+            $topic->setSousCategorie($app['dao.scat']->loadSousCategorieById($scatid));
+
+            $message->setAuteur($user);
+            $message->setDate(new DateTime());
+            $message->setTopic($topic);
+            $message->setContenu($topicForm["contenu"]->getData());
+
+            $app['dao.topic']->save($topic);
+            $app['dao.messForum']->save($message);
+
+            return $app->redirect($request->getBasePath().'/forum/topic/'.$topic->getId());
+        }
+        return $app['twig']->render( "basicForm.html",array(
+            'title' => "Forum",
+            'form' => $topicForm->createView(),
+            )
+        );
+
     }
 }
