@@ -23,18 +23,18 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="/">
+              <a class="navbar-brand" href="{{ app.request.basepath }}/">
                   <img id="minilogo" alt="ZrtCommunity" src="{{ app.request.basepath }}/img/minilogo.png">
               </a>
             </div>
 
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/">Accueil</a></li>
-                <li><a href="/forum">Forum</a></li>
-                <li><a href="/">News</a></li>
-                <li><a href="/">Présentation</a></li>
-                <li><a href="/">Documents</a></li>
-                <li><a href="/">Réglment</a></li>
+                <li class="active"><a href="{{ app.request.basepath }}/">Accueil</a></li>
+                <li><a href="{{ app.request.basepath }}/forum">Forum</a></li>
+                <li><a href="{{ app.request.basepath }}/">News</a></li>
+                <li><a href="{{ app.request.basepath }}/">Présentation</a></li>
+                <li><a href="{{ app.request.basepath }}/">Documents</a></li>
+                <li><a href="{{ app.request.basepath }}/">Réglment</a></li>
             </ul>
         </div>
     </nav>
@@ -66,10 +66,10 @@
                         </ul>
                 </li>
                 {% endif %}
-                <li class="nav2-li"><a class="nav2-item" href="/"><i id="social" class="fa fa-bell fa-lg social-bell"></i></a></li>
-                <li class="nav2-li"><a class="nav2-item" href="/"><i id="social" class="fa fa-envelope fa-lg social-mess"></i></a></li>
-                <li class="nav2-li"><a class="nav2-item" href="/"><i id="social" class="fa fa-star fa-lg social-star"></i></a></li>
-                <li class="nav2-li"><a class="nav2-item" href="/"><i id="social" class="fa fa-cog fa-lg social-sett"></i></a></l
+                <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/"><i id="social" class="fa fa-bell fa-lg social-bell"></i></a></li>
+                <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/"><i id="social" class="fa fa-envelope fa-lg social-mess"></i></a></li>
+                <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/"><i id="social" class="fa fa-star fa-lg social-star"></i></a></li>
+                <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/"><i id="social" class="fa fa-cog fa-lg social-sett"></i></a></l
             </ul>
 
         </div>
@@ -99,8 +99,8 @@
             <div class="col-lg-5 col-xs-12">
     		<h3>A propos</h3>
                 <ul>
-				<li>Nombre de <a href="#">membres</a> inscrits: {{ app['info'].nbuser }} </li>
-				<li>Nombre de topcs sur le <a href="#">forum</a>: {{ app['info'].nbtopic }}</li>
+				<li>Nombre de <a href="{{ app.request.basepath }}/membres">membres</a> inscrits: {{ app['info'].nbuser }} </li>
+				<li>Nombre de topcs sur le <a href="{{ app.request.basepath }}/forum">forum</a>: {{ app['info'].nbtopic }}</li>
 				<li>Nombre de messages postés: {{ app['info'].nbmess }}</li>
 				</ul>
             </div>
@@ -124,12 +124,12 @@
         <footer id="copyright">
             <div class="container">
                 <p>
-                    <a href="#"> Politique de confidentialitée </a>|
-                    <a href="#"> Conditions d'utilisations </a>
+                    <a href="{{ app.request.basepath }}/"> Politique de confidentialitée </a>|
+                    <a href="{{ app.request.basepath }}/"> Conditions d'utilisations </a>
                     <br/>
                     <span class="glyphicon glyphicon-copyright-mark"></span>
                     Copyright Zrtcommunity 2015, Site développé par
-                    <a href="#">Nydareld</a> et designé par <a href="#">DroidXAce</a>
+                    <a href="{{ app.request.basepath }}/Nydareld">Nydareld</a> et designé par <a href="{{ app.request.basepath }}/DroidXAce">DroidXAce</a>
                 </p>
              </div>
         </footer>
