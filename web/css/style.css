@@ -23,6 +23,7 @@ a {
 
 #minilogo{
     margin-top:-15px;
+    outline:transparent;
 }
 #nav1{
     padding-top:5px;
