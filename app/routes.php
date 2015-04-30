@@ -23,3 +23,6 @@ $app->match('/forum/souscategorie/{scatid}', "Zrtcommunity\Controller\ForumContr
 
 //Forum page d'un topic
 $app->match('/forum/topic/{topicid}', "Zrtcommunity\Controller\ForumController::topicAction");
+
+//Forum page d'un topic
+$app->match('/forum/editmessage/{messageid}', "Zrtcommunity\Controller\ForumController::editMessageAction");

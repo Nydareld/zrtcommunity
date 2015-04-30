@@ -360,10 +360,11 @@ td.topic-message-contenu > hr{
     margin-top:5px;
     margin-bottom:10px;
     font-weight:normal;
+    width:100%;
 }
 
 .droite{
-    float: right;
+    float:right;
 }
 .decal{
     margin-left:15px;
