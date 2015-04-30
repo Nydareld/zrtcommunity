@@ -17,6 +17,9 @@
     <tr>
         <td class="cell-stat-2x topic-member">{{message.auteur.username}}</td>
         <td class="topic-message-contenu">
+            {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') and app.security.token.user == message.auteur %}
+            <input type="submit" value="éditer" class="droite" ></input>
+            {% endif %}
             {{message.contenu|raw}}
             <hr/>
             <p class="topic-message-date">le {{message.date.format('Y-m-d')}} à {{message.date.format('H:i:s')}}</p>

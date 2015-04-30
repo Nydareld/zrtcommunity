@@ -16,7 +16,7 @@ class MessageForumType extends AbstractType{
         ))
         ->add('save', 'submit', array(
             'label' => 'Envoyer',
-            'attr'=>array('class' => 'gauche')
+            'attr'=>array('class' => 'droite')
         ));
     }
 
