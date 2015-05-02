@@ -369,3 +369,37 @@ td.topic-message-contenu > hr{
 .decal{
     margin-left:15px;
 }
+.news{
+    border-radius:10px;
+    background-color:#fff;
+}
+.news-header .droite{
+    margin-bottom:0px;
+}
+.news-header{
+    margin-top:10px;
+    padding-left:15px;
+    padding-right:15px;
+}
+
+.news-header > h3{
+    padding-top:15px;
+    margin-bottom:0px;
+}
+.news hr{
+    margin-bottom:0px;
+    margin-top:5px;
+}
+.news-body{
+    padding:10px;
+}
+.news-comm{
+    padding:5px;
+    padding-left:10px;
+}
+.news-body p, .news-comm p{
+    margin:0;
+}
+.news-comm{
+    font-size:0.8em;
+}
