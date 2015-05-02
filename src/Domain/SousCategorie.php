@@ -114,7 +114,12 @@ class SousCategorie extends ForumContainer{
             ->orderBy('m.date','desc');
         $query = $qb->getQuery();
         $single = $query->getResult();
-        return $single[0];
+        if(isset($single[0])){
+            return $single[0];
+        }
+        else{
+            return null;
+        }
     }
 
 }
