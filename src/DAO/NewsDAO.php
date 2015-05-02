@@ -10,4 +10,13 @@ class NewsDAO extends DAO{
         $this->getEm()->flush();
     }
 
+    public function loadAllNews(){
+        $news= $this->getEm()->getRepository('Zrtcommunity\Domain\News')->findAll();
+        if ($news === null){
+            throw new \Exception("No news");
+        }else{
+            return $news;
+        }
+    }
+
 }
