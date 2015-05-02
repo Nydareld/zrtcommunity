@@ -27,6 +27,7 @@ class NewsController{
         return $app['twig']->render( "basicForm.html",array(
             'title' => "Nouvelle news",
             'form' => $newsForm->createView(),
+            'editor' => 'ckeditor-full',
             )
         );
     }

@@ -3,6 +3,11 @@
 {{form(form)}}
 {% endblock %}
 {% block includeHead %}
+{% if editor is defined %}
+<link href="{{ app.request.basepath }}/lib/{{editor}}/contents.css" rel="stylesheet">
+<script src="{{ app.request.basepath }}/lib/{{editor}}/ckeditor.js"></script>
+{% else %}
 <link href="{{ app.request.basepath }}/lib/ckeditor-standard/contents.css" rel="stylesheet">
 <script src="{{ app.request.basepath }}/lib/ckeditor-standard/ckeditor.js"></script>
+{% endif %}
 {% endblock %}
