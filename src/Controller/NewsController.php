@@ -12,7 +12,6 @@ class NewsController{
 
     public function addNewsAction(Request $request, Application $app){
         $news = new News();
-
         $newsForm = $app['form.factory']->create(new NewsType(), $news);
         $newsForm->handleRequest($request);
         if ( $newsForm->isSubmitted()&& $newsForm->isValid()) {
@@ -31,4 +30,22 @@ class NewsController{
             )
         );
     }
+
+    public function newsAction(Request $request, Application $app){
+        $news = $app['dao.news']->loadAllNews();
+
+        usort($news ,function ($a, $b){
+            if ( $a->getDate() == $b->getDate() ) {
+                return 0;
+            }
+            return ($a->getDate() < $b->getDate() ) ? -1 : 1;
+        });
+
+        return $app['twig']->render( "news.html",array(
+            'title' => "News",
+            'news' => $news,
+            )
+        );
+    }
+
 }
