@@ -19,4 +19,14 @@ class NewsDAO extends DAO{
         }
     }
 
+    public function loadNewsById($id){
+        $news= $this->getEm()->getRepository('Zrtcommunity\Domain\News')->findOneBy(array('id' => $id));
+
+        if ($news === null){
+            throw new \Exception("No news matching id " . $id);
+        }else{
+            return $news;
+        }
+    }
+
 }
