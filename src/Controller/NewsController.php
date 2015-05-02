@@ -48,4 +48,42 @@ class NewsController{
         );
     }
 
+    public function uneNewsAction($newsid,Request $request, Application $app){
+        $news = $app['dao.news']->loadNewsById($newsid);
+
+        $messages = $news->getMessages()->getValues();
+
+        usort($messages ,function ($a, $b){
+            if ( $a->getDate() == $b->getDate() ) {
+                return 0;
+            }
+            return ($a->getDate() < $b->getDate() ) ? -1 : 1;
+        });
+        $news->setMessages($messages);
+
+        /*
+        $message = new Message();
+
+        $messageForm = $app['form.factory']->create(new MessageForumType(), $message);
+        $messageForm->handleRequest($request);
+        if ($messageForm->isSubmitted() && $messageForm->isValid()&& $app['security']->isGranted('IS_AUTHENTICATED_FULLY') ) {
+            $message->setDate(new DateTime());
+            $token = $app['security']->getToken();
+            $message->setAuteur($token->getUser());
+            $message->setTopic($topic);
+            $app['dao.messForum']->save($message);
+
+            return $app->redirect($request->getBasePath().'/forum/topic/'.$topic->getId());
+
+        }*/
+        return $app['twig']->render( "unenews.html",array(
+            'title' => "News",
+            'news' => $news,
+            /*'postForm' => $messageForm->createView(),*/
+            )
+        );
+    }
+
+
+
 }

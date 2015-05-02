@@ -31,7 +31,10 @@ $app->match('/forum/editmessage/{messageid}', "Zrtcommunity\Controller\ForumCont
 $app->match('/forum/souscategorie/newtopic/{scatid}', "Zrtcommunity\Controller\ForumController::addtopicAction");
 
 //page des news
-$app->match('/news', "Zrtcommunity\Controller\NewsController::NewsAction");
+$app->match('/news', "Zrtcommunity\Controller\NewsController::newsAction");
+
+//page d'une news
+$app->match('/news/{newsid}', "Zrtcommunity\Controller\NewsController::uneNewsAction");
 
 //page d'ajout de news
 $app->match('/newnews', "Zrtcommunity\Controller\NewsController::addNewsAction");
