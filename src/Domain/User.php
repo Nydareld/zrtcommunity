@@ -55,6 +55,16 @@ class User implements UserInterface
      */
     private $messagesforum;
 
+    /**
+     * @OneToMany(targetEntity="News", mappedBy="creator")
+     */
+    private $news;
+
+    /**
+     * @OneToMany(targetEntity="MessageNews", mappedBy="auteur")
+     */
+    private $messagesnews;
+
     public function getId() {
         return $this->id;
     }
