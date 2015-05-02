@@ -77,6 +77,11 @@ $app['dao.topic'] = $app->share(function ($app) {
     return new Zrtcommunity\DAO\TopicDAO($app['orm.em']);
 });
 
+//  === dao News ===
+$app['dao.news'] = $app->share(function ($app) {
+    return new Zrtcommunity\DAO\NewsDAO($app['orm.em']);
+});
+
 //  === dao MessageForum ===
 $app['dao.messForum'] = $app->share(function ($app) {
     return new Zrtcommunity\DAO\MessageForumDAO($app['orm.em']);
