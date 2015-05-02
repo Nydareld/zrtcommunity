@@ -22,7 +22,7 @@ class News{
      */
     private $date;
     /**
-     * @Column(type="string",length=5000)
+     * @Column(type="string",length=10000)
      * @var string
      */
     private $contenu;
