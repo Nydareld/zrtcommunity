@@ -82,4 +82,7 @@ class News{
 	public function setMessages($messages){
 		$this->messages = $messages;
 	}
+    public function getNombrecomm(){
+		return count($this->messages);
+	}
 }
