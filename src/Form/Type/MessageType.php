@@ -5,7 +5,7 @@ namespace Zrtcommunity\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class MessageForumType extends AbstractType{
+class MessageType extends AbstractType{
 
     public function buildForm(FormBuilderInterface $builder, array $options){
         $builder
@@ -22,6 +22,6 @@ class MessageForumType extends AbstractType{
 
     public function getName()
     {
-        return 'messageforum';
+        return 'message';
     }
 }
