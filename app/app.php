@@ -48,6 +48,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 ));
 
 //  === symfony monolog ===
+/*
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
     'monolog.logfile' => __DIR__.'/../var/logs/Zrtcommunity.log',
     'monolog.name' => 'Zrtcommunity',
@@ -59,7 +60,7 @@ if (isset($app['debug']) && $app['debug']) {
         'profiler.cache_dir' => __DIR__.'/../var/cache/profiler'
     ));
 }
-
+*/
 //  === symfony form ===
 $app->register(new Silex\Provider\FormServiceProvider());
 $app->register(new Silex\Provider\TranslationServiceProvider());
@@ -102,12 +103,12 @@ $app['dao.messNews'] = $app->share(function ($app) {
 
 //  === dao Visit ===
 $app['dao.visit'] = $app->share(function ($app) {
-    return new Zrtcommunity\DAO\Visit($app['orm.em']);
+    return new Zrtcommunity\DAO\VisitDAO($app['orm.em']);
 });
 
 //  === dao VisitActionPath ===
 $app['dao.visitActionPath'] = $app->share(function ($app) {
-    return new Zrtcommunity\DAO\VisitActionPath($app['orm.em']);
+    return new Zrtcommunity\DAO\VisitActionPathDAO($app['orm.em']);
 });
 
 //  === Home controller ===
@@ -118,6 +119,11 @@ $app['Home.controller'] = $app->share(function ($app) {
 //  === Forum controller ===
 $app['Forum.controller'] = $app->share(function ($app) {
     return new Zrtcommunity\Controller\ForumController();
+});
+
+//  === Statistic controller ===
+$app['Stat.controller'] = $app->share(function ($app) {
+    return new Zrtcommunity\Controller\StatisticController();
 });
 
 //  === app info ===

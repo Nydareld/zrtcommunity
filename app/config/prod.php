@@ -10,4 +10,4 @@ $app['db.options'] = array(
     'password' => 'secret',
 );
 
-$app['monolog.level'] = 'WARNING';
+//$app['monolog.level'] = 'WARNING';
