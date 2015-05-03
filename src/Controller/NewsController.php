@@ -85,6 +85,21 @@ class NewsController{
         );
     }
 
+    public function editMessageAction($messageid,Request $request, Application $app){
+        $message = $app['dao.messNews']->loadMessageById($messageid);
+        $messageForm = $app['form.factory']->create(new MessageType(), $message);
+        $messageForm->handleRequest($request);
+        if ($messageForm->isSubmitted() && $messageForm->isValid() && $app['security']->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $app['dao.messNews']->save($message);
+            return $app->redirect($request->getBasePath().'/news/'.$message->getNews()->getId());
+        }
+        return $app['twig']->render( "basicForm.html",array(
+            'title' => "News",
+            'form' => $messageForm->createView(),
+            )
+        );
+    }
+
 
 
 }
