@@ -16,5 +16,50 @@
     </div>
     <hr/>
 </div>
+{% for message in news.messages %}
+<table class="table topic-message">
+    <tr>
+        <td class="cell-stat-2x topic-member">{{message.auteur.username}}</td>
+        <td class="topic-message-contenu">
+            {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') and app.security.token.user == message.auteur %}
+            <component class="droite">
+            <a href="{{ app.request.basepath }}/forum/editmessage/{{message.id}}">
+                <input type="submit" value="éditer"></input>
+            </a>
+            </component>
+            <hr/>
+            {% endif %}
+            {{message.contenu|raw}}
+            <hr/>
+            <p class="topic-message-date">le {{message.date.format('Y-m-d')}} à {{message.date.format('H:i:s')}}</p>
+        </td>
+    </tr>
+</table>
+{% endfor %}
+{% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') %}
+<table class="table topic-message">
+    <tr>
+        <td class="cell-stat-2x topic-member">{{ app.security.token.user.username }}</td>
+        <td class="topic-message-contenu">
+        {{ form(postForm) }}
+        </td>
+    </tr>
+</table>
+{% else %}
+<table class="table topic-message">
+    <tr>
+        <td class="cell-stat-2x topic-member"></td>
+        <td class="topic-message-contenu">
+            <h3>Inscrit toi ou conecte toi pour donner ton avis !</h3>
+            <a class="decal" href="{{ path('login') }}">Connexion</a><br/>
+            <a class="decal" href="{{ path('inscription') }}">Inscription</a>
+        </td>
+    </tr>
+</table>
+{% endif %}
+{% endblock %}
 
+{% block includeHead %}
+<link href="{{ app.request.basepath }}/lib/ckeditor-standard/contents.css" rel="stylesheet">
+<script src="{{ app.request.basepath }}/lib/ckeditor-standard/ckeditor.js"></script>
 {% endblock %}

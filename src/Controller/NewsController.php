@@ -6,6 +6,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Silex\Application;
 use Zrtcommunity\Domain\News;
 use Zrtcommunity\Form\Type\NewsType;
+use Zrtcommunity\Domain\MessageNews;
+use Zrtcommunity\Form\Type\MessageType;
+
 use \DateTime;
 
 class NewsController{
@@ -61,25 +64,23 @@ class NewsController{
         });
         $news->setMessages($messages);
 
-        /*
-        $message = new Message();
+        $message = new MessageNews();
 
-        $messageForm = $app['form.factory']->create(new MessageForumType(), $message);
+        $messageForm = $app['form.factory']->create(new MessageType(), $message);
         $messageForm->handleRequest($request);
         if ($messageForm->isSubmitted() && $messageForm->isValid()&& $app['security']->isGranted('IS_AUTHENTICATED_FULLY') ) {
             $message->setDate(new DateTime());
             $token = $app['security']->getToken();
             $message->setAuteur($token->getUser());
-            $message->setTopic($topic);
-            $app['dao.messForum']->save($message);
+            $message->setNews($news);
+            $app['dao.messNews']->save($message);
 
-            return $app->redirect($request->getBasePath().'/forum/topic/'.$topic->getId());
-
-        }*/
+            return $app->redirect($request->getBasePath().'/news/'.$news->getId());
+        }
         return $app['twig']->render( "unenews.html",array(
             'title' => "News",
             'news' => $news,
-            /*'postForm' => $messageForm->createView(),*/
+            'postForm' => $messageForm->createView(),
             )
         );
     }
