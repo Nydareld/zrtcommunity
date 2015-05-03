@@ -9,7 +9,7 @@ use Silex\Application;
 use Zrtcommunity\Domain\Topic;
 use Zrtcommunity\Form\Type\TopicType;
 use Zrtcommunity\Domain\MessageForum;
-use Zrtcommunity\Form\Type\MessageForumType;
+use Zrtcommunity\Form\Type\MessageType;
 use \DateTime;
 
 class ForumController{
@@ -58,7 +58,7 @@ class ForumController{
 
         $message = new MessageForum();
 
-        $messageForm = $app['form.factory']->create(new MessageForumType(), $message);
+        $messageForm = $app['form.factory']->create(new MessageType(), $message);
         $messageForm->handleRequest($request);
         if ($messageForm->isSubmitted() && $messageForm->isValid()&& $app['security']->isGranted('IS_AUTHENTICATED_FULLY') ) {
             $message->setDate(new DateTime());
@@ -80,7 +80,7 @@ class ForumController{
 
     public function editMessageAction($messageid,Request $request, Application $app){
         $message = $app['dao.messForum']->loadMessageById($messageid);
-        $messageForm = $app['form.factory']->create(new MessageForumType(), $message);
+        $messageForm = $app['form.factory']->create(new MessageType(), $message);
         $messageForm->handleRequest($request);
         if ($messageForm->isSubmitted() && $messageForm->isValid() && $app['security']->isGranted('IS_AUTHENTICATED_FULLY')) {
             $app['dao.messForum']->save($message);
