@@ -10,28 +10,34 @@ use Zrtcommunity\Controller\HomeController;
 
 class UserController{
 
-    public function addUserAction(Request $request, Application $app) {
+    public function addUserAction(Request $request, Application $app, $danger=null) {
 
         $user = new User();
         $userForm = $app['form.factory']->create(new UserType(), $user);
         $userForm->handleRequest($request);
-        if ($userForm->isSubmitted() && $userForm->isValid()) {
-            // generate a random salt value
-            $salt = substr(md5(time()), 0, 23);
-            $user->setSalt($salt);
-            $plainPassword = $user->getPassword();
-            // find the default encoder
-            $encoder = $app['security.encoder.digest'];
-            // compute the encoded password
-            $password = $encoder->encodePassword($plainPassword, $user->getSalt());
-            $user->setPassword($password);
-            $app['dao.user']->save($user);
-            $success='Vous etes bien inscrits veillez maintenant vous connecter';
-            return $app['Home.controller']->loginAction($request, $app, $success);
+        if(!$app['dao.user']->loadUserByUsername($user->getUsername())==null){
+            $danger ="Ce nom d'utilisateur est déja utilisé par un membre.";
+        }elseif(!$app['dao.user']->loadUserByEmail($user->getEmail())==null){
+            $danger ="Cet email est déja utilisée par un membre.";
+        }
+        elseif ($userForm->isSubmitted() && $userForm->isValid()){
+                // generate a random salt value
+                $salt = substr(md5(time()), 0, 23);
+                $user->setSalt($salt);
+                $plainPassword = $user->getPassword();
+                // find the default encoder
+                $encoder = $app['security.encoder.digest'];
+                // compute the encoded password
+                $password = $encoder->encodePassword($plainPassword, $user->getSalt());
+                $user->setPassword($password);
+                $app['dao.user']->save($user);
+                $success='Vous etes bien inscrits veillez maintenant vous connecter';
+                return $app['Home.controller']->loginAction($request, $app, $success);
         }
         return $app['twig']->render('register.html', array(
             'title' => 'Inscription',
-            'userForm' => $userForm->createView()));
+            'userForm' => $userForm->createView(),
+            'danger' => $danger));
 
     }
 

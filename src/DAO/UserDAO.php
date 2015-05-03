@@ -25,7 +25,15 @@ class UserDAO extends DAO implements UserProviderInterface{
         $user = $this->getEm()->getRepository('Zrtcommunity\Domain\User')->findOneBy(array('username' => $username));
 
         if ($user === null){
-            throw new \Exception("No user matching id " . $id);
+            return null;
+        }else{
+            return $user;
+        }
+    }
+    public function loadUserByEmail($email){
+        $user = $this->getEm()->getRepository('Zrtcommunity\Domain\User')->findOneBy(array('email' => $email));
+        if ($user === null){
+            return null;
         }else{
             return $user;
         }

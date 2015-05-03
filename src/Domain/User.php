@@ -6,6 +6,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @Entity @Table(name="users")
+ * @UniqueEntity("name")
+ * @UniqueEntity("email")
  **/
 class User implements UserInterface
 {
