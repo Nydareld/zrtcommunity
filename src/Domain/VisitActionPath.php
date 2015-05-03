@@ -20,6 +20,12 @@ class VisitActionPath{
     private $date;
 
     /**
+     * @Column(type="string")
+     * @var string
+     */
+    private $path;
+
+    /**
      * @ManyToOne(targetEntity="visit", inversedBy="actionPaths")
      */
     private $visit;
@@ -47,4 +53,12 @@ class VisitActionPath{
 	public function setVisit($visit){
 		$this->visit = $visit;
 	}
+
+    public function getPath(){
+        return $this->path;
+    }
+
+    public function setPath($path){
+        $this->path = $path;
+    }
 }
