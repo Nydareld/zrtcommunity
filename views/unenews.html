@@ -23,7 +23,7 @@
         <td class="topic-message-contenu">
             {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') and app.security.token.user == message.auteur %}
             <component class="droite">
-            <a href="{{ app.request.basepath }}/forum/editmessage/{{message.id}}">
+            <a href="{{ app.request.basepath }}/news/editmessage/{{message.id}}">
                 <input type="submit" value="éditer"></input>
             </a>
             </component>
