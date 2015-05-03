@@ -95,11 +95,20 @@ $app['dao.messForum'] = $app->share(function ($app) {
     return new Zrtcommunity\DAO\MessageForumDAO($app['orm.em']);
 });
 
-//  === dao MessageForum ===
+//  === dao MessageNews ===
 $app['dao.messNews'] = $app->share(function ($app) {
     return new Zrtcommunity\DAO\MessageNewsDAO($app['orm.em']);
 });
 
+//  === dao Visit ===
+$app['dao.visit'] = $app->share(function ($app) {
+    return new Zrtcommunity\DAO\Visit($app['orm.em']);
+});
+
+//  === dao VisitActionPath ===
+$app['dao.visitActionPath'] = $app->share(function ($app) {
+    return new Zrtcommunity\DAO\VisitActionPath($app['orm.em']);
+});
 
 //  === Home controller ===
 $app['Home.controller'] = $app->share(function ($app) {
