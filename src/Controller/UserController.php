@@ -15,7 +15,9 @@ class UserController{
         $user = new User();
         $userForm = $app['form.factory']->create(new UserType(), $user);
         $userForm->handleRequest($request);
-        if(!$app['dao.user']->loadUserByUsername($user->getUsername())==null){
+        if($user->getUsername()=="guest" || $user->getUsername()=="admin" ){
+            $danger ="Ce nom d'utilisateur est interdit";
+        }elseif(!$app['dao.user']->loadUserByUsername($user->getUsername())==null){
             $danger ="Ce nom d'utilisateur est déja utilisé par un membre.";
         }elseif(!$app['dao.user']->loadUserByEmail($user->getEmail())==null){
             $danger ="Cet email est déja utilisée par un membre.";
