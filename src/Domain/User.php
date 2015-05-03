@@ -67,6 +67,11 @@ class User implements UserInterface
      */
     private $messagesnews;
 
+    /**
+     * @OneToMany(targetEntity="Visit", mappedBy="visitor")
+     */
+    private $visits;
+
     public function getId() {
         return $this->id;
     }
@@ -135,6 +140,14 @@ class User implements UserInterface
     public function getRoles()
     {
         return array($this->getRole());
+    }
+
+    public function getVisits() {
+        return $this->visits;
+    }
+
+    public function setVisits($visits) {
+        $this->visits = $visits;
     }
 
     /**
