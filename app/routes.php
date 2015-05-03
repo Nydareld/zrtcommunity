@@ -39,5 +39,8 @@ $app->match('/news/{newsid}', "Zrtcommunity\Controller\NewsController::uneNewsAc
 //News page d'ajout de news
 $app->match('/newnews', "Zrtcommunity\Controller\NewsController::addNewsAction");
 
-//Forum page d'édition d'un message forum
+//News page d'édition d'un message news
 $app->match('/news/editmessage/{messageid}', "Zrtcommunity\Controller\NewsController::editMessageAction");
+
+//Admin page d'accueil du panel
+$app->match('/admin',"Zrtcommunity\Controller\AdminController::adminAction");
