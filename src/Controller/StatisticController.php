@@ -41,21 +41,18 @@ class StatisticController{
         $vap->setPath($path);
         $app['dao.visitActionPath']->save($vap);
     }
-
+    
     private static function registerStatisticNavigator(){
-        if (preg_match_all("#Opera (.*)(\[[a-z]{2}\];)?$#isU", $_SERVER["HTTP_USER_AGENT"], $version)){
-        	$navigateur = 'Opéra ' . $version[1][0];}
-        elseif (preg_match_all("#MSIE (.*);#isU", $_SERVER["HTTP_USER_AGENT"], $version)){
-        	$navigateur = 'Internet Explorer ' . $version[1][0];}
-        elseif (preg_match_all("#Firefox(.*)$#isU", $_SERVER["HTTP_USER_AGENT"], $version)){
-        	$version = str_replace('/', '', $version[1][0]);
-        	$navigateur = 'Firefox ' . $version;}
-        elseif (preg_match_all("#Chrome(.*) Safari#isU", $_SERVER["HTTP_USER_AGENT"], $version)){
-        	$version = str_replace('/', '', $version[1][0]);
-        	$navigateur = 'Chrome ' . $version;}
-        elseif (preg_match_all("#Opera(.*) \(#isU", $_SERVER["HTTP_USER_AGENT"], $version)){
-        	$version = str_replace('/', '', $version[1][0]);
-        	$navigateur = 'Opéra ' . $version;}
+        if (preg_match_all("#Opera (.*)(\[[a-z]{2}\];)?$#isU", $_SERVER["HTTP_USER_AGENT"])){
+        	$navigateur = 'Opéra';}
+        elseif (preg_match_all("#MSIE (.*);#isU", $_SERVER["HTTP_USER_AGENT"])){
+        	$navigateur = 'Internet Explorer';}
+        elseif (preg_match_all("#Firefox(.*)$#isU", $_SERVER["HTTP_USER_AGENT"])){
+        	$navigateur = 'Firefox';}
+        elseif (preg_match_all("#Chrome(.*) Safari#isU", $_SERVER["HTTP_USER_AGENT"])){
+        	$navigateur = 'Chrome';}
+        elseif (preg_match_all("#Opera(.*) \(#isU", $_SERVER["HTTP_USER_AGENT"])){
+        	$navigateur = 'Opéra' . $version;}
         elseif (preg_match("#Nokia#", $_SERVER["HTTP_USER_AGENT"])){
         	$navigateur = 'Nokia';}
         elseif (preg_match("#Safari#", $_SERVER["HTTP_USER_AGENT"])){
