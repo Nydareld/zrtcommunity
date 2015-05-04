@@ -20,6 +20,12 @@ class Visit{
     private $ip;
 
     /**
+     * @Column(type="string")
+     * @var string
+     */
+    private $navigator;
+
+    /**
      * @Column(type="date")
      * @var date
      */
@@ -74,4 +80,12 @@ class Visit{
 	public function setActionPaths($actionPaths){
 		$this->actionPaths = $actionPaths;
 	}
+
+    public function getNavigator(){
+        return $this->navigator;
+    }
+
+    public function setNavigator($navigator){
+        $this->navigator = $navigator;
+    }
 }
