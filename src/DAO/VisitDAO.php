@@ -54,5 +54,14 @@ class VisitDAO extends DAO{
         return count($query->getResult());
     }
 
+    public function findVisitByNavigator(){
+        $qb= $this->getEm()->createQueryBuilder();
+
+        $qb->select('v.navigator, count(v.navigator) nb')
+            ->from('Zrtcommunity\Domain\Visit','v')
+            ->groupBy('v.navigator');
+        return $query = $qb->getQuery()->getResult();
+    }
+
 
 }
