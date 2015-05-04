@@ -339,3 +339,16 @@ h1.page-header {
 		margin: 0;
 	}
 }
+.jqplot-target {
+    margin: 30px;
+}
+
+#customTooltipDiv {
+    position: absolute;
+    display: none;
+    color: #333333;
+    font-size: 0.8em;
+    border: 1px solid #666666;
+    background-color: rgba(160, 160, 160, 0.2);
+    padding: 2px;
+}

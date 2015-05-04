@@ -1,24 +1,11 @@
 {% extends 'admin-Layout.html' %}
 {% block content %}
 
-<style type="text/css">
-.jqplot-target {
-    margin: 30px;
-}
-
-#customTooltipDiv {
-    position: absolute;
-    display: none;
-    color: #333333;
-    font-size: 0.8em;
-    border: 1px solid #666666;
-    background-color: rgba(160, 160, 160, 0.2);
-    padding: 2px;
-}
-</style>
-
-<div id="chart2" style="width:90%;height:260px;"></div>
-<div id="customTooltipDiv" style="width:10%;">I'm a tooltip.</div>
+<div class="container">
+    <h3>Nombre de visites</h3>
+    <div id="chart2" style="width:90%;height:260px;"></div>
+    <div id="customTooltipDiv" style="width:10%;">I'm a tooltip.</div>
+</div>
 
 {% endblock %}
 {% block includeJS %}
