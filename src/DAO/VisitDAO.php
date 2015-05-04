@@ -24,4 +24,35 @@ class VisitDAO extends DAO{
         }
     }
 
+    public function findAll(){
+        return $this->getEm()->getRepository('Zrtcommunity\Domain\Visit')->findAll();
+    }
+
+    public function findUserVisitByDay($day){
+        $qb= $this->getEm()->createQueryBuilder();
+
+        $qb->select('v')
+            ->from('Zrtcommunity\Domain\Visit','v')
+            ->where('v.date = :date')
+            ->andWhere('v.visitor IS NOT NULL')
+            ->setParameter('date', $day->format('Y-m-d'));
+
+        $query = $qb->getQuery();
+        return count($query->getResult());
+    }
+
+    public function findGuestVisitByDay($day){
+        $qb= $this->getEm()->createQueryBuilder();
+
+        $qb->select('v')
+            ->from('Zrtcommunity\Domain\Visit','v')
+            ->where('v.date = :date')
+            ->andWhere('v.visitor IS NULL')
+            ->setParameter('date', $day->format('Y-m-d'));
+
+        $query = $qb->getQuery();
+        return count($query->getResult());
+    }
+
+
 }
