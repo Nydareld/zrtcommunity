@@ -20,7 +20,7 @@ class Visit{
     private $ip;
 
     /**
-     * @Column(type="string")
+     * @Column(type="string", nullable=true)
      * @var string
      */
     private $navigator;

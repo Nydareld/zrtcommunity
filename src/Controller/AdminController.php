@@ -27,12 +27,14 @@ class AdminController{
             $nbVisitsGuest[$i]=$app['dao.visit']->findGuestVisitByDay($days[$i]);
         }
 
+        $navigators=$app['dao.visit']->findVisitByNavigator();
 
         return $app['twig']->render( "admin-stat.html",array(
             'panelname' => 'statistiques',
             'visitsUser' => $nbVisitsUser,
             'visitsGuest' => $nbVisitsGuest,
             'days'=>$days,
+            'navigators' => $navigators,
             )
         );
     }

@@ -6,7 +6,10 @@
     <div id="chart2" style="width:90%;height:260px;"></div>
     <div id="customTooltipDiv" style="width:10%;">I'm a tooltip.</div>
 </div>
-
+<div class="container col-sm-10 col-md-5">
+    <h3>Répartition des navigateurs</h3>
+    <div id="chart3" style="margin-top:20px; margin-left:20px; width:460px; height:300px;"></div>
+</div>
 
 {% endblock %}
 {% block includeJS %}
@@ -16,6 +19,7 @@
 <script type="text/javascript" src="{{ app.request.basepath }}/lib/jqplot/plugins/jqplot.highlighter.min.js"></script>
 <script type="text/javascript" src="{{ app.request.basepath }}/lib/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
 <script type="text/javascript" src="{{ app.request.basepath }}/lib/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}/lib/jqplot/plugins/jqplot.pieRenderer.min.js"></script>
 
 <script class="code" language="javascript" type="text/javascript">
 
@@ -106,6 +110,29 @@ $(document).ready(function(){
         }
     );
 
+});
+
+
+$(document).ready(function(){
+    var navigator=[
+        {% for navigator in navigators %}
+            ['{{navigator['navigator']}}',{{navigator['nb']}}],
+        {% endfor %}
+    ];
+  plot2 = jQuery.jqplot('chart3',[navigator,],
+    {
+      title: ' ',
+      seriesDefaults: {
+        shadow: false,
+        renderer: jQuery.jqplot.PieRenderer,
+        rendererOptions: {
+          startAngle: 180,
+          sliceMargin: 4,
+          showDataLabels: true }
+      },
+      legend: { show:true, location: 'w' }
+    }
+  );
 });
 
 </script>
