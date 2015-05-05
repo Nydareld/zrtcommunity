@@ -403,3 +403,16 @@ td.topic-message-contenu > hr{
 .news-comm{
     font-size:0.8em;
 }
+.listeProjet{
+    margin-bottom:10px;
+    margin-top:10px;
+    border-radius:10px;
+    padding:10px;
+    background-color:#fff;
+}
+.listeProjet .cell-stat-2x{
+    width:7em;
+}
+.listeProjet .cell-stat-4x{
+    width:15em;
+}

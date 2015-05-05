@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="listeProjet">
+<h2>Liste des projets</h2>
+<p>
+Vous pouvez chercher un projet dans la liste grace aux parametres de recherche ou bien créer le votre ici:
+<a href="{{ app.request.basepath }}/projet/newprojet">Nouveau projet</a>
+<br/>
+Noubliez pas de lire la description des régions afin d'en choisir une qui coresspond a votre projet:
+<a href="{{ app.request.basepath }}/projet/regions">Liste des régions</a>
+</p>
+
+<table class="table table-striped">
+<thead> <!-- En-tête du tableau -->
+    <tr>
+        <th class="cell-stat">Nom du projet</th>
+        <th class="cell-stat-4x">Région</th>
+        <th class="cell-stat-2x">Nombre de membres</th>
+        <th class="cell-stat-2x">Date</th>
+        <th class="cell-stat-2x">Accépté</th>
+        <th class="cell-stat-2x">Terminé</th>
+    </tr>
+</thead>
+<tbody>
+{% for projet in projets %}
+<tr>
+    <td>{{projet.name}}</td>
+    <td>{{projet.region.name}}</td>
+    <td>{{projet.membresProjets|length}}</td>
+    <td>{{projet.date|date("m/d/Y")}}</td>
+    <td>{{projet.accepted ? 'oui':'non'}}</td>
+    <td>{{projet.finished ? 'oui':'non'}}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+
+{% endblock %}
