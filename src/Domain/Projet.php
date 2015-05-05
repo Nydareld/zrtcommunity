@@ -137,12 +137,12 @@ class Projet{
 		$this->region = $region;
 	}
 
-	public function getMembres(){
-		return $this->membres;
+	public function getMembresProjets(){
+		return $this->membresProjets;
 	}
 
-	public function setMembres($membres){
-		$this->membres = $membres;
+	public function setMembresProjets($membresProjets){
+		$this->membresProjets = $membresProjets;
 	}
 
 }
