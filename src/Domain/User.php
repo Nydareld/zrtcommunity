@@ -72,6 +72,11 @@ class User implements UserInterface
      */
     private $visits;
 
+    /**
+     * @OneToMany(targetEntity="MembreProjet", mappedBy="user")
+     */
+    private $membreProjet;
+
     public function getId() {
         return $this->id;
     }
@@ -161,4 +166,12 @@ class User implements UserInterface
     {
         return $this->messagesforum;
     }
+
+    public function getMembreProjet(){
+		return $this->membreProjet;
+	}
+
+	public function setMembreProjet($membreProjet){
+		$this->membreProjet = $membreProjet;
+	}
 }
