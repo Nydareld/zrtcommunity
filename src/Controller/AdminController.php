@@ -6,6 +6,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Silex\Application;
+use Zrtcommunity\Domain\Region;
+use Zrtcommunity\Form\Type\RegionType;
 use \DateTime;
 
 class AdminController{
@@ -30,7 +32,7 @@ class AdminController{
         $navigators=$app['dao.visit']->findVisitByNavigator();
 
         return $app['twig']->render( "admin-stat.html",array(
-            'panelname' => 'statistiques',
+            'panelname' => 'Statistiques',
             'visitsUser' => $nbVisitsUser,
             'visitsGuest' => $nbVisitsGuest,
             'days'=>$days,
@@ -38,4 +40,21 @@ class AdminController{
             )
         );
     }
+
+    public function regionProjetAction(Request $request, Application $app){
+        $region = new Region();
+
+        $regionForm = $app['form.factory']->create(new RegionType(), $region);
+        $regionForm->handleRequest($request);
+        if( $regionForm->isSubmitted()&& $regionForm->isValid()){
+            $app['dao.region']->save($region);
+            return $app->redirect($request->getBasePath().'/admin/regionprojet');
+        }
+        return $app['twig']->render( "adminRegionProjet.html",array(
+            'panelname' => "Régions et projets",
+            'form' => $regionForm->createView(),
+            )
+        );
+    }
+
 }
