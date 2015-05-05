@@ -352,3 +352,7 @@ h1.page-header {
     background-color: rgba(160, 160, 160, 0.2);
     padding: 2px;
 }
+.region{
+    display:inline-block;
+    width:95%;
+}
