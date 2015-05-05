@@ -47,6 +47,11 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     ),
 ));
 
+//  === is Mobile ===
+
+use Binfo\Silex\MobileDetectServiceProvider;
+$app->register(new MobileDetectServiceProvider());
+
 //  === symfony monolog ===
 /*
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
