@@ -38,13 +38,13 @@ class Projet{
     private $accepted;
 
     /**
-     * @Column(type="integer")
+     * @Column(type="integer",nullable=true)
      * @var int
      */
     private $localisationX;
 
     /**
-     * @Column(type="integer")
+     * @Column(type="integer",nullable=true)
      * @var int
      */
     private $localisationY;
