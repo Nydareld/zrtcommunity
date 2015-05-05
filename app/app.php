@@ -121,6 +121,16 @@ $app['dao.region'] = $app->share(function ($app) {
     return new Zrtcommunity\DAO\RegionDAO($app['orm.em']);
 });
 
+//  === dao Projet ===
+$app['dao.projet'] = $app->share(function ($app) {
+    return new Zrtcommunity\DAO\ProjetDAO($app['orm.em']);
+});
+
+//  === dao MembreProjet ===
+$app['dao.membreProjet'] = $app->share(function ($app) {
+    return new Zrtcommunity\DAO\MembreProjetDAO($app['orm.em']);
+});
+
 //  === Home controller ===
 $app['Home.controller'] = $app->share(function ($app) {
     return new Zrtcommunity\Controller\HomeController();
