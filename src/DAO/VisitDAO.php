@@ -59,6 +59,7 @@ class VisitDAO extends DAO{
 
         $qb->select('v.navigator, count(v.navigator) nb')
             ->from('Zrtcommunity\Domain\Visit','v')
+            ->andWhere('v.navigator IS NOT NULL')
             ->groupBy('v.navigator');
         return $query = $qb->getQuery()->getResult();
     }

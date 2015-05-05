@@ -96,8 +96,8 @@ $(document).ready(function(){
             // Figure out where to position the tooltip.
             var h = elem.outerHeight();
             var w = elem.outerWidth();
-            var left = ev.pageX - w - 10;
-            var top = ev.pageY - h - 10;
+            var left = ev.pageX- w - 150;
+            var top = ev.pageY- h- 50;
             // now stop any currently running animation, position the tooltip, and fade in.
             elem.stop(true, true).css({left:left, top:top}).fadeIn(200);
         }
