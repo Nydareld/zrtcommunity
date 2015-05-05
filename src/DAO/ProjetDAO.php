@@ -9,4 +9,12 @@ class ProjetDAO extends DAO{
         $this->getEm()->persist($projet);
         $this->getEm()->flush();
     }
+    public function loadAllProjet(){
+        $projets= $this->getEm()->getRepository('Zrtcommunity\Domain\Projet')->findAll();
+        if ($projets === null){
+            throw new \Exception("No projects");
+        }else{
+            return $projets;
+        }
+    }
 }

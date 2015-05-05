@@ -39,4 +39,7 @@ class ProjetController{
             'form' => $projetForm->createView(),
         ));
     }
+    public function projectAction(Request $request, Application $app){
+        
+    }
 }
