@@ -26,6 +26,12 @@ class Projet{
     private $description;
 
     /**
+     * @Column(type="datetime")
+     * @var datetime
+     */
+    private $date;
+
+    /**
      * @Column(type="boolean")
      * @var boolean
      */
@@ -75,6 +81,14 @@ class Projet{
 
 	public function setDescription($description){
 		$this->description = $description;
+	}
+
+    public function getDate(){
+		return $this->date;
+	}
+
+	public function setDate($date){
+		$this->date = $date;
 	}
 
 	public function isAccepted(){
