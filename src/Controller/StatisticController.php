@@ -35,13 +35,14 @@ class StatisticController{
             $app['dao.visit']->save($visit);
         }
         $visit->setNavigator(StatisticController::registerStatisticNavigator());
+        $visit->setDevice(StatisticController::registerStatisticDevice());
         $vap=new VisitActionPath();
         $vap->setDate(new DateTime());
         $vap->setVisit($visit);
         $vap->setPath($path);
         $app['dao.visitActionPath']->save($vap);
     }
-    
+
     private static function registerStatisticNavigator(){
         if (preg_match_all("#Opera (.*)(\[[a-z]{2}\];)?$#isU", $_SERVER["HTTP_USER_AGENT"])){
         	$navigateur = 'Opéra';}
@@ -66,5 +67,20 @@ class StatisticController{
         else{
         	$navigateur = 'Inconnu';}
         return $navigateur;
+    }
+
+    private static function registerStatisticDevice(){
+        global $app;
+        if($app["mobile_detect"]->isMobile() && !$app["mobile_detect"]->isTablet()){
+        	$device = 'Téléphone';
+        }elseif ($app["mobile_detect"]->isTablet()){
+            $device = 'Tablette';
+        }else{
+            $device = 'Ordinateur';
+        }
+        //detect tablet
+        //detect phone
+        //detect desctop
+        return $device;
     }
 }
