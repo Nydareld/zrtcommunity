@@ -50,3 +50,6 @@ $app->match('/admin/regionprojet',"Zrtcommunity\Controller\AdminController::regi
 
 //Projet page d'ajout de projet
 $app->match('/projet/newprojet', "Zrtcommunity\Controller\ProjetController::addProjectAction");
+
+//Projet page d'accueil des projets
+$app->match('/projet', "Zrtcommunity\Controller\ProjetController::projectAction");
