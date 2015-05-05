@@ -21,6 +21,7 @@ class ProjetController{
             // id nom desc region
             $projet->setDate(new DateTime());
             $projet->setAccepted(FALSE);
+            $projet->setTerminated(FALSE);
             $projet->setRegion($app['dao.region']->loadRegionById($projetForm["region"]->getData()));
 
             $membre = new MembreProjet();
@@ -40,6 +41,20 @@ class ProjetController{
         ));
     }
     public function projectAction(Request $request, Application $app){
-        
+        $projets = $app['dao.projet']->loadAllProjet();
+
+        usort($projets ,function ($a, $b){
+            if ( $a->getDate() == $b->getDate() ) {
+                return 0;
+            }
+            return ($a->getDate() < $b->getDate() ) ? -1 : 1;
+        });
+
+        return $app['twig']->render( "projet.html",array(
+            'title' => "Projets",
+            'projets' => $projets,
+            )
+        );
+
     }
 }

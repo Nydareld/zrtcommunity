@@ -38,6 +38,12 @@ class Projet{
     private $accepted;
 
     /**
+     * @Column(type="boolean")
+     * @var boolean
+     */
+    private $terminated;
+
+    /**
      * @Column(type="integer",nullable=true)
      * @var int
      */
@@ -97,6 +103,14 @@ class Projet{
 
 	public function setAccepted($accepted){
 		$this->accepted = $accepted;
+	}
+
+	public function isTerminated(){
+		return $this->terminated;
+	}
+
+	public function setTerminated($terminated){
+		$this->terminated = $terminated;
 	}
 
 	public function getLocalisationX(){
