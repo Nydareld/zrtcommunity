@@ -21,7 +21,7 @@ class ProjetController{
             // id nom desc region
             $projet->setDate(new DateTime());
             $projet->setAccepted(FALSE);
-            $projet->setTerminated(FALSE);
+            $projet->setFinished(FALSE);
             $projet->setRegion($app['dao.region']->loadRegionById($projetForm["region"]->getData()));
 
             $membre = new MembreProjet();

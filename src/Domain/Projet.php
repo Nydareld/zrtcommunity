@@ -41,7 +41,7 @@ class Projet{
      * @Column(type="boolean")
      * @var boolean
      */
-    private $terminated;
+    private $finished;
 
     /**
      * @Column(type="integer",nullable=true)
@@ -105,12 +105,12 @@ class Projet{
 		$this->accepted = $accepted;
 	}
 
-	public function isTerminated(){
-		return $this->terminated;
+	public function isFinished(){
+		return $this->finished;
 	}
 
-	public function setTerminated($terminated){
-		$this->terminated = $terminated;
+	public function setFinished($finished){
+		$this->finished = $finished;
 	}
 
 	public function getLocalisationX(){
