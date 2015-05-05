@@ -63,6 +63,15 @@ class VisitDAO extends DAO{
             ->groupBy('v.navigator');
         return $query = $qb->getQuery()->getResult();
     }
+    public function findVisitByDevice(){
+        $qb= $this->getEm()->createQueryBuilder();
+
+        $qb->select('v.device, count(v.device) nb')
+            ->from('Zrtcommunity\Domain\Visit','v')
+            ->andWhere('v.device IS NOT NULL')
+            ->groupBy('v.device');
+        return $query = $qb->getQuery()->getResult();
+    }
 
 
 }
