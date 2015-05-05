@@ -17,7 +17,7 @@ class Topic{
      */
     private $name;
     /**
-     * @Column(type="string")
+     * @Column(type="string",nullable=true)
      * @var string
      */
     private $description;
