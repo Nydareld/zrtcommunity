@@ -48,8 +48,11 @@ $app->match('/admin',"Zrtcommunity\Controller\AdminController::adminAction");
 //Admin page des projets et régions
 $app->match('/admin/regionprojet',"Zrtcommunity\Controller\AdminController::regionProjetAction");
 
+//Projet page d'accueil des projets
+$app->match('/projet', "Zrtcommunity\Controller\ProjetController::projectAction");
+
 //Projet page d'ajout de projet
 $app->match('/projet/newprojet', "Zrtcommunity\Controller\ProjetController::addProjectAction");
 
-//Projet page d'accueil des projets
-$app->match('/projet', "Zrtcommunity\Controller\ProjetController::projectAction");
+//Projet page des régions
+$app->match('/projet/regions', "Zrtcommunity\Controller\ProjetController::regionsAction");
