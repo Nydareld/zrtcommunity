@@ -26,6 +26,12 @@ class Visit{
     private $navigator;
 
     /**
+     * @Column(type="string", nullable=true)
+     * @var string
+     */
+    private $device;
+
+    /**
      * @Column(type="date")
      * @var date
      */
@@ -88,4 +94,12 @@ class Visit{
     public function setNavigator($navigator){
         $this->navigator = $navigator;
     }
+
+    public function getDevice(){
+		return $this->device;
+	}
+
+	public function setDevice($device){
+		$this->device = $device;
+	}
 }
