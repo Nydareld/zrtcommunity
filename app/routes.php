@@ -44,3 +44,7 @@ $app->match('/news/editmessage/{messageid}', "Zrtcommunity\Controller\NewsContro
 
 //Admin page d'accueil du panel
 $app->match('/admin',"Zrtcommunity\Controller\AdminController::adminAction");
+
+
+//Admin page d'accueil du panel
+$app->match('/admin/regionprojet',"Zrtcommunity\Controller\AdminController::regionProjetAction");
