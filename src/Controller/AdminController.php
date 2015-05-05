@@ -30,6 +30,7 @@ class AdminController{
         }
 
         $navigators=$app['dao.visit']->findVisitByNavigator();
+        $devices=$app['dao.visit']->findVisitByDevice();
 
         return $app['twig']->render( "admin-stat.html",array(
             'panelname' => 'Statistiques',
@@ -37,6 +38,7 @@ class AdminController{
             'visitsGuest' => $nbVisitsGuest,
             'days'=>$days,
             'navigators' => $navigators,
+            'devices' => $devices,
             )
         );
     }
