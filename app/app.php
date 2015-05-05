@@ -111,6 +111,11 @@ $app['dao.visitActionPath'] = $app->share(function ($app) {
     return new Zrtcommunity\DAO\VisitActionPathDAO($app['orm.em']);
 });
 
+//  === dao Region ===
+$app['dao.region'] = $app->share(function ($app) {
+    return new Zrtcommunity\DAO\RegionDAO($app['orm.em']);
+});
+
 //  === Home controller ===
 $app['Home.controller'] = $app->share(function ($app) {
     return new Zrtcommunity\Controller\HomeController();
