@@ -2,7 +2,34 @@
 {% block content %}
 <div class="container unProjet">
 
-<div class="container col-md-4 droite listeMembreProjet">
+<div class="container col-md-6 droite listeMembreProjet">
+<div class ="container col-md-6 ligne-droite">
+    <h3>Statut du projet</h3>
+    <p>
+        {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') and app.security.token.user == projet.createur %}
+        <a href="{{ app.request.basepath }}/projet/editprojet/{{projet.id}}">
+        modifier le projet ou les membres
+        </a>
+        {% endif %}
+    </p>
+    <p>
+    Validé par la modération:
+        {% if projet.accepted %}
+        <i class="fa fa-2x green droite fa-check-circle-o"></i>
+        {% else %}
+        <i class="fa fa-2x red droite fa-times-circle-o"></i>
+        {% endif %}
+    </p>
+    <p>
+    Terminé:
+        {% if projet.accepted %}
+        <i class="fa fa-2x green droite fa-check-circle-o"></i>
+        {% else %}
+        <i class="fa fa-2x red droite fa-times-circle-o"></i>
+        {% endif %}
+    </p>
+</div>
+<div class="container col-md-6">
 <h3>Liste des membres</h3>
 <table class="table">
 <thead> <!-- En-tête du tableau -->
@@ -21,26 +48,6 @@
 </tbody>
 </table>
 </div>
-<div class ="droite container col-md-3 chechStatusProjet">
-    <p>
-    Validé par la modération:
-        {% if projet.accepted %}
-        <i class="fa fa-2x green droite fa-check-circle-o"></i>
-        {% else %}
-        <i class="fa fa-2x red droite fa-times-circle-o"></i>
-        {% endif %}
-    </p>
-    <p>
-    Terminé:
-        {% if projet.accepted %}
-        <i class="fa fa-2x green droite fa-check-circle-o"></i>
-        {% else %}
-        <i class="fa fa-2x red droite fa-times-circle-o"></i>
-        {% endif %}
-    </p>
-
-
-
 </div>
 <div class="entete-projet">
     <h2>{{projet.name}}</h2>

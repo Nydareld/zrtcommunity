@@ -441,11 +441,6 @@ td.topic-message-contenu > hr{
     margin:10px;
     border-radius:10px;
 }
-.chechStatusProjet{
-    margin-top:10px;
-    padding-top:10px;
-    font-size:1.2em;
-}
 .2eme{
     margin-top:1.2em;
 }
@@ -457,4 +452,7 @@ td.topic-message-contenu > hr{
 }
 .uneregion h3 a{
     color:#fff;
+}
+.ligne-droite{
+    border-right:1px solid #99acba;
 }
