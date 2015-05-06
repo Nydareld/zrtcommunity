@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="uneregion">
+    <h3>
+        <div id="scat-desc" class="droite">
+            {{region.projets|length}} projets
+        </div>
+        {{region.name}}<br>
+        <p id="scat-desc">{{region.descriptionRapide}}</p>
+    </h3>
+    <div class="descRegion">
+        {{region.description|raw}}
+    </div>
+</div>
+
+{% endblock %}
