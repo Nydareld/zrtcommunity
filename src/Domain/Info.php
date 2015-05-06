@@ -11,8 +11,8 @@ class Info{
         global $app;
 
         $this->nbuser = count($app['orm.em']->getRepository("Zrtcommunity\Domain\User")->findall());
-        $this->nbmess =0;
-        $this->nbtopic =0;
+        $this->nbmess =count($app['orm.em']->getRepository("Zrtcommunity\Domain\MessageForum")->findall());
+        $this->nbtopic =count($app['orm.em']->getRepository("Zrtcommunity\Domain\Topic")->findall());
     }
     public function getNbuser(){return $this->nbuser;}
     public function getNbtopic(){return $this->nbtopic;}
