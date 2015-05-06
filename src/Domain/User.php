@@ -77,6 +77,11 @@ class User implements UserInterface
      */
     private $membreProjet;
 
+    /**
+     * @OneToMany(targetEntity="Projet", mappedBy="createur")
+     */
+    private $projets;
+
     public function getId() {
         return $this->id;
     }

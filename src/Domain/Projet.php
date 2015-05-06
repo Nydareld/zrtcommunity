@@ -65,6 +65,11 @@ class Projet{
      */
     private $membresProjets;
 
+    /**
+     * @ManyToOne(targetEntity="User", inversedBy="projets")
+     */
+    private $createur;
+
     public function getId(){
 		return $this->id;
 	}
@@ -143,6 +148,14 @@ class Projet{
 
 	public function setMembresProjets($membresProjets){
 		$this->membresProjets = $membresProjets;
+	}
+
+    public function getCreateur(){
+		return $this->createur;
+	}
+
+	public function setCreateur($createur){
+		$this->createur = $createur;
 	}
 
 }
