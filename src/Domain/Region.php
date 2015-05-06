@@ -20,6 +20,12 @@ class Region{
     private $name;
 
     /**
+     * @Column(type="string")
+     * @var string
+     */
+    private $descriptionRapide;
+
+    /**
      * @Column(type="string",length=10000)
      * @var string
      */
@@ -53,6 +59,14 @@ class Region{
 	public function setDescription($description){
 		$this->description = $description;
 	}
+
+    public function getDescriptionRapide(){
+        return $this->descriptionRapide;
+    }
+
+    public function setDescriptionRapide($descriptionRapide){
+        $this->descriptionRapide = $descriptionRapide;
+    }
 
 	public function getProjets(){
 		return $this->projets;

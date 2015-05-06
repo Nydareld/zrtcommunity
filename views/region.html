@@ -5,7 +5,10 @@
 <h2>Liste des Régions</h2>
 {% for region in regions %}
     <div class="uneregion">
-        <h3>{{region.name}}</h3>
+        <h3>
+            <a href="{{ app.request.basepath }}/projet/region/{{region.id}}">{{region.name}}</a><br>
+            <p id="scat-desc">{{region.descriptionRapide}}</p>
+        </h3>
         <div class="descRegion">
             {{region.description|raw}}
         </div>

@@ -12,8 +12,11 @@ class RegionType extends AbstractType{
         ->add('name', 'text',array(
             'label' => 'Nom de la région:'
         ))
+        ->add('descriptionRapide', 'text',array(
+            'label' => 'Description Rapide:'
+        ))
         ->add('description', 'textarea',array(
-            'label' => 'Description:',
+            'label' => 'Description Complete:',
             'max_length' => 10000,
             'attr'=>array('class'=>'ckeditor')
         ))
