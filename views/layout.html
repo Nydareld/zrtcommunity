@@ -47,6 +47,9 @@
 
             </div>
             <ul class="nav navbar-nav navbar-right">
+                {% if is_granted('ROLE_MODO') %}
+                <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/admin">Panel Admin</a></li>
+                {% endif %}
                 {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') %}
                 <li class="dropdown nav2-li">
                     <a class="nav2-item nav2-item-user dropdown-toggle" data-toggle="dropdown">

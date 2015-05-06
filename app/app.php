@@ -40,7 +40,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         'ROLE_TARD' => array('ROLE_USER'),
     ),
     'security.access_rules' => array(
-        array('^/admin', 'ROLE_ADMIN'),
+        array('^/admin', 'ROLE_MODO'),
         array('^/forum/souscategorie/newtopic', 'ROLE_USER'),
         array('^/forum/editmessage', 'ROLE_USER'),
         array('^/newnews', 'ROLE_MODO'),
