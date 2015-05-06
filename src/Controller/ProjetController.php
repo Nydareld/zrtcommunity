@@ -74,4 +74,12 @@ class ProjetController{
             )
         );
     }
+    public function uneRegionAction($regionid, Request $request, Application $app){
+        $region = $app['dao.region']->loadRegionById($regionid);
+        return $app['twig']->render( "uneRegion.html",array(
+            'title' => "Region",
+            'region' => $region,
+            )
+        );
+    }
 }
