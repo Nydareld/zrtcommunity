@@ -431,3 +431,27 @@ td.topic-message-contenu > hr{
 .descRegion{
     margin:10px;
 }
+.unProjet{
+    background-color:#fff;
+}
+.listeMembreProjet{
+    background-color: #384148;
+    color:#99acba;
+    padding:10px;
+    margin:10px;
+    border-radius:10px;
+}
+.chechStatusProjet{
+    margin-top:10px;
+    padding-top:10px;
+    font-size:1.2em;
+}
+.2eme{
+    margin-top:1.2em;
+}
+.green{
+    color:green;
+}
+.red{
+    color:red;
+}

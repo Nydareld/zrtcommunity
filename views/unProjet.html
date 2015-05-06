@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container unProjet">
+
+<div class="container col-md-4 droite listeMembreProjet">
+<h3>Liste des membres</h3>
+<table class="table">
+<thead> <!-- En-tête du tableau -->
+    <tr>
+        <th class="cell-stat">Pseudo</th>
+        <th class="cell-stat-4x">Fonction</th>
+    </tr>
+</thead>
+<tbody>
+{% for membre in projet.membresProjets %}
+    <tr>
+        <th><a href="{{ app.request.basepath }}/member/{{membre.user.id}}">{{membre.user.username}}</a></th>
+        <th>{{membre.alias}}</th>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+<div class ="droite container col-md-3 chechStatusProjet">
+    <p>
+    Validé par la modération:
+        {% if projet.accepted %}
+        <i class="fa fa-2x green droite fa-check-circle-o"></i>
+        {% else %}
+        <i class="fa fa-2x red droite fa-times-circle-o"></i>
+        {% endif %}
+    </p>
+    <p>
+    Terminé:
+        {% if projet.accepted %}
+        <i class="fa fa-2x green droite fa-check-circle-o"></i>
+        {% else %}
+        <i class="fa fa-2x red droite fa-times-circle-o"></i>
+        {% endif %}
+    </p>
+
+
+
+</div>
+<div class="entete-projet">
+    <h2>{{projet.name}}</h2>
+    <h4>Région: {{projet.region.name}}</h4>
+</div>
+{{projet.description|raw}}
+</div>
+
+{% endblock %}
