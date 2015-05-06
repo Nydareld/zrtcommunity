@@ -66,4 +66,12 @@ class ProjetController{
         );
 
     }
+    public function unProjetAction($projetid, Request $request, Application $app){
+        $projet = $app['dao.projet']->loadProjetById($projetid);
+        return $app['twig']->render( "unProjet.html",array(
+            'title' => "Projet",
+            'projet' => $projet,
+            )
+        );
+    }
 }
