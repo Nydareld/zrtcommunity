@@ -33,4 +33,12 @@ class RegionDAO extends DAO{
             return $news;
         }
     }
+    public function loadAllRegion(){
+        $regions= $this->getEm()->getRepository('Zrtcommunity\Domain\Region')->findAll();
+        if ($regions=== null){
+            throw new \Exception("No Regions");
+        }else{
+            return $regions;
+        }
+    }
 }
