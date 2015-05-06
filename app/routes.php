@@ -56,3 +56,6 @@ $app->match('/projet/newprojet', "Zrtcommunity\Controller\ProjetController::addP
 
 //Projet page des régions
 $app->match('/projet/regions', "Zrtcommunity\Controller\ProjetController::regionsAction");
+
+//Projet page des régions
+$app->match('/projet/{projetid}', "Zrtcommunity\Controller\ProjetController::unProjetAction");
