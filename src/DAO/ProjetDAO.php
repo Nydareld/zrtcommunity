@@ -17,4 +17,13 @@ class ProjetDAO extends DAO{
             return $projets;
         }
     }
+    public function loadProjetById($projetId){
+        $projet= $this->getEm()->getRepository('Zrtcommunity\Domain\Projet')->findOneBy(array('id' => $projetId));
+
+        if ($projet === null){
+            throw new \Exception("No topic matching id " . $id);
+        }else{
+            return $projet;
+        }
+    }
 }
