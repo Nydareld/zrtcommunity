@@ -23,6 +23,7 @@ class ProjetController{
             $projet->setAccepted(FALSE);
             $projet->setFinished(FALSE);
             $projet->setRegion($app['dao.region']->loadRegionById($projetForm["region"]->getData()));
+            $projet->setCreateur($app['security']->getToken()->getUser());
 
             $membre = new MembreProjet();
             $membre->setOwner(TRUE);
