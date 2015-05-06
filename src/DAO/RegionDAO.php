@@ -19,7 +19,7 @@ class RegionDAO extends DAO{
         }
 
         foreach($regions as $region){
-            $names[$region->getId()] = $region->getName();
+            $names[$region->getId()] = $region->getName()." - ".$region->getDescriptionRapide();
         }
 
         return $names;
