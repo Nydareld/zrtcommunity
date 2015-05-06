@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="listeRegion">
+<h2>Liste des Régions</h2>
+{% for region in regions %}
+    <div class="uneregion">
+        <h3>{{region.name}}</h3>
+        <div class="descRegion">
+            {{region.description|raw}}
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}

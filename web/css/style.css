@@ -403,7 +403,7 @@ td.topic-message-contenu > hr{
 .news-comm{
     font-size:0.8em;
 }
-.listeProjet{
+.listeProjet, .listeRegion{
     margin-bottom:10px;
     margin-top:10px;
     border-radius:10px;
@@ -415,4 +415,19 @@ td.topic-message-contenu > hr{
 }
 .listeProjet .cell-stat-4x{
     width:15em;
+}
+.uneregion h3{
+    margin-top:0px;
+    background-color:#2f333e;
+    color:#fff;
+    padding:10px;
+    /*border-radius:10px 10px 0 0;*/
+}
+.uneregion{
+    border: 2px solid #2f333e;
+    border-radius:5px;
+    margin-bottom:20px;
+}
+.descRegion{
+    margin:10px;
 }
