@@ -25,7 +25,7 @@ Noubliez pas de lire la description des régions afin d'en choisir une qui cores
 <tbody>
 {% for projet in projets %}
 <tr>
-    <td>{{projet.name}}</td>
+    <td><a href="{{ app.request.basepath }}/projet/{{projet.id}}">{{projet.name}}</a></td>
     <td>{{projet.region.name}}</td>
     <td>{{projet.membresProjets|length}}</td>
     <td>{{projet.date|date("m/d/Y")}}</td>
