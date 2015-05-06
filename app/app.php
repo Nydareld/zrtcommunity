@@ -36,7 +36,8 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     ),
     'security.role_hierarchy' => array(
         'ROLE_ADMIN' => array('ROLE_MODO'),
-        'ROLE_MODO' => array('ROLE_USER'),
+        'ROLE_MODO' => array('ROLE_TARD'),
+        'ROLE_TARD' => array('ROLE_USER'),
     ),
     'security.access_rules' => array(
         array('^/admin', 'ROLE_ADMIN'),
@@ -44,6 +45,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         array('^/forum/editmessage', 'ROLE_USER'),
         array('^/newnews', 'ROLE_MODO'),
         array('^/news/editmessage', 'ROLE_USER'),
+        array('^/projet/newprojet', 'ROLE_TARD'),
     ),
 ));
 

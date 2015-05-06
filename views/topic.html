@@ -3,7 +3,11 @@
 {% block content %}
 <table class="table topic-message">
     <tr>
-        <td class="cell-stat-2x topic-member">{{topic.messages[0].auteur.username}}</td>
+        <td class="cell-stat-2x topic-member">
+            {{topic.messages[0].auteur.username}}
+            <br/>
+            {{topic.messages[0].auteur.roleHumain}}
+        </td>
         <td class="topic-message-contenu">
             <h3 class="topic-message-title">{{topic.name}}</h3>
             <p class="topic-message-date">le {{topic.messages[0].date.format('Y-m-d')}} à {{topic.messages[0].date.format('H:i:s')}}</p>

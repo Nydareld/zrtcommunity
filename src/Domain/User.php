@@ -134,6 +134,14 @@ class User implements UserInterface
     {
         return $this->role;
     }
+    public function getRoleHumain(){
+        $zbra=array(
+            'ROLE_ADMIN'=>'Administrateur',
+            'ROLE_MODO'=>'Modérateur',
+            'ROLE_TARD'=>'Tard',
+            'ROLE_USER'=>'Péon');
+        return $zbra[$this->role];
+    }
 
     public function setRole($role) {
         $this->role = $role;
