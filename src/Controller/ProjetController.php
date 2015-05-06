@@ -57,4 +57,13 @@ class ProjetController{
         );
 
     }
+    public function regionsAction(Request $request, Application $app){
+        $regions = $app['dao.region']->loadAllRegion();
+        return $app['twig']->render( "region.html",array(
+            'title' => "Regions",
+            'regions' => $regions,
+            )
+        );
+
+    }
 }
