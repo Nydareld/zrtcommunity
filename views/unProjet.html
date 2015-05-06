@@ -44,7 +44,7 @@
 </div>
 <div class="entete-projet">
     <h2>{{projet.name}}</h2>
-    <h4>Région: {{projet.region.name}}</h4>
+    <h4>Région: <a href="{{ app.request.basepath }}/projet/region/{{projet.region.id}}">{{projet.region.name}}</a> ({{projet.region.descriptionRapide}})</h4>
 </div>
 {{projet.description|raw}}
 </div>
