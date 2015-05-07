@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <script src="{{ app.request.basepath }}/lib/jquery/jquery-1.11.2.min.js"></script>
+    {% block includeHead %}
+    {% endblock %}
     <link href="{{ app.request.basepath }}/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ app.request.basepath }}/lib/toastr/toastr.css" rel="stylesheet"/>
     <link href="{{ app.request.basepath }}/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    {% block includeHead %}
-    {% endblock %}
     <link href="{{ app.request.basepath }}/css/style.css" rel="stylesheet">
 
     <title>Zrtcommunity - {{title}}</title>
