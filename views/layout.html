@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8">
-    {% block includeHead %}
-    {% endblock %}
+    <script src="{{ app.request.basepath }}/lib/jquery/jquery-1.11.2.min.js"></script>
     <link href="{{ app.request.basepath }}/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ app.request.basepath }}/lib/toastr/toastr.css" rel="stylesheet"/>
     <link href="{{ app.request.basepath }}/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="{{ app.request.basepath }}/lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    {% block includeHead %}
+    {% endblock %}
     <link href="{{ app.request.basepath }}/css/style.css" rel="stylesheet">
 
     <title>Zrtcommunity - {{title}}</title>
@@ -137,12 +137,9 @@
              </div>
         </footer>
 
-    <script src="{{ app.request.basepath }}/lib/jquery/jquery-1.11.2.min.js"></script>
     <script src="{{ app.request.basepath }}/lib/toastr/toastr.js"></script>
     <script src="{{ app.request.basepath }}/lib/toastr/config.js"></script>
     <script src="{{ app.request.basepath }}/lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="{{ app.request.basepath }}/lib/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="{{ app.request.basepath }}/js/navscroll.js"></script>
     {% block includeJS %}{% endblock %}
 
 </body>

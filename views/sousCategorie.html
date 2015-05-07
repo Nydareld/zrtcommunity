@@ -1,6 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+<div id="lalist" class="box jplist">
 <table class="table sous-categorie">
     <thead>
         <tr>
@@ -15,9 +16,9 @@
             <th class="cell-stat-2x hidden-xs hidden-sm">Dernier message</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class=" list box">
     {% for topic in scat.topics %}
-        <tr>
+        <tr class="list-item box">
             <td class="text-center"><i class="fa fa-question fa-2x text-primary"></i></td>
             <td>
                 <h4>
@@ -34,4 +35,65 @@
     {% endfor %}
     </tbody>
 </table>
+
+<div class="jplist-panel box panel-bottom droite" style="margin-bottom:20px;">
+
+    <div
+	   class="jplist-drop-down"
+       data-control-type="items-per-page-drop-down"
+	   data-control-name="paging"
+	   data-control-action="paging">
+       <ul>
+           <li><span data-number="10"> 10 par page </span></li>
+           <li><span data-number="20" data-default="true"> 20 par page </span></li>
+           <li><span data-number="50"> 50 par page </span></li>
+           <li><span data-number="all"> view all </span></li>
+       </ul>
+				</div>
+
+				<div
+				   class="jplist-label"
+				   data-type="{start} - {end} of {all}"
+				   data-control-type="pagination-info"
+				   data-control-name="paging"
+				   data-control-action="paging">
+               </div>
+
+				<div
+				   class="jplist-pagination"
+				   data-control-type="pagination"
+				   data-control-name="paging"
+				   data-control-action="paging">
+				</div>
+
+</div>
+</div>
+{% endblock %}
+
+{% block includeHead %}
+<link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-core.min.css" rel="stylesheet" type="text/css" />
+<link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-pagination-bundle.min.css" rel="stylesheet" type="text/css" />
+<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist-core.min.js"></script>
+<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist.pagination-bundle.min.js"></script>
+
+<script>
+
+$('document').ready(function(){
+
+   //check all jPList javascript options
+   $('#lalist').jplist({
+      itemsBox: '.list'
+      ,itemPath: '.list-item'
+      ,panelPath: '.jplist-panel'
+   });
+
+});
+
+</script>
+
+{% endblock %}
+
+{% block includeJS %}
+
+
 {% endblock %}
