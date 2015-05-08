@@ -6,8 +6,10 @@
     <a href="{{ app.request.basepath }}/newnews">Ajouter</a>
 </button>
 {% endif %}
+<div id="lalist" class="box jplist">
+  <div class=" list box">
 {% for unenews in news %}
-<div class="news">
+<div class="news list-item box">
     <div class="news-header">
     <p class="droite">
         par <a href="/membre/{{unenews.creator.username}}">{{unenews.creator.username}}</a>
@@ -26,5 +28,62 @@
     </div>
 </div>
 {% endfor %}
+  </div>
+
+  <div class="jplist-panel box panel-bottom droite" style="margin-bottom:20px;">
+
+    <div
+	   class="jplist-drop-down"
+       data-control-type="items-per-page-drop-down"
+	   data-control-name="paging"
+	   data-control-action="paging">
+       <ul>
+           <li><span data-number="10"> 10 par page </span></li>
+           <li><span data-number="20" data-default="true"> 20 par page </span></li>
+           <li><span data-number="50"> 50 par page </span></li>
+           <li><span data-number="all"> view all </span></li>
+       </ul>
+				</div>
+
+				<div
+				   class="jplist-label"
+				   data-type="{start} - {end} of {all}"
+				   data-control-type="pagination-info"
+				   data-control-name="paging"
+				   data-control-action="paging">
+               </div>
+
+				<div
+				   class="jplist-pagination"
+				   data-control-type="pagination"
+				   data-control-name="paging"
+				   data-control-action="paging">
+				</div>
+
+</div>
+</div>
+
+{% endblock %}
+
+{% block includeJS %}
+<link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-core.min.css" rel="stylesheet" type="text/css" />
+<link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-pagination-bundle.min.css" rel="stylesheet" type="text/css" />
+<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist-core.min.js"></script>
+<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist.pagination-bundle.min.js"></script>
+
+<script>
+
+$('document').ready(function(){
+
+   //check all jPList javascript options
+   $('#lalist').jplist({
+      itemsBox: '.list'
+      ,itemPath: '.list-item'
+      ,panelPath: '.jplist-panel'
+   });
+
+});
+
+</script>
 
 {% endblock %}
