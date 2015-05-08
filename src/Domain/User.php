@@ -82,6 +82,16 @@ class User implements UserInterface
      */
     private $projets;
 
+    /**
+     * @OneToMany(targetEntity="MessagePrive", mappedBy="auteur")
+     */
+    private $messagesenvoi;
+
+    /**
+     * @OneToMany(targetEntity="MessagePrive", mappedBy="destinataire")
+     */
+    private $messagesrecu;
+
     public function getId() {
         return $this->id;
     }
@@ -181,10 +191,26 @@ class User implements UserInterface
     }
 
     public function getMembreProjet(){
-		return $this->membreProjet;
-	}
+          return $this->membreProjet;
+      }
 
 	public function setMembreProjet($membreProjet){
 		$this->membreProjet = $membreProjet;
+	}
+
+      public function getMessagesenvoi(){
+		return $this->messagesenvoi;
+	}
+
+	public function setMessagesenvoi($messagesenvoi){
+		$this->messagesenvoi = $messagesenvoi;
+	}
+
+	public function getMessagesrecu(){
+		return $this->messagesrecu;
+	}
+
+	public function setMessagesrecu($messagesrecu){
+		$this->messagesrecu = $messagesrecu;
 	}
 }
