@@ -70,7 +70,7 @@
 </div>
 {% endblock %}
 
-{% block includeHead %}
+{% block includeJS %}
 <link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-core.min.css" rel="stylesheet" type="text/css" />
 <link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-pagination-bundle.min.css" rel="stylesheet" type="text/css" />
 <script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist-core.min.js"></script>
@@ -90,10 +90,5 @@ $('document').ready(function(){
 });
 
 </script>
-
-{% endblock %}
-
-{% block includeJS %}
-
 
 {% endblock %}
