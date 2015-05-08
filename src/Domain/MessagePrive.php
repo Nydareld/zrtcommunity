@@ -5,7 +5,7 @@ namespace Zrtcommunity\Domain;
 /**
  * @Entity @Table(name="messageprive")
  **/
-class MessageNews{
+class MessagePrive{
 
     /**
      * @Id @GeneratedValue @Column(type="integer")
