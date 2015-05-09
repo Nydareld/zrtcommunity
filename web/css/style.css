@@ -477,6 +477,7 @@ img.avatar-layout{
     margin-right:5px;
     height:30px;
     width:30px;
+    outline:transparent;
 }
 #nav2 > div > ul > li > a.nopadding{
     padding:0px;
