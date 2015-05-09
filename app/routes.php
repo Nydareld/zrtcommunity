@@ -9,11 +9,14 @@ $app->get('/login',"Zrtcommunity\Controller\HomeController::loginAction")->bind(
 //Page d'inscription
 $app->match('/inscription', "Zrtcommunity\Controller\UserController::addUserAction")->bind('inscription');
 
-//liste des membres
+//Membres liste des membres
 $app->get('/membres', "Zrtcommunity\Controller\UserController::usersAction");
 
-//Info d'un membere
+//Membres Info d'un membere
 $app->match('/membre/{username}', "Zrtcommunity\Controller\UserController::userProfileAction");
+
+//Membre edit de sois. /member/edit
+$app->match('/member/edit', "Zrtcommunity\Controller\UserController::editProfileAction");
 
 //forum page d'accueil
 $app->match('/forum', "Zrtcommunity\Controller\ForumController::forumAction");

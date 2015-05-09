@@ -5,6 +5,7 @@ namespace Zrtcommunity\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Zrtcommunity\Domain\User;
 use Silex\Application;
+use Zrtcommunity\Form\Type\ProfileType;
 use Zrtcommunity\Form\Type\UserType;
 use Zrtcommunity\Controller\HomeController;
 
@@ -59,5 +60,25 @@ class UserController{
             'title' => $user->getUsername(),
             'user' => $user,
             ));
+    }
+
+    public function editProfileAction(Request $request, Application $app){
+        $user = $app['security']->getToken()->getUser();
+
+        $profilForm = $app['form.factory']->create(new ProfileType(), $user);
+        $profilForm->handleRequest($request);
+
+        if ($profilForm->isSubmitted() && $profilForm->isValid()){
+            $user->upload();
+            $app['dao.user']->save($user);
+            return $app->redirect($request->getBasePath().'/member/'.$user->getUsername());
+        }
+
+        return $app['twig']->render( "basicForm.html",array(
+            'title' => "Mon profil",
+            'form' => $profilForm->createView(),
+            )
+        );
+
     }
 }
