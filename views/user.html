@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="row user-profil">
+    <div class="panel-gauche col-sm-12 col-md-3">
+        <div class="item-panel-gauche">
+            <h3>{{user.username}}</h3>
+            {% if user.path is not null %}
+            <img src="{{user.webPath}}" alt="..." class="avatar-profile img-circle">
+            {% endif %}
+            <h4 class="rank-profil">{{user.roleHumain}}</h4>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
