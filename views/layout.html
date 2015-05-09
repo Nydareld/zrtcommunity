@@ -58,6 +58,10 @@
                             <li><a href="/user/{{ app.security.token.user.username }}">Mon profil</a></li>
                         </ul>
                 </li>
+                <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/"><i id="social" class="fa fa-bell fa-lg social-bell"></i></a></li>
+                <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/messagerie/inbox"><i id="social" class="fa fa-envelope fa-lg social-mess"></i></a></li>
+                <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/"><i id="social" class="fa fa-star fa-lg social-star"></i></a></li>
+                <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/member/{{ app.security.token.user.username }}"><i id="social" class="fa fa-cog fa-lg social-sett"></i></a></l
                 {% else %}
                 <li class="dropdown nav2-li">
                     <a class="nav2-item nav2-item-user dropdown-toggle" data-toggle="dropdown">
@@ -68,10 +72,6 @@
                         </ul>
                 </li>
                 {% endif %}
-                <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/"><i id="social" class="fa fa-bell fa-lg social-bell"></i></a></li>
-                <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/messagerie/inbox"><i id="social" class="fa fa-envelope fa-lg social-mess"></i></a></li>
-                <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/"><i id="social" class="fa fa-star fa-lg social-star"></i></a></li>
-                <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/"><i id="social" class="fa fa-cog fa-lg social-sett"></i></a></l
             </ul>
 
         </div>
