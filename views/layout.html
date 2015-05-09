@@ -53,11 +53,11 @@
 
                 <li class="nav2-li">
                     {% if app.security.token.user.path is not null %}
-                    <a class="nopadding" href="/user/{{ app.security.token.user.username }}">
+                    <a class="nopadding" href="/membre/{{ app.security.token.user.username }}">
                         <img src="{{app.security.token.user.webPath}}" alt="..." class="avatar-layout img-circle">
                     </a>
                     {% else %}
-                    <a href="/user/{{ app.security.token.user.username }}">
+                    <a href="/membre/{{ app.security.token.user.username }}">
                         <i class="fa fa-user fa-lg"></i>
                     </a>
                     {% endif %}
@@ -68,7 +68,7 @@
                     </span></span>{{ app.security.token.user.username }}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ path('logout') }}">Log out</a></li>
-                            <li><a href="/user/{{ app.security.token.user.username }}">Mon profil</a></li>
+                            <li><a href="/membre/{{ app.security.token.user.username }}">Mon profil</a></li>
                         </ul>
                 </li>
                 <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/"><i id="social" class="fa fa-bell fa-lg social-bell"></i></a></li>
