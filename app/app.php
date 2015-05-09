@@ -108,6 +108,11 @@ $app['dao.messNews'] = $app->share(function ($app) {
     return new Zrtcommunity\DAO\MessageNewsDAO($app['orm.em']);
 });
 
+//  === dao Messageprivé ===
+$app['dao.messPrive'] = $app->share(function ($app) {
+    return new Zrtcommunity\DAO\MessagePriveDAO($app['orm.em']);
+});
+
 //  === dao Visit ===
 $app['dao.visit'] = $app->share(function ($app) {
     return new Zrtcommunity\DAO\VisitDAO($app['orm.em']);
