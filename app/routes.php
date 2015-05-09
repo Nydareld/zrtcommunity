@@ -65,3 +65,6 @@ $app->match('/projet/{projetid}', "Zrtcommunity\Controller\ProjetController::unP
 
 //Messagerie messages recus
 $app->match('/messagerie/inbox', "Zrtcommunity\Controller\MPController::inboxAction");
+
+//Messagerie messages envoyés
+$app->match('/messagerie/outbox', "Zrtcommunity\Controller\MPController::outboxAction");

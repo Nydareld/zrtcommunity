@@ -17,4 +17,12 @@ class MPController{
             ));
     }
 
+    public function outboxAction(Request $request, Application $app) {
+        $messages = $app['dao.messPrive']->loadMessageByAuteur($app['security']->getToken()->getUser());
+        return $app['twig']->render('mpOutbox.html', array(
+            'title' => "Messagerie",
+            "mess" => $messages
+            ));
+    }
+
 }
