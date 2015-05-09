@@ -62,3 +62,6 @@ $app->match('/projet/region/{regionid}', "Zrtcommunity\Controller\ProjetControll
 
 //Projet page des régions
 $app->match('/projet/{projetid}', "Zrtcommunity\Controller\ProjetController::unProjetAction");
+
+//Messagerie messages recus
+$app->match('/messagerie/inbox', "Zrtcommunity\Controller\MPController::inboxAction");
