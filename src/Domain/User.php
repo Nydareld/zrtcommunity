@@ -92,6 +92,16 @@ class User implements UserInterface
      */
     private $messagesrecu;
 
+    /**
+     * @Assert\File(maxSize="1000000")
+     */
+    private $avatar;
+
+    /**
+     * @Column(type="string", length=255, nullable=true)
+     */
+    private $path;
+
     public function getId() {
         return $this->id;
     }
@@ -213,4 +223,55 @@ class User implements UserInterface
 	public function setMessagesrecu($messagesrecu){
 		$this->messagesrecu = $messagesrecu;
 	}
+
+    public function getAvatar(){
+		return $this->avatar;
+	}
+
+	public function setAvatar($avatar){
+		$this->avatar = $avatar;
+	}
+
+	public function getPath(){
+		return $this->path;
+	}
+
+	public function setPath($path){
+		$this->path = $path;
+	}
+
+    public function getAbsolutePath()
+    {
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        return '/img/UserAvatar';
+    }
+
+    public function upload(){
+        if(null === $this->avatar){
+            return;
+        }
+        $extension = $this->avatar->guessExtension();
+        $fileName = $this->id.'.'.$extension;
+        $this->avatar->move($this->getUploadRootDir(), $fileName);
+        $this->path = $fileName;
+        $this->avatar = null;
+    }
+
 }
