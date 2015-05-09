@@ -32,6 +32,12 @@ class MessagePrive{
     private $titre;
 
     /**
+     * @Column(type="boolean")
+     * @var boolean
+     */
+    private $lu;
+
+    /**
      * @ManyToOne(targetEntity="User", inversedBy="messagesenvoi")
      */
     private $auteur;
@@ -72,6 +78,14 @@ class MessagePrive{
 
    	public function setTitre($titre){
    		$this->titre = $titre;
+   	}
+
+     public function isLu(){
+   		return $this->lu;
+   	}
+
+   	public function setLu($lu){
+   		$this->lu = $lu;
    	}
 
    	public function getAuteur(){
