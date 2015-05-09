@@ -471,3 +471,13 @@ a.unmessage {
     color : #666;
     font-weight: bold;
 }
+img.avatar-layout{
+    border: 2px solid #54b973;
+    margin-top:4px;
+    height:30px;
+    width:30px;
+}
+#nav2 > div > ul > li > a.nopadding{
+    padding:0px;
+    margin:0px;
+}

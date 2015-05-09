@@ -50,9 +50,22 @@
                 <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/admin">Panel Admin</a></li>
                 {% endif %}
                 {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                <li class="nav2-li">
+                    {% if app.security.token.user.path is not null %}
+                    <a class="nopadding" href="/user/{{ app.security.token.user.username }}">
+                        <img src="{{app.security.token.user.webPath}}" alt="..." class="avatar-layout img-circle">
+                    </a>
+                    {% else %}
+                    <a href="/user/{{ app.security.token.user.username }}">
+                        <i class="fa fa-user fa-lg"></i>
+                    </a>
+                    {% endif %}
+                </li>
+
                 <li class="dropdown nav2-li">
                     <a class="nav2-item nav2-item-user dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-user fa-lg"></i></span> {{ app.security.token.user.username }}<b class="caret"></b></a>
+                    </span></span>{{ app.security.token.user.username }}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ path('logout') }}">Log out</a></li>
                             <li><a href="/user/{{ app.security.token.user.username }}">Mon profil</a></li>
@@ -61,7 +74,7 @@
                 <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/"><i id="social" class="fa fa-bell fa-lg social-bell"></i></a></li>
                 <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/messagerie/inbox"><i id="social" class="fa fa-envelope fa-lg social-mess"></i></a></li>
                 <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/"><i id="social" class="fa fa-star fa-lg social-star"></i></a></li>
-                <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/member/{{ app.security.token.user.username }}"><i id="social" class="fa fa-cog fa-lg social-sett"></i></a></l
+                <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/member/edit"><i id="social" class="fa fa-cog fa-lg social-sett"></i></a></l
                 {% else %}
                 <li class="dropdown nav2-li">
                     <a class="nav2-item nav2-item-user dropdown-toggle" data-toggle="dropdown">
