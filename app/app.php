@@ -46,6 +46,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         array('^/newnews', 'ROLE_MODO'),
         array('^/news/editmessage', 'ROLE_USER'),
         array('^/projet/newprojet', 'ROLE_TARD'),
+        array('^/messagerie', 'ROLE_USER'),
     ),
 ));
 
