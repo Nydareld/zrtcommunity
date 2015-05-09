@@ -8,7 +8,7 @@ body {
   margin-bottom: 250px;
   background-color: #f4f4f4;
 }
-a {
+a{
     text-decoration:none;
     color : #666;
     font-weight: bold;
@@ -455,4 +455,19 @@ td.topic-message-contenu > hr{
 }
 .ligne-droite{
     border-right:1px solid #99acba;
+}
+.messagerie{
+    margin:15px;
+    padding:15px;
+    background-color:#fff;
+    border-radius:10px;
+}
+.messagerie li.active a{
+    color:#fff;
+    background-color:#384148;
+}
+a.unmessage {
+    text-decoration:none;
+    color : #666;
+    font-weight: bold;
 }
