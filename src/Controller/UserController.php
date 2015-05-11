@@ -71,7 +71,7 @@ class UserController{
         if ($profilForm->isSubmitted() && $profilForm->isValid()){
             $user->upload();
             $app['dao.user']->save($user);
-            return $app->redirect($request->getBasePath().'/member/'.$user->getUsername());
+            return $app->redirect($request->getBasePath().'/membre/'.$user->getUsername());
         }
 
         return $app['twig']->render( "basicForm.html",array(
