@@ -103,7 +103,7 @@ class User implements UserInterface
     private $path;
 
     /**
-     * @Column(type="string",length=500)
+     * @Column(type="string",length=1000)
      * @var string
      */
     private $sign;
