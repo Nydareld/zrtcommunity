@@ -102,6 +102,12 @@ class User implements UserInterface
      */
     private $path;
 
+    /**
+     * @Column(type="string",length=500)
+     * @var string
+     */
+    private $sign;
+
     public function getId() {
         return $this->id;
     }
@@ -273,5 +279,13 @@ class User implements UserInterface
         $this->path = $fileName;
         $this->avatar = null;
     }
+
+    public function getSign(){
+		return $this->sign;
+	}
+
+	public function setSign($sign){
+		$this->sign = $sign;
+	}
 
 }
