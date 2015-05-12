@@ -2,7 +2,7 @@
 {% block messages %}
 {% for message in mess %}
 <div class="list-group">
-    <a href="#" class="list-group-item unmessage list-item box">
+    <a href="{{ app.request.basepath }}/messagerie/message/{{message.id}}" class="list-group-item unmessage list-item box">
         {% if not message.lu %}
         <i class="fa fa-2x red fa-exclamation"></i>
         {% endif %}
