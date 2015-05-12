@@ -13,7 +13,7 @@
         <div class="items col-xs-12 col-sm-6 col-md-3 col-lg-2 clearfix">
            <div class="info-block block-info clearfix">
                <div class="user-card">
-                   <h3>{{user.username}}</h3>
+                   <a href="{{ app.request.basepath }}/membre/{{user.username}}"><h3>{{user.username}}</h3></a>
                    {% if user.path is not null %}
                    <img src="{{user.webPath}}" alt="..." class="avatar-profile avatar-user-card img-circle">
                    {% endif %}
