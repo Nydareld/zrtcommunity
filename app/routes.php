@@ -77,3 +77,6 @@ $app->match('/messagerie/inbox', "Zrtcommunity\Controller\MPController::inboxAct
 
 //Messagerie messages envoyés
 $app->match('/messagerie/outbox', "Zrtcommunity\Controller\MPController::outboxAction");
+
+//Messagerie un message
+$app->match('/messagerie/message/{messageid}', "Zrtcommunity\Controller\MPController::unMessageAction");
