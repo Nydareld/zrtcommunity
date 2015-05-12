@@ -32,6 +32,11 @@ class MPController{
         || $mess->getAuteur() == $app['security']->getToken()->getUser()
         || $mess->getDestinataire() == $app['security']->getToken()->getUser() ){
 
+            if($mess->getDestinataire() == $app['security']->getToken()->getUser()){
+                $mess->setLu(true);
+                $app['dao.messPrive']->save($mess);
+            }
+
             return $app['twig']->render('unMp.html', array(
                 'title' => "Messagerie",
                 "mess" => $mess,
