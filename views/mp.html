@@ -1,21 +1,110 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-    <div class="row messagerie">
-        <div class="col-sm-3 col-md-2">
+    <div id="lalist" class="row messagerie box jplist">
+        <div class="jplist-panel box panel-top droite" style="margin-bottom:20px;">
+
+            <div
+               class="jplist-drop-down"
+               data-control-type="items-per-page-drop-down"
+               data-control-name="paging"
+               data-control-action="paging">
+               <ul>
+                   <li><span data-number="10"> 10 par page </span></li>
+                   <li><span data-number="25" data-default="true"> 25 par page </span></li>
+                   <li><span data-number="50"> 50 par page </span></li>
+                   <li><span data-number="all"> view all </span></li>
+               </ul>
+                        </div>
+
+                        <div
+                           class="jplist-label"
+                           data-type="{start} - {end} de {all}"
+                           data-control-type="pagination-info"
+                           data-control-name="paging"
+                           data-control-action="paging">
+                       </div>
+
+                        <div
+                           class="jplist-pagination"
+                           data-control-type="pagination"
+                           data-control-name="paging"
+                           data-control-action="paging">
+                        </div>
+
+        </div>
+        <div class="col-sm-3 col-md-2 messagerie-menu">
             <ul class="nav nav-pills nav-stacked">
                 <li class="active"><a href="{{ app.request.basepath }}/messagerie/inbox"><span class="badge pull-right">42</span> Boite de récéption </a></li>
                 <li><a href="{{ app.request.basepath }}/messagerie/outbox">Boite d'envois</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-md-10">
-            <div class="tab-content">
+            <div class="tab-content list box">
                 <div class="tab-pane fade in active" id="home">
                     {% block messages %}
                     {% endblock %}
                 </div>
-        </div>
+            </div>
     </div>
+            <div class="jplist-panel box panel-top droite" style="margin-bottom:20px;">
+
+                <div
+            	   class="jplist-drop-down"
+                   data-control-type="items-per-page-drop-down"
+            	   data-control-name="paging"
+            	   data-control-action="paging">
+                   <ul>
+                       <li><span data-number="10"> 10 par page </span></li>
+                       <li><span data-number="25" data-default="true"> 25 par page </span></li>
+                       <li><span data-number="50"> 50 par page </span></li>
+                       <li><span data-number="all"> view all </span></li>
+                   </ul>
+            				</div>
+
+            				<div
+            				   class="jplist-label"
+            				   data-type="{start} - {end} de {all}"
+            				   data-control-type="pagination-info"
+            				   data-control-name="paging"
+            				   data-control-action="paging">
+                           </div>
+
+            				<div
+            				   class="jplist-pagination"
+            				   data-control-type="pagination"
+            				   data-control-name="paging"
+            				   data-control-action="paging">
+            				</div>
+
+            </div>
 </div>
+
+{% endblock %}
+
+{% block includeHead %}
+<link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-core.min.css" rel="stylesheet" type="text/css" />
+<link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-pagination-bundle.min.css" rel="stylesheet" type="text/css" />
+<!--
+-->
+
+{% endblock %}
+
+{% block includeJS %}
+<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist-core.min.js"></script>
+<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist.pagination-bundle.min.js"></script>
+
+<script>
+$('document').ready(function(){
+
+   $('#lalist').jplist({
+      itemsBox: '.list'
+      ,itemPath: '.list-item'
+      ,panelPath: '.jplist-panel'
+   });
+});
+
+
+</script>
 
 {% endblock %}

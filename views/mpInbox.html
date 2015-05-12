@@ -1,7 +1,7 @@
 {% extends 'mp.html' %}
 {% block messages %}
 {% for message in mess %}
-<div class="list-group">
+<div class="list-group list-item box">
     <a href="#" class="list-group-item unmessage">
         {% if not message.lu %}
         <i class="fa fa-2x red fa-exclamation"></i>
