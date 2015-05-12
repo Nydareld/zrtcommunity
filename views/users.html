@@ -2,9 +2,7 @@
 
 {% block content %}
 <div id="lalist" class="box jplist row">
-
     <div class="jplist-panel box panel-bottom droite" style="margin-bottom:20px;">
-
         <div
            class="jplist-drop-down"
            data-control-type="items-per-page-drop-down"
@@ -33,8 +31,59 @@
                        data-control-action="paging">
                     </div>
 
-    </div>
+                    <select
+                 class="jplist-select"
+                 data-control-type="sort-select"
+                 data-control-name="sort"
+                 data-control-action="sort">
 
+                   <option data-path="default">Trier par</option>
+                   <option data-path=".username" data-order="asc" data-type="text">Pseudo A-Z</option>
+                   <option data-path=".username" data-order="desc" data-type="text">Pseudo Z-A</option>
+
+                   <option data-path=".rank" data-order="asc" data-type="text">Rang A-Z</option>
+                   <option data-path=".rank-profil" data-order="desc" data-type="text">Rang Z-A</option>
+              </select>
+
+              <div class="text-filter-box">
+
+                 <i class="fa fa-pencil jplist-icon"></i>
+
+                 <!--[if lt IE 10]>
+                 <div class="jplist-label">Trier par pseudo:</div>
+                 <![endif]-->
+
+                 <input
+                   data-path=".username"
+                   type="text"
+                   value=""
+                   placeholder="Chercher par pseudo"
+                   data-control-type="textbox"
+                   data-control-name="pseudo-filter"
+                   data-control-action="filter"
+                 />
+              </div>
+
+              <div class="text-filter-box">
+
+                 <i class="fa fa-pencil jplist-icon"></i>
+
+                 <!--[if lt IE 10]>
+                 <div class="jplist-label">Trier par rang</div>
+                 <![endif]-->
+
+                 <input
+                   data-path=".rank-profil"
+                   type="text"
+                   value=""
+                   placeholder="Chercher par rang"
+                   data-control-type="textbox"
+                   data-control-name="rank-filter"
+                   data-control-action="filter"
+                 />
+              </div>
+
+    </div>
     <h2>Liste des membres</h2>
 
     <div class="list box">
@@ -43,7 +92,7 @@
         <div class="items col-xs-12 col-sm-6 col-md-3 col-lg-2 clearfix list-item box">
            <div class="info-block block-info clearfix">
                <div class="user-card">
-                   <a href="{{ app.request.basepath }}/membre/{{user.username}}"><h3>{{user.username}}</h3></a>
+                   <a href="{{ app.request.basepath }}/membre/{{user.username}}"><h3 class="username">{{user.username}}</h3></a>
                    {% if user.path is not null %}
                    <img src="{{user.webPath}}" alt="..." class="avatar-profile avatar-user-card img-circle">
                    {% endif %}
@@ -62,8 +111,11 @@
 {% block includeJS %}
 <link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-core.min.css" rel="stylesheet" type="text/css" />
 <link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-pagination-bundle.min.css" rel="stylesheet" type="text/css" />
+<link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-textbox-control.min.css" rel="stylesheet" type="text/css" />
 <script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist-core.min.js"></script>
 <script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist.pagination-bundle.min.js"></script>
+<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist.sort-bundle.min.js"></script>
+<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist.textbox-control.min.js"></script>
 
 <script>
 
