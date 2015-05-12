@@ -51,7 +51,7 @@ class SousCategorie extends ForumContainer{
 	}
 
 	public function setParentCategorie($parentCategorie){
-        $this->setParentSousCategorie(null);
+        $this->parentSousCategorie=null;
 		$this->parentCategorie = $parentCategorie;
 	}
 
@@ -60,7 +60,7 @@ class SousCategorie extends ForumContainer{
 	}
 
 	public function setParentSousCategorie($parentSousCategorie){
-        $this->setParentCategorie(null);
+        $this->parentCategorie=null;
 		$this->parentSousCategorie = $parentSousCategorie;
 	}
 
@@ -124,7 +124,7 @@ class SousCategorie extends ForumContainer{
 
     public function path(){
         if($this->parentCategorie!=null){
-            return $this->parentCategorie.'->'.$this->name;
+            return $this->parentCategorie->getName().'->'.$this->name;
         }else{
             return $this->parentSousCategorie->path().'->'.$this->name;
         }
