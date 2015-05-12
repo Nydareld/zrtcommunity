@@ -12,6 +12,17 @@
         </div>
     </div>
     <div id="panel-droit" class="user-info col-sm-12 col-md-9">
+        <div class="btn-group droite">
+            {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') and app.security.token.user == user %}
+            <a href="{{ app.request.basepath }}/member/edit">
+                <button type="button" class="btn btn-default">Modifier profil</button>
+            </a>
+            {% elseif app.security.token and is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a href="{{ app.request.basepath }}/messagerie/newmp/{{user.id}}">
+                <button type="button" class="btn btn-default">Envoyer message privé</button>
+            </a>
+            {% endif %}
+        </div>
         <h4>Signature forum</h4>
         <p>
             {{user.sign|raw}}
