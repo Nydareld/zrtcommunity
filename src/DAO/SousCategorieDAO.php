@@ -6,6 +6,11 @@ use Zrtcommunity\Domain\SousCategorie;
 
 class SousCategorieDAO extends DAO{
 
+    public function save(SousCategorie $scat){
+        $this->getEm()->persist($scat);
+        $this->getEm()->flush();
+    }
+
     public function loadSousCategorieByName($name){
         $scat= $this->getEm()->getRepository('Zrtcommunity\Domain\SousCategorie')->findOneBy(array('name' => $name));
 
@@ -24,6 +29,24 @@ class SousCategorieDAO extends DAO{
         }else{
             return $scat;
         }
+    }
+
+
+
+    public function findAllNamesAsArray(){
+        $names = array();
+
+        $scats= $this->getEm()->getRepository('Zrtcommunity\Domain\SousCategorie')->findAll();
+
+        if ($scats === null){
+            throw new \Exception("No Regions");
+        }
+
+        foreach($scats as $scats){
+            $names[$scats->getId()] = $scats->path();
+        }
+
+        return $names;
     }
 
 }
