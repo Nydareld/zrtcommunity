@@ -41,6 +41,25 @@ class ProjetController{
             'form' => $projetForm->createView(),
         ));
     }
+
+    public function editProjectAction($idprojet, Request $request, Application $app){
+        $projet = $app['dao.projet']->loadProjetById($idprojet);
+
+        $projetForm = $app['form.factory']->create(new ProjetType(), $projet);
+        $projetForm->handleRequest($request);
+
+        if( $projetForm->isSubmitted()&& $projetForm->isValid() && $projet->getCreateur() == $app['security']->getToken()->getUser()){
+
+            $app['dao.projet']->save($projet);
+
+            return $app->redirect($request->getBasePath().'/projet/'.$projet->getId());
+        }
+        return $app['twig']->render( "basicForm.html",array(
+            'title' => "Modification projet",
+            'form' => $projetForm->createView(),
+        ));
+    }
+
     public function projectAction(Request $request, Application $app){
         $projets = $app['dao.projet']->loadAllProjet();
 
