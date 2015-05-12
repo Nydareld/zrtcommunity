@@ -112,14 +112,13 @@ class User implements UserInterface
      * @Column(type="string",length=10000, nullable=true)
      * @var string
      */
+    private $biographie;
 
      /**
       * @Column(type="date")
       * @var date
       */
      private $dateNais;
-
-    private $biographie;
 
     public function getId() {
         return $this->id;
