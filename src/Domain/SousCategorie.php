@@ -122,4 +122,12 @@ class SousCategorie extends ForumContainer{
         }
     }
 
+    public function path(){
+        if($this->parentCategorie!=null){
+            return $this->parentCategorie.'->'.$this->name;
+        }else{
+            return $this->parentSousCategorie->path().'->'.$this->name;
+        }
+    }
+
 }
