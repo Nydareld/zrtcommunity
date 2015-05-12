@@ -18,6 +18,12 @@ class ProfileType extends AbstractType{
             'max_length' => 1000,
             'attr'=>array('class'=>'ckeditor')
         ))
+        ->add('biographie', 'textarea',array(
+            'required'=>false,
+            'label' => 'Signature(10000 caracteres):',
+            'max_length' => 10000,
+            'attr'=>array('class'=>'ckeditor')
+        ))
         ->add('save', 'submit', array(
             'label' => 'Envoyer',
             'attr'=>array('class' => 'droite')
