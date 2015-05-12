@@ -112,6 +112,13 @@ class User implements UserInterface
      * @Column(type="string",length=10000, nullable=true)
      * @var string
      */
+
+     /**
+      * @Column(type="date")
+      * @var date
+      */
+     private $dateNais;
+
     private $biographie;
 
     public function getId() {
@@ -300,6 +307,13 @@ class User implements UserInterface
 
 	public function setBiographie($biographie){
 		$this->biographie = $biographie;
+	}
+    public function getDateNais(){
+		return $this->dateNais;
+	}
+
+	public function setDateNais($dateNais){
+		$this->dateNais = $dateNais;
 	}
 
 }
