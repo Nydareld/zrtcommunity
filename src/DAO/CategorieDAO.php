@@ -23,5 +23,9 @@ class CategorieDAO extends DAO{
             return $categories;
         }
     }
+    public function save(categorie $cat){
+        $this->getEm()->persist($cat);
+        $this->getEm()->flush();
+    }
 
 }
