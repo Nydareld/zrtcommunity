@@ -72,7 +72,12 @@
                         </ul>
                 </li>
                 <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/"><i id="social" class="fa fa-bell fa-lg social-bell"></i></a></li>
-                <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/messagerie/inbox"><i id="social" class="fa fa-envelope fa-lg social-mess"></i></a></li>
+                <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/messagerie/inbox">
+                    <i id="social" class="fa fa-envelope fa-lg social-mess"></i>
+                    {% if app.security.token.user.nonLu!=0 %}
+                    <span class="badge">{{ app.security.token.user.nonLu }}</span>
+                    {% endif %}
+                </a></li>
                 <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/"><i id="social" class="fa fa-star fa-lg social-star"></i></a></li>
                 <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/member/edit"><i id="social" class="fa fa-cog fa-lg social-sett"></i></a></l
                 {% else %}
