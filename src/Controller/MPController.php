@@ -5,6 +5,7 @@ namespace Zrtcommunity\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Silex\Application;
 use Zrtcommunity\Domain\MessagePrive;
+use Zrtcommunity\Form\Type\MPType;
 use \DateTime;
 
 class MPController{
@@ -37,6 +38,27 @@ class MPController{
                 ));
         }
         throw new \Exception("Ce message n'existe pas ou ne vous est pas déstiné");
+
+    }
+
+    public function newMessageAction($userid, Request $request, Application $app){
+        $mess = new MessagePrive();
+
+        $messageForm = $app['form.factory']->create(new MPType(), $mess);
+        $messageForm->handleRequest($request);
+        if ($messageForm->isSubmitted() && $messageForm->isValid() ) {
+            $mess->setAuteur($app['security']->getToken()->getUser());
+            $mess->setDestinataire($app['dao.user']->find($userid));
+            $mess->setDate(new DateTime());
+            $mess->setLu(false);
+            $app['dao.messPrive']->save($mess);
+
+            return $app->redirect($request->getBasePath().'/messagerie/message/'.$mess->getId());
+        }
+        return $app['twig']->render('basicForm.html', array(
+            'title' => "Messagerie",
+            "form" => $messageForm->createView(),
+            ));
 
     }
 
