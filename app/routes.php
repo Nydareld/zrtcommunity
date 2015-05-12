@@ -80,3 +80,6 @@ $app->match('/messagerie/outbox', "Zrtcommunity\Controller\MPController::outboxA
 
 //Messagerie un message
 $app->match('/messagerie/message/{messageid}', "Zrtcommunity\Controller\MPController::unMessageAction");
+
+//Messagerie nouveau message
+$app->match('/messagerie/newmp/{userid}', "Zrtcommunity\Controller\MPController::newMessageAction");
