@@ -11,6 +11,12 @@
             <h4 class="rank-profil">{{user.roleHumain}}</h4>
         </div>
     </div>
+    <div id="panel-droit" class="user-info col-sm-12 col-md-9">
+        <h4>Signature forum</h4>
+        <p>
+            {{user.sign|raw}}
+        </p>
+    </div>
 </div>
 
 {% endblock %}

@@ -498,3 +498,8 @@ img.avatar-layout{
 .messagerie-menu{
     margin-top:50px;
 }
+.user-info{
+    border-radius:10px;
+    margin-top:20px;
+    background-color:#fff;
+}
