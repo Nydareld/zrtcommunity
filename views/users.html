@@ -10,23 +10,15 @@
     <div class="searchable-container">
 
         {% for user in users %}
-        <div class="items col-xs-12 col-sm-6 col-md-6 col-lg-4 clearfix">
+        <div class="items col-xs-12 col-sm-6 col-md-3 col-lg-2 clearfix">
            <div class="info-block block-info clearfix">
-                <div class="square-box pull-left">
-                    <span class="glyphicon glyphicon-user glyphicon-lg"></span>
-                </div>
-
-                <a href="{{ app.request.basepath }}/membre/{{user.username}}"><h4>{{user.username}}</h4></a>
-                <p>
-                    Roles :
-                    <br/>
-                    {{user.roleHumain}}
-                    <br/>
-                    Email :
-                    <br/>
-                    {{user.email}}
-                </p>
-
+               <div class="user-card">
+                   <h3>{{user.username}}</h3>
+                   {% if user.path is not null %}
+                   <img src="{{user.webPath}}" alt="..." class="avatar-profile avatar-user-card img-circle">
+                   {% endif %}
+                   <h4 class="rank-profil">{{user.roleHumain}}</h4>
+               </div>
             </div>
         </div>
         {% endfor %}
