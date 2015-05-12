@@ -103,10 +103,16 @@ class User implements UserInterface
     private $path;
 
     /**
-     * @Column(type="string",length=1000)
+     * @Column(type="string",length=1000, nullable=true)
      * @var string
      */
     private $sign;
+
+    /**
+     * @Column(type="string",length=10000, nullable=true)
+     * @var string
+     */
+    private $biographie;
 
     public function getId() {
         return $this->id;
@@ -286,6 +292,14 @@ class User implements UserInterface
 
 	public function setSign($sign){
 		$this->sign = $sign;
+	}
+
+    public function getBiographie(){
+		return $this->biographie;
+	}
+
+	public function setBiographie($biographie){
+		$this->biographie = $biographie;
 	}
 
 }
