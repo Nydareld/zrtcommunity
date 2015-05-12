@@ -1,7 +1,42 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<table class="table topic-message">
+<div id="lalist" class="box jplist">
+
+    <div class="jplist-panel box panel-top droite" style="margin-bottom:20px;">
+
+        <div
+    	   class="jplist-drop-down"
+           data-control-type="items-per-page-drop-down"
+    	   data-control-name="paging"
+    	   data-control-action="paging">
+           <ul>
+               <li><span data-number="5"> 5 par page </span></li>
+               <li><span data-number="10" data-default="true"> 10 par page </span></li>
+               <li><span data-number="20"> 20 par page </span></li>
+               <li><span data-number="all"> view all </span></li>
+           </ul>
+    				</div>
+
+    				<div
+    				   class="jplist-label"
+    				   data-type="{start} - {end} de {all}"
+    				   data-control-type="pagination-info"
+    				   data-control-name="paging"
+    				   data-control-action="paging">
+                   </div>
+
+    				<div
+    				   class="jplist-pagination"
+    				   data-control-type="pagination"
+    				   data-control-name="paging"
+    				   data-control-action="paging">
+    				</div>
+
+    </div>
+
+<div class=" list box">
+<table class="table topic-message list-item box">
     <tr>
         <td class="cell-stat-2x topic-member">
             {{topic.messages[0].auteur.username}}
@@ -17,7 +52,7 @@
     </tr>
 </table>
 {% for message in topic.messages[1:] %}
-<table class="table topic-message">
+<table class="table topic-message list-item box">
     <tr>
         <td class="cell-stat-2x topic-member">{{message.auteur.username}}</td>
         <td class="topic-message-contenu">
@@ -36,6 +71,42 @@
     </tr>
 </table>
 {% endfor %}
+</div>
+
+
+<div class="jplist-panel box panel-bottom droite" style="margin-bottom:20px;">
+
+    <div
+	   class="jplist-drop-down"
+       data-control-type="items-per-page-drop-down"
+	   data-control-name="paging"
+	   data-control-action="paging">
+       <ul>
+           <li><span data-number="5"> 5 par page </span></li>
+           <li><span data-number="10" data-default="true"> 10 par page </span></li>
+           <li><span data-number="20"> 20 par page </span></li>
+           <li><span data-number="all"> view all </span></li>
+       </ul>
+				</div>
+
+				<div
+				   class="jplist-label"
+				   data-type="{start} - {end} de {all}"
+				   data-control-type="pagination-info"
+				   data-control-name="paging"
+				   data-control-action="paging">
+               </div>
+
+				<div
+				   class="jplist-pagination"
+				   data-control-type="pagination"
+				   data-control-name="paging"
+				   data-control-action="paging">
+				</div>
+
+</div>
+
+</div>
 
 {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') %}
 <table class="table topic-message">
@@ -62,6 +133,33 @@
 {% endblock %}
 
 {% block includeHead %}
+<link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-core.min.css" rel="stylesheet" type="text/css" />
+<link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-pagination-bundle.min.css" rel="stylesheet" type="text/css" />
 <link href="{{ app.request.basepath }}/lib/ckeditor-standard/contents.css" rel="stylesheet">
+<!--
+-->
+
+{% endblock %}
+
+{% block includeJS %}
+<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist-core.min.js"></script>
+<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist.pagination-bundle.min.js"></script>
 <script src="{{ app.request.basepath }}/lib/ckeditor-standard/ckeditor.js"></script>
+<script src="{{ app.request.basepath }}/lib/ckeditor-standard/adapters/jquery.js"></script>
+
+<script>
+$('document').ready(function(){
+
+   //check all jPList javascript options
+   $( 'textarea#message_contenu' ).ckeditor();
+   $('#lalist').jplist({
+      itemsBox: '.list'
+      ,itemPath: '.list-item'
+      ,panelPath: '.jplist-panel'
+   });
+});
+
+
+</script>
+
 {% endblock %}

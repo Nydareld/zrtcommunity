@@ -19,7 +19,7 @@ class TopicType extends AbstractType{
             'mapped' => false,
             'label' => 'Votre message:',
             'max_length' => 5000,
-            'attr'=>array('class'=>'ckeditor')
+            /*'attr'=>array('class'=>'ckeditor')*/
         ))
         ->add('save', 'submit', array(
             'label' => 'Envoyer',
