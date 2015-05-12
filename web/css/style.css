@@ -519,3 +519,9 @@ img.avatar-layout{
     margin-bottom:25px;
     padding:15px;
 }
+.badge-notify{
+   background:red;
+   position:relative;
+   top: -10px;
+   left: -5px;
+}
