@@ -314,5 +314,9 @@ class User implements UserInterface
 	public function setDateNais($dateNais){
 		$this->dateNais = $dateNais;
 	}
+    public function getNonLu(){
+        global $app;
+        return $app['dao.messPrive']->countNonLuByDestinataire($this);
+    }
 
 }
