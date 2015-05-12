@@ -8,8 +8,8 @@ namespace Zrtcommunity\Domain;
 abstract class ForumContainer{
     /** @Column(type="string") */
     protected $name;
-    /** @Column(type="integer") */
-    protected $order;
+    /** @Column(type="integer", nullable=true) */
+    protected $ordre;
 
     public function getName(){
 		return $this->name;
@@ -19,11 +19,11 @@ abstract class ForumContainer{
 		$this->name = $name;
 	}
 
-	public function getOrder(){
+	public function getOrdre(){
 		return $this->order;
 	}
 
-	public function setOrder($order){
+	public function setOrdre($order){
 		$this->order = $order;
 	}
 }
