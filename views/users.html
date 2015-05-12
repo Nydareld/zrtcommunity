@@ -1,16 +1,46 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="row">
-    <h2>Liste des membres</h2>
-    <div class="col-lg-12">
-        <input type="search" class="form-control" id="input-search" placeholder="élément de recherche" onchange="search()" >
-        <br/>
+<div id="lalist" class="box jplist row">
+
+    <div class="jplist-panel box panel-bottom droite" style="margin-bottom:20px;">
+
+        <div
+           class="jplist-drop-down"
+           data-control-type="items-per-page-drop-down"
+           data-control-name="paging"
+           data-control-action="paging">
+           <ul>
+               <li><span data-number="12"> 12 par page </span></li>
+               <li><span data-number="24" data-default="true"> 24 par page </span></li>
+               <li><span data-number="48"> 48 par page </span></li>
+               <li><span data-number="all"> view all </span></li>
+           </ul>
+                    </div>
+
+                    <div
+                       class="jplist-label"
+                       data-type="{start} - {end} of {all}"
+                       data-control-type="pagination-info"
+                       data-control-name="paging"
+                       data-control-action="paging">
+                   </div>
+
+                    <div
+                       class="jplist-pagination"
+                       data-control-type="pagination"
+                       data-control-name="paging"
+                       data-control-action="paging">
+                    </div>
+
     </div>
-    <div class="searchable-container">
+
+    <h2>Liste des membres</h2>
+
+    <div class="list box">
 
         {% for user in users %}
-        <div class="items col-xs-12 col-sm-6 col-md-3 col-lg-2 clearfix">
+        <div class="items col-xs-12 col-sm-6 col-md-3 col-lg-2 clearfix list-item box">
            <div class="info-block block-info clearfix">
                <div class="user-card">
                    <a href="{{ app.request.basepath }}/membre/{{user.username}}"><h3>{{user.username}}</h3></a>
@@ -30,5 +60,24 @@
 {% endblock %}
 
 {% block includeJS %}
-<script src="{{ app.request.basepath }}/js/searchUser.js"></script>
+<link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-core.min.css" rel="stylesheet" type="text/css" />
+<link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-pagination-bundle.min.css" rel="stylesheet" type="text/css" />
+<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist-core.min.js"></script>
+<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist.pagination-bundle.min.js"></script>
+
+<script>
+
+$('document').ready(function(){
+
+   //check all jPList javascript options
+   $('#lalist').jplist({
+      itemsBox: '.list'
+      ,itemPath: '.list-item'
+      ,panelPath: '.jplist-panel'
+   });
+
+});
+
+</script>
+
 {% endblock %}
