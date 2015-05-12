@@ -24,6 +24,11 @@ class UserType extends AbstractType{
             'first_options'   => array('label' => 'email'),
             'second_options'  => array('label' => 'repetez votre email'),
         ))
+        ->add('dateNais', 'date', array(
+            'label' => 'Date de naissance:',
+            'years' => range(date("Y")-100,date("Y")),
+            'required' => true,
+        ))
         ->add('role', 'hidden', array(
             'data' => 'ROLE_USER',
         ));
