@@ -39,34 +39,56 @@
 <table class="table topic-message list-item box">
     <tr>
         <td class="cell-stat-2x topic-member">
-            {{topic.messages[0].auteur.username}}
+            <a href="{{ app.request.basepath }}/membre/{{topic.messages[0].auteur.username}}"><h4>{{topic.messages[0].auteur.username}}</h4></a>
             <br/>
+            {% if topic.messages[0].auteur.path is not null %}
+            <img src="{{topic.messages[0].auteur.webPath}}" alt="..." class="avatar-profile img-circle">
+            <br/>
+            {% endif %}
             {{topic.messages[0].auteur.roleHumain}}
         </td>
         <td class="topic-message-contenu">
             <h3 class="topic-message-title">{{topic.name}}</h3>
             <p class="topic-message-date">le {{topic.messages[0].date.format('Y-m-d')}} à {{topic.messages[0].date.format('H:i:s')}}</p>
+            <component class="droite">
+            {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') and app.security.token.user == topic.messages[0].auteur %}
+            <a href="{{ app.request.basepath }}/forum/editmessage/{{topic.messages[0].id}}">
+                <input type="submit" value="éditer"></input>
+            </a>
+            {% endif %}
+            </component>
             <hr/>
             {{topic.messages[0].contenu|raw}}
+            <hr/>
+            {{topic.messages[0].auteur.sign|raw}}
         </td>
     </tr>
 </table>
 {% for message in topic.messages[1:] %}
 <table class="table topic-message list-item box">
     <tr>
-        <td class="cell-stat-2x topic-member">{{message.auteur.username}}</td>
+        <td class="cell-stat-2x topic-member">
+            <a href="{{ app.request.basepath }}/membre/{{message.auteur.username}}"><h4>{{message.auteur.username}}</h4></a>
+            <br/>
+            {% if message.auteur.path is not null %}
+            <img src="{{message.auteur.webPath}}" alt="..." class="avatar-profile img-circle">
+            <br/>
+            {% endif %}
+            {{topic.messages[0].auteur.roleHumain}}
+        </td>
         <td class="topic-message-contenu">
-            {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') and app.security.token.user == message.auteur %}
             <component class="droite">
+            {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') and app.security.token.user == message.auteur %}
             <a href="{{ app.request.basepath }}/forum/editmessage/{{message.id}}">
                 <input type="submit" value="éditer"></input>
             </a>
+            {% endif %}
             </component>
             <hr/>
-            {% endif %}
             {{message.contenu|raw}}
             <hr/>
             <p class="topic-message-date">le {{message.date.format('Y-m-d')}} à {{message.date.format('H:i:s')}}</p>
+            {{message.auteur.sign|raw}}
         </td>
     </tr>
 </table>
