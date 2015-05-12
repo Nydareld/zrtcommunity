@@ -51,6 +51,9 @@ $app->match('/admin',"Zrtcommunity\Controller\AdminController::adminAction");
 //Admin page des projets et régions
 $app->match('/admin/regionprojet',"Zrtcommunity\Controller\AdminController::regionProjetAction");
 
+//Admin page de création de catégorie, sous catégorie
+$app->match('/admin/forum',"Zrtcommunity\Controller\AdminController::forumAction");
+
 //Projet page d'accueil des projets
 $app->match('/projet', "Zrtcommunity\Controller\ProjetController::projectAction");
 

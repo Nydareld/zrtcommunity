@@ -8,6 +8,11 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Silex\Application;
 use Zrtcommunity\Domain\Region;
 use Zrtcommunity\Form\Type\RegionType;
+use Zrtcommunity\Domain\Categorie;
+use Zrtcommunity\Domain\SousCategorie;
+use Zrtcommunity\Form\Type\CategorieType;
+use Zrtcommunity\Form\Type\SousCategorieType;
+
 use \DateTime;
 
 class AdminController{
@@ -49,12 +54,28 @@ class AdminController{
         $regionForm = $app['form.factory']->create(new RegionType(), $region);
         $regionForm->handleRequest($request);
         if( $regionForm->isSubmitted()&& $regionForm->isValid()){
+            $region->setOrdre(null);
             $app['dao.region']->save($region);
             return $app->redirect($request->getBasePath().'/admin/regionprojet');
         }
         return $app['twig']->render( "adminRegionProjet.html",array(
             'panelname' => "Régions et projets",
             'form' => $regionForm->createView(),
+            )
+        );
+    }
+
+    public function forumAction(Request $request, Application $app){
+        $cat = new Categorie;
+        $catForm = $app['form.factory']->create(new CategorieType, $cat);
+        $catForm->handleRequest($request);
+        if($catForm->isSubmitted()&& $catForm->isValid()){
+            $app['dao.categorie']->save($cat);
+            return $app->redirect($request->getBasePath().'/admin/forum');
+        }
+        return $app['twig']->render( "admin-forum.html",array(
+            'panelname' => "Forum",
+            'form1' => $catForm->createView(),
             )
         );
     }
