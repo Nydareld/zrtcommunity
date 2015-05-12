@@ -36,4 +36,12 @@ class MessagePriveDAO extends DAO{
             return $mess;
         }
     }
+    public function countNonLuByDestinataire(User $dest){
+        $mess= $this->getEm()->getRepository('Zrtcommunity\Domain\MessagePrive')->findBy(array('destinataire' => $dest,'lu'=>false),array('date'=>'desc'));
+        if ($mess === null){
+            throw new \Exception("No Message matching id " . $id);
+        }else{
+            return count($mess);
+        }
+    }
 }
