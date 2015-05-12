@@ -5,12 +5,12 @@ namespace Zrtcommunity\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class SousCategorieType extends AbstractType{
+class SousCatType extends AbstractType{
 
     public function buildForm(FormBuilderInterface $builder, array $options){
         global $app;
 
-        $scat=$app['dao.scat']->findAllNamesAsArray();
+        $cat=$app['dao.categorie']->findAllNamesAsArray();
 
         $builder
         ->add('name', 'text',array(
@@ -21,8 +21,8 @@ class SousCategorieType extends AbstractType{
         ))
         ->add('parent','choice',array(
             'mapped' => false,
-            'label' => 'Sous-catégorie mere:',
-            'choices'=>$scat
+            'label' => 'Catégorie mere:',
+            'choices'=>$cat
         ))
         ->add('save', 'submit', array(
             'label' => 'Envoyer'
@@ -31,6 +31,6 @@ class SousCategorieType extends AbstractType{
 
     public function getName()
     {
-        return 'SousCatDeSousCat';
+        return 'sousCatDeCat';
     }
 }
