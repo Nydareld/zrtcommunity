@@ -67,15 +67,26 @@ class AdminController{
 
     public function forumAction(Request $request, Application $app){
         $cat = new Categorie;
+        $scat = new SousCategorie;
+
         $catForm = $app['form.factory']->create(new CategorieType, $cat);
+        $scatForm = $app['form.factory']->create(new SousCategorieType, $scat);
+
         $catForm->handleRequest($request);
+        $scatForm->handleRequest($request);
         if($catForm->isSubmitted()&& $catForm->isValid()){
             $app['dao.categorie']->save($cat);
+            return $app->redirect($request->getBasePath().'/admin/forum');
+        }
+        if($scatForm->isSubmitted()&& $scatForm->isValid()){
+            $scat->setParentSousCategorie($app['dao.scat']->loadSousCategorieById($scatForm["parent"]->getData()));
+            $app['dao.scat']->save($scat);
             return $app->redirect($request->getBasePath().'/admin/forum');
         }
         return $app['twig']->render( "admin-forum.html",array(
             'panelname' => "Forum",
             'form1' => $catForm->createView(),
+            'form2' => $scatForm->createView(),
             )
         );
     }
