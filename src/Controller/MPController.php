@@ -25,4 +25,19 @@ class MPController{
             ));
     }
 
+    public function unMessageAction($messageid, Request $request, Application $app){
+        $mess=$app['dao.messPrive']->loadMessageById($messageid);
+        if($app['security']->isGranted('IS_AUTHENTICATED_FULLY')
+        || $mess->getAuteur() == $app['security']->getToken()->getUser()
+        || $mess->getDestinataire() == $app['security']->getToken()->getUser() ){
+
+            return $app['twig']->render('unMp.html', array(
+                'title' => "Messagerie",
+                "mess" => $mess,
+                ));
+        }
+        throw new \Exception("Ce message n'existe pas ou ne vous est pas déstiné");
+
+    }
+
 }
