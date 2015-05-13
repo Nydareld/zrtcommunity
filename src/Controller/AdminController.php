@@ -52,6 +52,8 @@ class AdminController{
     public function regionProjetAction(Request $request, Application $app){
         $region = new Region();
 
+        $projetsAValider = $app['dao.projet']->loadProjetNonValid();
+
         $regionForm = $app['form.factory']->create(new RegionType(), $region);
         $regionForm->handleRequest($request);
         if( $regionForm->isSubmitted()&& $regionForm->isValid()){
@@ -62,6 +64,7 @@ class AdminController{
         return $app['twig']->render( "adminRegionProjet.html",array(
             'panelname' => "Régions et projets",
             'form' => $regionForm->createView(),
+            'projets' => $projetsAValider,
             )
         );
     }
