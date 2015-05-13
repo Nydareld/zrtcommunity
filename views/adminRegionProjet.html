@@ -1,6 +1,19 @@
 {% extends 'admin-Layout.html' %}
 {% block content %}
 <div class="container region">
+<h3>Projets a valider</h3>
+<div class="row">
+{% for projet in projets%}
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+  <a href="{{ app.request.basepath }}/projet/{{projet.id}}">
+    <h4>{{projet.name}}</h4>
+  </a>
+  <h5>region: {{projet.region.name}}</h5>
+  <h5>date de création: le {{projet.date.format('Y-m-d')}}</h5>
+  <h5>Créateur: {{projet.createur.username}}</h5>
+</div>
+{% endfor %}
+</div>
 <h3>Nouvelle région</h3>
 {{form(form)}}
 </div>
