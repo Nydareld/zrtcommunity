@@ -26,4 +26,12 @@ class ProjetDAO extends DAO{
             return $projet;
         }
     }
+    public function loadProjetNonValid(){
+        $projets= $this->getEm()->getRepository('Zrtcommunity\Domain\Projet')->findBy(array('accepted' => false));
+        if ($projets === null){
+            throw new \Exception("No procjecs");
+        }else{
+            return $projets;
+        }
+    }
 }
