@@ -93,6 +93,11 @@ class User implements UserInterface
     private $messagesrecu;
 
     /**
+     * @OneToMany(targetEntity="Notification", mappedBy="user")
+     */
+    private $notif;
+
+    /**
      * @Assert\File(maxSize="1000000")
      */
     private $avatar;
