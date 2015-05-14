@@ -8,6 +8,7 @@ use Silex\Application;
 use Zrtcommunity\Domain\Projet;
 use Zrtcommunity\Domain\MessagePrive;
 use Zrtcommunity\Form\Type\ProjetType;
+use Zrtcommunity\Form\Type\ValidProjetType;
 use Zrtcommunity\Form\Type\MPSansTitreType;
 use Zrtcommunity\Domain\MembreProjet;
 use \DateTime;
@@ -107,7 +108,25 @@ class ProjetController{
     public function validProjetAction($projetid, $decision, Request $request, Application $app){
         $projet = $app['dao.projet']->loadProjetById($projetid);
         if($decision == 'validate'){
-            //formulaire de validation de projet
+            $projetForm = $app['form.factory']->create(new ValidProjetType(), $projet);
+            $projetForm->handleRequest($request);
+            if( $projetForm->isSubmitted()&& $projetForm->isValid()){
+                $projet->setAccepted(true);
+                $mp = new MessagePrive();
+                $mp->setAuteur($app['security']->getToken()->getUser());
+                $mp->setDestinataire($projet->getCreateur());
+                $mp->setDate(new DateTime());
+                $mp->setLu(false);
+                $mp->setTitre("Votre projet intitulé \"".$projet->getName()."\" à été validé par la modération");
+                $mp->setContenu("positions du cubo de votre projet: <br/>X=".$projet->getLocalisationX()."<br/>Z=".$projet->getLocalisationY());
+                $app['dao.messPrive']->save($mp);
+                $app['dao.projet']->save($projet);
+                return $app->redirect($request->getBasePath().'/projet/'.$projet->getId());
+            }
+            return $app['twig']->render('acceptProjetForm.html', array(
+                'title' => "Validation projet",
+                "form" => $projetForm->createView(),
+            ));
         }else{
             $mp = new MessagePrive();
 
@@ -128,7 +147,6 @@ class ProjetController{
                 'title' => "Refus projet",
                 "form" => $messageForm->createView(),
             ));
-
         }
     }
 
