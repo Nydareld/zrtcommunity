@@ -1,0 +1,38 @@
+<?php
+
+namespace Zrtcommunity\Domain;
+
+/**
+ * @Entity @Table(name="question")
+ **/
+class Question{
+
+    /**
+     * @Id @GeneratedValue @Column(type="integer")
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @Column(type="string")
+     * @var string
+     */
+    private $intitule;
+
+    public function getId(){
+		return $this->id;
+	}
+
+	public function setId($id){
+		$this->id = $id;
+	}
+
+    public function getIntitule(){
+		return $this->intitulé;
+	}
+
+	public function setIntitule($intitulé){
+		$this->intitulé = $intitulé;
+	}
+
+}
