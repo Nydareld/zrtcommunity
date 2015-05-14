@@ -323,5 +323,12 @@ class User implements UserInterface
         global $app;
         return $app['dao.messPrive']->countNonLuByDestinataire($this);
     }
+    public function getNotif(){
+		return $this->notif;
+	}
+
+	public function setNotif($notif){
+		$this->notif = $notif;
+	}
 
 }
