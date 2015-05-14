@@ -20,13 +20,13 @@
             <i class="fa fa-2x red droite fa-times-circle-o"></i>
             {% if app.security.token and is_granted('ROLE_MODO') %}
             <div class="btn-group btn-group-sm" role="group" aria-label="...">
-                <a href="{{ app.request.basepath }}/projet/validate/{projet.id}/validate" class="btn btn-default" role="button">
+                <a href="{{ app.request.basepath }}/projet/validate/{projet.id}/validate" class="btn btn-success" role="button">
                     Valider
                 </a>
-                <a href="{{ app.request.basepath }}/messagerie/newmp/{{projet.createur.id}}" class="btn btn-default" role="button">
-                    Mp au créateur
+                <a href="{{ app.request.basepath }}/messagerie/newmp/{{projet.createur.id}}" class="btn btn-warning" role="button">
+                    Envoyer MP
                 </a>
-                <a href="{{ app.request.basepath }}/projet/validate/{projet.id}/refutate" class="btn btn-default" role="button">
+                <a href="{{ app.request.basepath }}/projet/validate/{projet.id}/refutate" class="btn btn-danger" role="button">
                     Refuser
                 </a>
             </div>
