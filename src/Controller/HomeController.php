@@ -27,15 +27,16 @@ class HomeController{
     }
     public function notifAction($notifid,$notifpath,Request $request, Application $app){
         $notif = $app['dao.notification']->loadNotifById($notifid);
+        $path = str_replace('.','/',$notifpath);
         if(isset($notif)){
             if($notif->getUser() == $app['security']->getToken()->getUser() ){
                 $app['dao.notification']->remove($notif);
-                return $app->redirect($request->getBasePath().'/'.$notifpath);
+                return $app->redirect($request->getBasePath().'/'.$path);
             }else{
                 throw new \Exception("Cette notification n'existe pas ou ne vous est pas déstinée");
             }
         }else{
-            return $app->redirect($request->getBasePath().'/'.$notifpath);
+            return $app->redirect($request->getBasePath().'/'.$path);
         }
     }
 
