@@ -139,6 +139,11 @@ $app['dao.membreProjet'] = $app->share(function ($app) {
     return new Zrtcommunity\DAO\MembreProjetDAO($app['orm.em']);
 });
 
+//  === dao Notification ===
+$app['dao.notification'] = $app->share(function ($app) {
+    return new Zrtcommunity\DAO\NotificationDAO($app['orm.em']);
+});
+
 //  === Home controller ===
 $app['Home.controller'] = $app->share(function ($app) {
     return new Zrtcommunity\Controller\HomeController();
