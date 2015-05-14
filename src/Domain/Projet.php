@@ -61,7 +61,7 @@ class Projet{
     private $region;
 
     /**
-     * @OneToMany(targetEntity="MembreProjet", mappedBy="projet")
+     * @OneToMany(targetEntity="MembreProjet", mappedBy="projet", cascade={"persist", "remove"})
      */
     private $membresProjets;
 
