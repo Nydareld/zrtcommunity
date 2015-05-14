@@ -6,7 +6,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Silex\Application;
 use Zrtcommunity\Domain\Projet;
+use Zrtcommunity\Domain\MessagePrive;
 use Zrtcommunity\Form\Type\ProjetType;
+use Zrtcommunity\Form\Type\MPSansTitreType;
 use Zrtcommunity\Domain\MembreProjet;
 use \DateTime;
 
@@ -102,4 +104,32 @@ class ProjetController{
             )
         );
     }
+    public function validProjetAction($projetid, $decision, Request $request, Application $app){
+        $projet = $app['dao.projet']->loadProjetById($projetid);
+        if($decision == 'validate'){
+            //formulaire de validation de projet
+        }else{
+            $mp = new MessagePrive();
+
+            $messageForm = $app['form.factory']->create(new MPSansTitreType(), $mp);
+            $messageForm->handleRequest($request);
+
+            if ($messageForm->isSubmitted() && $messageForm->isValid() ) {
+                $mp->setAuteur($app['security']->getToken()->getUser());
+                $mp->setDestinataire($projet->getCreateur());
+                $mp->setDate(new DateTime());
+                $mp->setLu(false);
+                $mp->setTitre("Votre projet intitulé \"".$projet->getName()."\" à été refusé par la modération");
+                $app['dao.messPrive']->save($mp);
+                $app['dao.projet']->remove($projet);
+                return $app->redirect($request->getBasePath().'/messagerie/message/'.$mp->getId());
+            }
+            return $app['twig']->render('refusProjetForm.html', array(
+                'title' => "Refus projet",
+                "form" => $messageForm->createView(),
+            ));
+
+        }
+    }
+
 }
