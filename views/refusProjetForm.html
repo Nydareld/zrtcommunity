@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Refus de projet</h2>
+<p>
+    Vous etes sur le point re refuser un projet. Cetta action aura pour conscéquences de
+    supprimer totalement le projet de la liste des projets ainsi et de la base de donnée.
+    Cette action est irrévèrsible.
+    <br/>
+    Si le projet a uniquement besoin d'etre modifié, envoyez plutot un message privé au membre concerné
+    pour qu'il modifie sa demande.
+    <br/>
+    Si vous etes certain de vouloir refuser ce projet inscivez les raisons du refus dans cet encadré, un message sera
+    automatiquement envoyé au membre avec les raisons que vous aurez écrit.
+</p>
+{{form(form)}}
+
+{% endblock %}
+{% block includeHead %}
+{% if editor is defined %}
+<link href="{{ app.request.basepath }}/lib/{{editor}}/contents.css" rel="stylesheet">
+<script src="{{ app.request.basepath }}/lib/{{editor}}/ckeditor.js"></script>
+{% else %}
+<link href="{{ app.request.basepath }}/lib/ckeditor-standard/contents.css" rel="stylesheet">
+<script src="{{ app.request.basepath }}/lib/ckeditor-standard/ckeditor.js"></script>
+{% endif %}
+{% endblock %}
