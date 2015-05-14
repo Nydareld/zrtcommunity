@@ -83,3 +83,6 @@ $app->match('/messagerie/message/{messageid}', "Zrtcommunity\Controller\MPContro
 
 //Messagerie nouveau message
 $app->match('/messagerie/newmp/{userid}', "Zrtcommunity\Controller\MPController::newMessageAction");
+
+//Notification
+$app->match('/notification/{notifid}/{notifpath}', "Zrtcommunity\Controller\HomeController::notifAction");
