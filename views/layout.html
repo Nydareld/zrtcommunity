@@ -75,19 +75,26 @@
                     <a class="nav2-item dropdown-toggle" data-toggle="dropdown" >
                         <i id="social" class="fa fa-bell fa-lg social-bell"></i>
                         {% set notifs = app.security.token.user.notif %}
-                        {% if notifs|length !=0 %}
-                            <span class="badge badge-notify">{{ notifs|length }}</span>
-                            <ul class="dropdown-menu">
-                                {% for uneNotif in notifs %}
-                                    <li>
-                                        <a href="{{ app.request.basepath }}/notification/{{uneNotif.id}}{{uneNotif.path}}">
-                                            {{uneNotif.message}}
-                                        </a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
+                    {% if notifs|length !=0 %}
+                        <span class="badge badge-notify">{{ notifs|length }}</span>
                     </a>
+                    <ul class="dropdown-menu">
+                        {% for uneNotif in notifs %}
+                            <li>
+                                <a href="{{ app.request.basepath }}/notification/{{uneNotif.id}}{{uneNotif.path}}">
+                                    {{uneNotif.message}}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a>Pas de notification</a>
+                        </li>
+                    </ul>
+                    {% endif %}
                 </li>
                 <li class="nav2-li">
                     <a class="nav2-item" href="{{ app.request.basepath }}/messagerie/inbox">
