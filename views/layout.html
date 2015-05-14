@@ -74,10 +74,11 @@
                 <li class="dropdown nav2-li">
                     <a class="nav2-item dropdown-toggle" data-toggle="dropdown" >
                         <i id="social" class="fa fa-bell fa-lg social-bell"></i>
-                        {% if app.security.token.user.notif|length !=0 %}
-                            <span class="badge badge-notify">{{ app.security.token.user.notif|length }}</span>
+                        {% set notifs = app.security.token.user.notif %}
+                        {% if notifs|length !=0 %}
+                            <span class="badge badge-notify">{{ notifs|length }}</span>
                             <ul class="dropdown-menu">
-                                {% for uneNotif in app.security.token.user.notif %}
+                                {% for uneNotif in notifs %}
                                     <li>
                                         <a href="{{ app.request.basepath }}/notification/{{uneNotif.id}}{{uneNotif.path}}">
                                             {{uneNotif.message}}
