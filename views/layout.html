@@ -71,7 +71,23 @@
                             <li><a href="/membre/{{ app.security.token.user.username }}">Mon profil</a></li>
                         </ul>
                 </li>
-                <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/"><i id="social" class="fa fa-bell fa-lg social-bell"></i></a></li>
+                <li class="dropdown nav2-li">
+                    <a class="nav2-item dropdown-toggle" data-toggle="dropdown" >
+                        <i id="social" class="fa fa-bell fa-lg social-bell"></i>
+                        {% if app.security.token.user.notif|length !=0 %}
+                            <span class="badge badge-notify">{{ app.security.token.user.notif|length }}</span>
+                            <ul class="dropdown-menu">
+                                {% for uneNotif in app.security.token.user.notif %}
+                                    <li>
+                                        <a href="{{ app.request.basepath }}/notification/{{uneNotif.id}}{{uneNotif.path}}">
+                                            {{uneNotif.message}}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </a>
+                </li>
                 <li class="nav2-li">
                     <a class="nav2-item" href="{{ app.request.basepath }}/messagerie/inbox">
                             <i id="social" class="fa fa-envelope fa-lg social-mess"></i>
