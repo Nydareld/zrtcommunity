@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Validation de projet</h2>
+<p>
+    Vous etes sur le point de valider un projet, avant de faire ceci, assurez vous que le cubo du projet a été crée
+    et metez les position de celui-ci dans le formulaire pour faciliter son acces plus tard.
+    <br/>
+    Un MP sera envoyé au chef de projet pour lui spécifier de la création du projet et de ses coordonées.
+</p>
+{{form(form)}}
+
+{% endblock %}
+{% block includeHead %}
+{% if editor is defined %}
+<link href="{{ app.request.basepath }}/lib/{{editor}}/contents.css" rel="stylesheet">
+<script src="{{ app.request.basepath }}/lib/{{editor}}/ckeditor.js"></script>
+{% else %}
+<link href="{{ app.request.basepath }}/lib/ckeditor-standard/contents.css" rel="stylesheet">
+<script src="{{ app.request.basepath }}/lib/ckeditor-standard/ckeditor.js"></script>
+{% endif %}
+{% endblock %}
