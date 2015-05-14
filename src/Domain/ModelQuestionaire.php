@@ -25,6 +25,11 @@ class ModelQuestionaire{
      */
     private $inUse;
 
+    /**
+     * @OneToMany(targetEntity="Question", mappedBy="model")
+     */
+    protected $questions;
+
     public function getId(){
 		return $this->id;
 	}
@@ -47,6 +52,14 @@ class ModelQuestionaire{
 
 	public function setInUse($inUse){
 		$this->inUse = $inUse;
+	}
+    
+    public function getQuestions(){
+		return $this->questions;
+	}
+
+	public function setQuestions($questions){
+		$this->questions = $questions;
 	}
 
 }

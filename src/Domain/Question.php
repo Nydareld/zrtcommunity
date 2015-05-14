@@ -19,6 +19,11 @@ class Question{
      */
     private $intitule;
 
+    /**
+     * @ManyToOne(targetEntity="ModelQuestionaire", inversedBy="questions")
+     */
+    private $model;
+
     public function getId(){
 		return $this->id;
 	}
@@ -33,6 +38,14 @@ class Question{
 
 	public function setIntitule($intitulé){
 		$this->intitulé = $intitulé;
+	}
+    
+    public function getModel(){
+		return $this->model;
+	}
+
+	public function setModel($model){
+		$this->model = $model;
 	}
 
 }
