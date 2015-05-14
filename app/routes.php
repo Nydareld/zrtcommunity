@@ -60,17 +60,20 @@ $app->match('/projet', "Zrtcommunity\Controller\ProjetController::projectAction"
 //Projet page d'ajout de projet
 $app->match('/projet/newprojet', "Zrtcommunity\Controller\ProjetController::addProjectAction");
 
-//Projet page d'ajout de projet
+//Projet page d'edition de projet
 $app->match('/projet/editprojet/{idprojet}', "Zrtcommunity\Controller\ProjetController::editProjectAction");
 
 //Projet page des régions
 $app->match('/projet/regions', "Zrtcommunity\Controller\ProjetController::regionsAction");
 
-//Projet page des régions
+//Projet page d'une région
 $app->match('/projet/region/{regionid}', "Zrtcommunity\Controller\ProjetController::uneRegionAction");
 
-//Projet page des régions
+//Projet page d'un projets
 $app->match('/projet/{projetid}', "Zrtcommunity\Controller\ProjetController::unProjetAction");
+
+//Projet page de validation d'un projets
+$app->match('/projet/validate/{projetid}/{decision}', "Zrtcommunity\Controller\ProjetController::validProjetAction");
 
 //Messagerie messages recus
 $app->match('/messagerie/inbox', "Zrtcommunity\Controller\MPController::inboxAction");
