@@ -2,6 +2,8 @@
 
 namespace Zrtcommunity\Domain;
 
+use Zrtcommunity\Domain\Notification;
+
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -324,6 +326,16 @@ class User implements UserInterface
         return $app['dao.messPrive']->countNonLuByDestinataire($this);
     }
     public function getNotif(){
+        global $app;
+        if($app['security']->isGranted('ROLE_MODO')){
+            if(count($app['dao.projet']->loadProjetNonValid()) != 0){
+                $notifPorjet = new Notification();
+                $notifPorjet->setMessage("Il y a ".count($app['dao.projet']->loadProjetNonValid())." projet(s) à valider");
+                $notifPorjet->setPath("/admin.regionprojet");
+                $notifPorjet->setId(0);
+                $this->notif[]=$notifPorjet;
+            }
+        }
 		return $this->notif;
 	}
 
