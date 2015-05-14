@@ -15,9 +15,22 @@
     <p>
     Validé par la modération:
         {% if projet.accepted %}
-        <i class="fa fa-2x green droite fa-check-circle-o"></i>
+            <i class="fa fa-2x green droite fa-check-circle-o"></i>
         {% else %}
-        <i class="fa fa-2x red droite fa-times-circle-o"></i>
+            <i class="fa fa-2x red droite fa-times-circle-o"></i>
+            {% if app.security.token and is_granted('ROLE_MODO') %}
+            <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                <a href="{{ app.request.basepath }}/projet/validate/{projet.id}/validate" class="btn btn-default" role="button">
+                    Valider
+                </a>
+                <a href="{{ app.request.basepath }}/messagerie/newmp/{{projet.createur.id}}" class="btn btn-default" role="button">
+                    Mp au créateur
+                </a>
+                <a href="{{ app.request.basepath }}/projet/validate/{projet.id}/refutate" class="btn btn-default" role="button">
+                    Refuser
+                </a>
+            </div>
+            {% endif %}
         {% endif %}
     </p>
     <p>
