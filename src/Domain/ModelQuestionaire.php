@@ -30,6 +30,11 @@ class ModelQuestionaire{
      */
     protected $questions;
 
+    /**
+     * @OneToMany(targetEntity="Questionaire", mappedBy="model")
+     */
+    protected $questionaires;
+
     public function getId(){
 		return $this->id;
 	}

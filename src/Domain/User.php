@@ -347,5 +347,13 @@ class User implements UserInterface
 	public function setNotif($notif){
 		$this->notif = $notif;
 	}
+    
+    public function getQuestionaireZrtCraft(){
+		return $this->questionaireZrtCraft;
+	}
+
+	public function setQuestionaireZrtCraft($questionaireZrtCraft){
+		$this->questionaireZrtCraft = $questionaireZrtCraft;
+	}
 
 }

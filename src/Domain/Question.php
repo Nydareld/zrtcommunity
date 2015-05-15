@@ -52,5 +52,12 @@ class Question{
 	public function setModel($model){
 		$this->model = $model;
 	}
+    public function getReponses(){
+		return $this->reponses;
+	}
+
+	public function setReponses($reponses){
+		$this->reponses = $reponses;
+	}
 
 }
