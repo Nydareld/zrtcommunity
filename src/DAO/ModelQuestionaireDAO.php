@@ -30,4 +30,13 @@ class ModelQuestionaireDAO extends DAO{
         }
     }
 
+    public function loadAllModels(){
+        $models= $this->getEm()->getRepository('Zrtcommunity\Domain\ModelQuestionaire')->findAll();
+        if ($models === null){
+            throw new \Exception("No models");
+        }else{
+            return $models;
+        }
+    }
+
 }
