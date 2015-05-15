@@ -80,4 +80,12 @@ class Questionaire{
 		$this->user = $user;
 	}
 
+    public function getModel(){
+		return $this->model;
+	}
+
+	public function setModel($model){
+		$this->model = $model;
+	}
+
 }

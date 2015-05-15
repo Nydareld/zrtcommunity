@@ -66,5 +66,13 @@ class ModelQuestionaire{
 	public function setQuestions($questions){
 		$this->questions = $questions;
 	}
+    
+    public function getQuestionaires(){
+		return $this->questionaires;
+	}
+
+	public function setQuestionaires($questionaires){
+		$this->questionaires = $questionaires;
+	}
 
 }
