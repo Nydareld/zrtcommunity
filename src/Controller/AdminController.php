@@ -130,7 +130,7 @@ class AdminController{
                 }
                 $app['dao.modelQuestionaire']->save($model);
             }
-            return $app->redirect($request->getBasePath().'/admin/forum');
+            return $app->redirect($request->getBasePath().'/admin/questionaire');
         }
 
 
