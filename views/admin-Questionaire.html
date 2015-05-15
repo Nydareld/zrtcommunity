@@ -1,7 +1,17 @@
 {% extends 'admin-Layout.html' %}
 {% block content %}
 <div class="container region">
-    <h3>nouveau Formulaire d'inscription a ZrtCraft</h3>
+    <h3>Formulaire en vigueur:</h3>
+    <p>Date d'ajout : le {{modelInUse.date.format('Y-m-d')}} à {{modelInUse.date.format('H:i:s')}}</p>
+    <ul>
+    {% for question in modelInUse.questions%}
+        <li>
+            {{question.intitule}}
+        </li>
+    {% endfor %}
+    </ul>
+
+    <h3>Nouveau Formulaire d'inscription a ZrtCraft</h3>
     <form action="{{ app.request.basepath }}/admin/questionaire" method="POST" {{ form_enctype(form) }}>
         <h4>liste des questions:</h4>
         <ul class="questions" data-prototype="{{ form_widget(form.questions.vars.prototype) | e }}">
