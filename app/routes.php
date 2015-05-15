@@ -61,6 +61,9 @@ $app->match('/admin/forum',"Zrtcommunity\Controller\AdminController::forumAction
 $app->match('/admin/questionaire',"Zrtcommunity\Controller\AdminController::questionaireAction");
 
 //Admin page de création de questionaire
+$app->match('/admin/questionaire/validate/{questionaireId}',"Zrtcommunity\Controller\AdminController::validateQuestionaireAction");
+
+//Admin page de création de questionaire
 $app->match('/admin/questionaire/choose/{idModel}',"Zrtcommunity\Controller\AdminController::chooseQuestionaireAction");
 
 //Projet page d'accueil des projets
