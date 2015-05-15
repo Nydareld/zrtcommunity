@@ -89,31 +89,44 @@ class UserController{
 
     }
     public function questionnaireProfileAction(Request $request, Application $app){
-        $questionaire = new Questionaire();
-        $questionaire->setModel($app['dao.modelQuestionaire']->loadInUse());
-        $questionaire->setDate(new DateTime());
-        $questionaire->setAccepted(false);
-        $questionaire->setUser($app['security']->getToken()->getUser());
-        $questionaire->setReponses(new ArrayCollection());
-        foreach($questionaire->getModel()->getQuestions() as $question){
-            $reponse = new Reponse();
-            $reponse->setQuestion($question);
-            $reponse->setQuestionaire($questionaire);
-            $questionaire->getReponses()->add($reponse);
-        }
-        $form =  $app['form.factory']->create(new QuestionaireType(), $questionaire);
-        if($request->isMethod('POST')){
-            $form->handleRequest($request);
-            if($form->isSubmitted()){
-                $app['dao.questionaire']->save($questionaire);
+        $user=$app['security']->getToken()->getUser();
+        if($user->getQuestionaireZrtCraft()==null){
+            $questionaire = new Questionaire();
+            $user->setQuestionaireZrtCraft($questionaire);
+            $questionaire->setModel($app['dao.modelQuestionaire']->loadInUse());
+            $questionaire->setDate(new DateTime());
+            $questionaire->setAccepted(false);
+            $questionaire->setUser($user);
+            $questionaire->setReponses(new ArrayCollection());
+            foreach($questionaire->getModel()->getQuestions() as $question){
+                $reponse = new Reponse();
+                $reponse->setQuestion($question);
+                $reponse->setQuestionaire($questionaire);
+                $questionaire->getReponses()->add($reponse);
             }
-            return $app->redirect($request->getBasePath().'/member/questionaire');
+            $form =  $app['form.factory']->create(new QuestionaireType(), $questionaire);
+            if($request->isMethod('POST')){
+                $form->handleRequest($request);
+                if($form->isSubmitted()){
+                    $app['dao.questionaire']->save($questionaire);
+                    $app['dao.user']->save($user);
+                }
+                return $app->redirect($request->getBasePath().'/member/questionaire');
+            }
+            return $app['twig']->render( "zrtcraftQuestionaire.html",array(
+                'title' => "Questionaire",
+                'form' => $form->createView(),
+                'questions' => $questionaire->getModel()->getQuestions(),
+                )
+            );
+        }else{
+            $questionaire=$user->getQuestionaireZrtCraft();
+            return $app['twig']->render( "questionaireRempli.html",array(
+                'title' => "Questionaire",
+                'questionaire' => $questionaire
+                )
+            );
         }
-        return $app['twig']->render( "zrtcraftQuestionaire.html",array(
-            'title' => "Questionaire",
-            'form' => $form->createView(),
-            'questions' => $questionaire->getModel()->getQuestions(),
-            )
-        );
+
     }
 }
