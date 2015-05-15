@@ -113,6 +113,9 @@ class AdminController{
     }
 
     public function questionaireAction(Request $request, Application $app){
+
+        $inuse = $app['dao.modelQuestionaire']->loadInUse();
+
         $model = new ModelQuestionaire();
         $model->setQuestions(new ArrayCollection());
         $model->setDate(new DateTime());
@@ -137,6 +140,7 @@ class AdminController{
         return $app['twig']->render( "admin-Questionaire.html",array(
             'panelname' => "Questionaire inscription",
             'form' => $form->createView(),
+            'modelInUse' => $inuse,
             )
         );
     }
