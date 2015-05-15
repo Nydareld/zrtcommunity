@@ -24,6 +24,11 @@ class Question{
      */
     private $model;
 
+    /**
+     * @OneToMany(targetEntity="Reponse", mappedBy="question")
+     */
+    private $reponses;
+
     public function getId(){
 		return $this->id;
 	}

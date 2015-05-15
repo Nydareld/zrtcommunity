@@ -24,4 +24,10 @@ class Reponse{
      */
     private $questionaire;
 
+    /**
+     * @ManyToOne(targetEntity="Question", inversedBy="reponses")
+     */
+    private $question;
+
+
 }
