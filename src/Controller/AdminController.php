@@ -114,6 +114,8 @@ class AdminController{
 
     public function questionaireAction(Request $request, Application $app){
 
+        $questionairesAValider = $app['dao.questionaire']->loadQuestionaireNonValid();
+
         $inuse = $app['dao.modelQuestionaire']->loadInUse();
 
         $allModels = $app['dao.modelQuestionaire']->loadAllModels();
@@ -143,7 +145,8 @@ class AdminController{
             'panelname' => "Questionaire inscription",
             'form' => $form->createView(),
             'modelInUse' => $inuse,
-            'allModels'=>$allModels
+            'allModels'=>$allModels,
+            'nonValid'=>$questionairesAValider
             )
         );
     }
