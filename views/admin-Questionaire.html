@@ -1,6 +1,19 @@
 {% extends 'admin-Layout.html' %}
 {% block content %}
 <div class="container region">
+
+    <h3>Questionaires a valider</h3>
+    <div class="row">
+    {% for questionaire in nonValid%}
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <a href="{{ app.request.basepath }}/admin/questionaire/validate/{{questionaire.id}}">
+        <h4>{{questionaire.user.username}}</h4>
+      </a>
+      <h5>date de création: le {{questionaire.date.format('Y-m-d')}}</h5>
+    </div>
+    {% endfor %}
+    </div>
+
     <h3>Formulaire en vigueur:</h3>
     <p>Date d'ajout : le {{modelInUse.date.format('Y-m-d')}} à {{modelInUse.date.format('H:i:s')}}</p>
     <ul>
