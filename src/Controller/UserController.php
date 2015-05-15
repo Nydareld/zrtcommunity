@@ -11,6 +11,7 @@ use Zrtcommunity\Form\Type\ProfileType;
 use Zrtcommunity\Form\Type\UserType;
 use Zrtcommunity\Form\Type\QuestionaireType;
 use Zrtcommunity\Controller\HomeController;
+use Zrtcommunity\Domain\Notification;
 use Doctrine\Common\Collections\ArrayCollection;
 
 
@@ -41,6 +42,14 @@ class UserController{
                 $password = $encoder->encodePassword($plainPassword, $user->getSalt());
                 $user->setPassword($password);
                 $app['dao.user']->save($user);
+
+                $notif = new Notification();
+                $notif->setMessage("Bienvenue sur ZrtCommunity, vous pouvez vous inscrire au serveur Minecraft ZrtCraft en clquant ici");
+                $notif->setPath("/member.questionaire");
+                $notif->setUser($user);
+
+                $app['dao.notification']->save($notif);
+
                 $success='Vous etes bien inscrits veillez maintenant vous connecter';
                 return $app['Home.controller']->loginAction($request, $app, $success);
         }
