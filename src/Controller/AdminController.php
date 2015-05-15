@@ -147,4 +147,14 @@ class AdminController{
             )
         );
     }
+
+    public function chooseQuestionaireAction($idModel,Request $request, Application $app){
+        $inuse = $app['dao.modelQuestionaire']->loadInUse();
+        $inuse->setInUse(false);
+        $newInUse = $app['dao.modelQuestionaire']->loadModelById($idModel);
+        $newInUse->setInUse(true);
+        $app['dao.modelQuestionaire']->save($inuse);
+        $app['dao.modelQuestionaire']->save($newInUse);
+        return $app->redirect($request->getBasePath().'/admin/questionaire');
+    }
 }
