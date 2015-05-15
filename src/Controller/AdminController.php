@@ -116,6 +116,8 @@ class AdminController{
 
         $inuse = $app['dao.modelQuestionaire']->loadInUse();
 
+        $allModels = $app['dao.modelQuestionaire']->loadAllModels();
+
         $model = new ModelQuestionaire();
         $model->setQuestions(new ArrayCollection());
         $model->setDate(new DateTime());
@@ -141,6 +143,7 @@ class AdminController{
             'panelname' => "Questionaire inscription",
             'form' => $form->createView(),
             'modelInUse' => $inuse,
+            'allModels'=>$allModels
             )
         );
     }
