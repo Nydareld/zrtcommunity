@@ -9,4 +9,12 @@ class QuestionaireDAO extends DAO{
         $this->getEm()->persist($que);
         $this->getEm()->flush();
     }
+    public function loadQuestionaireNonValid(){
+        $questionaires= $this->getEm()->getRepository('Zrtcommunity\Domain\Questionaire')->findBy(array('accepted' => false));
+        if ($questionaires === null){
+            throw new \Exception("No procjecs");
+        }else{
+            return $questionaires;
+        }
+    }
 }
