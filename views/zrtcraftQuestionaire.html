@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2 class="text-center">{{ block('title') }}</h2>
+
+<div class="well">
+    <form action="{{ app.request.basepath }}/member/questionaire" method="POST" {{ form_enctype(form) }}>
+        {% for question in questions %}
+        <div class="form-group">
+            <label>{{loop.index}}) {{question.intitule}}</label><br/>
+            <div class="col-md-12">
+                {{ form_widget(form.reponses[loop.index0]) }}
+            </div>
+        </div>
+        {% endfor %}
+      <button type="submit" class="btn btn-default btn-primary">Envoyer</button>
+    </form>
+</div>
+{% endblock %}
