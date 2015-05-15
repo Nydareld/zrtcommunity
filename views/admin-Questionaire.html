@@ -26,6 +26,20 @@
             </div>
         </div>
     </form>
+    <br/>
+    <h3>Changer de formulaire en vigeur :</h3>
+    <hr/>
+    {% for model in allModels%}
+    <p>Date d'ajout : le {{model.date.format('Y-m-d')}} à {{model.date.format('H:i:s')}}</p>
+    <ul>
+    {% for question in model.questions%}
+        <li>
+            {{question.intitule}}
+        </li>
+    {% endfor %}
+    </ul>
+    <hr/>
+    {% endfor %}
 </div>
 {% endblock %}
 {% block includeHead %}
