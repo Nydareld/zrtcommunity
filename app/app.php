@@ -145,6 +145,16 @@ $app['dao.notification'] = $app->share(function ($app) {
     return new Zrtcommunity\DAO\NotificationDAO($app['orm.em']);
 });
 
+//  === dao ModelQuestionaire ===
+$app['dao.modelQuestionaire'] = $app->share(function ($app) {
+    return new Zrtcommunity\DAO\ModelQuestionaireDAO($app['orm.em']);
+});
+
+//  === dao Notification ===
+$app['dao.question'] = $app->share(function ($app) {
+    return new Zrtcommunity\DAO\QuestionDAO($app['orm.em']);
+});
+
 //  === Home controller ===
 $app['Home.controller'] = $app->share(function ($app) {
     return new Zrtcommunity\Controller\HomeController();
