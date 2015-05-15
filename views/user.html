@@ -14,13 +14,10 @@
     <div id="panel-droit" class="user-info col-sm-12 col-md-9">
         <div class="btn-group droite">
             {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') and app.security.token.user == user %}
-            <a href="{{ app.request.basepath }}/member/edit">
-                <button type="button" class="btn btn-default">Modifier profil</button>
-            </a>
+            <a href="{{ app.request.basepath }}/member/edit" class="btn btn-default" role="button">Modifier profil</a>
+            <a href="{{ app.request.basepath }}/member/questionaire" class="btn btn-default" role="button">Questionnaire d'inscription à ZrtCraft</a>
             {% elseif app.security.token and is_granted('IS_AUTHENTICATED_FULLY') %}
-            <a href="{{ app.request.basepath }}/messagerie/newmp/{{user.id}}">
-                <button type="button" class="btn btn-default">Envoyer message privé</button>
-            </a>
+            <a href="{{ app.request.basepath }}/messagerie/newmp/{{user.id}}" class="btn btn-default" role="button">Envoyer message privé</a>
             {% endif %}
         </div>
         <h4>Signature forum</h4>
