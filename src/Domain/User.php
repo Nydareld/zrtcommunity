@@ -127,6 +127,11 @@ class User implements UserInterface
       */
      private $dateNais;
 
+     /**
+      * @OneToOne(targetEntity="Questionaire", inversedBy="user")
+      */
+     protected $questionaireZrtCraft;
+
     public function getId() {
         return $this->id;
     }
