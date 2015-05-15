@@ -11,7 +11,17 @@ class ModelQuestionaireDAO extends DAO{
     }
 
     public function loadModelById($idmodel){
-        $model= $this->getEm()->getRepository('Zrtcommunity\Domain\Model')->findOneBy(array('id' => $idmodel));
+        $model= $this->getEm()->getRepository('Zrtcommunity\Domain\ModelQuestionaire')->findOneBy(array('id' => $idmodel));
+
+        if ($model === null){
+            throw new \Exception("No model");
+        }else{
+            return $model;
+        }
+    }
+
+    public function loadInUse(){
+        $model= $this->getEm()->getRepository('Zrtcommunity\Domain\ModelQuestionaire')->findOneBy(array('inUse' => true));
 
         if ($model === null){
             throw new \Exception("No model");
