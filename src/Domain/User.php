@@ -6,6 +6,8 @@ use Zrtcommunity\Domain\Notification;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 
+use \DateTime;
+
 /**
  * @Entity @Table(name="users")
  * @UniqueEntity("name")
@@ -362,5 +364,9 @@ class User implements UserInterface
 	public function setQuestionaireZrtCraft($questionaireZrtCraft){
 		$this->questionaireZrtCraft = $questionaireZrtCraft;
 	}
+
+    public function getAge(){
+        return $this->dateNais->diff(new DateTime('today'))->y;
+    }
 
 }

@@ -20,6 +20,7 @@
             <a href="{{ app.request.basepath }}/messagerie/newmp/{{user.id}}" class="btn btn-default" role="button">Envoyer message privé</a>
             {% endif %}
         </div>
+        <h4>Age: {{user.age}}ans</h4>
         <h4>Signature forum</h4>
         <p>
             {{user.sign|raw}}
