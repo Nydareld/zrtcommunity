@@ -340,6 +340,13 @@ class User implements UserInterface
                 $notifPorjet->setId(0);
                 $this->notif[]=$notifPorjet;
             }
+            if(count($app['dao.questionaire']->loadQuestionaireNonValid()) != 0){
+                $notifQuestionaire = new Notification();
+                $notifQuestionaire->setMessage("Il y a ".count($app['dao.questionaire']->loadQuestionaireNonValid())." inscription(s) à ZrtCraft à valider");
+                $notifQuestionaire->setPath("/admin.questionaire");
+                $notifQuestionaire->setId(-1);
+                $this->notif[]=$notifQuestionaire;
+            }
         }
 		return $this->notif;
 	}
@@ -347,7 +354,7 @@ class User implements UserInterface
 	public function setNotif($notif){
 		$this->notif = $notif;
 	}
-    
+
     public function getQuestionaireZrtCraft(){
 		return $this->questionaireZrtCraft;
 	}
