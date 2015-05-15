@@ -4,10 +4,17 @@ namespace Zrtcommunity\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Zrtcommunity\Domain\User;
+use Zrtcommunity\Domain\Reponse;
+use Zrtcommunity\Domain\Questionaire;
 use Silex\Application;
 use Zrtcommunity\Form\Type\ProfileType;
 use Zrtcommunity\Form\Type\UserType;
+use Zrtcommunity\Form\Type\QuestionaireType;
 use Zrtcommunity\Controller\HomeController;
+use Doctrine\Common\Collections\ArrayCollection;
+
+
+use \DateTime;
 
 class UserController{
 
@@ -80,5 +87,33 @@ class UserController{
             )
         );
 
+    }
+    public function questionnaireProfileAction(Request $request, Application $app){
+        $questionaire = new Questionaire();
+        $questionaire->setModel($app['dao.modelQuestionaire']->loadInUse());
+        $questionaire->setDate(new DateTime());
+        $questionaire->setAccepted(false);
+        $questionaire->setUser($app['security']->getToken()->getUser());
+        $questionaire->setReponses(new ArrayCollection());
+        foreach($questionaire->getModel()->getQuestions() as $question){
+            $reponse = new Reponse();
+            $reponse->setQuestion($question);
+            $reponse->setQuestionaire($questionaire);
+            $questionaire->getReponses()->add($reponse);
+        }
+        $form =  $app['form.factory']->create(new QuestionaireType(), $questionaire);
+        if($request->isMethod('POST')){
+            $form->handleRequest($request);
+            if($form->isSubmitted()){
+                $app['dao.questionaire']->save($questionaire);
+            }
+            return $app->redirect($request->getBasePath().'/member');
+        }
+        return $app['twig']->render( "zrtcraftQuestionaire.html",array(
+            'title' => "Questionaire",
+            'form' => $form->createView(),
+            'questions' => $questionaire->getModel()->getQuestions(),
+            )
+        );
     }
 }
