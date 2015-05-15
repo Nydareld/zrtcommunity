@@ -17,4 +17,13 @@ class QuestionaireDAO extends DAO{
             return $questionaires;
         }
     }
+    public function loadQuestionaireById($Id){
+        $questionaire= $this->getEm()->getRepository('Zrtcommunity\Domain\Questionaire')->findOneBy(array('id' => $Id));
+
+        if ($questionaire === null){
+            throw new \Exception("No topic matching id " . $id);
+        }else{
+            return $questionaire;
+        }
+    }
 }
