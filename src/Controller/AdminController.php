@@ -160,4 +160,13 @@ class AdminController{
         $app['dao.modelQuestionaire']->save($newInUse);
         return $app->redirect($request->getBasePath().'/admin/questionaire');
     }
+
+    public function validateQuestionaireAction($questionaireId ,Request $request, Application $app){
+        $questionaire = $app['dao.questionaire']->loadQuestionaireById($questionaireId);
+        return $app['twig']->render( "admin-validate-Questionaire.html",array(
+            'panelname' => "Validation questionaire",
+            'questionaire' => $questionaire
+            )
+        );
+    }
 }
