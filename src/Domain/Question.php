@@ -33,13 +33,13 @@ class Question{
 	}
 
     public function getIntitule(){
-		return $this->intitulé;
+		return $this->intitule;
 	}
 
-	public function setIntitule($intitulé){
-		$this->intitulé = $intitulé;
+	public function setIntitule($intitule){
+		$this->intitule = $intitule;
 	}
-    
+
     public function getModel(){
 		return $this->model;
 	}
