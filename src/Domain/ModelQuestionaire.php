@@ -26,7 +26,7 @@ class ModelQuestionaire{
     private $inUse;
 
     /**
-     * @OneToMany(targetEntity="Question", mappedBy="model")
+     * @OneToMany(targetEntity="Question", mappedBy="model",cascade={"persist"})
      */
     protected $questions;
 
@@ -53,7 +53,7 @@ class ModelQuestionaire{
 	public function setInUse($inUse){
 		$this->inUse = $inUse;
 	}
-    
+
     public function getQuestions(){
 		return $this->questions;
 	}
