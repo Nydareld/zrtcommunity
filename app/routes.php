@@ -18,6 +18,9 @@ $app->match('/membre/{username}', "Zrtcommunity\Controller\UserController::userP
 //Membre edit de sois. /member/edit
 $app->match('/member/edit', "Zrtcommunity\Controller\UserController::editProfileAction");
 
+//Membre remplir questionaire
+$app->match('/member/questionaire', "Zrtcommunity\Controller\UserController::questionnaireProfileAction");
+
 //forum page d'accueil
 $app->match('/forum', "Zrtcommunity\Controller\ForumController::forumAction");
 
