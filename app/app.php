@@ -150,9 +150,14 @@ $app['dao.modelQuestionaire'] = $app->share(function ($app) {
     return new Zrtcommunity\DAO\ModelQuestionaireDAO($app['orm.em']);
 });
 
-//  === dao Notification ===
+//  === dao Question ===
 $app['dao.question'] = $app->share(function ($app) {
     return new Zrtcommunity\DAO\QuestionDAO($app['orm.em']);
+});
+
+//  === dao Questionaire ===
+$app['dao.questionaire'] = $app->share(function ($app) {
+    return new Zrtcommunity\DAO\QuestionaireDAO($app['orm.em']);
 });
 
 //  === Home controller ===
