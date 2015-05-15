@@ -107,7 +107,7 @@ class UserController{
             if($form->isSubmitted()){
                 $app['dao.questionaire']->save($questionaire);
             }
-            return $app->redirect($request->getBasePath().'/member');
+            return $app->redirect($request->getBasePath().'/member/questionaire');
         }
         return $app['twig']->render( "zrtcraftQuestionaire.html",array(
             'title' => "Questionaire",
