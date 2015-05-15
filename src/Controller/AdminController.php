@@ -10,9 +10,13 @@ use Zrtcommunity\Domain\Region;
 use Zrtcommunity\Form\Type\RegionType;
 use Zrtcommunity\Domain\Categorie;
 use Zrtcommunity\Domain\SousCategorie;
+use Zrtcommunity\Domain\ModelQuestionaire;
+use Zrtcommunity\Domain\Question;
 use Zrtcommunity\Form\Type\CategorieType;
 use Zrtcommunity\Form\Type\SousCategorieType;
 use Zrtcommunity\Form\Type\SousCatType;
+use Zrtcommunity\Form\Type\ModelQuestionaireType;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use \DateTime;
 
@@ -108,4 +112,32 @@ class AdminController{
         );
     }
 
+    public function questionaireAction(Request $request, Application $app){
+        $model = new ModelQuestionaire();
+        $model->setQuestions(new ArrayCollection());
+        $model->setDate(new DateTime());
+        $model->setInUse(false);
+        $question1=new Question();
+        $model->getQuestions()->add($question1);
+
+        $form =  $app['form.factory']->create(new ModelQuestionaireType(), $model);
+
+        if($request->isMethod('POST')){
+            $form->handleRequest($request);
+            if($form->isSubmitted()){
+                foreach($model->getQuestions() as $question){
+                    $question->setModel($model);
+                }
+                $app['dao.modelQuestionaire']->save($model);
+            }
+            return $app->redirect($request->getBasePath().'/admin/forum');
+        }
+
+
+        return $app['twig']->render( "admin-Questionaire.html",array(
+            'panelname' => "Questionaire inscription",
+            'form' => $form->createView(),
+            )
+        );
+    }
 }
