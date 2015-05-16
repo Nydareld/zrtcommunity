@@ -14,7 +14,7 @@ class Categorie extends ForumContainer{
     private $id;
 
     /**
-     * @OneToMany(targetEntity="SousCategorie", mappedBy="parentCategorie")
+     * @OneToMany(targetEntity="SousCategorie", mappedBy="parentCategorie", orphanRemoval=true)
      */
     private $childs;
 

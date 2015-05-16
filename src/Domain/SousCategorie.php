@@ -24,17 +24,17 @@ class SousCategorie extends ForumContainer{
     protected $parentCategorie;
 
     /**
-     * @ManyToOne(targetEntity="SousCategorie", inversedBy="childs",cascade={"persist",})
+     * @ManyToOne(targetEntity="SousCategorie", inversedBy="childs")
      */
     protected $parentSousCategorie;
 
     /**
-     * @OneToMany(targetEntity="Topic", mappedBy="sousCategorie",cascade={"persist",})
+     * @OneToMany(targetEntity="Topic", mappedBy="sousCategorie", orphanRemoval=true)
      */
     protected $topics;
 
     /**
-     * @OneToMany(targetEntity="SousCategorie", mappedBy="parentSousCategorie")
+     * @OneToMany(targetEntity="SousCategorie", mappedBy="parentSousCategorie", orphanRemoval=true)
      **/
     protected $childs;
 

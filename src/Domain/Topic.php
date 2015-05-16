@@ -32,7 +32,7 @@ class Topic{
     private $sousCategorie;
 
     /**
-     * @OneToMany(targetEntity="MessageForum", mappedBy="topic")
+     * @OneToMany(targetEntity="MessageForum", mappedBy="topic", orphanRemoval=true)
      */
     protected $messages;
 
