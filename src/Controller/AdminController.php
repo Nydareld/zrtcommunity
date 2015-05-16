@@ -16,6 +16,7 @@ use Zrtcommunity\Form\Type\CategorieType;
 use Zrtcommunity\Form\Type\SousCategorieType;
 use Zrtcommunity\Form\Type\SousCatType;
 use Zrtcommunity\Form\Type\ModelQuestionaireType;
+use Zrtcommunity\Domain\MessagePrive;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use \DateTime;
@@ -168,5 +169,27 @@ class AdminController{
             'questionaire' => $questionaire
             )
         );
+    }
+    public function validateQuestionaireRedirectionAction($questionaireId, $choice ,Request $request, Application $app){
+        $questionaire = $app['dao.questionaire']->loadQuestionaireById($questionaireId);
+        $mp = new MessagePrive();
+        $mp->setAuteur($app['security']->getToken()->getUser());
+        $mp->setDestinataire($questionaire->getUser());
+        $mp->setDate(new DateTime());
+        $mp->setLu(false);
+        if($choice == "validate"){
+            $questionaire->setAccepted(true);
+            $app['dao.questionaire']->save($questionaire);
+            $mp->setTitre("Votre questionnaire au serveur ZrtCraft à été validé par la modération");
+            $mp->setContenu("Bienvenu sur le serveur, Votre compte a été ou est sur le point d'etre whitelisté.");
+        }else{
+            $questionaire->getUser()->setQuestionaireZrtCraft(null);
+            $app['dao.user']->save($questionaire->getUser());
+            $app['dao.questionaire']->remove($questionaire);
+            $mp->setTitre("Votre questionnaire au serveur ZrtCraft à été refusé par la modération");
+            $mp->setContenu("Adressez vous a la modération pour plus d'éxplications");
+        }
+        $app['dao.messPrive']->save($mp);
+        return $app->redirect($request->getBasePath().'/messagerie/message/'.$mp->getId());
     }
 }
