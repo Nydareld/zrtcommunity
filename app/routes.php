@@ -69,6 +69,12 @@ $app->match('/admin/questionaire/validate/{questionaireId}/{choice}',"Zrtcommuni
 //Admin route pour choisir un model
 $app->match('/admin/questionaire/choose/{idModel}',"Zrtcommunity\Controller\AdminController::chooseQuestionaireAction");
 
+//Admin route supression catégorie
+$app->match('/admin/forum/categorie/delete/{idCat}',"Zrtcommunity\Controller\AdminController::delCatAction");
+
+//Admin route supression scat
+$app->match('/admin/forum/souscategorie/delete/{idSCat}',"Zrtcommunity\Controller\AdminController::delScatAction");
+
 //Projet page d'accueil des projets
 $app->match('/projet', "Zrtcommunity\Controller\ProjetController::projectAction");
 
