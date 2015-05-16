@@ -60,10 +60,13 @@ $app->match('/admin/forum',"Zrtcommunity\Controller\AdminController::forumAction
 //Admin page de création de questionaire
 $app->match('/admin/questionaire',"Zrtcommunity\Controller\AdminController::questionaireAction");
 
-//Admin page de création de questionaire
+//Admin page de validation de questionaire
 $app->match('/admin/questionaire/validate/{questionaireId}',"Zrtcommunity\Controller\AdminController::validateQuestionaireAction");
 
-//Admin page de création de questionaire
+//Admin page de redirection de validation de questionaire
+$app->match('/admin/questionaire/validate/{questionaireId}/{choice}',"Zrtcommunity\Controller\AdminController::validateQuestionaireRedirectionAction");
+
+//Admin route pour choisir un model
 $app->match('/admin/questionaire/choose/{idModel}',"Zrtcommunity\Controller\AdminController::chooseQuestionaireAction");
 
 //Projet page d'accueil des projets
