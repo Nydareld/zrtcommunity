@@ -26,7 +26,7 @@ class Questionaire{
     private $accepted;
 
     /**
-     * @OneToMany(targetEntity="Reponse", mappedBy="questionaire",cascade={"persist"})
+     * @OneToMany(targetEntity="Reponse", mappedBy="questionaire",cascade={"persist","remove"})
      */
     protected $reponses;
 

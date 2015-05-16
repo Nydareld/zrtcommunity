@@ -25,10 +25,10 @@ class Reponse{
     private $questionaire;
 
     /**
-     * @ManyToOne(targetEntity="Question", inversedBy="reponses")
+     * @ManyToOne(targetEntity="Question", inversedBy="reponses",cascade={"detach"})
      */
     private $question;
-    
+
     public function getId(){
 		return $this->id;
 	}
