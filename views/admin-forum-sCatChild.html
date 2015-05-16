@@ -1,0 +1,12 @@
+{%for child in childs%}
+<a href="{{ app.request.basepath }}/forum/souscategorie/{{child.id}}">
+    {{child.name}}
+</a>
+, {{child.topics|length}} topics
+{% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ app.request.basepath }}/admin/forum/souscategorie/delete/{{child.id}}" class="btn btn-default" role="button">Supprimer</a>
+{% endif %}
+{% if child.childs %}
+    <blockquote class="arbo">{% include "admin-forum-sCatChild.html" with {'childs': child.childs} %}</blockquote>
+{% endif %}
+{% endfor %}
