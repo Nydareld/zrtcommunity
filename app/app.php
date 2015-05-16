@@ -48,6 +48,8 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         array('^/projet/newprojet', 'ROLE_TARD'),
         array('^/messagerie', 'ROLE_USER'),
         array('^/projet/validate/', 'ROLE_MODO'),
+        array('^/admin/forum/categorie/delete', 'ROLE_ADMIN'),
+        array('^/admin/forum/souscategorie/delete', 'ROLE_ADMIN'),
     ),
 ));
 
