@@ -194,4 +194,10 @@ class AdminController{
         $app['dao.messPrive']->save($mp);
         return $app->redirect($request->getBasePath().'/messagerie/message/'.$mp->getId());
     }
+
+    public function delCatAction($idCat,Request $request, Application $app){
+        $cat=$app['dao.categorie']->loadCategorieById($idCat);
+        $app['dao.categorie']->remove($cat);
+        return $app->redirect($request->getBasePath().'/admin/forum');
+    }
 }
