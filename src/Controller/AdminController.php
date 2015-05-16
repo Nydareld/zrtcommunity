@@ -62,7 +62,6 @@ class AdminController{
         $regionForm = $app['form.factory']->create(new RegionType(), $region);
         $regionForm->handleRequest($request);
         if( $regionForm->isSubmitted()&& $regionForm->isValid()){
-            $region->setOrdre(null);
             $app['dao.region']->save($region);
             return $app->redirect($request->getBasePath().'/admin/regionprojet');
         }
