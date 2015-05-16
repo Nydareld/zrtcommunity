@@ -74,6 +74,8 @@ class AdminController{
     }
 
     public function forumAction(Request $request, Application $app){
+        $arbo = $app['dao.categorie']->loadAllCategories();
+
         $cat = new Categorie;
         $scat = new SousCategorie;
         $scat2 = new SousCategorie;
@@ -108,6 +110,7 @@ class AdminController{
             'form1' => $catForm->createView(),
             'form2' => $scatForm->createView(),
             'form3' => $scatForm2->createView(),
+            'arbo' => $arbo,
             )
         );
     }
