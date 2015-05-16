@@ -9,6 +9,12 @@ class QuestionaireDAO extends DAO{
         $this->getEm()->persist($que);
         $this->getEm()->flush();
     }
+
+    public function remove(Questionaire $que){
+        $this->getEm()->remove($que);
+        $this->getEm()->flush();
+    }
+
     public function loadQuestionaireNonValid(){
         $questionaires= $this->getEm()->getRepository('Zrtcommunity\Domain\Questionaire')->findBy(array('accepted' => false));
         if ($questionaires === null){
