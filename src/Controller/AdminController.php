@@ -200,9 +200,22 @@ class AdminController{
         $app['dao.categorie']->remove($cat);
         return $app->redirect($request->getBasePath().'/admin/forum');
     }
+
     public function delScatAction($idSCat,Request $request, Application $app){
         $cat=$app['dao.scat']->loadSousCategorieById($idSCat);
         $app['dao.scat']->remove($cat);
         return $app->redirect($request->getBasePath().'/admin/forum');
     }
+
+    public function reglementAction(Request $request, Application $app){
+        $reglement = $app['dao.regle']->loadRegleById(1);
+        return $app['twig']->render( "admin-reglement.html",array(
+            'panelname' => "Reglement",
+            'reglement' => $reglement
+            )
+        );
+    }
+
+
+
 }
