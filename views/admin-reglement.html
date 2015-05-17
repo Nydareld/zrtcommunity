@@ -1,0 +1,15 @@
+{% extends 'admin-Layout.html' %}
+{% block content %}
+<div class="container region">
+<h3>Arboerssance du reglement</h3>
+    <blockquote>{% include "admin-regle-child.html" with {'childs':reglement.childs} only %}
+        {% if is_granted('ROLE_ADMIN') %}
+        <a href="/admin/reglement/add/1" class="btn btn-default" role="button">Ajouter une regle</a>
+        {% endif %}
+    </blockquote>
+</div>
+{% endblock %}
+{% block includeHead %}
+<link href="{{ app.request.basepath }}/lib/ckeditor-full/contents.css" rel="stylesheet">
+<script src="{{ app.request.basepath }}/lib/ckeditor-full/ckeditor.js"></script>
+{% endblock %}
