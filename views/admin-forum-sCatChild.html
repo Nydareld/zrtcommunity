@@ -1,4 +1,6 @@
 {%for child in childs%}
+
+<div class="regle">
 <a href="{{ app.request.basepath }}/forum/souscategorie/{{child.id}}">
     {{child.name}}
 </a>
@@ -7,6 +9,9 @@
     <a href="{{ app.request.basepath }}/admin/forum/souscategorie/delete/{{child.id}}" class="btn btn-default" role="button">Supprimer</a>
 {% endif %}
 {% if child.childs %}
-    <blockquote class="arbo">{% include "admin-forum-sCatChild.html" with {'childs': child.childs} %}</blockquote>
+<div class="decale">
+    {% include "admin-forum-sCatChild.html" with {'childs': child.childs} %}
+</div>
 {% endif %}
+</div>
 {% endfor %}

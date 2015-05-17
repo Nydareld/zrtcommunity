@@ -15,13 +15,17 @@ Attention, Suprimer une partie du forum implique la supression ireversibre de to
 {% endif %}
 {%for cat in arbo %}
 <br>
+<div class="regle">
 <h4>
     {{cat.name}}
     {% if is_granted('ROLE_SUPERADMIN') %}
     <a href="{{ app.request.basepath }}/admin/forum/categorie/delete/{{cat.id}}" class="btn btn-default" role="button">Supprimer</a>
     {% endif %}
 </h4>
-        <blockquote>{% include "admin-forum-sCatChild.html" with {'childs':cat.childs} only %}</blockquote>
+    <div class="decale">
+        {% include "admin-forum-sCatChild.html" with {'childs':cat.childs} only %}
+    </div>
+</div>
 {% endfor %}
 </div>
 {% endblock %}
