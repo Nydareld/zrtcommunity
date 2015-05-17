@@ -1,0 +1,5 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h3>réglement</h3>
+    {% include "regle-child.html" with {'childs':reglement.childs} only %}
+{% endblock %}
