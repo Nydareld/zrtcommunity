@@ -35,6 +35,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         ),
     ),
     'security.role_hierarchy' => array(
+        'ROLE_SUPERADMIN' => array('ROLE_ADMIN'),
         'ROLE_ADMIN' => array('ROLE_MODO'),
         'ROLE_MODO' => array('ROLE_TARD'),
         'ROLE_TARD' => array('ROLE_USER'),
@@ -48,9 +49,9 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         array('^/projet/newprojet', 'ROLE_TARD'),
         array('^/messagerie', 'ROLE_USER'),
         array('^/projet/validate/', 'ROLE_MODO'),
-        array('^/admin/forum/categorie/delete', 'ROLE_ADMIN'),
-        array('^/admin/forum/souscategorie/delete', 'ROLE_ADMIN'),
-        array('^//admin/reglement/add', 'ROLE_ADMIN'),
+        array('^/admin/forum/categorie/delete', 'ROLE_SUPERADMIN'),
+        array('^/admin/forum/souscategorie/delete', 'ROLE_SUPERADMIN'),
+        array('^/admin/reglement/add', 'ROLE_ADMIN'),
     ),
 ));
 

@@ -17,7 +17,7 @@ Attention, Suprimer une partie du forum implique la supression ireversibre de to
 <br>
 <h4>
     {{cat.name}}
-    {% if is_granted('ROLE_ADMIN') %}
+    {% if is_granted('ROLE_SUPERADMIN') %}
     <a href="{{ app.request.basepath }}/admin/forum/categorie/delete/{{cat.id}}" class="btn btn-default" role="button">Supprimer</a>
     {% endif %}
 </h4>
