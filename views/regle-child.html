@@ -5,8 +5,8 @@
 {% else %}
     {% set ruleNumber = loop.index %}
 {% endif %}
-<div class="regle decale">
-<h4 id="ruleNumber">
+<div class="regle decale" id="{{ruleNumber}}">
+<h4>
 {{ruleNumber}}: {{child.intitule}}
 </h4>
 {{child.message|raw}}
