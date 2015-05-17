@@ -1,5 +1,8 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <h3>réglement</h3>
+    <h2>réglement</h2>
+    <h3>Sommaire</h3>
+    {% include "regle-child-table.html" with {'childs':reglement.childs} only %}
+    <h3>reglement complet</h3>
     {% include "regle-child.html" with {'childs':reglement.childs} only %}
 {% endblock %}
