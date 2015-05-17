@@ -50,6 +50,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         array('^/projet/validate/', 'ROLE_MODO'),
         array('^/admin/forum/categorie/delete', 'ROLE_ADMIN'),
         array('^/admin/forum/souscategorie/delete', 'ROLE_ADMIN'),
+        array('^//admin/reglement/add', 'ROLE_ADMIN'),
     ),
 ));
 
