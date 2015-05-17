@@ -40,4 +40,13 @@ class HomeController{
         }
     }
 
+    public function regleAction(Request $request, Application $app){
+        $reglement = $app['dao.regle']->loadRegleById(1);
+        return $app['twig']->render( "reglement.html",array(
+            'title' => "Reglement",
+            'reglement' => $reglement
+            )
+        );
+    }
+
 }
