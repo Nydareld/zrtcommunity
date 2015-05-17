@@ -12,10 +12,12 @@ use Zrtcommunity\Domain\Categorie;
 use Zrtcommunity\Domain\SousCategorie;
 use Zrtcommunity\Domain\ModelQuestionaire;
 use Zrtcommunity\Domain\Question;
+use Zrtcommunity\Domain\Regle;
 use Zrtcommunity\Form\Type\CategorieType;
 use Zrtcommunity\Form\Type\SousCategorieType;
 use Zrtcommunity\Form\Type\SousCatType;
 use Zrtcommunity\Form\Type\ModelQuestionaireType;
+use Zrtcommunity\Form\Type\RegleType;
 use Zrtcommunity\Domain\MessagePrive;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -212,6 +214,25 @@ class AdminController{
         return $app['twig']->render( "admin-reglement.html",array(
             'panelname' => "Reglement",
             'reglement' => $reglement
+            )
+        );
+    }
+
+    public function reglementAddAction($regleId, Request $request, Application $app){
+        $parent = $app['dao.regle']->loadRegleById($regleId);
+        $regle = new Regle();
+        $regle->setParent($parent);
+        $form = $app['form.factory']->create(new RegleType, $regle);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted()&& $form->isValid()){
+            $app['dao.regle']->save($regle);
+            return $app->redirect($request->getBasePath().'/admin/reglement');
+        }
+
+        return $app['twig']->render( "admin-reglement-add.html",array(
+            'panelname' => "Reglement",
+            'form' => $form->createView()
             )
         );
     }
