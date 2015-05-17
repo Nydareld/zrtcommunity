@@ -1,18 +1,17 @@
-
 <?php
 
 namespace Zrtcommunity\DAO;
 
-use Zrtcommunity\Domain\Categorie;
+use Zrtcommunity\Domain\Regle;
 
-class CategorieDAO extends DAO{
+class RegleDAO extends DAO{
 
-    public function save(Categorie $cat){
-        $this->getEm()->persist($cat);
+    public function save(Regle $regle){
+        $this->getEm()->persist($regle);
         $this->getEm()->flush();
     }
-    public function remove(Categorie $cat){
-        $this->getEm()->remove($cat);
+    public function remove(Regle $regle){
+        $this->getEm()->remove($regle);
         $this->getEm()->flush();
     }
     public function loadRegleById($id){
