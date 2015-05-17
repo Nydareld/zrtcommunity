@@ -3,6 +3,9 @@
 //Page d'accueil
 $app->get('/',"Zrtcommunity\Controller\HomeController::indexAction");
 
+//page du reglement
+$app->match('/reglement', "Zrtcommunity\Controller\HomeController::regleAction");
+
 //Page de connexion
 $app->get('/login',"Zrtcommunity\Controller\HomeController::loginAction")->bind('login');
 
