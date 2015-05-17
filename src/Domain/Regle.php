@@ -20,7 +20,7 @@ class Regle{
     private $intitule;
 
     /**
-     * @Column(type="string",length=5000)
+     * @Column(type="string",length=5000, nullable=true)
      * @var string
      */
     private $message;
