@@ -54,6 +54,9 @@ $app->match('/admin',"Zrtcommunity\Controller\AdminController::adminAction");
 //Admin page d'administration des regles
 $app->match('/admin/reglement',"Zrtcommunity\Controller\AdminController::reglementAction");
 
+//Admin page d'ajout d'une regles
+$app->match('/admin/reglement/add/{regleId}',"Zrtcommunity\Controller\AdminController::reglementAddAction");
+
 //Admin page des projets et régions
 $app->match('/admin/regionprojet',"Zrtcommunity\Controller\AdminController::regionProjetAction");
 
