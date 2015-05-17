@@ -11,6 +11,12 @@ class SousCategorieDAO extends DAO{
         $this->getEm()->flush();
     }
 
+    public function remove(SousCategorie $scat){
+        $this->getEm()->remove($scat);
+        $this->getEm()->flush();
+    }
+
+
     public function loadSousCategorieByName($name){
         $scat= $this->getEm()->getRepository('Zrtcommunity\Domain\SousCategorie')->findOneBy(array('name' => $name));
 
