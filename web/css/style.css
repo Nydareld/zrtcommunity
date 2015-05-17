@@ -536,5 +536,10 @@ img.avatar-layout{
     border-radius:10px;
 }
 .decale{
-    padding-left:20px;
+    margin-left:20px;
+    padding-left:3px;
+}
+.regle{
+    border: solid black;
+    border-width: 0px 0px 0px 1px;
 }

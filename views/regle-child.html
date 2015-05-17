@@ -5,7 +5,7 @@
 {% else %}
     {% set ruleNumber = loop.index %}
 {% endif %}
-
+<div class="regle decale">
 <h4 id="ruleNumber">
 {{ruleNumber}}: {{child.intitule}}
 </h4>
@@ -14,5 +14,6 @@
 {% if child.childs %}
     {% include "regle-child.html" with {'childs': child.childs,'index':ruleNumber} %}
 {% endif %}
+</div>
 
 {% endfor %}
