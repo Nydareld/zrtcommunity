@@ -237,6 +237,12 @@ class AdminController{
         );
     }
 
+    public function reglementDelAction($regleId, Request $request, Application $app){
+        $regle=$app['dao.regle']->loadRegleById($regleId);
+        $app['dao.regle']->remove($regle);
+        return $app->redirect($request->getBasePath().'/admin/reglement');
+    }
+
 
 
 }
