@@ -58,10 +58,10 @@ $app->match('/admin',"Zrtcommunity\Controller\AdminController::adminAction");
 $app->match('/admin/reglement',"Zrtcommunity\Controller\AdminController::reglementAction");
 
 //Admin page de supression d'une regles
-$app->match('/admin/reglement/del/{{child.id}}',"Zrtcommunity\Controller\AdminController::reglementDelAction");
+$app->match('/admin/reglement/del/{regleId}',"Zrtcommunity\Controller\AdminController::reglementDelAction");
 
 //Admin page de modification d'une regles
-$app->match('/admin/reglement/modify/{{child.id}}',"Zrtcommunity\Controller\AdminController::reglementModifyAction");
+$app->match('/admin/reglement/modify/{regleId}',"Zrtcommunity\Controller\AdminController::reglementModifyAction");
 
 //Admin page d'ajout d'une regles
 $app->match('/admin/reglement/add/{regleId}',"Zrtcommunity\Controller\AdminController::reglementAddAction");
