@@ -6,6 +6,14 @@
 {% endif %}
 <div class="regle">
 {{ruleNumber}}: {{child.intitule}}
+
+{% if is_granted('ROLE_ADMIN') %}
+    <div class="btn-group" role="group">
+        <a href="/admin/reglement/del/{{child.id}}" class="btn btn-default" role="button">Supprimer (récursif)</a>
+        <a href="/admin/reglement/modify/{{child.id}}" class="btn btn-default" role="button">Modifier</a>
+    </div>
+{% endif %}
+
 {% if child.childs %}
     <div class="decale">
     {% include "admin-regle-child.html" with {'childs': child.childs,'index':ruleNumber} %}
