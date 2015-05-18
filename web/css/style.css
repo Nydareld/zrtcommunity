@@ -537,6 +537,7 @@ img.avatar-layout{
 }
 .regle{
     border: solid black;
+    margin-top:5px;
     padding-left:3px;
     border-width: 0px 0px 0px 1px;
 }

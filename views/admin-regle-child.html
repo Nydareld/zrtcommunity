@@ -4,12 +4,15 @@
 {% else %}
 {% set ruleNumber = loop.index %}
 {% endif %}
+<div class="regle">
 {{ruleNumber}}: {{child.intitule}}
 {% if child.childs %}
-    <blockquote class="arbo">{% include "admin-regle-child.html" with {'childs': child.childs,'index':ruleNumber} %}
-        {% if is_granted('ROLE_ADMIN') %}
-        <a href="/admin/reglement/add/{{child.id}}" class="btn btn-default" role="button">Ajouter une regle</a>
-        {% endif %}
-    </blockquote>
+    <div class="decale">
+    {% include "admin-regle-child.html" with {'childs': child.childs,'index':ruleNumber} %}
+    {% if is_granted('ROLE_ADMIN') %}
+    {% endif %}
+    </div>
+    <a href="/admin/reglement/add/{{child.id}}" class="btn btn-default" role="button">Ajouter une regle</a>
 {% endif %}
+</div>
 {% endfor %}

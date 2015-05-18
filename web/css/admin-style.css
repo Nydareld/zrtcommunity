@@ -357,6 +357,7 @@ h1.page-header {
     width:95%;
 }
 .regle{
+    margin-top:5px;
     border: solid black;
     padding-left:3px;
     border-width: 0px 0px 0px 1px;
