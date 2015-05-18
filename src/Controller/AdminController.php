@@ -243,6 +243,21 @@ class AdminController{
         return $app->redirect($request->getBasePath().'/admin/reglement');
     }
 
+    public function reglementModifyAction($regleId, Request $request, Application $app){
+        $regle = $app['dao.regle']->loadRegleById($regleId);
+        $form = $app['form.factory']->create(new RegleType, $regle);
+        $form->handleRequest($request);
 
+        if($form->isSubmitted()&& $form->isValid()){
+            $app['dao.regle']->save($regle);
+            return $app->redirect($request->getBasePath().'/admin/reglement');
+        }
+
+        return $app['twig']->render( "admin-reglement-add.html",array(
+            'panelname' => "Reglement",
+            'form' => $form->createView()
+            )
+        );
+    }
 
 }
