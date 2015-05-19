@@ -4,13 +4,19 @@ namespace Zrtcommunity\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Image;
 
 class ProfileType extends AbstractType{
 
     public function buildForm(FormBuilderInterface $builder, array $options){
         $builder
         ->add('avatar','file',array(
-            'required'=>false
+            'required'=>false,
+            'constraints'=> array('image'=>new Image(array(
+                'maxSize'=>"50k",
+                'maxWidth'=>200,
+                'maxHeight'=>200
+            )))
         ))
         ->add('sign', 'textarea',array(
             'required'=>false,
