@@ -8,9 +8,7 @@
     <div class="searchable-container">
     {% for user in users %}
     <div class="col-md-4 items">
-        <a href="{{ app.request.basepath }}/admin/users/{{user.id}}">
-            <span class="critere">{{user.username}}</span> ({{user.roleHumain}})
-        </a>
+        <span class="critere"><a href="{{ app.request.basepath }}/admin/users/{{user.id}}">{{user.username}} </a></span> ({{user.roleHumain}})
     </div>
     {% endfor %}
     </div>
