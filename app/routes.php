@@ -81,6 +81,9 @@ $app->match('/admin/questionaire/validate/{questionaireId}',"Zrtcommunity\Contro
 //Admin page de redirection de validation de questionaire
 $app->match('/admin/questionaire/validate/{questionaireId}/{choice}',"Zrtcommunity\Controller\AdminController::validateQuestionaireRedirectionAction");
 
+//Admin page de redirection de validation de questionaire
+$app->match('/admin/users/list',"Zrtcommunity\Controller\AdminController::userListAction");
+
 //Admin route pour choisir un model
 $app->match('/admin/questionaire/choose/{idModel}',"Zrtcommunity\Controller\AdminController::chooseQuestionaireAction");
 
