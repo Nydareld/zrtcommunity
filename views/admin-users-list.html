@@ -1,0 +1,22 @@
+{% extends 'admin-Layout.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <input type="search" class="form-control" id="input-search" placeholder="nom d'utilisateur" onchange="search()" >
+    <br/>
+    </div>
+    <div class="searchable-container">
+    {% for user in users %}
+    <div class="col-md-4 items">
+        <a href="{{ app.request.basepath }}/admin/users/{{user.id}}">
+            <span class="critere">{{user.username}}</span> ({{user.roleHumain}})
+        </a>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+{% block includeJS %}
+<script src="{{ app.request.basepath }}/js/searchUser.js"></script>
+{% endblock %}
