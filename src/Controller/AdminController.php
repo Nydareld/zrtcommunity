@@ -259,5 +259,13 @@ class AdminController{
             )
         );
     }
+    public function userListAction(Request $request, Application $app){
+        $users = $app['orm.em']->getRepository('Zrtcommunity\Domain\User')->findall();
+
+        return $app['twig']->render( "admin-users-list.html",array(
+            'panelname' => "Liste des membres",
+            'users' => $users,
+            ));
+    }
 
 }
