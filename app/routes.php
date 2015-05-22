@@ -75,9 +75,6 @@ $app->match('/admin/forum',"Zrtcommunity\Controller\AdminController::forumAction
 //Admin page de création de questionaire
 $app->match('/admin/questionaire',"Zrtcommunity\Controller\AdminController::questionaireAction");
 
-//Admin page de validation de questionaire
-$app->match('/admin/questionaire/validate/{questionaireId}',"Zrtcommunity\Controller\AdminController::validateQuestionaireAction");
-
 //Admin page de redirection de validation de questionaire
 $app->match('/admin/questionaire/validate/{questionaireId}/{choice}',"Zrtcommunity\Controller\AdminController::validateQuestionaireRedirectionAction");
 
