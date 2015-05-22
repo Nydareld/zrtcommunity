@@ -18,6 +18,7 @@
 
 <div id="panel-droit" class="col-md-9">
 {% for cat in categories%}
+{% if not cat.admin or is_granted('ROLE_MODO')%}
 <table class="table forum">
     <thead>
         <tr>
@@ -59,6 +60,7 @@
     {% endfor %}
   </tbody>
 </table>
+{% endif %}
 {% endfor %}
 </div>
 
