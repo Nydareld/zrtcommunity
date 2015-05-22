@@ -101,12 +101,14 @@ class AdminController{
 
         if($scatForm->isSubmitted()&& $scatForm->isValid()){
             $scat->setParentSousCategorie($app['dao.scat']->loadSousCategorieById($scatForm["parent"]->getData()));
+            $scat->setAdmin($app['dao.scat']->loadSousCategorieById($scatForm["parent"]->getData())->getAdmin());
             $app['dao.scat']->save($scat);
             return $app->redirect($request->getBasePath().'/admin/forum');
         }
 
         if($scatForm2->isSubmitted()&& $scatForm2->isValid()){
             $scat2->setParentCategorie($app['dao.categorie']->loadCategorieById($scatForm2["parent"]->getData()));
+            $scat2->setAdmin($app['dao.categorie']->loadCategorieById($scatForm2["parent"]->getData())->getAdmin());
             $app['dao.scat']->save($scat2);
             return $app->redirect($request->getBasePath().'/admin/forum');
         }
