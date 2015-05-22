@@ -170,14 +170,6 @@ class AdminController{
         return $app->redirect($request->getBasePath().'/admin/questionaire');
     }
 
-    public function validateQuestionaireAction($questionaireId ,Request $request, Application $app){
-        $questionaire = $app['dao.questionaire']->loadQuestionaireById($questionaireId);
-        return $app['twig']->render( "admin-validate-Questionaire.html",array(
-            'panelname' => "Validation questionaire",
-            'questionaire' => $questionaire
-            )
-        );
-    }
     public function validateQuestionaireRedirectionAction($questionaireId, $choice ,Request $request, Application $app){
         $questionaire = $app['dao.questionaire']->loadQuestionaireById($questionaireId);
         $mp = new MessagePrive();
@@ -273,6 +265,7 @@ class AdminController{
     }
     public function userModAction($userid, Request $request, Application $app){
         $user = $app['dao.user']->find($userid);
+        $questionaire = $user->getQuestionaireZrtCraft();
         $ancienRole = $user->getRoleNbr();
 
         $form = $app['form.factory']->create(new ModRoleType, $user);
@@ -294,6 +287,7 @@ class AdminController{
             'panelname' => $user->getUsername(),
             'user' => $user,
             'form' => $form->createView(),
+            'questionaire' => $questionaire
         ));
     }
 
