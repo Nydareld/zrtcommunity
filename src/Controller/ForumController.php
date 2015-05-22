@@ -36,6 +36,11 @@ class ForumController{
             return ($a->lastMessage()->getDate() > $b->lastMessage()->getDate() ) ? -1 : 1;
         });
         $scat->setTopics($topics);
+
+        if( $scat->getAdmin() && !$app['security']->isGranted('ROLE_MODO') ){ // pas modifier les roles des membres au dessus ou egauxs
+            throw new \Exception("vous ne pouvez pas acceder aux discussions admin");
+        }
+
         return $app['twig']->render( "sousCategorie.html",array(
             'title' => "Forum",
             'scat' => $scat,
