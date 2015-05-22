@@ -51,6 +51,10 @@ class ForumController{
     public function topicAction($topicid,Request $request, Application $app){
         $topic = $app['dao.topic']->loadTopicById($topicid);
 
+        if( $topic->getSousCategorie()->getAdmin() && !$app['security']->isGranted('ROLE_MODO') ){
+            throw new \Exception("vous ne pouvez pas acceder aux discussions admin");
+        }
+
         $messages = $topic->getMessages()->getValues();
 
         usort($messages ,function ($a, $b){
@@ -97,6 +101,7 @@ class ForumController{
             )
         );
     }
+
     public function addtopicAction($scatid,Request $request, Application $app){
         $topic = new Topic();
         $message = new MessageForum();
