@@ -52,6 +52,12 @@ class User implements UserInterface
     private $email;
 
     /**
+     * @Column(type="boolean")
+     * @var boolean
+     */
+    protected $notifRepForum = true;
+
+    /**
      * @OneToMany(targetEntity="Topic", mappedBy="creator")
      */
     private $topics;
@@ -377,5 +383,13 @@ class User implements UserInterface
     public function getAge(){
         return $this->dateNais->diff(new DateTime('today'))->y;
     }
+
+    public function getNotifRepForum(){
+		return $this->notifRepForum;
+	}
+
+	public function setNotifRepForum($notifRepForum){
+		$this->notifRepForum = $notifRepForum;
+	}
 
 }
