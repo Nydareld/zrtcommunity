@@ -9,7 +9,7 @@
         <span class="name" style="min-width: 120px;
             display: inline-block;">{{message.destinataire.username}}</span> <span class="">{{message.titre}}</span>
         <span
-            class="badge">{{message.date.format('H:i:s')}}</span> <span class="pull-right">
+            class="badge">le {{message.date.format('Y-m-d')}} à {{message.date.format('H:i:s')}}</span> <span class="pull-right">
         </span></a>
 </div>
 {% endfor %}
