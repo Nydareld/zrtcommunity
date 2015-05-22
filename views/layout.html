@@ -28,12 +28,12 @@
             </div>
 
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="{{ app.request.basepath }}/">Accueil</a></li>
-                <li><a href="{{ app.request.basepath }}/forum">Forum</a></li>
-                <li><a href="{{ app.request.basepath }}/news">News</a></li>
-                <li><a href="{{ app.request.basepath }}/">Présentation</a></li>
-                <li><a href="{{ app.request.basepath }}/projet">Projets</a></li>
-                <li><a href="{{ app.request.basepath }}/reglement">Réglment</a></li>
+                <li id="nav-acceuil"><a href="{{ app.request.basepath }}/">Accueil</a></li>
+                <li id="nav-forum"><a href="{{ app.request.basepath }}/forum">Forum</a></li>
+                <li id="nav-news"><a href="{{ app.request.basepath }}/news">News</a></li>
+                <li id="nav-pres"><a href="{{ app.request.basepath }}/">Présentation</a></li>
+                <li id="nav-projet"><a href="{{ app.request.basepath }}/projet">Projets</a></li>
+                <li id="nav-reglement"><a href="{{ app.request.basepath }}/reglement">Réglment</a></li>
             </ul>
         </div>
     </nav>
@@ -186,6 +186,11 @@
     <script src="{{ app.request.basepath }}/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="{{ app.request.basepath }}/js/navscroll.js"></script>
     {% block includeJS %}{% endblock %}
+
+    <script>
+    document.getElementById( "{% block active %}{% endblock %}").className += " active";
+    </script>
+    <!--class="active"-->
 
 </body>
 </html>
