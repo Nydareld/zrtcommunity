@@ -91,7 +91,10 @@ class ForumController{
         $message = $app['dao.messForum']->loadMessageById($messageid);
         $messageForm = $app['form.factory']->create(new MessageType(), $message);
         $messageForm->handleRequest($request);
-        if ($messageForm->isSubmitted() && $messageForm->isValid() && $app['security']->isGranted('IS_AUTHENTICATED_FULLY')) {
+        if($app['security']->getToken()->getUser()!=$message->getAuteur()){
+            throw new \Exception("vous ne pouvez pas editer le message d'un autre membre");
+        }
+        if ($messageForm->isSubmitted() && $messageForm->isValid()) {
             $app['dao.messForum']->save($message);
             return $app->redirect($request->getBasePath().'/forum/topic/'.$message->getTopic()->getId());
         }
