@@ -20,16 +20,20 @@
     <br/>
 {% endfor %}
 <br/>
+{% if not questionaire.accepted %}
 <p>
     Si vous valider ce formulaire pensez a whitelister le membre sur le serveur.
     Si vous le refuser le memebre poura soumetre un nouveau formulaire. Il est préférable de prévenir le membre du refus
     pour lui en indiquer les raisons.
 </p>
+
 <div class="btn-group droite">
     <a href="{{ app.request.basepath }}/admin/questionaire/validate/{{questionaire.id}}/validate" class="btn btn-default" role="button">Valider formulaire</a>
     <a href="{{ app.request.basepath }}/messagerie/newmp/{{questionaire.user.id}}" class="btn btn-default" role="button">Envoyer un mp au membre</a>
     <a href="{{ app.request.basepath }}/admin/questionaire/validate/{{questionaire.id}}/refutate" class="btn btn-default" role="button">Refuser le formulaire</a>
 </div>
+{% endif%}
+
 {% else %}
 
 <p>
