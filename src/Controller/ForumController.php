@@ -10,6 +10,8 @@ use Zrtcommunity\Domain\Topic;
 use Zrtcommunity\Form\Type\TopicType;
 use Zrtcommunity\Domain\MessageForum;
 use Zrtcommunity\Form\Type\MessageType;
+use Zrtcommunity\Domain\Notification;
+
 use \DateTime;
 
 class ForumController{
@@ -75,6 +77,20 @@ class ForumController{
             $message->setAuteur($token->getUser());
             $message->setTopic($topic);
             $app['dao.messForum']->save($message);
+
+            foreach ($topic->getMessages() as $message ) {
+                $userNotif = $message->getAuteur();
+                $pathNotif = $request->getBasePath().'/forum.topic.'.$topic->getId();
+                if ($userNotif->getNotifRepForum() && !$app['dao.notification']->existPathUser($pathNotif,$userNotif) && $userNotif != $token->getUser() ){
+
+                    $notif = new Notification();
+                    $notif->setMessage("Nouvelle réponse au sujet \"".$topic->getName()."\"");
+                    $notif->setPath($pathNotif);
+                    $notif->setUser($userNotif);
+
+                    $app['dao.notification']->save($notif);
+                }
+            }
 
             return $app->redirect($request->getBasePath().'/forum/topic/'.$topic->getId());
 
