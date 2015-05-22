@@ -24,5 +24,14 @@ class NotificationDAO extends DAO{
             return $news;
         }
     }
+    public function existPathUser($path,$user){
+        $notif= $this->getEm()->getRepository('Zrtcommunity\Domain\Notification')->findOneBy(array('path' => $path, 'user'=>$user));
+
+        if ($notif === null){
+            return false;
+        }else{
+            return true;
+        }
+    }
 
 }
