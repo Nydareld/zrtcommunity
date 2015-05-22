@@ -27,7 +27,7 @@ class ProfileType extends AbstractType{
         ))
         ->add('biographie', 'textarea',array(
             'required'=>false,
-            'label' => 'Signature(10000 caracteres):',
+            'label' => 'biographie (10000 caracteres):',
             'max_length' => 10000,
             'attr'=>array('class'=>'ckeditor')
         ))
