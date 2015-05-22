@@ -8,6 +8,7 @@ use Silex\Application;
 use Zrtcommunity\Domain\Projet;
 use Zrtcommunity\Domain\MessagePrive;
 use Zrtcommunity\Form\Type\ProjetType;
+use Zrtcommunity\Form\Type\EditProjetType;
 use Zrtcommunity\Form\Type\ValidProjetType;
 use Zrtcommunity\Form\Type\MPSansTitreType;
 use Zrtcommunity\Domain\MembreProjet;
@@ -47,7 +48,7 @@ class ProjetController{
     public function editProjectAction($idprojet, Request $request, Application $app){
         $projet = $app['dao.projet']->loadProjetById($idprojet);
 
-        $projetForm = $app['form.factory']->create(new ProjetType(), $projet);
+        $projetForm = $app['form.factory']->create(new EditProjetType(), $projet);
         $projetForm->handleRequest($request);
 
         if( $projetForm->isSubmitted()&& $projetForm->isValid() && $projet->getCreateur() == $app['security']->getToken()->getUser()){
