@@ -544,3 +544,7 @@ img.avatar-layout{
 .decale{
     padding-left:20px;
 }
+.boutton-news{
+    position: relative;
+    top:-30px;
+}

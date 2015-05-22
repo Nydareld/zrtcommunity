@@ -2,10 +2,11 @@
 {% block content %}
 <h2>Liste des news</h2>
 {% if is_granted('ROLE_MODO') %}
-<button  class="droite">
+<button  class="droite boutton-news">
     <a href="{{ app.request.basepath }}/newnews">Ajouter</a>
 </button>
 {% endif %}
+<div class="row">
 <div id="lalist" class="box jplist">
   <div class=" list box">
 {% for unenews in news %}
@@ -60,6 +61,7 @@
 				   data-control-action="paging">
 				</div>
 
+</div>
 </div>
 </div>
 
