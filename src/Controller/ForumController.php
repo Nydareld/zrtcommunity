@@ -37,7 +37,7 @@ class ForumController{
         });
         $scat->setTopics($topics);
 
-        if( $scat->getAdmin() && !$app['security']->isGranted('ROLE_MODO') ){ // pas modifier les roles des membres au dessus ou egauxs
+        if( $scat->getAdmin() && !$app['security']->isGranted('ROLE_MODO') ){
             throw new \Exception("vous ne pouvez pas acceder aux discussions admin");
         }
 
@@ -103,6 +103,11 @@ class ForumController{
 
         $topicForm = $app['form.factory']->create(new TopicType(), $topic);
         $topicForm->handleRequest($request);
+
+        if( $app['dao.scat']->loadSousCategorieById($scatid)->getAdmin() && !$app['security']->isGranted('ROLE_MODO') ){
+            throw new \Exception("vous ne pouvez pas acceder aux discussions admin");
+        }
+
         if ( $topicForm->isSubmitted()&& $topicForm->isValid()) {
             $user= $app['security']->getToken()->getUser();
             $topic->setCreator($user);
