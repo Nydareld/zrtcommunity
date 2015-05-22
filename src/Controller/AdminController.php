@@ -18,8 +18,12 @@ use Zrtcommunity\Form\Type\SousCategorieType;
 use Zrtcommunity\Form\Type\SousCatType;
 use Zrtcommunity\Form\Type\ModelQuestionaireType;
 use Zrtcommunity\Form\Type\RegleType;
+use Zrtcommunity\Form\Type\ModRoleType;
 use Zrtcommunity\Domain\MessagePrive;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager;
 
 use \DateTime;
 
@@ -266,6 +270,31 @@ class AdminController{
             'panelname' => "Liste des membres",
             'users' => $users,
             ));
+    }
+    public function userModAction($userid, Request $request, Application $app){
+        $user = $app['dao.user']->find($userid);
+        $ancienRole = $user->getRoleNbr();
+
+        $form = $app['form.factory']->create(new ModRoleType, $user);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted()&& $form->isValid()){
+            $current = $app['security']->getToken()->getUser();
+            if( $current->getRoleNbr() <= $ancienRole){ // pas modifier les roles des membres au dessus ou egauxs
+                throw new \Exception("vous ne pouvez pas modifier les droits d'un membre au rang égal ou superieur");
+            }elseif ( $current->getRoleNbr() < $user->getRoleNbr() ){ // ne pas atribuer des roles superieux au sien
+                throw new \Exception("vous ne pouvez pas atribuer un role superieur au votre");
+            }else{
+                $app['dao.user']->save($user);
+            }
+            return $app->redirect($request->getBasePath().'/admin/users/'.$user->getId());
+        }
+
+        return $app['twig']->render( "admin-users-mod.html",array(
+            'panelname' => $user->getUsername(),
+            'user' => $user,
+            'form' => $form->createView(),
+        ));
     }
 
 }
