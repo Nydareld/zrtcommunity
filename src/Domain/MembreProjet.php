@@ -14,12 +14,6 @@ class MembreProjet{
     private $id;
 
     /**
-     * @Column(type="boolean")
-     * @var boolean
-     */
-    private $owner;
-
-    /**
      * @Column(type="string")
      * @var string
      */

@@ -29,7 +29,6 @@ class ProjetController{
             $projet->setCreateur($app['security']->getToken()->getUser());
 
             $membre = new MembreProjet();
-            $membre->setOwner(TRUE);
             $membre->setAlias("Chef de projet");
             $membre->setUser($app['security']->getToken()->getUser());
             $membre->setProjet($projet);
