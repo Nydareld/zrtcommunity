@@ -199,7 +199,16 @@ class User implements UserInterface
             'ROLE_USER'=>'Péon');
         return $zbra[$this->role];
     }
-
+    public function getRoleNbr(){
+        $zbra=array(
+            'ROLE_USER'=>1,
+            'ROLE_TARD'=>2,
+            'ROLE_MODO'=>3,
+            'ROLE_ADMIN'=>4,
+            'ROLE_SUPERADMIN'=>5
+            );
+        return $zbra[$this->role];
+    }
     public function setRole($role) {
         $this->role = $role;
     }
