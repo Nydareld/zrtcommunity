@@ -19,7 +19,7 @@
 {% for message in news.messages %}
 <table class="table topic-message">
     <tr>
-        <td class="cell-stat-2x topic-member">{{message.auteur.username}}</td>
+        <td class="cell-stat-2x topic-member"><a href="/membre/{{message.auteur.username}}">{{message.auteur.username}}</a></td>
         <td class="topic-message-contenu">
             {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') and app.security.token.user == message.auteur %}
             <component class="droite">
