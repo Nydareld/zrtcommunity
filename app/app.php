@@ -193,3 +193,6 @@ $app['Stat.controller'] = $app->share(function ($app) {
 $app['info'] = $app->share(function ($app){
     return new Zrtcommunity\Domain\Info();
 });
+
+//  === Imagine (image resize) ===
+$app['imagine'] = new Imagine\Gd\Imagine();

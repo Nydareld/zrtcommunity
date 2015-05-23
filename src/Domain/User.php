@@ -5,6 +5,13 @@ namespace Zrtcommunity\Domain;
 use Zrtcommunity\Domain\Notification;
 
 use Symfony\Component\Security\Core\User\UserInterface;
+use Imagine\Image\ImageInterface;
+use Imagine\Image\Box;
+use Imagine\Image\Point;
+use Imagine\Image\Color;
+
+
+
 
 use \DateTime;
 
@@ -313,14 +320,48 @@ class User implements UserInterface
     }
 
     public function upload(){
+
+        global $app;
+
         if(null === $this->avatar){
             return;
         }
+
         $extension = $this->avatar->guessExtension();
         $fileName = $this->id.'.'.$extension;
         $this->avatar->move($this->getUploadRootDir(), $fileName);
         $this->path = $fileName;
         $this->avatar = null;
+
+        $width  = 200;
+        $height = 200;
+
+        $mode  = ImageInterface::THUMBNAIL_INSET;
+
+        $size = new Box($width, $height);
+
+        $resizeimg = $app['imagine']->open($this->getAbsolutePath())
+                ->thumbnail($size, $mode);
+
+        $sizeR     = $resizeimg->getSize();
+        $widthR    = $sizeR->getWidth();
+        $heightR   = $sizeR->getHeight();
+
+        $color = new Color('000', 100);
+
+        $preserve  = $app['imagine']->create($size,$color);
+        $startX = $startY = 0;
+
+        if ( $widthR < $width ) {
+            $startX = ( $width - $widthR ) / 2;
+        }
+        if ( $heightR < $height ) {
+            $startY = ( $height - $heightR ) / 2;
+        }
+        $preserve->paste($resizeimg, new Point($startX, $startY))
+            ->save($this->getAbsolutePath());
+
+
     }
 
     public function getSign(){
