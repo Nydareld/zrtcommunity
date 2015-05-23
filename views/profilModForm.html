@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% block content %}
 <h3>Preview avatar</h3>
-<img src="" height="200"id="preview" class="avatar-profile img-circle user-mod-preview">
+<div id="preview"></div>
 
 {{form(form)}}
 {% endblock %}
@@ -23,16 +23,24 @@
 <script>
 
 function previewFile(){
+
+        var newImg=document.createElement('img');
+        newImg.setAttribute('class','avatar-profile img-circle user-mod-preview');
+
        var preview = document.getElementById("preview"); //selects the query named img
        var file    = document.querySelector('input[type=file]').files[0]; //sames as here
        var reader  = new FileReader();
 
        reader.onloadend = function () {
-           preview.src = reader.result;
+           newImg.src = reader.result;
        }
 
        if (file) {
+           if(preview.firstChild){
+               preview.removeChild(preview.firstChild);
+           }
            reader.readAsDataURL(file); //reads the data as a URL
+           preview.appendChild(newImg);
        } else {
            preview.src = "";
        }
