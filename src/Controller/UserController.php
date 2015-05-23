@@ -90,7 +90,7 @@ class UserController{
             return $app->redirect($request->getBasePath().'/membre/'.$user->getUsername());
         }
 
-        return $app['twig']->render( "basicForm.html",array(
+        return $app['twig']->render( "profilModForm.html",array(
             'title' => "Mon profil",
             'form' => $profilForm->createView(),
             )

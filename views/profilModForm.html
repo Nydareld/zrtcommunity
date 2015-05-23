@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<img src="" height="200" alt="Preview avatar" id="preview">
+
+{{form(form)}}
+{% endblock %}
+
+{% block includeHead %}
+{% if editor is defined %}
+<link href="{{ app.request.basepath }}/lib/{{editor}}/contents.css" rel="stylesheet">
+{% else %}
+<link href="{{ app.request.basepath }}/lib/ckeditor-standard/contents.css" rel="stylesheet">
+{% endif %}
+{% endblock %}
+{% block includeJS %}
+{% if editor is defined %}
+<script src="{{ app.request.basepath }}/lib/{{editor}}/ckeditor.js"></script>
+{% else %}
+<script src="{{ app.request.basepath }}/lib/ckeditor-standard/ckeditor.js"></script>
+{% endif %}
+
+<script>
+
+function previewFile(){
+       var preview = document.getElementById("preview"); //selects the query named img
+       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+       var reader  = new FileReader();
+
+       reader.onloadend = function () {
+           preview.src = reader.result;
+       }
+
+       if (file) {
+           reader.readAsDataURL(file); //reads the data as a URL
+       } else {
+           preview.src = "";
+       }
+  }
+
+  previewFile();
+
+</script>
+{% endblock %}

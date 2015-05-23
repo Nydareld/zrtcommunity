@@ -13,6 +13,7 @@ class ProfileType extends AbstractType{
         ->add('avatar','file',array(
             'required'=>false,
             'label' => 'Avatar (200*200px, 50ko max):',
+            'attr'=>array('class'=>'upload-avatar','onchange'=>"previewFile()"),
             'constraints'=> array('image'=>new Image(array(
                 'maxSize'=>"50k",
                 'maxWidth'=>200,
