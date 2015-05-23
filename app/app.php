@@ -22,25 +22,30 @@ $app['orm.em'] = EntityManager::create($app['db.options'], $config);
 //  === symfony security ===
 $app->register(new Silex\Provider\SessionServiceProvider());
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
-$app->register(new Silex\Provider\SecurityServiceProvider(), array(
-    'security.firewalls' => array(
+$app->register(new Silex\Provider\SecurityServiceProvider());
+$app->register(new Silex\Provider\RememberMeServiceProvider());
+
+$app['security.firewalls'] = array(
         'secured' => array(
             'pattern' => '^/',
             'anonymous' => true,
+            'remember_me' => array(
+                'key'                => 'IzpZYAkuS2u88Xiz1U0x',
+            ),
             'logout' => true,
             'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
             'users' => $app->share(function () use ($app) {
                 return new Zrtcommunity\DAO\UserDAO($app['orm.em']);
             }),
         ),
-    ),
-    'security.role_hierarchy' => array(
+    );
+$app['security.role_hierarchy'] = array(
         'ROLE_SUPERADMIN' => array('ROLE_ADMIN'),
         'ROLE_ADMIN' => array('ROLE_MODO'),
         'ROLE_MODO' => array('ROLE_TARD'),
         'ROLE_TARD' => array('ROLE_USER'),
-    ),
-    'security.access_rules' => array(
+    );
+$app['security.access_rules'] = array(
         array('^/admin', 'ROLE_MODO'),
         array('^/forum/souscategorie/newtopic', 'ROLE_USER'),
         array('^/forum/editmessage', 'ROLE_USER'),
@@ -52,8 +57,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         array('^/admin/forum/categorie/delete', 'ROLE_SUPERADMIN'),
         array('^/admin/forum/souscategorie/delete', 'ROLE_SUPERADMIN'),
         array('^/admin/reglement/add', 'ROLE_ADMIN'),
-    ),
-));
+    );
 
 //  === is Mobile ===
 
