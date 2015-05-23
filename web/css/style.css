@@ -150,14 +150,23 @@ header{
     top:40px;
     min-width:100%;
     height:200px;
-    text-align: center;
+    background-image: url(/img/banniereZrtCraft.png);
+    background-repeat: no-repeat;
+    background-position: center;
 }
-header img{
+header .header-logo{
+    position:absolute;
+    top:0px;
     padding:25px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
     height:200px;
+    z-index: 100;
+}
+header .multiImage img{
+    position: absolute;
 }
 #rainbow {
     background: red; /* not working, let's see some red */
