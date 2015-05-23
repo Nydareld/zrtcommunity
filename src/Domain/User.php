@@ -340,25 +340,9 @@ class User implements UserInterface
 
         $size = new Box($width, $height);
 
-        $resizeimg = $app['imagine']->open($this->getAbsolutePath())
-                ->thumbnail($size, $mode);
-
-        $sizeR     = $resizeimg->getSize();
-        $widthR    = $sizeR->getWidth();
-        $heightR   = $sizeR->getHeight();
-
-        $color = new Color('000', 100);
-
-        $preserve  = $app['imagine']->create($size,$color);
-        $startX = $startY = 0;
-
-        if ( $widthR < $width ) {
-            $startX = ( $width - $widthR ) / 2;
-        }
-        if ( $heightR < $height ) {
-            $startY = ( $height - $heightR ) / 2;
-        }
-        $preserve->paste($resizeimg, new Point($startX, $startY))
+        $resizeimg = $app['imagine']
+            ->open($this->getAbsolutePath())
+            ->resize($size)
             ->save($this->getAbsolutePath());
 
 
