@@ -12,12 +12,10 @@ class ProfileType extends AbstractType{
         $builder
         ->add('avatar','file',array(
             'required'=>false,
-            'label' => 'Avatar (Sera redimentionné a 200*200 max):',
+            'label' => 'Avatar (l\'image sera redimentionné à 200*200 donc preferez les images carrées):',
             'attr'=>array('class'=>'upload-avatar','onchange'=>"previewFile()"),
-            'constraints'=> array('image'=>new Image(array(/*
-                'maxSize'=>"50k",
-                'maxWidth'=>200,
-                'maxHeight'=>200*/
+            'constraints'=> array('image'=>new Image(array(
+                'maxSize'=>"10M",
             )))
         ))
         ->add('sign', 'textarea',array(
