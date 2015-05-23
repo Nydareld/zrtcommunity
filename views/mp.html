@@ -35,12 +35,12 @@
         </div>
         <div class="col-sm-3 col-md-2 messagerie-menu">
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="{{ app.request.basepath }}/messagerie/inbox">
+                <li id="mess-inbox"><a href="{{ app.request.basepath }}/messagerie/inbox">
                     {% if app.security.token.user.nonLu!=0 %}
                         <span class="badge badge-notify">{{ app.security.token.user.nonLu }}</span>
                     {% endif %}
                      Boite de récéption </a></li>
-                <li><a href="{{ app.request.basepath }}/messagerie/outbox">Boite d'envois</a></li>
+                <li id="mess-outbox"><a href="{{ app.request.basepath }}/messagerie/outbox">Boite d'envois</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-md-10">
