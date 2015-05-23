@@ -557,3 +557,7 @@ img.avatar-layout{
     position: relative;
     top:-30px;
 }
+.user-mod-preview{
+    width: 200px;
+    height: 200px;
+}
