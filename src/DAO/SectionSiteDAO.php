@@ -30,4 +30,29 @@ class SectionSiteDAO extends DAO{
             return $section;
         }
     }
+
+    public function loadAllSections(){
+        $sections= $this->getEm()->getRepository('Zrtcommunity\Domain\SectionSite')->findAll();
+        if ($sections === null){
+            throw new \Exception("No Categories");
+        }else{
+            return $sections;
+        }
+    }
+    public function findAllNamesAsArray(){
+        $names = array();
+
+        $cats= $this->loadAllSections();
+
+        if ($cats === null){
+            throw new \Exception("No sections");
+        }
+
+        foreach($cats as $cat){
+            $names[$cat->getId()] = $cat->getName();
+        }
+
+        return $names;
+    }
+
 }

@@ -95,6 +95,7 @@ class AdminController{
         $scatForm2->handleRequest($request);
 
         if($catForm->isSubmitted()&& $catForm->isValid()){
+            $cat->setSectionSite($app['dao.section']->find($catForm["sectionSite"]->getData()));
             $app['dao.categorie']->save($cat);
             return $app->redirect($request->getBasePath().'/admin/forum');
         }
