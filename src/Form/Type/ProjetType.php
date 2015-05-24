@@ -26,6 +26,10 @@ class ProjetType extends AbstractType{
             'mapped' => false,
             'choices'=>$regions
         ))
+        ->add('recrute','choice', array(
+            'label'=>'le projet recrute ?',
+            'choices'=>array(1=>"oui",0=>"non")
+        ))
         ->add('save', 'submit', array(
             'label' => 'Envoyer',
             'attr'=>array('class' => 'droite')
