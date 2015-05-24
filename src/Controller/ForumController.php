@@ -17,7 +17,9 @@ use \DateTime;
 class ForumController{
 
     public function forumAction(Request $request, Application $app){
-        $categories = $app['dao.categorie']->loadAllCategories();
+        $sectionName = "zrtcraft";
+        $section = $app['dao.section']->loadByName($sectionName);
+        $categories = $app['dao.categorie']->loadAllCategorieBySection($section);
 
         return $app['twig']->render( "forum.html",array(
             'title' => "Forum",

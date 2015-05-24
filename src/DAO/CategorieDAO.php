@@ -15,6 +15,15 @@ class CategorieDAO extends DAO{
             return $categorie;
         }
     }
+    public function loadAllCategorieBySection($section){
+        $categorie= $this->getEm()->getRepository('Zrtcommunity\Domain\Categorie')->findBy(array('sectionSite' => $section));
+
+        if ($categorie === null){
+            throw new \Exception("No Categorie matching name " . $name);
+        }else{
+            return $categorie;
+        }
+    }
     public function loadCategorieById($id){
         $categorie= $this->getEm()->getRepository('Zrtcommunity\Domain\Categorie')->findOneBy(array('id' => $id));
 

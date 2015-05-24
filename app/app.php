@@ -174,6 +174,11 @@ $app['dao.regle'] = $app->share(function ($app) {
     return new Zrtcommunity\DAO\RegleDAO($app['orm.em']);
 });
 
+//  === dao SectionSite ===
+$app['dao.section'] = $app->share(function ($app) {
+    return new Zrtcommunity\DAO\SectionSiteDAO($app['orm.em']);
+});
+
 //  === Home controller ===
 $app['Home.controller'] = $app->share(function ($app) {
     return new Zrtcommunity\Controller\HomeController();
