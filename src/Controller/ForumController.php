@@ -100,7 +100,7 @@ class ForumController{
                 }
             }
 
-            return $app->redirect($request->getBasePath().'/forum/topic/'.$topic->getId());
+            return $app->redirect($request->getBasePath().'/'.$section->getName().'/forum/topic/'.$topic->getId());
 
         }
         return $app['twig']->render( "topic.html",array(
@@ -123,7 +123,7 @@ class ForumController{
         }
         if ($messageForm->isSubmitted() && $messageForm->isValid()) {
             $app['dao.messForum']->save($message);
-            return $app->redirect($request->getBasePath().'/forum/topic/'.$message->getTopic()->getId());
+            return $app->redirect($request->getBasePath().'/'.$section->getName().'/forum/topic/'.$message->getTopic()->getId());
         }
         return $app['twig']->render( "basicForm.html",array(
             'section'=>$section->getName(),
@@ -159,7 +159,7 @@ class ForumController{
             $app['dao.topic']->save($topic);
             $app['dao.messForum']->save($message);
 
-            return $app->redirect($request->getBasePath().'/forum/topic/'.$topic->getId());
+            return $app->redirect($request->getBasePath().'/'.$section->getName().'/forum/topic/'.$topic->getId());
         }
         return $app['twig']->render( "basicForm.html",array(
             'section'=>$section->getName(),

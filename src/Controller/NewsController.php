@@ -83,7 +83,7 @@ class NewsController{
             $message->setNews($news);
             $app['dao.messNews']->save($message);
 
-            return $app->redirect($request->getBasePath().'/news/'.$news->getId());
+            return $app->redirect($request->getBasePath().'/'.$section->getName().'/news/'.$news->getId());
         }
         return $app['twig']->render( "unenews.html",array(
             'section'=>$section->getName(),
@@ -101,7 +101,7 @@ class NewsController{
         $messageForm->handleRequest($request);
         if ($messageForm->isSubmitted() && $messageForm->isValid() && $app['security']->isGranted('IS_AUTHENTICATED_FULLY')) {
             $app['dao.messNews']->save($message);
-            return $app->redirect($request->getBasePath().'/news/'.$message->getNews()->getId());
+            return $app->redirect($request->getBasePath().'/'.$section->getName().'/news/'.$message->getNews()->getId());
         }
         return $app['twig']->render( "basicForm.html",array(
             'section'=>$section->getName(),
