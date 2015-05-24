@@ -41,7 +41,7 @@ class NewsController{
     public function newsAction($sectionName,Request $request, Application $app){
         $section = $app['dao.section']->loadByName($sectionName);
 
-        $news = $app['dao.news']->loadAllNews();
+        $news = $app['dao.news']->loadAllNewsBySection($section);
 
         usort($news ,function ($a, $b){
             if ( $a->getDate() == $b->getDate() ) {
@@ -60,7 +60,7 @@ class NewsController{
 
     public function uneNewsAction($sectionName,$newsid,Request $request, Application $app){
         $section = $app['dao.section']->loadByName($sectionName);
-        $news = $app['dao.news']->loadAllNewsBySection($section);
+        $news = $app['dao.news']->loadNewsById($newsid);
 
         $messages = $news->getMessages()->getValues();
 

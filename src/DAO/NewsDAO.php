@@ -25,7 +25,7 @@ class NewsDAO extends DAO{
         if ($news === null){
             throw new \Exception("No News matching name " . $name);
         }else{
-            return $section;
+            return $news;
         }
     }
 
