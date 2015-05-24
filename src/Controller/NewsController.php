@@ -13,7 +13,9 @@ use \DateTime;
 
 class NewsController{
 
-    public function addNewsAction(Request $request, Application $app){
+    public function addNewsAction($sectionName,Request $request, Application $app){
+        $section = $app['dao.section']->loadByName($sectionName);
+
         $news = new News();
         $newsForm = $app['form.factory']->create(new NewsType(), $news);
         $newsForm->handleRequest($request);
@@ -21,12 +23,14 @@ class NewsController{
             $user= $app['security']->getToken()->getUser();
             $news->setCreator($user);
             $news->setDate(new DateTime());
+            $news->setSection($section);
 
             $app['dao.news']->save($news);
 
             return $app->redirect($request->getBasePath().'/news/'.$news->getId());
         }
         return $app['twig']->render( "basicForm.html",array(
+            'section'=>$section->getName(),
             'title' => "Nouvelle news",
             'form' => $newsForm->createView(),
             'editor' => 'ckeditor-full',
@@ -34,7 +38,9 @@ class NewsController{
         );
     }
 
-    public function newsAction(Request $request, Application $app){
+    public function newsAction($sectionName,Request $request, Application $app){
+        $section = $app['dao.section']->loadByName($sectionName);
+
         $news = $app['dao.news']->loadAllNews();
 
         usort($news ,function ($a, $b){
@@ -45,14 +51,16 @@ class NewsController{
         });
 
         return $app['twig']->render( "news.html",array(
+            'section'=>$section->getName(),
             'title' => "News",
             'news' => $news,
             )
         );
     }
 
-    public function uneNewsAction($newsid,Request $request, Application $app){
-        $news = $app['dao.news']->loadNewsById($newsid);
+    public function uneNewsAction($sectionName,$newsid,Request $request, Application $app){
+        $section = $app['dao.section']->loadByName($sectionName);
+        $news = $app['dao.news']->loadAllNewsBySection($section);
 
         $messages = $news->getMessages()->getValues();
 
@@ -78,6 +86,7 @@ class NewsController{
             return $app->redirect($request->getBasePath().'/news/'.$news->getId());
         }
         return $app['twig']->render( "unenews.html",array(
+            'section'=>$section->getName(),
             'title' => "News",
             'news' => $news,
             'postForm' => $messageForm->createView(),
@@ -85,7 +94,8 @@ class NewsController{
         );
     }
 
-    public function editMessageAction($messageid,Request $request, Application $app){
+    public function editMessageAction($sectionName,$messageid,Request $request, Application $app){
+        $section = $app['dao.section']->loadByName($sectionName);
         $message = $app['dao.messNews']->loadMessageById($messageid);
         $messageForm = $app['form.factory']->create(new MessageType(), $message);
         $messageForm->handleRequest($request);
@@ -94,6 +104,7 @@ class NewsController{
             return $app->redirect($request->getBasePath().'/news/'.$message->getNews()->getId());
         }
         return $app['twig']->render( "basicForm.html",array(
+            'section'=>$section->getName(),
             'title' => "News",
             'form' => $messageForm->createView(),
             )
