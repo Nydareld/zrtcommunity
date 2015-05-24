@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends 'layout-zrtcraft.html' %}
 {% block content %}
 
     <div id="lalist" class="row messagerie box jplist">
@@ -110,10 +110,6 @@ $('document').ready(function(){
 
 
 </script>
-
-{% endblock %}
-
-{% block includeJS %}
 <script>
 document.getElementById( "{% block active %}{% endblock %}").className += " active";
 </script>
