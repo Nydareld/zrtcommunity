@@ -25,7 +25,7 @@ $app->match('/member/edit', "Zrtcommunity\Controller\UserController::editProfile
 $app->match('/member/questionaire', "Zrtcommunity\Controller\UserController::questionnaireProfileAction");
 
 //forum page d'accueil
-$app->match('/forum', "Zrtcommunity\Controller\ForumController::forumAction");
+$app->match('/{sectionName}/forum', "Zrtcommunity\Controller\ForumController::forumAction");
 
 //Forum page de sous catégorie
 $app->match('/forum/souscategorie/{scatid}', "Zrtcommunity\Controller\ForumController::scatAction");
