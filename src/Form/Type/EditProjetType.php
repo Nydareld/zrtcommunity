@@ -21,6 +21,10 @@ class EditProjetType extends AbstractType{
             'label'=>'le projet recrute ?',
             'choices'=>array(1=>"oui",0=>"non")
         ))
+        ->add('finished','choice', array(
+            'label'=>'le projet est terminé ?',
+            'choices'=>array(1=>"oui",0=>"non")
+        ))
         ->add('save', 'submit', array(
             'label' => 'Envoyer',
             'attr'=>array('class' => 'droite')
