@@ -23,6 +23,26 @@ a{
     margin-left:20px;
     border: 2px solid #54b973;
 }
+#nav1{
+    padding-right: 100px;
+}
+#nav1 > div > ul > li > a{
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+#nav1 > div > ul > li > a:hover{
+    background-color: transparent;
+}
+#nav1 > div > ul > li > a:hover > img{
+    border: 2px solid #129936;
+}
 .logoLaBonneSection{
     margin-top: 1px;
 }
