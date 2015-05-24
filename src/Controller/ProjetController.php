@@ -40,6 +40,7 @@ class ProjetController{
             return $app->redirect($request->getBasePath().'/projet/'.$projet->getId());
         }
         return $app['twig']->render( "basicForm.html",array(
+            'section'=>'zrtcraft',
             'title' => "Nouveau projet",
             'form' => $projetForm->createView(),
         ));
@@ -58,6 +59,7 @@ class ProjetController{
             return $app->redirect($request->getBasePath().'/projet/'.$projet->getId());
         }
         return $app['twig']->render( "basicForm.html",array(
+            'section'=>'zrtcraft',
             'title' => "Modification projet",
             'form' => $projetForm->createView(),
         ));
@@ -74,6 +76,7 @@ class ProjetController{
         });
 
         return $app['twig']->render( "projet.html",array(
+            'section'=>'zrtcraft',
             'title' => "Projets",
             'projets' => $projets,
             )
@@ -83,6 +86,7 @@ class ProjetController{
     public function regionsAction(Request $request, Application $app){
         $regions = $app['dao.region']->loadAllRegion();
         return $app['twig']->render( "region.html",array(
+            'section'=>'zrtcraft',
             'title' => "Regions",
             'regions' => $regions,
             )
@@ -92,6 +96,7 @@ class ProjetController{
     public function unProjetAction($projetid, Request $request, Application $app){
         $projet = $app['dao.projet']->loadProjetById($projetid);
         return $app['twig']->render( "unProjet.html",array(
+            'section'=>'zrtcraft',
             'title' => "Projet",
             'projet' => $projet,
             )
@@ -100,6 +105,7 @@ class ProjetController{
     public function uneRegionAction($regionid, Request $request, Application $app){
         $region = $app['dao.region']->loadRegionById($regionid);
         return $app['twig']->render( "uneRegion.html",array(
+            'section'=>'zrtcraft',
             'title' => "Region",
             'region' => $region,
             )
@@ -124,6 +130,7 @@ class ProjetController{
                 return $app->redirect($request->getBasePath().'/projet/'.$projet->getId());
             }
             return $app['twig']->render('acceptProjetForm.html', array(
+                'section'=>'zrtcraft',
                 'title' => "Validation projet",
                 "form" => $projetForm->createView(),
             ));
@@ -144,6 +151,7 @@ class ProjetController{
                 return $app->redirect($request->getBasePath().'/messagerie/message/'.$mp->getId());
             }
             return $app['twig']->render('refusProjetForm.html', array(
+                'section'=>'zrtcraft',
                 'title' => "Refus projet",
                 "form" => $messageForm->createView(),
             ));
