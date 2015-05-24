@@ -1,56 +1,4 @@
 <?php
-
-//Page d'accueil
-$app->get('/',"Zrtcommunity\Controller\HomeController::indexAction");
-
-//page du reglement
-$app->match('/reglement', "Zrtcommunity\Controller\HomeController::regleAction");
-
-//Page de connexion
-$app->get('/login',"Zrtcommunity\Controller\HomeController::loginAction")->bind('login');
-
-//Page d'inscription
-$app->match('/inscription', "Zrtcommunity\Controller\UserController::addUserAction")->bind('inscription');
-
-//Membres liste des membres
-$app->get('/membres', "Zrtcommunity\Controller\UserController::usersAction");
-
-//Membres Info d'un membere
-$app->match('/membre/{username}', "Zrtcommunity\Controller\UserController::userProfileAction");
-
-//Membre edit de sois. /member/edit
-$app->match('/member/edit', "Zrtcommunity\Controller\UserController::editProfileAction");
-
-//Membre remplir questionaire
-$app->match('/member/questionaire', "Zrtcommunity\Controller\UserController::questionnaireProfileAction");
-
-//forum page d'accueil
-$app->match('/{sectionName}/forum', "Zrtcommunity\Controller\ForumController::forumAction");
-
-//Forum page de sous catégorie
-$app->match('/forum/souscategorie/{scatid}', "Zrtcommunity\Controller\ForumController::scatAction");
-
-//Forum page d'un topic
-$app->match('/forum/topic/{topicid}', "Zrtcommunity\Controller\ForumController::topicAction");
-
-//Forum page d'édition d'un message forum
-$app->match('/forum/editmessage/{messageid}', "Zrtcommunity\Controller\ForumController::editMessageAction");
-
-//Forum page d'ajout de topic
-$app->match('/forum/souscategorie/newtopic/{scatid}', "Zrtcommunity\Controller\ForumController::addtopicAction");
-
-//News page des news
-$app->match('/news', "Zrtcommunity\Controller\NewsController::newsAction");
-
-//News page d'une news
-$app->match('/news/{newsid}', "Zrtcommunity\Controller\NewsController::uneNewsAction");
-
-//News page d'ajout de news
-$app->match('/newnews', "Zrtcommunity\Controller\NewsController::addNewsAction");
-
-//News page d'édition d'un message news
-$app->match('/news/editmessage/{messageid}', "Zrtcommunity\Controller\NewsController::editMessageAction");
-
 //Admin page d'accueil du panel
 $app->match('/admin',"Zrtcommunity\Controller\AdminController::adminAction");
 
@@ -92,6 +40,58 @@ $app->match('/admin/forum/categorie/delete/{idCat}',"Zrtcommunity\Controller\Adm
 
 //Admin route supression scat
 $app->match('/admin/forum/souscategorie/delete/{idSCat}',"Zrtcommunity\Controller\AdminController::delScatAction");
+
+//Page d'accueil
+$app->get('/',"Zrtcommunity\Controller\HomeController::indexAction");
+
+//page du reglement
+$app->match('/reglement', "Zrtcommunity\Controller\HomeController::regleAction");
+
+//Page de connexion
+$app->get('/login',"Zrtcommunity\Controller\HomeController::loginAction")->bind('login');
+
+//Page d'inscription
+$app->match('/inscription', "Zrtcommunity\Controller\UserController::addUserAction")->bind('inscription');
+
+//Membres liste des membres
+$app->get('/membres', "Zrtcommunity\Controller\UserController::usersAction");
+
+//Membres Info d'un membere
+$app->match('/membre/{username}', "Zrtcommunity\Controller\UserController::userProfileAction");
+
+//Membre edit de sois. /member/edit
+$app->match('/member/edit', "Zrtcommunity\Controller\UserController::editProfileAction");
+
+//Membre remplir questionaire
+$app->match('/member/questionaire', "Zrtcommunity\Controller\UserController::questionnaireProfileAction");
+
+//forum page d'accueil
+$app->match('/{sectionName}/forum', "Zrtcommunity\Controller\ForumController::forumAction");
+
+//Forum page de sous catégorie
+$app->match('/{sectionName}/forum/souscategorie/{scatid}', "Zrtcommunity\Controller\ForumController::scatAction");
+
+//Forum page d'un topic
+$app->match('/{sectionName}/forum/topic/{topicid}', "Zrtcommunity\Controller\ForumController::topicAction");
+
+//Forum page d'édition d'un message forum
+$app->match('/{sectionName}/forum/editmessage/{messageid}', "Zrtcommunity\Controller\ForumController::editMessageAction");
+
+//Forum page d'ajout de topic
+$app->match('/{sectionName}/forum/souscategorie/newtopic/{scatid}', "Zrtcommunity\Controller\ForumController::addtopicAction");
+
+//News page des news
+$app->match('/{sectionName}/news', "Zrtcommunity\Controller\NewsController::newsAction");
+
+//News page d'une news
+$app->match('/{sectionName}/news/{newsid}', "Zrtcommunity\Controller\NewsController::uneNewsAction");
+
+//News page d'ajout de news
+$app->match('/{sectionName}/newnews', "Zrtcommunity\Controller\NewsController::addNewsAction");
+
+//News page d'édition d'un message news
+$app->match('/{sectionName}/news/editmessage/{messageid}', "Zrtcommunity\Controller\NewsController::editMessageAction");
+
 
 //Projet page d'accueil des projets
 $app->match('/projet', "Zrtcommunity\Controller\ProjetController::projectAction");

@@ -1,4 +1,4 @@
-{% extends 'layout-zrtcraft.html' %}
+{% extends 'layout-'~section~'.html' %}
 
 {% block content %}
 <div id="lalist" class="box jplist">
@@ -9,7 +9,7 @@
             <th>
                 <h3>{{scat.name}}</h3>
                 {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a href="{{ app.request.basepath }}/forum/souscategorie/newtopic/{{scat.id}}" class="droite">Nouveau sujet</a>
+                    <a href="{{ app.request.basepath }}/{{section}}/forum/souscategorie/newtopic/{{scat.id}}" class="droite">Nouveau sujet</a>
                 {% endif %}
             </th>
             <th class="cell-stat-2x text-center hidden-xs hidden-sm">Nombre de réponses</th>
@@ -22,7 +22,7 @@
             <td class="text-center"><i class="fa fa-question fa-2x text-primary"></i></td>
             <td>
                 <h4>
-                    <a href="{{ app.request.basepath }}/forum/topic/{{topic.id}}">{{topic.name}}</a><br>
+                    <a href="{{ app.request.basepath }}/{{section}}/forum/topic/{{topic.id}}">{{topic.name}}</a><br>
                     <p id="scat-desc">{{topic.description}}</p>
                 </h4>
             </td>

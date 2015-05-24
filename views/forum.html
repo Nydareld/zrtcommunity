@@ -1,4 +1,4 @@
-{% extends 'layout-zrtcraft.html' %}
+{% extends 'layout-'~section~'.html' %}
 {% block content %}
 
 <div id="panel-gauche" class="col-md-3">
@@ -37,10 +37,10 @@
             <td class="text-center"><i class="fa fa-question fa-2x text-primary"></i></td>
             <td>
                 <h4>
-                    <a href="{{ app.request.basepath }}/forum/souscategorie/{{scat.id}}">{{scat.name}}</a><br>
+                    <a href="{{ app.request.basepath }}/{{section}}/forum/souscategorie/{{scat.id}}">{{scat.name}}</a><br>
                     <p id="scat-desc">{{scat.description}}</p>
                     {% for sscat in scat.childs %}
-                    <a href="{{ app.request.basepath }}/forum/souscategorie/{{sscat.id}}" class="sscat">{{sscat.name}},</a>
+                    <a href="{{ app.request.basepath }}/{{section}}/forum/souscategorie/{{sscat.id}}" class="sscat">{{sscat.name}},</a>
                     {% endfor %}
                 </h4>
             </td>
@@ -49,7 +49,7 @@
             <td class="hidden-xs hidden-sm last-message">
             {% if scat.lastMessage is not null %}
                 dans le topic
-                <a href="{{ app.request.basepath }}/forum/topic/{{scat.lastMessage.topic.id}}">{{scat.lastMessage.topic.name}}</a>
+                <a href="{{ app.request.basepath }}/{{section}}/forum/topic/{{scat.lastMessage.topic.id}}">{{scat.lastMessage.topic.name}}</a>
                 par <a href="{{ app.request.basepath }}/membre/{{scat.lastMessage.auteur.username}}">{{scat.lastMessage.auteur.username}}</a><br>
                 le {{scat.lastMessage.date.format('Y-m-d')}} à {{scat.lastMessage.date.format('H:i:s')}}
             {% else%}

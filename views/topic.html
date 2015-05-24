@@ -1,5 +1,4 @@
-{% extends 'layout-zrtcraft.html' %}
-
+{% extends 'layout-'~section~'.html' %}
 {% block content %}
 <div id="lalist" class="box jplist">
 
@@ -52,7 +51,7 @@
             <p class="topic-message-date">le {{topic.messages[0].date.format('Y-m-d')}} à {{topic.messages[0].date.format('H:i:s')}}</p>
             <component class="droite">
             {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') and app.security.token.user == topic.messages[0].auteur %}
-            <a href="{{ app.request.basepath }}/forum/editmessage/{{topic.messages[0].id}}">
+            <a href="{{ app.request.basepath }}/{{section}}/forum/editmessage/{{topic.messages[0].id}}">
                 <input type="submit" value="éditer"></input>
             </a>
             {% endif %}
@@ -79,7 +78,7 @@
         <td class="topic-message-contenu">
             <component class="droite">
             {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') and app.security.token.user == message.auteur %}
-            <a href="{{ app.request.basepath }}/forum/editmessage/{{message.id}}">
+            <a href="{{ app.request.basepath }}/{{section}}/forum/editmessage/{{message.id}}">
                 <input type="submit" value="éditer"></input>
             </a>
             {% endif %}

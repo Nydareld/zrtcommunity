@@ -22,13 +22,16 @@ class ForumController{
         $categories = $app['dao.categorie']->loadAllCategorieBySection($section);
 
         return $app['twig']->render( "forum.html",array(
+            'section'=>$section->getName(),
             'title' => "Forum",
             'categories' => $categories,
             )
         );
     }
 
-    public function scatAction($scatid,Request $request, Application $app){
+    public function scatAction($sectionName,$scatid,Request $request, Application $app){
+        $section = $app['dao.section']->loadByName($sectionName);
+
         $scat = $app['dao.scat']->loadSousCategorieById($scatid);
 
         $topics = $scat->getTopics()->getValues();
@@ -46,13 +49,16 @@ class ForumController{
         }
 
         return $app['twig']->render( "sousCategorie.html",array(
+            'section'=>$section->getName(),
             'title' => "Forum",
             'scat' => $scat,
             )
         );
     }
 
-    public function topicAction($topicid,Request $request, Application $app){
+    public function topicAction($sectionName,$topicid,Request $request, Application $app){
+        $section = $app['dao.section']->loadByName($sectionName);
+
         $topic = $app['dao.topic']->loadTopicById($topicid);
 
         if( $topic->getSousCategorie()->getAdmin() && !$app['security']->isGranted('ROLE_MODO') ){
@@ -98,6 +104,7 @@ class ForumController{
 
         }
         return $app['twig']->render( "topic.html",array(
+            'section'=>$section->getName(),
             'title' => "Forum",
             'topic' => $topic,
             'postForm' => $messageForm->createView(),
@@ -105,7 +112,9 @@ class ForumController{
         );
     }
 
-    public function editMessageAction($messageid,Request $request, Application $app){
+    public function editMessageAction($sectionName,$messageid,Request $request, Application $app){
+        $section = $app['dao.section']->loadByName($sectionName);
+
         $message = $app['dao.messForum']->loadMessageById($messageid);
         $messageForm = $app['form.factory']->create(new MessageType(), $message);
         $messageForm->handleRequest($request);
@@ -117,13 +126,16 @@ class ForumController{
             return $app->redirect($request->getBasePath().'/forum/topic/'.$message->getTopic()->getId());
         }
         return $app['twig']->render( "basicForm.html",array(
+            'section'=>$section->getName(),
             'title' => "Forum",
             'form' => $messageForm->createView(),
             )
         );
     }
 
-    public function addtopicAction($scatid,Request $request, Application $app){
+    public function addtopicAction($sectionName,$scatid,Request $request, Application $app){
+        $section = $app['dao.section']->loadByName($sectionName);
+
         $topic = new Topic();
         $message = new MessageForum();
 
@@ -150,6 +162,7 @@ class ForumController{
             return $app->redirect($request->getBasePath().'/forum/topic/'.$topic->getId());
         }
         return $app['twig']->render( "basicForm.html",array(
+            'section'=>$section->getName(),
             'title' => "Forum",
             'form' => $topicForm->createView(),
             )
