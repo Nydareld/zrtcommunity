@@ -28,6 +28,11 @@ class SectionSite{
      */
     private $categories;
 
+    /**
+     * @OneToMany(targetEntity="News", mappedBy="sectionSite", orphanRemoval=true)
+     */
+    private $news;
+
     public function getId(){
   		return $this->id;
   	}

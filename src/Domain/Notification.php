@@ -31,7 +31,7 @@ class Notification{
 	public function setId($id){
 		$this->id = $id;
 	}
-    
+
     public function getMessage(){
 		return $this->message;
 	}

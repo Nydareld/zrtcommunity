@@ -35,6 +35,11 @@ class News{
      */
     protected $messages;
 
+    /**
+     * @ManyToOne(targetEntity="SectionSite", inversedBy="news")
+     */
+    protected $sectionSite;
+
     public function getId(){
 		return $this->id;
 	}
