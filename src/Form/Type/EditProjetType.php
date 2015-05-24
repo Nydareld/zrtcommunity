@@ -17,6 +17,10 @@ class EditProjetType extends AbstractType{
             'max_length' => 10000,
             'attr'=>array('class'=>'ckeditor')
         ))
+        ->add('recrute','choice', array(
+            'label'=>'le projet recrute ?',
+            'choices'=>array(1=>"oui",0=>"non")
+        ))
         ->add('save', 'submit', array(
             'label' => 'Envoyer',
             'attr'=>array('class' => 'droite')
