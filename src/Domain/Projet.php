@@ -44,6 +44,12 @@ class Projet{
     private $finished;
 
     /**
+     * @Column(type="boolean")
+     * @var boolean
+     */
+    private $recrute;
+
+    /**
      * @Column(type="integer",nullable=true)
      * @var int
      */
@@ -156,6 +162,14 @@ class Projet{
 
 	public function setCreateur($createur){
 		$this->createur = $createur;
+	}
+
+    public function getRecrute(){
+		return $this->recrute;
+	}
+
+	public function setRecrute($recrute){
+		$this->recrute = $recrute;
 	}
 
 }
