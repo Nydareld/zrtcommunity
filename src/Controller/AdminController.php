@@ -279,7 +279,10 @@ class AdminController{
                 throw new \Exception("vous ne pouvez pas modifier les droits d'un membre au rang égal ou superieur");
             }elseif ( $current->getRoleNbr() < $user->getRoleNbr() ){ // ne pas atribuer des roles superieux au sien
                 throw new \Exception("vous ne pouvez pas atribuer un role superieur au votre");
-            }else{
+            }elseif ( $current == $user ){
+                throw new \Exception("vous ne pouvez pas modifier vos droits");
+            }
+            else{
                 $app['dao.user']->save($user);
             }
             return $app->redirect($request->getBasePath().'/admin/users/'.$user->getId());
