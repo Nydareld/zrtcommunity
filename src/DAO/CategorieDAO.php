@@ -60,7 +60,7 @@ class CategorieDAO extends DAO{
         }
 
         foreach($cats as $cat){
-            $names[$cat->getId()] = $cat->getName();
+            $names[$cat->getId()] = $cat->path();
         }
 
         return $names;
