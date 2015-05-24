@@ -3,7 +3,7 @@
 <h2>Liste des news</h2>
 {% if is_granted('ROLE_MODO') %}
 <button  class="droite boutton-news">
-    <a href="{{ app.request.basepath }}/newnews">Ajouter</a>
+    <a href="{{ app.request.basepath }}/{{section}}/newnews">Ajouter</a>
 </button>
 {% endif %}
 <div class="row">

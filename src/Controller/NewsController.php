@@ -23,11 +23,11 @@ class NewsController{
             $user= $app['security']->getToken()->getUser();
             $news->setCreator($user);
             $news->setDate(new DateTime());
-            $news->setSection($section);
+            $news->setSectionSite($section);
 
             $app['dao.news']->save($news);
 
-            return $app->redirect($request->getBasePath().'/news/'.$news->getId());
+            return $app->redirect($request->getBasePath().'/'.$section->getName().'/news/'.$news->getId());
         }
         return $app['twig']->render( "basicForm.html",array(
             'section'=>$section->getName(),
