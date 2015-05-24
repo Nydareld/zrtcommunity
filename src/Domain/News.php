@@ -40,6 +40,14 @@ class News{
      */
     protected $sectionSite;
 
+    public function getSectionSite(){
+        return $this->sectionSite;
+    }
+
+    public function setSectionSite($sectionSite){
+        $this->sectionSite = $sectionSite;
+    }
+
     public function getId(){
 		return $this->id;
 	}
