@@ -446,11 +446,17 @@ td.topic-message-contenu > hr{
     padding:10px;
     background-color:#fff;
 }
+.listeProjet .cell-stat-1x{
+    width:4em;
+}
+.projet-check-center i{
+    margin-right: 10px;
+}
 .listeProjet .cell-stat-2x{
-    width:7em;
+    width:8em;
 }
 .listeProjet .cell-stat-4x{
-    width:15em;
+    width:16em;
 }
 .uneregion h3{
     margin-top:0px;

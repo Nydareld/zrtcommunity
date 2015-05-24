@@ -18,8 +18,8 @@ Noubliez pas de lire la description des régions afin d'en choisir une qui cores
         <th class="cell-stat-4x">Région</th>
         <th class="cell-stat-2x">Nombre de membres</th>
         <th class="cell-stat-2x">Date</th>
-        <th class="cell-stat-2x">Accépté</th>
-        <th class="cell-stat-2x">Terminé</th>
+        <th class="cell-stat-1x">Recrute</th>
+        <th class="cell-stat-1x">Terminé</th>
     </tr>
 </thead>
 <tbody>
@@ -29,8 +29,20 @@ Noubliez pas de lire la description des régions afin d'en choisir une qui cores
     <td><a href="{{ app.request.basepath }}/projet/region/{{projet.region.id}}">{{projet.region.name}}</td>
     <td>{{projet.membresProjets|length}}</td>
     <td>{{projet.date|date("m/d/Y")}}</td>
-    <td>{{projet.accepted ? 'oui':'non'}}</td>
-    <td>{{projet.finished ? 'oui':'non'}}</td>
+    <td class="projet-check-center">
+        {% if projet.recrute %}
+        <i class="fa fa-2x green droite fa-check-circle-o"></i>
+        {% else %}
+        <i class="fa fa-2x red droite fa-times-circle-o"></i>
+        {% endif %}
+    </td>
+    <td class="projet-check-center">
+        {% if projet.finished %}
+        <i class="fa fa-2x green droite fa-check-circle-o"></i>
+        {% else %}
+        <i class="fa fa-2x red droite fa-times-circle-o"></i>
+        {% endif %}
+    </td>
 </tr>
 {% endfor %}
 </tbody>
