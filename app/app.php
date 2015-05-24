@@ -42,7 +42,7 @@ $app['security.firewalls'] = array(
 $app['security.role_hierarchy'] = array(
         'ROLE_SUPERADMIN' => array('ROLE_ADMIN'),
         'ROLE_ADMIN' => array('ROLE_MODO+'),
-        'ROLE_MODO+' => array('ROLE_MODO'),
+        'ROLE_MODOPLUS' => array('ROLE_MODO'),
         'ROLE_MODO' => array('ROLE_TARD'),
         'ROLE_TARD' => array('ROLE_USER'),
     );

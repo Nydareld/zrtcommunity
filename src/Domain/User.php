@@ -207,7 +207,7 @@ class User implements UserInterface
     public function getRoleHumain(){
         $zbra=array(
             'ROLE_ADMIN'=>'Administrateur',
-            'ROLE_MODO+'=>'Modérateur+',
+            'ROLE_MODOPLUS'=>'Modérateur+',
             'ROLE_MODO'=>'Modérateur',
             'ROLE_TARD'=>'Tard',
             'ROLE_USER'=>'Péon');
@@ -218,9 +218,9 @@ class User implements UserInterface
             'ROLE_USER'=>1,
             'ROLE_TARD'=>2,
             'ROLE_MODO'=>3,
-            'ROLE_MODO+'=>5,
-            'ROLE_ADMIN'=>6,
-            'ROLE_SUPERADMIN'=>7
+            'ROLE_MODOPLUS'=>4,
+            'ROLE_ADMIN'=>5,
+            'ROLE_SUPERADMIN'=>6
             );
         return $zbra[$this->role];
     }
