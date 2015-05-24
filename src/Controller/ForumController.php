@@ -17,7 +17,7 @@ use \DateTime;
 class ForumController{
 
     public function forumAction($sectionName, Request $request, Application $app){
-        $sectionName = "zrtcraft";
+        //$sectionName = "zrtcraft";
         $section = $app['dao.section']->loadByName($sectionName);
         $categories = $app['dao.categorie']->loadAllCategorieBySection($section);
 
