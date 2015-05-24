@@ -112,3 +112,9 @@ $('document').ready(function(){
 </script>
 
 {% endblock %}
+
+{% block includeJS %}
+<script>
+document.getElementById( "{% block active %}{% endblock %}").className += " active";
+</script>
+{% endblock %}
