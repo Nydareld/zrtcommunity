@@ -18,11 +18,32 @@ class Categorie extends ForumContainer{
      */
     private $childs;
 
-    public function getId(){
-		return $this->id;
-	}
+    /**
+     * @ManyToOne(targetEntity="SectionSite", inversedBy="categories")
+     */
+    protected $sectionSite;
 
-    public function getChilds(){
-		return $this->childs;
-	}
+    public function getId(){
+  		return $this->id;
+  	}
+
+  	public function setId($id){
+  		$this->id = $id;
+  	}
+
+  	public function getChilds(){
+  		return $this->childs;
+  	}
+
+  	public function setChilds($childs){
+  		$this->childs = $childs;
+  	}
+
+  	public function getSectionSite(){
+  		return $this->sectionSite;
+  	}
+
+  	public function setSectionSite($sectionSite){
+  		$this->sectionSite = $sectionSite;
+  	}
 }
