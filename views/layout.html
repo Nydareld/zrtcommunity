@@ -29,12 +29,9 @@
             </div>
 
             <ul class="nav navbar-nav navbar-right">
-                <li id="nav-acceuil"><a href="{{ app.request.basepath }}/">Accueil</a></li>
-                <li id="nav-forum"><a href="{{ app.request.basepath }}/forum">Forum</a></li>
-                <li id="nav-news"><a href="{{ app.request.basepath }}/news">News</a></li>
-                <li id="nav-pres"><a href="{{ app.request.basepath }}/">Présentation</a></li>
-                <li id="nav-projet"><a href="{{ app.request.basepath }}/projet">Projets</a></li>
-                <li id="nav-reglement"><a href="{{ app.request.basepath }}/reglement">Réglment</a></li>
+                <li><img class="logoSection img-circle" alt="ZrtCommunity" src="{{ app.request.basepath }}/img/Section/fougere.png"></li>
+                <li><img class="logoSection img-circle" alt="ZrtCommunity" src="{{ app.request.basepath }}/img/Section/zrtcraft.png"></li>
+                <li><img class="logoSection img-circle" alt="ZrtCommunity" src="{{ app.request.basepath }}/img/Section/wow-horde.png"></li>
             </ul>
         </div>
     </nav>
@@ -46,6 +43,9 @@
             <div class="navbar-header">
 
             </div>
+            <ul class="nav navbar-nav navbar-left">
+                {% block navbarLeft %}{% endblock %}
+            </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if is_granted('ROLE_MODO') %}
                 <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/admin">Panel Admin</a></li>

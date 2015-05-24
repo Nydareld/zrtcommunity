@@ -16,9 +16,15 @@ a{
 .navbar{
     min-height:40px;
 }
-#nav1 a:hover{
-  color: #111;
-  /*background-color: transparent;*/
+.logoSection,.logoLaBonneSection{
+    height: 36px;
+    width: 36px;
+    margin-top:-3px;
+    margin-left:20px;
+    border: 2px solid #54b973;
+}
+.logoLaBonneSection{
+    margin-top: 1px;
 }
 
 #minilogo{
@@ -30,25 +36,25 @@ a{
     background-color: #fff;
     height:40px;
 }
-#nav1 li{
+#navSec li{
     height:30px;
     margin-left:5px;
     margin-right:5px;
     border: solid 1px;
     border-color: #fff;
 }
-#nav1 li a{
+#navSec li a{
     height:28px;
     border-radius: 30px;
 }
-#nav1 li a:hover{
+#navSec li a:hover{
     background-color: transparent;
 }
-#nav1 li a{
+#navSec li a{
     line-height:0px;
     text-align:center;
 }
-#nav1 li.active, #nav1 li:hover{
+#navSec li.active, #navSec li:hover{
     border-radius: 28px;
     border: solid 1px;
     border-color: #51bb71;
@@ -59,10 +65,11 @@ a{
     color: #54b973;
 }
 
-#nav1 li.active a:hover{
+#navSec li.active a:hover{
     color: #36a200;
 }
 #nav2{
+    padding-left: 50px;
     position:absolute;
     width: 100%;
     height:40px;
