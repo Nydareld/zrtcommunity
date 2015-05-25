@@ -15,6 +15,175 @@ Vous pouvez chercher un projet dans la liste grace aux parametres de recherche o
 Noubliez pas de lire la description des régions afin d'en choisir une qui coresspond a votre projet.
 </p>
 
+<div id="lalist" class="box jplist row">
+
+    <div class="jplist-panel box panel-bottom droite" style="margin-bottom:20px;">
+        <div
+           class="jplist-drop-down"
+           data-control-type="items-per-page-drop-down"
+           data-control-name="paging"
+           data-control-action="paging">
+           <ul>
+               <li><span data-number="10"> 10 par page </span></li>
+               <li><span data-number="25" data-default="true"> 25 par page </span></li>
+               <li><span data-number="50"> 50 par page </span></li>
+               <li><span data-number="all"> view all </span></li>
+           </ul>
+                    </div>
+
+                    <div
+                       class="jplist-label"
+                       data-type="{start} - {end} of {all}"
+                       data-control-type="pagination-info"
+                       data-control-name="paging"
+                       data-control-action="paging">
+                   </div>
+
+                    <div
+                       class="jplist-pagination"
+                       data-control-type="pagination"
+                       data-control-name="paging"
+                       data-control-action="paging">
+                    </div>
+
+                    <select
+                 class="jplist-select"
+                 data-control-type="sort-select"
+                 data-control-name="sort"
+                 data-control-action="sort"
+                 data-datetime-format="{day}/{month}/{year}">
+
+                   <option data-path="default">Trier par</option>
+
+                   <option data-path=".projetName" data-order="asc" data-type="text">Nom A-Z</option>
+                   <option data-path=".projetName" data-order="desc" data-type="text">Nom Z-A</option>
+
+                   <option data-path=".region" data-order="asc" data-type="text">Region A-Z</option>
+                   <option data-path=".region" data-order="desc" data-type="text">Region Z-A</option>
+
+                   <option data-path=".date" data-order="asc" data-type="datetime">Date chronologique</option>
+                   <option data-path=".date" data-order="desc" data-type="datetime">Date antichronologique</option>
+
+              </select>
+
+              <div class="text-filter-box">
+
+                 <i class="fa fa-pencil jplist-icon"></i>
+
+                 <!--[if lt IE 10]>
+                 <div class="jplist-label">Trier par pseudo:</div>
+                 <![endif]-->
+
+                 <input
+                   data-path=".projetName"
+                   type="text"
+                   value=""
+                   placeholder="Chercher par Nom"
+                   data-control-type="textbox"
+                   data-control-name="nom-filter"
+                   data-control-action="filter"
+                 />
+              </div>
+
+              <div class="text-filter-box">
+
+                 <i class="fa fa-pencil jplist-icon"></i>
+
+                 <!--[if lt IE 10]>
+                 <div class="jplist-label">Trier par rang</div>
+                 <![endif]-->
+
+                 <input
+                   data-path=".region"
+                   type="text"
+                   value=""
+                   placeholder="Chercher par Region"
+                   data-control-type="textbox"
+                   data-control-name="region-filter"
+                   data-control-action="filter"
+                 />
+              </div>
+
+              <div class="jplist-group">
+                  <input
+                    data-control-type="radio-buttons-filters"
+                    data-control-action="filter"
+                    data-control-name="default-recrute"
+                    data-path="default"
+
+                    id="default-recrute"
+                    type="radio"
+                    name="jplist"
+                    checked="checked"
+                  />
+                <label for="default-recrute">Tous</label>
+
+                <input
+                  data-control-type="radio-buttons-filters"
+                  data-control-action="filter"
+                  data-control-name="recrute-true"
+                  data-path=".recrute-true"
+
+                  id="recrute-true"
+                  type="radio"
+                  name="jplist"
+                />
+                <label for="recrute-true">Recrute</label>
+
+                <input
+                  data-control-type="radio-buttons-filters"
+                  data-control-action="filter"
+                  data-control-name="recrute-false"
+                  data-path=".recrute-false"
+
+                  id="recrute-false"
+                  type="radio"
+                  name="jplist"
+                />
+                <label for="recrute-true">Ne recrute pas</label>
+              </div>
+
+              <div class="jplist-group">
+                  <input
+                    data-control-type="radio-buttons-filters"
+                    data-control-action="filter"
+                    data-control-name="default-termine"
+                    data-path="default"
+
+                    id="default-recrute"
+                    type="radio"
+                    name="jplist"
+                    checked="checked"
+                  />
+                <label for="default-termine">Tous</label>
+
+                <input
+                  data-control-type="radio-buttons-filters"
+                  data-control-action="filter"
+                  data-control-name="termine-true"
+                  data-path=".termine-true"
+
+                  id="termnie-true"
+                  type="radio"
+                  name="jplist"
+                />
+                <label for="recrute-true">Terminé</label>
+
+                <input
+                  data-control-type="radio-buttons-filters"
+                  data-control-action="filter"
+                  data-control-name="termine-false"
+                  data-path=".termine-false"
+
+                  id="termine-false"
+                  type="radio"
+                  name="jplist"
+                />
+                <label for="termine-true">Pas terminé</label>
+              </div>
+    </div>
+
+
 <table class="table table-striped">
 <thead> <!-- En-tête du tableau -->
     <tr>
@@ -26,32 +195,64 @@ Noubliez pas de lire la description des régions afin d'en choisir une qui cores
         <th class="cell-stat-1x">Terminé</th>
     </tr>
 </thead>
-<tbody>
+<tbody class="list box">
 {% for projet in projets %}
-<tr>
-    <td><a href="{{ app.request.basepath }}/projet/{{projet.id}}">{{projet.name}}</a></td>
-    <td><a href="{{ app.request.basepath }}/projet/region/{{projet.region.id}}">{{projet.region.name}}</td>
+<tr class="list-item">
+    <td><a href="{{ app.request.basepath }}/projet/{{projet.id}}" class="projetName">{{projet.name}}</a></td>
+    <td><a href="{{ app.request.basepath }}/projet/region/{{projet.region.id}}" class="region">{{projet.region.name}}</td>
     <td>{{projet.membresProjets|length}}</td>
-    <td>{{projet.date|date("m/d/Y")}}</td>
+    <td><span class="date">{{projet.date|date("m/d/Y")}}</span></td>
     <td class="projet-check-center">
         {% if projet.recrute %}
-        <i class="fa fa-2x green droite fa-check-circle-o"></i>
+        <i class="fa fa-2x green droite fa-check-circle-o recrute-true"></i>
         {% else %}
-        <i class="fa fa-2x red droite fa-times-circle-o"></i>
+        <i class="fa fa-2x red droite fa-times-circle-o recrute-false"></i>
         {% endif %}
     </td>
     <td class="projet-check-center">
         {% if projet.finished %}
-        <i class="fa fa-2x green droite fa-check-circle-o"></i>
+        <i class="fa fa-2x green droite fa-check-circle-o termine-true"></i>
         {% else %}
-        <i class="fa fa-2x red droite fa-times-circle-o"></i>
+        <i class="fa fa-2x red droite fa-times-circle-o termine-false"></i>
         {% endif %}
     </td>
 </tr>
 {% endfor %}
 </tbody>
 </table>
+
+</div>
+
 </div>
 
 {% endblock %}
 {% block active %}nav-projet{% endblock %}
+
+{% block includeJS %}
+<link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-core.min.css" rel="stylesheet" type="text/css" />
+<link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-pagination-bundle.min.css" rel="stylesheet" type="text/css" />
+<link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-textbox-control.min.css" rel="stylesheet" type="text/css" />
+<link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-filter-toggle-bundle.min.css" rel="stylesheet" type="text/css" />
+
+<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist-core.min.js"></script>
+<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist.pagination-bundle.min.js"></script>
+<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist.sort-bundle.min.js"></script>
+<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist.textbox-control.min.js"></script>
+<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist.filter-toggle-bundle.min.js"></script>
+
+<script>
+
+$('document').ready(function(){
+
+   //check all jPList javascript options
+   $('#lalist').jplist({
+      itemsBox: '.list'
+      ,itemPath: '.list-item'
+      ,panelPath: '.jplist-panel'
+   });
+
+});
+
+</script>
+
+{% endblock %}
