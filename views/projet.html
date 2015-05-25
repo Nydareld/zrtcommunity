@@ -3,12 +3,16 @@
 
 <div class="listeProjet">
 <h2>Liste des projets</h2>
+<div class="btn-group droite">
+    {% if app.security.token and is_granted('ROLE_TARD') %}
+    <a href="{{ app.request.basepath }}/projet/newprojet" class="btn btn-default" role="button">Nouveau projet</a>
+    {% endif %}
+    <a href="{{ app.request.basepath }}/projet/regions" class="btn btn-default" role="button">Liste des régions</a>
+</div>
 <p>
-Vous pouvez chercher un projet dans la liste grace aux parametres de recherche ou bien créer le votre ici:
-<a href="{{ app.request.basepath }}/projet/newprojet">Nouveau projet</a>
+Vous pouvez chercher un projet dans la liste grace aux parametres de recherche ou bien créer le votre.
 <br/>
-Noubliez pas de lire la description des régions afin d'en choisir une qui coresspond a votre projet:
-<a href="{{ app.request.basepath }}/projet/regions">Liste des régions</a>
+Noubliez pas de lire la description des régions afin d'en choisir une qui coresspond a votre projet.
 </p>
 
 <table class="table table-striped">
