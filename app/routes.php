@@ -74,6 +74,9 @@ $app->match('/{sectionName}/forum/souscategorie/{scatid}', "Zrtcommunity\Control
 //Forum page d'un topic
 $app->match('/{sectionName}/forum/topic/{topicid}/{page}', "Zrtcommunity\Controller\ForumController::topicAction");
 
+//Forum page move un topic
+$app->match('/{sectionName}/forum/movetopic/{topicid}', "Zrtcommunity\Controller\ForumController::moveTopicAction");
+
 //Forum page d'édition d'un message forum
 $app->match('/{sectionName}/forum/editmessage/{messageid}', "Zrtcommunity\Controller\ForumController::editMessageAction");
 
