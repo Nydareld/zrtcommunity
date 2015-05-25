@@ -59,7 +59,7 @@ class MPController{
 
             return $app->redirect($request->getBasePath().'/messagerie/message/'.$mess->getId());
         }
-        return $app['twig']->render('basicForm.html', array(
+        return $app['twig']->render('basicFormNoSection.html', array(
             'title' => "Messagerie",
             "form" => $messageForm->createView(),
             ));

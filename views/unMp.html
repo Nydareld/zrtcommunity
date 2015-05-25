@@ -4,14 +4,14 @@
 <h2>Message privé: {{mess.titre}}</h2>
 <h4>Auteur: <a href="{{ app.request.basepath }}/membre/{{mess.auteur.username}}">{{mess.auteur.username}}</a></h4>
 <h4>Destinataire:  <a href="{{ app.request.basepath }}/membre/{{mess.destinataire.username}}">{{mess.destinataire.username}}</a></h4>
-{% if app.security.token.user == mess.auteur %}
-<a href="{{ app.request.basepath }}/messagerie/newmp/{{mess.destinataire.id}}" class="btn btn-default" role="button">Répondre</a>
-{% else %}
-<a href="{{ app.request.basepath }}/messagerie/newmp/{{mess.auteur.id}}" class="btn btn-default" role="button">Répondre</a>
-{% endif %}
 <hr/>
 {{mess.contenu|raw}}
 <hr/>
+{% if app.security.token.user == mess.auteur %}
+<a href="{{ app.request.basepath }}/messagerie/newmp/{{mess.destinataire.id}}" class="droite btn btn-default" role="button">Répondre</a>
+{% else %}
+<a href="{{ app.request.basepath }}/messagerie/newmp/{{mess.auteur.id}}" class="droite btn btn-default" role="button">Répondre</a>
+{% endif %}
 <p class="topic-message-date">le {{mess.date.format('Y-m-d')}} à {{mess.date.format('H:i:s')}}</p>
 </div>
 {% endblock %}
