@@ -1,70 +1,19 @@
 {% extends 'layout-'~section~'.html' %}
 {% block content %}
-<div id="lalist" class="box jplist">
 
-    <div class="jplist-panel box panel-top droite" style="margin-bottom:20px;">
-
-        <div
-    	   class="jplist-drop-down"
-           data-control-type="items-per-page-drop-down"
-    	   data-control-name="paging"
-    	   data-control-action="paging">
-           <ul>
-               <li><span data-number="5"> 5 par page </span></li>
-               <li><span data-number="10" data-default="true"> 10 par page </span></li>
-               <li><span data-number="20"> 20 par page </span></li>
-               <li><span data-number="all"> view all </span></li>
-           </ul>
-    				</div>
-
-    				<div
-    				   class="jplist-label"
-    				   data-type="{start} - {end} de {all}"
-    				   data-control-type="pagination-info"
-    				   data-control-name="paging"
-    				   data-control-action="paging">
-                   </div>
-
-    				<div
-    				   class="jplist-pagination"
-    				   data-control-type="pagination"
-    				   data-control-name="paging"
-    				   data-control-action="paging">
-    				</div>
-
-    </div>
-
-<div class=" list box">
-<table class="table topic-message list-item box">
+<table class="table topic-message">
     <tr>
         <td class="cell-stat-2x topic-member">
-            <a href="{{ app.request.basepath }}/membre/{{topic.messages[0].auteur.username}}"><h4>{{topic.messages[0].auteur.username}}</h4></a>
-            <br/>
-            {% if topic.messages[0].auteur.path is not null %}
-            <img src="{{topic.messages[0].auteur.webPath}}" alt="..." class="avatar-profile img-circle">
-            <br/>
-            {% endif %}
-            {{topic.messages[0].auteur.roleHumain}}
+            <h4>Topic:</h4>
         </td>
         <td class="topic-message-contenu">
-            <h3 class="topic-message-title">{{topic.name}}</h3>
-            <p class="topic-message-date">le {{topic.messages[0].date.format('Y-m-d')}} à {{topic.messages[0].date.format('H:i:s')}}</p>
-            <component class="droite">
-            {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') and app.security.token.user == topic.messages[0].auteur %}
-            <a href="{{ app.request.basepath }}/{{section}}/forum/editmessage/{{topic.messages[0].id}}">
-                <input type="submit" value="éditer"></input>
-            </a>
-            {% endif %}
-            </component>
-            <hr/>
-            {{topic.messages[0].contenu|raw}}
-            <hr/>
-            {{topic.messages[0].auteur.sign|raw}}
+            <h2>{{topic.name}}</h2>
+            <h3>{{topic.description}}</h3>
         </td>
     </tr>
 </table>
-{% for message in topic.messages[1:] %}
-<table class="table topic-message list-item box">
+{% for message in topic.messages %}
+<table class="table topic-message">
     <tr>
         <td class="cell-stat-2x topic-member">
             <a href="{{ app.request.basepath }}/membre/{{message.auteur.username}}"><h4>{{message.auteur.username}}</h4></a>
@@ -73,7 +22,7 @@
             <img src="{{message.auteur.webPath}}" alt="..." class="avatar-profile img-circle">
             <br/>
             {% endif %}
-            {{topic.messages[0].auteur.roleHumain}}
+            {{message.auteur.roleHumain}}
         </td>
         <td class="topic-message-contenu">
             <component class="droite">
@@ -92,42 +41,6 @@
     </tr>
 </table>
 {% endfor %}
-</div>
-
-
-<div class="jplist-panel box panel-bottom droite" style="margin-bottom:20px;">
-
-    <div
-	   class="jplist-drop-down"
-       data-control-type="items-per-page-drop-down"
-	   data-control-name="paging"
-	   data-control-action="paging">
-       <ul>
-           <li><span data-number="5"> 5 par page </span></li>
-           <li><span data-number="10" data-default="true"> 10 par page </span></li>
-           <li><span data-number="20"> 20 par page </span></li>
-           <li><span data-number="all"> view all </span></li>
-       </ul>
-				</div>
-
-				<div
-				   class="jplist-label"
-				   data-type="{start} - {end} de {all}"
-				   data-control-type="pagination-info"
-				   data-control-name="paging"
-				   data-control-action="paging">
-               </div>
-
-				<div
-				   class="jplist-pagination"
-				   data-control-type="pagination"
-				   data-control-name="paging"
-				   data-control-action="paging">
-				</div>
-
-</div>
-
-</div>
 
 {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') %}
 <table class="table topic-message">
@@ -154,8 +67,6 @@
 {% endblock %}
 
 {% block includeHead %}
-<link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-core.min.css" rel="stylesheet" type="text/css" />
-<link href="{{ app.request.basepath }}/lib/free-pagination-bundle/css/jplist-pagination-bundle.min.css" rel="stylesheet" type="text/css" />
 <link href="{{ app.request.basepath }}/lib/ckeditor-standard/contents.css" rel="stylesheet">
 <!--
 -->
@@ -163,21 +74,13 @@
 {% endblock %}
 
 {% block includeJS %}
-<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist-core.min.js"></script>
-<script src="{{ app.request.basepath }}/lib/free-pagination-bundle/js/jplist.pagination-bundle.min.js"></script>
 <script src="{{ app.request.basepath }}/lib/ckeditor-standard/ckeditor.js"></script>
 <script src="{{ app.request.basepath }}/lib/ckeditor-standard/adapters/jquery.js"></script>
 
 <script>
 $('document').ready(function(){
-
    //check all jPList javascript options
    $( 'textarea#message_contenu' ).ckeditor();
-   $('#lalist').jplist({
-      itemsBox: '.list'
-      ,itemPath: '.list-item'
-      ,panelPath: '.jplist-panel'
-   });
 });
 
 
