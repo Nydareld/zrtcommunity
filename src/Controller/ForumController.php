@@ -82,6 +82,9 @@ class ForumController{
                 $page=floor(count($messages)/10)-1;
             }
         }
+
+        $nbpages=floor(count($messages)/10);
+
         $topic->setMessages(array_slice($messages,$page*10,10));
 
         $message = new MessageForum();
@@ -117,6 +120,8 @@ class ForumController{
             'title' => "Forum",
             'topic' => $topic,
             'postForm' => $messageForm->createView(),
+            'page'=> $page+1,
+            'nbpages'=> $nbpages+1
             )
         );
     }
