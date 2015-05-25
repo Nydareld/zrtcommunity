@@ -13,15 +13,15 @@
 <div class="news list-item box">
     <div class="news-header">
     <p class="droite">
-        par <a href="/membre/{{unenews.creator.username}}">{{unenews.creator.username}}</a>
+        par <a href="{{ app.request.basepath }}/membre/{{unenews.creator.username}}">{{unenews.creator.username}}</a>
         <br/>le {{unenews.date.format('Y-m-d')}} à {{unenews.date.format('H:i:s')}}
         <br/>
     </p>
-    <h3>{{unenews.name}}</h3>
+    <h3><a href="{{ app.request.basepath }}/{{section}}/news/{{unenews.id}}">{{unenews.name}}</a></h3>
     </div>
     <hr/>
     <div class="news-body">
-        {{unenews.contenu[:400]|raw}}... <a href="/news/{{unenews.id}}">Lire la news.</a>
+        {{unenews.contenu[:400]|raw}}... <a href="{{ app.request.basepath }}/{{section}}/news/{{unenews.id}}">Lire la news.</a>
     </div>
     <hr/>
     <div class="news-comm">
