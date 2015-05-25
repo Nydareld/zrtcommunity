@@ -72,7 +72,7 @@ $app->match('/{sectionName}/forum', "Zrtcommunity\Controller\ForumController::fo
 $app->match('/{sectionName}/forum/souscategorie/{scatid}', "Zrtcommunity\Controller\ForumController::scatAction");
 
 //Forum page d'un topic
-$app->match('/{sectionName}/forum/topic/{topicid}', "Zrtcommunity\Controller\ForumController::topicAction");
+$app->match('/{sectionName}/forum/topic/{topicid}/{page}', "Zrtcommunity\Controller\ForumController::topicAction");
 
 //Forum page d'édition d'un message forum
 $app->match('/{sectionName}/forum/editmessage/{messageid}', "Zrtcommunity\Controller\ForumController::editMessageAction");

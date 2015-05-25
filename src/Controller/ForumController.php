@@ -56,7 +56,7 @@ class ForumController{
         );
     }
 
-    public function topicAction($sectionName,$topicid,Request $request, Application $app){
+    public function topicAction($sectionName,$topicid,$page,Request $request, Application $app){
         $section = $app['dao.section']->loadByName($sectionName);
 
         $topic = $app['dao.topic']->loadTopicById($topicid);
