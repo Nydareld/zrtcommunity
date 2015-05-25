@@ -54,7 +54,7 @@ class ProjetController{
         $projetForm->handleRequest($request);
 
         if( $projetForm->isSubmitted()&& $projetForm->isValid() && $projet->getCreateur() == $app['security']->getToken()->getUser()){
-            if($projet->getFinished()){
+            if($projet->isFinished()){
                 $private->setStatut('terminé');
             }
             $app['dao.projet']->save($projet);

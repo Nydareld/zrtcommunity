@@ -174,7 +174,8 @@ Noubliez pas de lire la description des régions afin d'en choisir une qui cores
     <tr>
         <th class="cell-stat">Nom du projet</th>
         <th class="cell-stat-4x">Région</th>
-        <th class="cell-stat-2x">Nombre de membres</th>
+        <th class="cell-stat-2x">Statut</th>
+        <th class="cell-stat-1x">Nombre de membres</th>
         <th class="cell-stat-2x">Date</th>
         <th class="cell-stat-1x">Recrute</th>
         <th class="cell-stat-1x">Terminé</th>
@@ -185,6 +186,7 @@ Noubliez pas de lire la description des régions afin d'en choisir une qui cores
 <tr class="list-item">
     <td><a href="{{ app.request.basepath }}/projet/{{projet.id}}" class="projetName">{{projet.name}}</a></td>
     <td><a href="{{ app.request.basepath }}/projet/region/{{projet.region.id}}" class="region">{{projet.region.name}}</td>
+    <td>{{projet.statut}}</td>
     <td>{{projet.membresProjets|length}}</td>
     <td><span class="date">{{projet.date|date("m/d/Y")}}</span></td>
     <td class="projet-check-center">
