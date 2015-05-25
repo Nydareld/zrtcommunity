@@ -598,3 +598,10 @@ img.avatar-layout{
     padding: 0;
     outline: 0px;
 }
+.pagination > li > a{
+    color:#2f333e;
+}
+.pageNb.active > a{
+    background-color: #2f333e;
+    border: 0px;
+}

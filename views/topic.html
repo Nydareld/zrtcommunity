@@ -1,5 +1,23 @@
 {% extends 'layout-'~section~'.html' %}
 {% block content %}
+<nav id="pagination" class="droite">
+    <ul class="pagination">
+        {% if page != 1%}
+        <li class="pageNb"><a href="{{ app.request.basepath }}/{{section}}/forum/topic/{{topic.id}}/0"><i class="fa fa-angle-double-left"></i></a>
+        <li class="pageNb"><a href="{{ app.request.basepath }}/{{section}}/forum/topic/{{topic.id}}/{{page-2}}"><i class="fa fa-angle-left"></i></a>
+        {% endif %}
+
+        {% for i in 0..nbpages-1 %}
+        <li class="pageNb" id="page-{{i}}"><a href="{{ app.request.basepath }}/{{section}}/forum/topic/{{topic.id}}/{{i}}">{{i+1}}</a></li>
+        {% endfor %}
+
+        {% if page != nbpages %}
+        <li class="pageNb"><a href="{{ app.request.basepath }}/{{section}}/forum/topic/{{topic.id}}/{{page}}"><i class="fa fa-angle-right"></i></a>
+        <li class="pageNb"><a href="{{ app.request.basepath }}/{{section}}/forum/topic/{{topic.id}}/last"><i class="fa fa-angle-double-right"></i></a>
+        {% endif %}
+
+    </ul>
+</nav>
 
 <table class="table topic-message">
     <tr>
@@ -45,6 +63,25 @@
 </table>
 {% endfor %}
 
+<nav id="pagination" class="droite">
+    <ul class="pagination">
+        {% if page != 1%}
+        <li class="pageNb"><a href="{{ app.request.basepath }}/{{section}}/forum/topic/{{topic.id}}/0"><i class="fa fa-angle-double-left"></i></a>
+        <li class="pageNb"><a href="{{ app.request.basepath }}/{{section}}/forum/topic/{{topic.id}}/{{page-2}}"><i class="fa fa-angle-left"></i></a>
+        {% endif %}
+
+        {% for i in 0..nbpages-1 %}
+        <li class="pageNb" id="page-bot-{{i}}"><a href="{{ app.request.basepath }}/{{section}}/forum/topic/{{topic.id}}/{{i}}">{{i+1}}</a></li>
+        {% endfor %}
+
+        {% if page != nbpages %}
+        <li class="pageNb"><a href="{{ app.request.basepath }}/{{section}}/forum/topic/{{topic.id}}/{{page}}"><i class="fa fa-angle-right"></i></a>
+        <li class="pageNb"><a href="{{ app.request.basepath }}/{{section}}/forum/topic/{{topic.id}}/last"><i class="fa fa-angle-double-right"></i></a>
+        {% endif %}
+
+    </ul>
+</nav>
+
 {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') %}
 <table class="table topic-message">
     <tr>
@@ -86,6 +123,8 @@ $('document').ready(function(){
    $( 'textarea#message_contenu' ).ckeditor();
 });
 
+document.getElementById( "page-{{page-1}}").className += " active";
+document.getElementById( "page-bot-{{page-1}}").className += " active";
 
 </script>
 
