@@ -57,6 +57,7 @@ class ForumController{
     }
 
     public function topicAction($sectionName,$topicid,$page,Request $request, Application $app){
+
         $section = $app['dao.section']->loadByName($sectionName);
 
         $topic = $app['dao.topic']->loadTopicById($topicid);
@@ -73,7 +74,15 @@ class ForumController{
             }
             return ($a->getDate() < $b->getDate() ) ? -1 : 1;
         });
-        $topic->setMessages($messages);
+
+        if ($page=="last") {
+            if(floor(count($messages)/10) != count($messages)/10){
+                $page=floor(count($messages)/10);
+            }else{
+                $page=floor(count($messages)/10)-1;
+            }
+        }
+        $topic->setMessages(array_slice($messages,$page*10,10));
 
         $message = new MessageForum();
 
@@ -100,7 +109,7 @@ class ForumController{
                 }
             }
 
-            return $app->redirect($request->getBasePath().'/'.$section->getName().'/forum/topic/'.$topic->getId());
+            return $app->redirect($request->getBasePath().'/'.$section->getName().'/forum/topic/'.$topic->getId()."/last");
 
         }
         return $app['twig']->render( "topic.html",array(
@@ -123,7 +132,7 @@ class ForumController{
         }
         if ($messageForm->isSubmitted() && $messageForm->isValid()) {
             $app['dao.messForum']->save($message);
-            return $app->redirect($request->getBasePath().'/'.$section->getName().'/forum/topic/'.$message->getTopic()->getId());
+            return $app->redirect($request->getBasePath().'/'.$section->getName().'/forum/topic/'.$message->getTopic()->getId()."/last");
         }
         return $app['twig']->render( "basicForm.html",array(
             'section'=>$section->getName(),
@@ -159,7 +168,7 @@ class ForumController{
             $app['dao.topic']->save($topic);
             $app['dao.messForum']->save($message);
 
-            return $app->redirect($request->getBasePath().'/'.$section->getName().'/forum/topic/'.$topic->getId());
+            return $app->redirect($request->getBasePath().'/'.$section->getName().'/forum/topic/'.$topic->getId()."/last");
         }
         return $app['twig']->render( "basicForm.html",array(
             'section'=>$section->getName(),
