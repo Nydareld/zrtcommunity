@@ -82,6 +82,7 @@
     </ul>
 </nav>
 
+{% if page == nbpages %}
 {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') %}
 <table class="table topic-message">
     <tr>
@@ -103,6 +104,8 @@
     </tr>
 </table>
 {% endif %}
+{% endif %}
+
 
 {% endblock %}
 
