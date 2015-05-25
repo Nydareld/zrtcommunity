@@ -34,13 +34,13 @@ class SectionSite{
     private $news;
 
     public function getNews(){
-		return $this->news;
-	}
+		    return $this->news;
+	  }
 
-	public function setNews($news){
-		$this->news = $news;
-	}
-    
+	  public function setNews($news){
+		    $this->news = $news;
+	  }
+
     public function getId(){
   		return $this->id;
   	}
