@@ -594,3 +594,7 @@ img.avatar-layout{
     width: 200px;
     height: 200px;
 }
+.lienSection > img{
+    padding: 0;
+    outline: 0px;
+}
