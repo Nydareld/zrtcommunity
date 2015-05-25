@@ -26,6 +26,12 @@ class Projet{
     private $description;
 
     /**
+     * @Column(type="string")
+     * @var string
+     */
+    private $statut;
+
+    /**
      * @Column(type="datetime")
      * @var datetime
      */
@@ -90,6 +96,14 @@ class Projet{
 
 	public function setName($name){
 		$this->name = $name;
+	}
+
+	public function getStatut(){
+		return $this->statut;
+	}
+
+	public function setStatut($statut){
+		$this->statut = $statut;
 	}
 
 	public function getDescription(){
