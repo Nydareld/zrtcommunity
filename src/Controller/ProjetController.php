@@ -26,6 +26,7 @@ class ProjetController{
             $projet->setDate(new DateTime());
             $projet->setAccepted(FALSE);
             $projet->setFinished(FALSE);
+            $projet->setStatut("en cours");
             $projet->setRegion($app['dao.region']->loadRegionById($projetForm["region"]->getData()));
             $projet->setCreateur($app['security']->getToken()->getUser());
 

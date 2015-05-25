@@ -11,7 +11,13 @@ class EditProjetType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options){
         global $app;
 
+        $status = array("en cours","en pause","en attente","abandonné/à reprendre","terminé");
+
         $builder
+        ->add('statut','choice',array(
+            'label' => 'Statut du projet:',
+            'choices'=>$status
+        ))
         ->add('description', 'textarea',array(
             'label' => 'Description:',
             'max_length' => 10000,
