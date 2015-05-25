@@ -4,7 +4,7 @@
 
 <div class="container col-md-6 droite listeMembreProjet">
 <div class ="container col-md-6 ligne-droite">
-    <h3>Statut du projet</h3>
+    <h3>Statut du projet :<br/> {{projet.statut}}</h3>
     <p>
         {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') and app.security.token.user == projet.createur %}
         <a href="{{ app.request.basepath }}/projet/editprojet/{{projet.id}}">
