@@ -30,6 +30,12 @@
                 <br>
                 <small>{{topic.description}}</small>
             </h2>
+            {% if app.security.token and is_granted('ROLE_MODO') %}
+            <div class="btn-group">
+                <a href="{{ app.request.basepath }}/{{section}}/forum/movetopic/{{topic.id}}" class="btn btn-default" role="button"><i class="fa fa-sitemap"></i> Déplacer</a>
+                <a href="{{ app.request.basepath }}/{{section}}/forum/closetopic/{{topic.id}}" class="btn btn-default" role="button"><i class="fa fa-lock"></i> Cloturer</a>
+            </div>
+            {% endif %}
         </td>
     </tr>
 </table>
