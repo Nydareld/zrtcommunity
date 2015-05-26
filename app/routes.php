@@ -78,7 +78,7 @@ $app->match('/{sectionName}/forum/topic/{topicid}/{page}', "Zrtcommunity\Control
 $app->match('/{sectionName}/forum/movetopic/{topicid}', "Zrtcommunity\Controller\ForumController::moveTopicAction");
 
 //Forum close d'un topic
-$app->match('/{sectionName}/forum/closetopic/{topicid}', "Zrtcommunity\Controller\ForumController::moveTopicAction");
+$app->match('/{sectionName}/forum/closetopic/{topicid}', "Zrtcommunity\Controller\ForumController::closeTopicAction");
 
 //Forum page d'édition d'un message forum
 $app->match('/{sectionName}/forum/editmessage/{messageid}', "Zrtcommunity\Controller\ForumController::editMessageAction");
