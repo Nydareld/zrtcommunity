@@ -209,4 +209,17 @@ class ForumController{
         );
 
     }
+    public function closeTopicAction($sectionName,$topicid,Request $request, Application $app){
+        $section = $app['dao.section']->loadByName($sectionName);
+
+        $topic = $app['dao.topic']->loadTopicById($topicid);
+        if($topic->isClose()){
+            $topic->setClose(false);
+        }else{
+            $topic->setClose(true);
+        }
+        $app['dao.topic']->save($topic);
+        
+        return $app->redirect($request->getBasePath().'/'.$section->getName().'/forum/topic/'.$topic->getId()."/last");
+    }
 }

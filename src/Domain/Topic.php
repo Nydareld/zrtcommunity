@@ -82,7 +82,7 @@ class Topic{
         $this->close = $close;
     }
     public function isClose(){
-        return $$this->close;
+        return $this->close;
     }
     public function lastMessage(){
         global $app;
