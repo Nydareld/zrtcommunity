@@ -92,7 +92,7 @@ class ForumController{
 
         $messageForm = $app['form.factory']->create(new MessageType(), $message);
         $messageForm->handleRequest($request);
-        if ($messageForm->isSubmitted() && $messageForm->isValid()&& $app['security']->isGranted('IS_AUTHENTICATED_FULLY') ) {
+        if ($messageForm->isSubmitted() && $messageForm->isValid() && $app['security']->isGranted('IS_AUTHENTICATED_FULLY') && !$topic->isClose() ) {
             $message->setDate(new DateTime());
             $token = $app['security']->getToken();
             $message->setAuteur($token->getUser());
@@ -219,7 +219,7 @@ class ForumController{
             $topic->setClose(true);
         }
         $app['dao.topic']->save($topic);
-        
+
         return $app->redirect($request->getBasePath().'/'.$section->getName().'/forum/topic/'.$topic->getId()."/last");
     }
 }
