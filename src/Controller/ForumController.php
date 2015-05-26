@@ -8,6 +8,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Silex\Application;
 use Zrtcommunity\Domain\Topic;
 use Zrtcommunity\Form\Type\TopicType;
+use Zrtcommunity\Form\Type\MoveTopicType;
 use Zrtcommunity\Domain\MessageForum;
 use Zrtcommunity\Form\Type\MessageType;
 use Zrtcommunity\Domain\Notification;
@@ -179,6 +180,21 @@ class ForumController{
             'section'=>$section->getName(),
             'title' => "Forum",
             'form' => $topicForm->createView(),
+            )
+        );
+
+    }
+    public function moveTopicAction($sectionName,$topicid,Request $request, Application $app){
+        $section = $app['dao.section']->loadByName($sectionName);
+
+        $topic = $app['dao.topic']->loadTopicById($topicid);
+
+        $moveTopicForm = $app['form.factory']->create(new MoveTopicType());
+
+        return $app['twig']->render( "basicForm.html",array(
+            'section'=>$section->getName(),
+            'title' => "Forum",
+            'form' => $moveTopicForm->createView(),
             )
         );
 
