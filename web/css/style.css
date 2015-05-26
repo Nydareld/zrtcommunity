@@ -604,3 +604,7 @@ img.avatar-layout{
     background-color: #2f333e;
     border: 0px;
 }
+#errorPanel {
+    padding-top: 30px;
+    padding-bottom: 10px;
+}

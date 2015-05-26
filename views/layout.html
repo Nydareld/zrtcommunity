@@ -60,7 +60,7 @@
                 {% block navbarLeft %}{% endblock %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                {% if is_granted('ROLE_MODO') %}
+                {% if app.security.token and is_granted('ROLE_MODO') %}
                 <li class="nav2-li"><a class="nav2-item" href="{{ app.request.basepath }}/admin">Panel Admin</a></li>
                 {% endif %}
                 {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') %}

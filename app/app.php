@@ -203,3 +203,22 @@ $app['info'] = $app->share(function ($app){
 
 //  === Imagine (image resize) ===
 $app['imagine'] = new Imagine\Gd\Imagine();
+
+//  === Erreures ===
+
+$app->error(function (\Exception $e, $code) use ($app) {
+    switch ($code) {
+        case 403:
+            $message = 'Acces refusé. désolé.';
+            break;
+        case 404:
+            $message = 'Maitre Fougere n\'a pas trouvé ta page!';
+            break;
+        default:
+            $message = "Une erreur est arrivée... prevenez le webmaster (Spamez Nydareld de MP)";
+    }
+    return $app['twig']->render('error.html', array(
+        'message' => $message,
+        'title'=>"erreur"
+    ));
+});
