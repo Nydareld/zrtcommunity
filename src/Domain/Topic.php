@@ -36,6 +36,12 @@ class Topic{
      */
     protected $messages;
 
+    /**
+     * @Column(type="boolean")
+     * @var boolean
+     */
+    private $close;
+
     public function getId(){
 		return $this->id;
 	}
@@ -71,6 +77,12 @@ class Topic{
 	}
     public function nbMessages(){
         return count($this->getMessages());
+    }
+    public function setClose($close){
+        $this->close = $close;
+    }
+    public function isClose(){
+        return $$this->close;
     }
     public function lastMessage(){
         global $app;
