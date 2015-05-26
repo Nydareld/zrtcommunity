@@ -47,18 +47,19 @@ $app['security.role_hierarchy'] = array(
         'ROLE_TARD' => array('ROLE_USER'),
     );
 $app['security.access_rules'] = array(
-        array('^/admin', 'ROLE_MODO'),
-        array('^/forum/souscategorie/newtopic', 'ROLE_USER'),
-        array('^/forum/editmessage', 'ROLE_USER'),
-        array('^/forum/movetopic', 'ROLE_MODO'),
-        array('^/newnews', 'ROLE_MODO'),
-        array('^/news/editmessage', 'ROLE_USER'),
-        array('^/projet/newprojet', 'ROLE_TARD'),
-        array('^/messagerie', 'ROLE_USER'),
-        array('^/projet/validate/', 'ROLE_MODO'),
-        array('^/admin/forum/categorie/delete', 'ROLE_SUPERADMIN'),
-        array('^/admin/forum/souscategorie/delete', 'ROLE_SUPERADMIN'),
-        array('^/admin/reglement/add', 'ROLE_ADMIN'),
+        array('/admin', 'ROLE_MODO'),
+        array('/forum/souscategorie/newtopic', 'ROLE_USER'),
+        array('/forum/editmessage', 'ROLE_USER'),
+        array('/movetopic', 'ROLE_MODO'),
+        array('/closetopic', 'ROLE_MODO'),
+        array('/newnews', 'ROLE_MODO'),
+        array('/news/editmessage', 'ROLE_USER'),
+        array('/projet/newprojet', 'ROLE_TARD'),
+        array('/messagerie', 'ROLE_USER'),
+        array('/projet/validate/', 'ROLE_MODO'),
+        array('/admin/forum/categorie/delete', 'ROLE_SUPERADMIN'),
+        array('/admin/forum/souscategorie/delete', 'ROLE_SUPERADMIN'),
+        array('/admin/reglement/add', 'ROLE_ADMIN'),
     );
 
 //  === is Mobile ===
