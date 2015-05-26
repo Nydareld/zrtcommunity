@@ -50,6 +50,7 @@ $app['security.access_rules'] = array(
         array('^/admin', 'ROLE_MODO'),
         array('^/forum/souscategorie/newtopic', 'ROLE_USER'),
         array('^/forum/editmessage', 'ROLE_USER'),
+        array('^/forum/movetopic', 'ROLE_MODO'),
         array('^/newnews', 'ROLE_MODO'),
         array('^/news/editmessage', 'ROLE_USER'),
         array('^/projet/newprojet', 'ROLE_TARD'),

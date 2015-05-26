@@ -25,6 +25,6 @@ class MoveTopicType extends AbstractType{
 
     public function getName()
     {
-        return 'SousCatDeSousCat';
+        return 'MoveTopicType';
     }
 }

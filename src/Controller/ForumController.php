@@ -190,11 +190,20 @@ class ForumController{
         $topic = $app['dao.topic']->loadTopicById($topicid);
 
         $moveTopicForm = $app['form.factory']->create(new MoveTopicType());
+        $moveTopicForm->handleRequest($request);
+
+        if ($moveTopicForm->isSubmitted() && $moveTopicForm->isValid()){
+            $scat=$app['dao.scat']->loadSousCategorieById($moveTopicForm["scat"]->getData());
+            $topic->setSousCategorie($scat);
+            $app['dao.topic']->save($topic);
+            return $app->redirect($request->getBasePath().'/'.$section->getName().'/forum/topic/'.$topic->getId()."/last");
+        }
 
         return $app['twig']->render( "basicForm.html",array(
             'section'=>$section->getName(),
             'title' => "Forum",
             'form' => $moveTopicForm->createView(),
+            'topic'=> $topic
             )
         );
 
