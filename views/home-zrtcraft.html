@@ -1,0 +1,45 @@
+{% extends 'layout-zrtcraft.html' %}
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container">
+      <h2>Zrtcraft, serveur minecraft de la communauté de zerator</h2>
+      <h3>Présentation</h3>
+      <p>
+        Le serveur est un serveur communautaire, ses memebres et sont satf sont des bénévoles qui jouent sur leurs temps libre.
+      </p>
+      <h3>Comment s'inscrire ? </h3>
+      <p>
+          La permière étape est de s'inscire au site communautaire général.
+          Une fois ceci fait il faut remplir le questionnaire d'inscription au serveur. Celui-ci est accécible via un bouton
+          en haut à droite de votre page de profil. Il faudra alors attendre son accéptation ou son refus par la modération.
+          Vous serez averti de sa validation(ou non-validation) par message ou notification sur le site.
+          <br>
+          Si votre quéstionnaire a été validé mais que vous n'avez pas été white-listé,
+          contactez la modération par le biais du forum ou sur teamspeak en précisant bien votre pseudo minecraft.
+      </p>
+      <h3>Que faire une fois sur le serveur ?</h3>
+      <p>
+          Une fois sur le serveur vous aurez le rang de "Péon". Et votre but premier sera de devenir "Tard".
+          Pour ce faire il vous faudra demander de l'aide a un helpeur pour trouver une parcelle habitable dans une des
+          villes du serveur. Les parcelles font normalement 25 block de large par 25 de long et 50 de hauteur
+          ( à peu pres 25 blocks sous terre et 25 blocks au dessus)
+          <br>
+          Une fois une parcelle trouvée vous dervrais construire une maison, la meublée et la faire valider par un modérateur
+          pour passer "Tard". Pour récoleter les ressouces utiles a la construction de votre maison vous devrez aller au warp ferme
+          (comande in-game : "/warp ferme")
+          <br>
+          Le warp ferme dispose de différentes unitées pour farmer: différentes fermes, des encols ...
+          Vous pouvez aussi vous eloigner du spawn (qui est protégé) et creuser comme bon vous semble pour miner.
+      </p>
+      <h3>Et apres ?</h3>
+      <p>
+          Une fois votre maison construite et validée vous serez enfin "Tard" ce qui signifie que vous avez le droit de rejoindre
+          ou de créer un projet. Pour cela référez vous a ce lien :
+          <a href="{{ app.request.basepath }}/projet">Projets</a>
+      </p>
+  </div>
+</div>
+
+{% endblock %}
+{% block active %}nav-acceuil{% endblock %}
