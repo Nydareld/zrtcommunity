@@ -48,8 +48,8 @@
             </ul>
         </div>
     </nav>
-    <header>
-        <img class="header-logo"src="{{ app.request.basepath }}/img/groslogo.png" alt="Banner Image"/>
+    <header style="background-image: url({% block pathBanner %}{% endblock %});">
+        <img class="header-logo"src="{% block pathLogo %}{% endblock %}" alt="Banner Image"/>
     </header>
     <nav id="nav2" class="navbar">
         <div class="container">
