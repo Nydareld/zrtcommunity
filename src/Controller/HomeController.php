@@ -17,6 +17,16 @@ class HomeController{
         );
     }
 
+    public function presentationAction($sectionName,Application $app){
+        $section = $app['dao.section']->loadByName($sectionName);
+
+        return $app['twig']->render( "home-".$section->getName().".html",array(
+            'title' => "présentaton",
+            'section'=>$section->getName(),
+            )
+        );
+    }
+
     public function loginAction(Request $request, Application $app, $success=null) {
         return $app['twig']->render('login.html', array(
             'danger'         => $app['security.last_error']($request),
