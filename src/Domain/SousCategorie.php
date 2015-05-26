@@ -129,5 +129,12 @@ class SousCategorie extends ForumContainer{
             return $this->parentSousCategorie->path().'->'.$this->name;
         }
     }
+    public function getSectionSite(){
+        if($this->parentCategorie!=null){
+            return $this->parentCategorie->getSectionSite();
+        }else{
+            return $this->parentSousCategorie->getSectionSite();
+        }
+    }
 
 }

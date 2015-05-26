@@ -196,6 +196,7 @@ class ForumController{
             $scat=$app['dao.scat']->loadSousCategorieById($moveTopicForm["scat"]->getData());
             $topic->setSousCategorie($scat);
             $app['dao.topic']->save($topic);
+            $section = $scat->getSectionSite();
             return $app->redirect($request->getBasePath().'/'.$section->getName().'/forum/topic/'.$topic->getId()."/last");
         }
 
