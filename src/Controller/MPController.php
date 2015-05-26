@@ -13,6 +13,7 @@ class MPController{
     public function inboxAction(Request $request, Application $app) {
         $messages = $app['dao.messPrive']->loadMessageByDestinataire($app['security']->getToken()->getUser());
         return $app['twig']->render('mpInbox.html', array(
+            'section'=>"default",
             'title' => "Messagerie",
             "mess" => $messages
             ));
@@ -21,6 +22,7 @@ class MPController{
     public function outboxAction(Request $request, Application $app) {
         $messages = $app['dao.messPrive']->loadMessageByAuteur($app['security']->getToken()->getUser());
         return $app['twig']->render('mpOutbox.html', array(
+            'section'=>"default",
             'title' => "Messagerie",
             "mess" => $messages
             ));
@@ -37,6 +39,7 @@ class MPController{
             }
 
             return $app['twig']->render('unMp.html', array(
+                'section'=>"default",
                 'title' => "Messagerie",
                 "mess" => $mess,
                 ));
@@ -60,6 +63,7 @@ class MPController{
             return $app->redirect($request->getBasePath().'/messagerie/message/'.$mess->getId());
         }
         return $app['twig']->render('basicFormNoSection.html', array(
+            'section'=>"default",
             'title' => "Messagerie",
             "form" => $messageForm->createView(),
             ));

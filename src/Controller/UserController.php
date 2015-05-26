@@ -54,6 +54,7 @@ class UserController{
                 return $app['Home.controller']->loginAction($request, $app, $success);
         }
         return $app['twig']->render('register.html', array(
+            'section'=>"default",
             'title' => 'Inscription',
             'userForm' => $userForm->createView(),
             'danger' => $danger));
@@ -65,6 +66,7 @@ class UserController{
         $members = $app['orm.em']->getRepository('Zrtcommunity\Domain\User')->findall();
 
         return $app['twig']->render( "users.html",array(
+            'section'=>"default",
             'title' => "Membres",
             'users' => $members,
             ));
@@ -73,6 +75,7 @@ class UserController{
     public function userProfileAction($username, Request $request, Application $app){
         $user = $app['dao.user']->loadUserByUsername($username);
         return $app['twig']->render( "user.html",array(
+            'section'=>"default",
             'title' => $user->getUsername(),
             'user' => $user,
             ));
@@ -91,6 +94,7 @@ class UserController{
         }
 
         return $app['twig']->render( "profilModForm.html",array(
+            'section'=>"default",
             'title' => "Mon profil",
             'form' => $profilForm->createView(),
             )
@@ -123,6 +127,7 @@ class UserController{
                 return $app->redirect($request->getBasePath().'/member/questionaire');
             }
             return $app['twig']->render( "zrtcraftQuestionaire.html",array(
+                'section'=>"default",
                 'title' => "Questionaire",
                 'form' => $form->createView(),
                 'questions' => $questionaire->getModel()->getQuestions(),
@@ -131,6 +136,7 @@ class UserController{
         }else{
             $questionaire=$user->getQuestionaireZrtCraft();
             return $app['twig']->render( "questionaireRempli.html",array(
+                'section'=>"default",
                 'title' => "Questionaire",
                 'questionaire' => $questionaire
                 )

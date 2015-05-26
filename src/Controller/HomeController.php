@@ -12,6 +12,7 @@ class HomeController{
 
     public function indexAction(Application $app){
         return $app['twig']->render( "home.html",array(
+            'section'=>"default",
             'title' => "accueil",
             )
         );
@@ -29,6 +30,7 @@ class HomeController{
 
     public function loginAction(Request $request, Application $app, $success=null) {
         return $app['twig']->render('login.html', array(
+            'section'=>"default",
             'danger'         => $app['security.last_error']($request),
             'last_username' => $app['session']->get('_security.last_username'),
             'title' => "login",
