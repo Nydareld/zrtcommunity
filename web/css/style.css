@@ -101,6 +101,9 @@ a{
     top:40px;
     z-index:5;
 }
+.nav>li>a{
+    padding: 0;
+}
 
 #nav2 li a{
     line-height:10px;
@@ -227,12 +230,10 @@ footer a:hover{
     color:#8999a2;
 }
 #zrtinfo{
-    @grid-columns:13;
-    height:195px;
+    min-height:200px;
     bottom:55px;
     background-color:#384148;
 }
-
 #copyright{
     height:55px;
     bottom:0;
@@ -607,4 +608,16 @@ img.avatar-layout{
 #errorPanel {
     padding-top: 30px;
     padding-bottom: 10px;
+}
+.navbar-toggle{
+    border: 1px solid #52bc72;
+    margin-top: 0px;
+    padding: 5px;
+    background-color:rgba(47, 51, 52, 0.2);
+}
+.navbar-toggle:hover{
+    background-color:rgba(47, 51, 52, 0.8);
+}
+.icon-bar{
+    background-color: #52bc72;
 }
