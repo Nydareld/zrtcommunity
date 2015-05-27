@@ -23,7 +23,7 @@ a{
     margin-left:20px;
     border: 2px solid #54b973;
 }
-#nav1{
+#navbar{
     padding-right: 100px;
 }
 #nav1 > div > ul > li > a{
@@ -101,7 +101,7 @@ a{
     top:40px;
     z-index:5;
 }
-.nav>li>a{
+#nav1 li>a{
     padding: 0;
 }
 
@@ -620,4 +620,11 @@ img.avatar-layout{
 }
 .icon-bar{
     background-color: #52bc72;
+}
+#navbar>ul>li{
+    background-color: rgba(255, 255, 255, 0.8);
+
+}
+#navbar2>ul>li{
+    z-index: 1000;
 }
