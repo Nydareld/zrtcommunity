@@ -33,6 +33,18 @@ class SectionSite{
      */
     private $news;
 
+    /**
+     * @ManyToMany(targetEntity="User", inversedBy="sectionModo")
+     * @JoinTable(name="modossection")
+     */
+    private $modos;
+
+    /**
+     * @ManyToMany(targetEntity="User", inversedBy="sectionAdmin")
+     * @JoinTable(name="adminssection")
+     */
+    private $admins;
+
     public function getNews(){
 		    return $this->news;
 	  }
@@ -71,6 +83,22 @@ class SectionSite{
 
   	public function setCategories($categories){
   		$this->categories = $categories;
+  	}
+    
+    public function getModos(){
+  		return $this->modos;
+  	}
+
+  	public function setModos($modos){
+  		$this->modos = $modos;
+  	}
+
+  	public function getAdmins(){
+  		return $this->admins;
+  	}
+
+  	public function setAdmins($admins){
+  		$this->admins = $admins;
   	}
 
 }

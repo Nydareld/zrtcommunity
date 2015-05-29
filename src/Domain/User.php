@@ -147,6 +147,16 @@ class User implements UserInterface
       */
      protected $questionaireZrtCraft;
 
+     /**
+      * @ManyToMany(targetEntity="SectionSite", mappedBy="modos")
+      */
+     private $sectionModo;
+
+     /**
+      * @ManyToMany(targetEntity="SectionSite", mappedBy="admins")
+      */
+     private $sectionAdmin;
+
     public function getId() {
         return $this->id;
     }
@@ -417,6 +427,22 @@ class User implements UserInterface
 
 	public function setNotifRepForum($notifRepForum){
 		$this->notifRepForum = $notifRepForum;
+	}
+
+  public function getSectionModo(){
+		return $this->sectionModo;
+	}
+
+	public function setSectionModo($sectionModo){
+		$this->sectionModo = $sectionModo;
+	}
+
+	public function getSectionAdmin(){
+		return $this->sectionAdmin;
+	}
+
+	public function setSectionAdmin($sectionAdmin){
+		$this->sectionAdmin = $sectionAdmin;
 	}
 
 }
