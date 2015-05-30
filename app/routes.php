@@ -20,6 +20,9 @@ $app->match('/admin/regionprojet',"Zrtcommunity\Controller\AdminController::regi
 //Admin page de création de catégorie, sous catégorie
 $app->match('/admin/{sectionId}/forum',"Zrtcommunity\Controller\AdminController::forumAction");
 
+//Admin page de la liste du staff
+$app->match('/admin/{sectionId}/staff',"Zrtcommunity\Controller\AdminController::staffAction");
+
 //Admin page de création de questionaire
 $app->match('/admin/questionaire',"Zrtcommunity\Controller\AdminController::questionaireAction");
 
