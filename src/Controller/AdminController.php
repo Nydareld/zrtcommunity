@@ -80,7 +80,9 @@ class AdminController{
     }
 
     public function forumAction($sectionId,Request $request, Application $app){
-        $arbo = $app['dao.categorie']->loadAllCategories();
+        $section = $app['dao.section']->loadByName($sectionId);
+
+        $arbo = $app['dao.categorie']->loadAllCategorieBySection($section);
 
         $cat = new Categorie;
         $scat = new SousCategorie;
@@ -95,23 +97,38 @@ class AdminController{
         $scatForm2->handleRequest($request);
 
         if($catForm->isSubmitted()&& $catForm->isValid()){
-            $cat->setSectionSite($app['dao.section']->find($catForm["sectionSite"]->getData()));
+
+            if( ! $section->getAdmins()->contains($app['security']->getToken()->getUser()) ){
+                throw new \Exception("La modification de l'arboressence du forum est réservé aux admins");
+            }
+
+            $cat->setSectionSite($section);
             $app['dao.categorie']->save($cat);
-            return $app->redirect($request->getBasePath().'/admin/forum');
+            return $app->redirect($request->getBasePath().'/admin/'.$section->getName().'/forum');
         }
 
         if($scatForm->isSubmitted()&& $scatForm->isValid()){
+
+            if( ! $section->getAdmins()->contains($app['security']->getToken()->getUser()) ){
+                throw new \Exception("La modification de l'arboressence du forum est réservé aux admins");
+            }
+
             $scat->setParentSousCategorie($app['dao.scat']->loadSousCategorieById($scatForm["parent"]->getData()));
             $scat->setAdmin($app['dao.scat']->loadSousCategorieById($scatForm["parent"]->getData())->getAdmin());
             $app['dao.scat']->save($scat);
-            return $app->redirect($request->getBasePath().'/admin/forum');
+            return $app->redirect($request->getBasePath().'/admin/'.$section->getName().'/forum');
         }
 
         if($scatForm2->isSubmitted()&& $scatForm2->isValid()){
+
+            if( ! $section->getAdmins()->contains($app['security']->getToken()->getUser()) ){
+                throw new \Exception("La modification de l'arboressence du forum est réservé aux admins");
+            }
+
             $scat2->setParentCategorie($app['dao.categorie']->loadCategorieById($scatForm2["parent"]->getData()));
             $scat2->setAdmin($app['dao.categorie']->loadCategorieById($scatForm2["parent"]->getData())->getAdmin());
             $app['dao.scat']->save($scat2);
-            return $app->redirect($request->getBasePath().'/admin/forum');
+            return $app->redirect($request->getBasePath().'/admin/'.$section->getName().'/forum');
         }
 
         return $app['twig']->render( "admin-forum.html",array(
