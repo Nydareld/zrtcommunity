@@ -334,8 +334,8 @@ class AdminController{
         $section = $app['dao.section']->loadByName($sectionId);
 
         return $app['twig']->render( "admin-staff-list.html",array(
-            'panelname' => "Le staff",
-            'section' => "section",
+            'panelname' => "Staff ".$section->getName(),
+            'section' => $section,
             ));
     }
 
