@@ -5,7 +5,7 @@
     {{child.name}}
 </a>
 , {{child.topics|length}} topics
-{% if is_granted('ROLE_SUPERADMIN') %}
+{% if adminSection %}
     <a href="{{ app.request.basepath }}/admin/forum/souscategorie/delete/{{child.id}}" class="btn btn-default" role="button">Supprimer</a>
 {% endif %}
 {% if child.childs %}

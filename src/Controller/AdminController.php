@@ -137,6 +137,7 @@ class AdminController{
             'form2' => $scatForm->createView(),
             'form3' => $scatForm2->createView(),
             'arbo' => $arbo,
+            'adminSection' => $section->getAdmins()->contains($app['security']->getToken()->getUser()),
             )
         );
     }

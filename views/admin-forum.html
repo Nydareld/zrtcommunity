@@ -8,7 +8,7 @@
 <h3>Nouvelle Sous-categorie d'une sous-catégorie</h3>
 {{form(form2)}}
 <h3>Arboerssance du forum</h3>
-{% if is_granted('ROLE_ADMIN') %}
+{% if adminSection %}
 <p>
 Attention, Suprimer une partie du forum implique la supression ireversibre de tout ses sous catégories, topics et messages.
 </p>
@@ -18,12 +18,12 @@ Attention, Suprimer une partie du forum implique la supression ireversibre de to
 <div class="regle">
 <h4>
     {{cat.name}}
-    {% if is_granted('ROLE_SUPERADMIN') %}
+    {% if adminSection %}
     <a href="{{ app.request.basepath }}/admin/forum/categorie/delete/{{cat.id}}" class="btn btn-default" role="button">Supprimer</a>
     {% endif %}
 </h4>
     <div class="decale">
-        {% include "admin-forum-sCatChild.html" with {'childs':cat.childs} only %}
+        {% include "admin-forum-sCatChild.html" with {'childs':cat.childs, 'adminSection': adminSection} only %}
     </div>
 </div>
 {% endfor %}
