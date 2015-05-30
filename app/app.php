@@ -215,7 +215,12 @@ $app->error(function (\Exception $e, $code) use ($app) {
             $message = 'Maitre Fougere n\'a pas trouvé ta page!';
             break;
         default:
-            $message = "Une erreur est arrivée... prevenez le webmaster (Spamez Nydareld de MP)";
+            $message = "
+            Une erreur est arrivée...
+            <br>
+            ".$e->getMessage()."
+            <br>
+            si c'est anormal prevenez le webmaster (Spamez Nydareld de MP)";
     }
     return $app['twig']->render('error.html', array(
         'message' => $message,
