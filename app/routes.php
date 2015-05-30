@@ -18,7 +18,7 @@ $app->match('/admin/reglement/add/{regleId}',"Zrtcommunity\Controller\AdminContr
 $app->match('/admin/regionprojet',"Zrtcommunity\Controller\AdminController::regionProjetAction");
 
 //Admin page de création de catégorie, sous catégorie
-$app->match('/admin/forum',"Zrtcommunity\Controller\AdminController::forumAction");
+$app->match('/admin/{sectionId}/forum',"Zrtcommunity\Controller\AdminController::forumAction");
 
 //Admin page de création de questionaire
 $app->match('/admin/questionaire',"Zrtcommunity\Controller\AdminController::questionaireAction");

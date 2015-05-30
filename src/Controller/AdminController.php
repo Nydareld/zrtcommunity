@@ -79,7 +79,7 @@ class AdminController{
         );
     }
 
-    public function forumAction(Request $request, Application $app){
+    public function forumAction($sectionId,Request $request, Application $app){
         $arbo = $app['dao.categorie']->loadAllCategories();
 
         $cat = new Categorie;
