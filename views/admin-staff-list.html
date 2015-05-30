@@ -1,0 +1,31 @@
+{% extends 'admin-Layout.html' %}
+{% block content %}
+<div class="container region">
+<h3>Administrateurs :</h3>
+<div class="row">
+{% for user in section.admins %}
+<div class="adminUserCard col-md-3">
+<h4><a href="{{ app.request.basepath }}/admin/{{section.name}}/staff/{{user.id}}"> {{user.username}}</a></h4>
+{% if user.path is not null %}
+<img src="{{user.webPath}}" alt="..." class="avatar-profile avatar-user-card img-circle">
+{% else %}
+<img src="{{ app.request.basepath }}/img/UserAvatar/no-avatar.jpg" alt="..." class="avatar-profile avatar-user-card img-circle">
+{% endif %}
+</div>
+{% endfor%}
+</div>
+<h3>Moderateurs :</h3>
+<div class="row">
+{% for user in section.modos %}
+<div class="adminUserCard col-md-3">
+<h4><a href="{{ app.request.basepath }}/admin/{{section.name}}/staff/{{user.id}}"> {{user.username}}</a></h4>
+{% if user.path is not null %}
+<img src="{{user.webPath}}" alt="..." class="avatar-profile avatar-user-card img-circle">
+{% else %}
+<img src="{{ app.request.basepath }}/img/UserAvatar/no-avatar.jpg" alt="..." class="avatar-profile avatar-user-card img-circle">
+{% endif %}
+</div>
+{% endfor%}
+</div>
+
+{% endblock %}
