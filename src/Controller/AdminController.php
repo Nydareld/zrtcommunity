@@ -215,15 +215,29 @@ class AdminController{
     }
 
     public function delCatAction($idCat,Request $request, Application $app){
+
         $cat=$app['dao.categorie']->loadCategorieById($idCat);
+
+        if( ! $cat->getSectionSite()->getAdmins()->contains($app['security']->getToken()->getUser()) ){
+            throw new \Exception("La modification de l'arboressence du forum est réservé aux admins");
+        }
+
         $app['dao.categorie']->remove($cat);
-        return $app->redirect($request->getBasePath().'/admin/forum');
+        return $app->redirect($request->getBasePath().'/admin/'.$cat->getSectionSite()->getName().'/forum');
+
     }
 
     public function delScatAction($idSCat,Request $request, Application $app){
+
         $cat=$app['dao.scat']->loadSousCategorieById($idSCat);
+
+        if( ! $cat->getSectionSite()->getAdmins()->contains($app['security']->getToken()->getUser()) ){
+            throw new \Exception("La modification de l'arboressence du forum est réservé aux admins");
+        }
+
         $app['dao.scat']->remove($cat);
-        return $app->redirect($request->getBasePath().'/admin/forum');
+        return $app->redirect($request->getBasePath().'/admin/'.$cat->getSectionSite()->getName().'/forum');
+
     }
 
     public function reglementAction(Request $request, Application $app){
