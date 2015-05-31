@@ -48,7 +48,7 @@ class Categorie extends ForumContainer{
   	}
 
     public function path(){
-        return $this->getSectionSite()->getName().": ".$this->getName();
+        return $this->getName();
     }
 
 }
