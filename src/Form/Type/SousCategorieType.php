@@ -10,7 +10,7 @@ class SousCategorieType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options){
         global $app;
 
-        $scat=$app['dao.scat']->findAllNamesAsArray();
+        $scat=$app['dao.scat']->findAllNamesAsArrayBySection($options['attr']['section']);
 
         $builder
         ->add('name', 'text',array(
