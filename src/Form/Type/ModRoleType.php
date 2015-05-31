@@ -9,9 +9,14 @@ class ModRoleType extends AbstractType{
 
     public function buildForm(FormBuilderInterface $builder, array $options){
 
+        global $app;
+
+        $sections = $app['dao.section']->findAllNamesAsArray();
+
+        $roleSection = array('admin de section','modo de section');
+
         $roles = array(
             'ROLE_ADMIN'=>'Administrateur',
-            'ROLE_MODOPLUS'=>'Modérateur+',
             'ROLE_MODO'=>'Modérateur',
             'ROLE_TARD'=>'Tard',
             'ROLE_USER'=>'Péon');
@@ -19,7 +24,18 @@ class ModRoleType extends AbstractType{
         $builder
 
         ->add('role','choice',array(
+            'label' => 'role global',
             'choices'=>$roles
+        ))
+        ->add('RolesectionSite','choice',array(
+            'mapped' => false,
+            'label' => 'role de section:',
+            'choices'=>$roleSection
+        ))
+        ->add('sectionSite','choice',array(
+            'mapped' => false,
+            'label' => 'Section du site:',
+            'choices'=>$sections
         ))
         ->add('save', 'submit', array(
             'label' => 'Envoyer',
