@@ -14,6 +14,10 @@ class CategorieType extends AbstractType{
         ->add('name', 'text',array(
             'label' => 'Nom nouvelle catégorie:'
         ))
+        ->add('admin','checkbox',array(
+            'label' => 'Réservé a la modération:',
+            'required'  => false,
+        ))
         ->add('save', 'submit', array(
             'label' => 'Envoyer'
         ));
