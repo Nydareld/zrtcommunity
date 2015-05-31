@@ -55,4 +55,22 @@ class SousCategorieDAO extends DAO{
         return $names;
     }
 
+    public function findAllNamesAsArrayBySection($section){
+        $names = array();
+
+        $scats= $this->getEm()->getRepository('Zrtcommunity\Domain\SousCategorie')->findAll();
+
+        if ($scats === null){
+            throw new \Exception("No Regions");
+        }
+
+        foreach($scats as $scat){
+            if($scat->getSectionSite()->getName()==$section){
+                $names[$scat->getId()] = $scat->path();
+            }
+        }
+
+        return $names;
+    }
+
 }

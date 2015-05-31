@@ -66,4 +66,23 @@ class CategorieDAO extends DAO{
         return $names;
     }
 
+    public function findAllNamesAsArrayBySection($section){
+        $names = array();
+
+        $cats= $this->getEm()->getRepository('Zrtcommunity\Domain\Categorie')->findAll();
+
+        if ($cats === null){
+            throw new \Exception("No Regions");
+        }
+
+        foreach($cats as $cat){
+            if($cat->getSectionSite()->getName()==$section){
+                $names[$cat->getId()] = $cat->path();
+            }
+        }
+
+        return $names;
+    }
+
+
 }
