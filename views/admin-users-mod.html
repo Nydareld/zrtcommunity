@@ -2,11 +2,15 @@
 {% block content %}
 <h2>Page de profil : <a href="{{ app.request.basepath }}/membre/{{user.username}}">{{user.username}}</a></h2>
 <h3>Rang:</h3>
+<h4>Rang global actuel</h4>
 <p>
-    rang actuel: {{user.roleHumain}}
+{{user.roleHumain}}
 </p>
+<h4>Modifier les rangs</h4>
 <p>
-    Modifier rang: {{form(form)}}
+
+    Les Admins et modos de section sont automatiquement promus modérateurs globaux.
+    {{form(form)}}
 </p>
 <h3>Questionnaire ZrtCraft</h3>
 
