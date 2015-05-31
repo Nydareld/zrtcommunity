@@ -423,4 +423,55 @@ class AdminController{
             ));
     }
 
+    public function staffUserDelAction($userid, $sectionId,Request $request, Application $app){
+        $current = $app['security']->getToken()->getUser();
+
+        if( !( $app['security']->isGranted('ROLE_ADMIN') || $admins->contains($current) ) ){
+            throw new \Exception("Seuls les admins globaux ou de section peuvent supprimer un membre du staff d'une section");
+        }
+
+        $user = $app['dao.user']->find($userid);
+        $section = $app['dao.section']->loadByName($sectionId);
+
+        $modos = $section->getModos();
+        $admins = $section->getAdmins();
+
+        if( ($admins->contains($user) )){
+            $admins->removeElement($user);
+        }
+        if( ($modos->contains($user) )){
+            $modos->removeElement($user);
+        }
+        $app['dao.section']->save($section);
+
+        return $app->redirect($request->getBasePath()."/admin/".$section->getName()."/staff");
+
+    }
+
+    public function staffUserModAction($userid, $sectionId,Request $request, Application $app){
+        $current = $app['security']->getToken()->getUser();
+
+        if( !( $app['security']->isGranted('ROLE_ADMIN') || $admins->contains($current) ) ){
+            throw new \Exception("Seuls les admins globaux ou de section peuvent supprimer un membre du staff d'une section");
+        }
+
+        $user = $app['dao.user']->find($userid);
+        $section = $app['dao.section']->loadByName($sectionId);
+
+        $modos = $section->getModos();
+        $admins = $section->getAdmins();
+
+        if( ($admins->contains($user) )){
+            $modos->add($user);
+            $admins->removeElement($user);
+        }elseif( ($modos->contains($user) )){
+            $modos->removeElement($user);
+            $admins->add($user);
+        }
+        $app['dao.section']->save($section);
+
+        return $app->redirect($request->getBasePath()."/admin/".$section->getName()."/staff/".$user->getId());
+
+    }
+
 }
