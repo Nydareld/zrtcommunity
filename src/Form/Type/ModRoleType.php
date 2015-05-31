@@ -13,7 +13,7 @@ class ModRoleType extends AbstractType{
 
         $sections = $app['dao.section']->findAllNamesAsArray();
 
-        $roleSection = array('admin de section','modo de section');
+        $roleSection = array('aucun role','admin de section','modo de section');
 
         $roles = array(
             'ROLE_ADMIN'=>'Administrateur',
