@@ -1,16 +1,16 @@
 {% extends 'admin-Layout.html' %}
 {% block content %}
 <div class="container region">
-<h3>Nouvelle Categorie</h3>
+<h3>Nouvelle Catégorie</h3>
 {{form(form1)}}
-<h3>Nouvelle Sous-categorie d'une catégorie</h3>
+<h3>Nouvelle Sous-catégorie d'une catégorie</h3>
 {{form(form3)}}
-<h3>Nouvelle Sous-categorie d'une sous-catégorie</h3>
+<h3>Nouvelle Sous-catégorie d'une sous-catégorie</h3>
 {{form(form2)}}
-<h3>Arboerssance du forum</h3>
+<h3>Arborescence du forum</h3>
 {% if adminSection %}
 <p>
-Attention, Suprimer une partie du forum implique la supression ireversibre de tout ses sous catégories, topics et messages.
+    Attention, Supprimer une partie du forum implique la suppression irreversible de toutes ses sous-catégories, topics et messages.
 </p>
 {% endif %}
 {%for cat in arbo %}
