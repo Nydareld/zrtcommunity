@@ -21,7 +21,15 @@ class HomeController{
     public function pdcAction(Application $app){
         return $app['twig']->render( "pdc.html",array(
             'section'=>"default",
-            'title' => "accueil",
+            'title' => "PDC",
+            )
+        );
+    }
+
+    public function cguAction(Application $app){
+        return $app['twig']->render( "cgu.html",array(
+            'section'=>"default",
+            'title' => "CGU",
             )
         );
     }

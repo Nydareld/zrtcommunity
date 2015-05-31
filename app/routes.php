@@ -59,6 +59,9 @@ $app->get('/',"Zrtcommunity\Controller\HomeController::indexAction");
 //pdc
 $app->get('/pdc',"Zrtcommunity\Controller\HomeController::pdcAction");
 
+//cgu
+$app->get('/cgu',"Zrtcommunity\Controller\HomeController::cguAction");
+
 //Page présebtation
 $app->get('/{sectionName}/presentation',"Zrtcommunity\Controller\HomeController::presentationAction");
 
