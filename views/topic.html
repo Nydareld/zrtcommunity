@@ -33,7 +33,7 @@
                 <br>
                 <small>{{topic.description}}</small>
             </h2>
-            {% if app.security.token and is_granted('ROLE_MODO') %}
+            {% if modo %}
             <div class="btn-group">
                 <a href="{{ app.request.basepath }}/{{section}}/forum/movetopic/{{topic.id}}" class="btn btn-default" role="button"><i class="fa fa-sitemap"></i> Déplacer</a>
                 {% if topic.close %}

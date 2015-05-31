@@ -22,10 +22,19 @@ class ForumController{
         $section = $app['dao.section']->loadByName($sectionName);
         $categories = $app['dao.categorie']->loadAllCategorieBySection($section);
 
+        $modo=false;
+
+        $user = $app['security']->getToken()->getUser();
+
+        if( $section->getAdmins()->contains($user) || $section->getModos()->contains($user) || $app['security']->isGranted('ROLE_ADMIN') ){
+            $modo = true;
+        }
+
         return $app['twig']->render( "forum.html",array(
             'section'=>$section->getName(),
             'title' => "Forum",
             'categories' => $categories,
+            "modo" => $modo,
             )
         );
     }
@@ -116,13 +125,21 @@ class ForumController{
             return $app->redirect($request->getBasePath().'/'.$section->getName().'/forum/topic/'.$topic->getId()."/last");
 
         }
+
+        $user = $app['security']->getToken()->getUser();
+
+        if( $section->getAdmins()->contains($user) || $section->getModos()->contains($user) || $app['security']->isGranted('ROLE_ADMIN') ){
+            $modo = true;
+        }
+
         return $app['twig']->render( "topic.html",array(
             'section'=>$section->getName(),
             'title' => "Forum",
             'topic' => $topic,
             'postForm' => $messageForm->createView(),
             'page'=> $page+1,
-            'nbpages'=> $nbpages+1
+            'nbpages'=> $nbpages+1,
+            'modo' => $modo
             )
         );
     }

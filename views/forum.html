@@ -21,7 +21,7 @@
 
 </div>
 {% for cat in categories%}
-{% if not cat.admin or is_granted('ROLE_MODO')%}
+{% if not cat.admin or modo %}
 <table class="table forum">
     <thead>
         <tr>
