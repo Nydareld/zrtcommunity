@@ -301,23 +301,80 @@ class AdminController{
     public function userModAction($userid, Request $request, Application $app){
         $user = $app['dao.user']->find($userid);
         $questionaire = $user->getQuestionaireZrtCraft();
-        $ancienRole = $user->getRoleNbr();
+        $ancienRole = $user->getRole();
 
         $form = $app['form.factory']->create(new ModRoleType, $user);
         $form->handleRequest($request);
 
         if($form->isSubmitted()&& $form->isValid()){
+
             $current = $app['security']->getToken()->getUser();
-            if( $current->getRoleNbr() <= $ancienRole){ // pas modifier les roles des membres au dessus ou egauxs
-                throw new \Exception("vous ne pouvez pas modifier les droits d'un membre au rang égal ou superieur");
-            }elseif ( $current->getRoleNbr() < $user->getRoleNbr() ){ // ne pas atribuer des roles superieux au sien
-                throw new \Exception("vous ne pouvez pas atribuer un role superieur au votre");
-            }elseif ( $current == $user ){
-                throw new \Exception("vous ne pouvez pas modifier vos droits");
+
+            $section = $app['dao.section']->find($form["sectionSite"]->getData());
+
+            $roleSection = $form["RolesectionSite"]->getData();
+
+            switch($roleSection) {
+                case 1:
+                    $admins = $section->getAdmins();
+                    if( !( $app['security']->isGranted('ROLE_ADMIN') || $admins->contains($current) ) ){
+                        throw new \Exception("Seuls les admins globaux ou de section peuvent attribuer le role d'admin de section");
+                    }
+                    if( !( $user->getRole() == 'ROLE_ADMIN' ) ){
+                        $user->setRole('ROLE_MODO');
+                    }
+                    if( !($admins->contains($user) )){
+                        $admins->add($user);
+                    }
+                    if( !($modos->contains($user) )){
+                        $modos->remove($user);
+                    }
+                    $app['dao.section']->save($section);
+                    break;
+
+                case 2:
+                    $modos = $section->getModos();
+                    $admins = $section->getAdmins();
+                    if( !( $app['security']->isGranted('ROLE_ADMIN') || $admins->contains($current) ) ){
+                        throw new \Exception("Seuls les admins globaux ou de section peuvent attribuer le role de modo de section");
+                    }
+                    if( !( $user->getRole() == 'ROLE_ADMIN' ) ){
+                        $user->setRole('ROLE_MODO');
+                    }
+                    if( !($modos->contains($user) )){
+                        $modos->add($user);
+                    }
+                    if( !($admins->contains($user) )){
+                        $admins->remove($user);
+                    }
+                    $app['dao.section']->save($section);
+                    break;
+
+                case 0:
+                    break;
+
+                default:
+                    break;
             }
-            else{
-                $app['dao.user']->save($user);
+
+            if(
+                $ancienRole != $user->getRole() &&
+                $user->getRole() == 'ROLE_ADMIN' &&
+                !$app['security']->isGranted('ROLE_ADMIN')
+            ){
+                throw new \Exception("Seuls les admins globaux peuvent attribuer le role d'admin global");
             }
+
+            if(
+                $ancienRole != $user->getRole() &&
+                $ancienRole == 'ROLE_MODO' &&
+                !$app['security']->isGranted('ROLE_ADMIN')
+            ){
+                throw new \Exception("Seuls les admins globaux peuvent réduire le role d'un modo");
+            }
+
+            $app['dao.user']->save($user);
+
             return $app->redirect($request->getBasePath().'/admin/users/'.$user->getId());
         }
 

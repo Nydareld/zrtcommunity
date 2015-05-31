@@ -7,6 +7,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Zrtcommunity\Domain\User;
+use Zrtcommunity\Domain\SectionSite;
 
 class SectionSiteDAO extends DAO{
 
@@ -53,6 +54,10 @@ class SectionSiteDAO extends DAO{
         }
 
         return $names;
+    }
+    public function save(SectionSite $section){
+        $this->getEm()->persist($section);
+        $this->getEm()->flush();
     }
 
 }

@@ -17,6 +17,7 @@ class ModRoleType extends AbstractType{
 
         $roles = array(
             'ROLE_ADMIN'=>'Administrateur',
+            'ROLE_MODO' =>'Moderateur',
             'ROLE_TARD'=>'Tard',
             'ROLE_USER'=>'Péon');
 
