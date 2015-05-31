@@ -397,4 +397,30 @@ class AdminController{
             ));
     }
 
+    public function staffUserAction($userid, $sectionId, Request $request, Application $app){
+        $user = $app['dao.user']->find($userid);
+        $section = $app['dao.section']->loadByName($sectionId);
+
+        $modos = $section->getModos();
+        $admins = $section->getAdmins();
+
+        $modo = false;
+        $admin = false;
+
+        if( ($modos->contains($user) )){
+            $modo=true;
+        }
+        if( ($admins->contains($user) )){
+            $admin=true;
+        }
+
+        return $app['twig']->render( "admin-staff-membre.html",array(
+            'panelname' => "Staff ".$section->getName(),
+            'user' => $user,
+            'section' => $section,
+            'modo'=>$modo,
+            'admin'=>$admin
+            ));
+    }
+
 }
