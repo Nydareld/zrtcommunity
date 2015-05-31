@@ -1,0 +1,42 @@
+{% extends 'admin-Layout.html' %}
+{% block content %}
+<h2>Page de profil : <a href="{{ app.request.basepath }}/membre/{{user.username}}">{{user.username}}</a></h2>
+<h3>Rang pour {{section.name}}</h3>
+{% if modo %}
+{{user.username}} est modo
+<br>
+<b>Actions: (admin de section uniquement)</b>
+<br>
+<div class="btn-group droite">
+    <a href="{{ app.request.basepath }}/admin/{{section.name}}/staff/{{user.id}}/modRole" class="btn btn-default" role="button">Passer admin</a>
+    <a href="{{ app.request.basepath }}/admin/{{section.name}}/staff/{{user.id}}/delRole" class="btn btn-default" role="button">Supprimer du staff</a>
+</div>
+{% elseif admin %}
+{{user.username}} est admin
+<br>
+<b>Actions: (admin de section uniquement)</b>
+<br>
+<div class="btn-group droite">
+    <a href="{{ app.request.basepath }}/admin/{{section.name}}/staff/{{user.id}}/modRole" class="btn btn-default" role="button">Passer modo</a>
+    <a href="{{ app.request.basepath }}/admin/{{section.name}}/staff/{{user.id}}/delRole" class="btn btn-default" role="button">Supprimer du staff</a>
+</div>
+{% endif %}
+
+
+<h3>Autres Rangs:</h3>
+<h4>Rangs actuels:</h4>
+<h5><b>Global:</b></h5>
+<p>
+{{user.roleHumain}}
+</p>
+<h5><b>Spécifiques:</b></h5>
+<p>
+{% for section in user.sectionAdmin %}
+    Admin de {{section.name}}<br>
+{% endfor %}
+{% for section in user.sectionModo %}
+    Modo de {{section.name}}<br>
+{% endfor %}
+</p>
+
+{% endblock %}
