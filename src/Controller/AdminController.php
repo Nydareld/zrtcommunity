@@ -316,6 +316,7 @@ class AdminController{
 
             switch($roleSection) {
                 case 1:
+                    $modos = $section->getModos();
                     $admins = $section->getAdmins();
                     if( !( $app['security']->isGranted('ROLE_ADMIN') || $admins->contains($current) ) ){
                         throw new \Exception("Seuls les admins globaux ou de section peuvent attribuer le role d'admin de section");
@@ -326,8 +327,8 @@ class AdminController{
                     if( !($admins->contains($user) )){
                         $admins->add($user);
                     }
-                    if( !($modos->contains($user) )){
-                        $modos->remove($user);
+                    if( ($modos->contains($user) )){
+                        $modos->removeElement($user);
                     }
                     $app['dao.section']->save($section);
                     break;
@@ -344,8 +345,8 @@ class AdminController{
                     if( !($modos->contains($user) )){
                         $modos->add($user);
                     }
-                    if( !($admins->contains($user) )){
-                        $admins->remove($user);
+                    if( ($admins->contains($user) )){
+                        $admins->removeElement($user);
                     }
                     $app['dao.section']->save($section);
                     break;
