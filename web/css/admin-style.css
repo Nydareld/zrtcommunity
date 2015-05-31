@@ -384,3 +384,7 @@ h1.page-header {
     border: 5px solid #54b973;
     margin-top:4px;
 }
+.adminUserCard{
+    margin: 10px;
+    padding-bottom: 15px;
+}
