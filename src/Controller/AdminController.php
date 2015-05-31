@@ -89,8 +89,8 @@ class AdminController{
         $scat2 = new SousCategorie;
 
         $catForm = $app['form.factory']->create(new CategorieType, $cat);
-        $scatForm = $app['form.factory']->create(new SousCategorieType, $scat);
-        $scatForm2 = $app['form.factory']->create(new SousCatType, $scat2);
+        $scatForm = $app['form.factory']->create(new SousCategorieType, $scat, array('attr'=> array('section' => $sectionId)) );
+        $scatForm2 = $app['form.factory']->create(new SousCatType, $scat2, array('attr'=> array('section' => $sectionId)) );
 
         $catForm->handleRequest($request);
         $scatForm->handleRequest($request);
