@@ -26,6 +26,12 @@ $app->match('/admin/{sectionId}/staff',"Zrtcommunity\Controller\AdminController:
 //Admin page d'un persone du staff
 $app->match('/admin/{sectionId}/staff/{userid}',"Zrtcommunity\Controller\AdminController::staffUserAction");
 
+//Admin page d'un persone du staff
+$app->match('/admin/{sectionId}/staff/{userid}/modRole',"Zrtcommunity\Controller\AdminController::staffUserModAction");
+
+//Admin page d'un persone du staff
+$app->match('/admin/{sectionId}/staff/{userid}/delRole',"Zrtcommunity\Controller\AdminController::staffUserDelAction");
+
 //Admin page de création de questionaire
 $app->match('/admin/questionaire',"Zrtcommunity\Controller\AdminController::questionaireAction");
 
