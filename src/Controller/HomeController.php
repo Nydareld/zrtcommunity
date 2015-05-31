@@ -18,6 +18,14 @@ class HomeController{
         );
     }
 
+    public function pdcAction(Application $app){
+        return $app['twig']->render( "pdc.html",array(
+            'section'=>"default",
+            'title' => "accueil",
+            )
+        );
+    }
+
     public function presentationAction($sectionName,Application $app){
         $section = $app['dao.section']->loadByName($sectionName);
 

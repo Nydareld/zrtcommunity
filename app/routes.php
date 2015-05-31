@@ -56,6 +56,9 @@ $app->match('/admin/forum/souscategorie/delete/{idSCat}',"Zrtcommunity\Controlle
 //Page d'accueil
 $app->get('/',"Zrtcommunity\Controller\HomeController::indexAction");
 
+//pdc
+$app->get('/pdc',"Zrtcommunity\Controller\HomeController::pdcAction");
+
 //Page présebtation
 $app->get('/{sectionName}/presentation',"Zrtcommunity\Controller\HomeController::presentationAction");
 
