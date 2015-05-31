@@ -2,14 +2,27 @@
 {% block content %}
 <h2>Page de profil : <a href="{{ app.request.basepath }}/membre/{{user.username}}">{{user.username}}</a></h2>
 <h3>Rang:</h3>
-<h4>Rang global actuel</h4>
+<h4>Rangs actuels:</h4>
+<h5><b>Global:</b></h5>
 <p>
 {{user.roleHumain}}
 </p>
-<h4>Modifier les rangs</h4>
+<h5><b>Spécifiques:</b></h5>
+<p>
+{% for section in user.sectionAdmin %}
+    Admin de {{section.name}}<br>
+{% endfor %}
+{% for section in user.sectionModo %}
+    Modo de {{section.name}}<br>
+{% endfor %}
+</p>
+
+<h4>Modifier les rangs:</h4>
 <p>
 
     Les Admins et modos de section sont automatiquement promus modérateurs globaux.
+    <br>
+    Pour supprimer totalement un membre du staff d'une section allez dans la section staff de la section.
     {{form(form)}}
 </p>
 <h3>Questionnaire ZrtCraft</h3>
