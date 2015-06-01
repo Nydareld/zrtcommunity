@@ -182,6 +182,7 @@ class ForumController{
             $user= $app['security']->getToken()->getUser();
             $topic->setCreator($user);
             $topic->setSousCategorie($app['dao.scat']->loadSousCategorieById($scatid));
+            $topic->setClose(false);
 
             $message->setAuteur($user);
             $message->setDate(new DateTime());
