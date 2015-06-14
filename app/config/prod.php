@@ -6,7 +6,7 @@ $app['db.options'] = array(
     'charset'  => 'utf8',
     'host'     => 'localhost',
     'dbname'   => 'zrtcommunity',
-    'user'     => 'zrtcommunity_user',
+    'user'     => 'zrtcomm_user',
     'password' => 'secret',
 );
 
