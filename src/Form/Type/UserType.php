@@ -29,6 +29,10 @@ class UserType extends AbstractType{
             'years' => range(date("Y")-100,date("Y")),
             'required' => true,
         ))
+        ->add('accept','checkbox',array(
+            'mapped' => false,
+            'required' => true,
+        ))
         ->add('role', 'hidden', array(
             'data' => 'ROLE_USER',
         ));
