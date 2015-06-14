@@ -110,7 +110,7 @@ class ForumController{
 
             foreach ($topic->getMessages() as $message ) {
                 $userNotif = $message->getAuteur();
-                $pathNotif = $request->getBasePath().'/forum.topic.'.$topic->getId();
+                $pathNotif = $request->getBasePath().'/'.$sectionName.'.forum.topic.'.$topic->getId().'.last';
                 if ($userNotif->getNotifRepForum() && !$app['dao.notification']->existPathUser($pathNotif,$userNotif) && $userNotif != $token->getUser() ){
 
                     $notif = new Notification();
@@ -127,7 +127,7 @@ class ForumController{
         }
 
         $user = $app['security']->getToken()->getUser();
-
+        $modo = false;
         if( $section->getAdmins()->contains($user) || $section->getModos()->contains($user) || $app['security']->isGranted('ROLE_ADMIN') ){
             $modo = true;
         }
