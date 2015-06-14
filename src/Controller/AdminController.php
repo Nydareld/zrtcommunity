@@ -67,6 +67,14 @@ class AdminController{
 
         $regionForm = $app['form.factory']->create(new RegionType(), $region);
         $regionForm->handleRequest($request);
+
+        $user = $app['security']->getToken()->getUser();
+        $section = $app['dao.section']->loadByName("zrtcraft");
+
+        if( !$section->getAdmins()->contains($user) && ! $section->getModos()->contains($user) ){
+            throw new \Exception("Cette section est réservé a la modération zrtcraft");
+        }
+
         if( $regionForm->isSubmitted()&& $regionForm->isValid()){
             $app['dao.region']->save($region);
             return $app->redirect($request->getBasePath().'/admin/regionprojet');
@@ -144,6 +152,13 @@ class AdminController{
 
     public function questionaireAction(Request $request, Application $app){
 
+        $user = $app['security']->getToken()->getUser();
+        $section = $app['dao.section']->loadByName("zrtcraft");
+
+        if( !$section->getAdmins()->contains($user) && ! $section->getModos()->contains($user) ){
+            throw new \Exception("Cette section est réservé a la modération zrtcraft");
+        }
+
         $questionairesAValider = $app['dao.questionaire']->loadQuestionaireNonValid();
 
         $inuse = $app['dao.modelQuestionaire']->loadInUse();
@@ -182,6 +197,14 @@ class AdminController{
     }
 
     public function chooseQuestionaireAction($idModel,Request $request, Application $app){
+
+        $user = $app['security']->getToken()->getUser();
+        $section = $app['dao.section']->loadByName("zrtcraft");
+
+        if( !$section->getAdmins()->contains($user) && ! $section->getModos()->contains($user) ){
+            throw new \Exception("Cette section est réservé a la modération zrtcraft");
+        }
+
         $inuse = $app['dao.modelQuestionaire']->loadInUse();
         $inuse->setInUse(false);
         $newInUse = $app['dao.modelQuestionaire']->loadModelById($idModel);
@@ -192,6 +215,14 @@ class AdminController{
     }
 
     public function validateQuestionaireRedirectionAction($questionaireId, $choice ,Request $request, Application $app){
+
+        $user = $app['security']->getToken()->getUser();
+        $section = $app['dao.section']->loadByName("zrtcraft");
+
+        if( !$section->getAdmins()->contains($user) && ! $section->getModos()->contains($user) ){
+            throw new \Exception("Cette section est réservé a la modération zrtcraft");
+        }
+
         $questionaire = $app['dao.questionaire']->loadQuestionaireById($questionaireId);
         $mp = new MessagePrive();
         $mp->setAuteur($app['security']->getToken()->getUser());
@@ -250,6 +281,14 @@ class AdminController{
     }
 
     public function reglementAddAction($regleId, Request $request, Application $app){
+
+        $user = $app['security']->getToken()->getUser();
+        $section = $app['dao.section']->loadByName("zrtcraft");
+
+        if( !$section->getAdmins()->contains($user) && ! $section->getModos()->contains($user) ){
+            throw new \Exception("Cette section est réservé a la modération zrtcraft");
+        }
+
         $parent = $app['dao.regle']->loadRegleById($regleId);
         $regle = new Regle();
         $regle->setParent($parent);
@@ -269,12 +308,28 @@ class AdminController{
     }
 
     public function reglementDelAction($regleId, Request $request, Application $app){
+
+        $user = $app['security']->getToken()->getUser();
+        $section = $app['dao.section']->loadByName("zrtcraft");
+
+        if( !$section->getAdmins()->contains($user) && ! $section->getModos()->contains($user) ){
+            throw new \Exception("Cette section est réservé a la modération zrtcraft");
+        }
+
         $regle=$app['dao.regle']->loadRegleById($regleId);
         $app['dao.regle']->remove($regle);
         return $app->redirect($request->getBasePath().'/admin/reglement');
     }
 
     public function reglementModifyAction($regleId, Request $request, Application $app){
+
+        $user = $app['security']->getToken()->getUser();
+        $section = $app['dao.section']->loadByName("zrtcraft");
+
+        if( !$section->getAdmins()->contains($user) && ! $section->getModos()->contains($user) ){
+            throw new \Exception("Cette section est réservé a la modération zrtcraft");
+        }
+
         $regle = $app['dao.regle']->loadRegleById($regleId);
         $form = $app['form.factory']->create(new RegleType, $regle);
         $form->handleRequest($request);
