@@ -70,6 +70,16 @@
         </div>
     </div>
     <div class="form-group">
+        <label class="col-sm-8 control-label">
+            En cochant cette case vous reconnaisez avoir pris connaissance de notre <a>politique de confidentialié</a>,
+            de nos <a>conditions générales d'utilisation</a> et de notre <a>charte du forum</a>. Vous les acceptez et
+            vous vous engagez a les réspécter.
+        </label>
+        <div class="col-sm-2">
+            {{ form_widget(userForm.accept) }}
+        </div>
+    </div>
+    <div class="form-group">
         <div class="col-sm-offset-5 col-sm-3">
             <input type="submit" class="btn btn-primary" value="Save" />
         </div>
