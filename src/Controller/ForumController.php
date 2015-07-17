@@ -207,6 +207,12 @@ class ForumController{
 
         $topic = $app['dao.topic']->loadTopicById($topicid);
 
+        $user = $app['security']->getToken()->getUser();
+
+        if( ! ($section->getAdmins()->contains($user) || $section->getModos()->contains($user) || $app['security']->isGranted('ROLE_ADMIN') )){
+            throw new \Exception("Seuls les modos et admin de section peuvent editier une news");
+        }
+
         $moveTopicForm = $app['form.factory']->create(new MoveTopicType());
         $moveTopicForm->handleRequest($request);
 
@@ -231,6 +237,13 @@ class ForumController{
         $section = $app['dao.section']->loadByName($sectionName);
 
         $topic = $app['dao.topic']->loadTopicById($topicid);
+
+        $user = $app['security']->getToken()->getUser();
+
+        if( ! ($section->getAdmins()->contains($user) || $section->getModos()->contains($user) || $app['security']->isGranted('ROLE_ADMIN') )){
+            throw new \Exception("Seuls les modos et admin de section peuvent editier une news");
+        }
+
         if($topic->isClose()){
             $topic->setClose(false);
         }else{
