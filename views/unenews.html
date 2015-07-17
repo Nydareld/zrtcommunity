@@ -1,6 +1,5 @@
 {% extends 'layout-'~section~'.html' %}
 {% block content %}
-
 <div class="news">
     <div class="news-header">
     <p class="droite">
@@ -9,6 +8,25 @@
         <br/>
     </p>
     <h3>{{news.name}}</h3>
+    {% if true %}
+    <div class="btn-group">
+        <a href="{{ app.request.basepath }}/news/{{news.id}}/edit" class="btn btn-default" role="button"> Modifier</a>
+    </div>
+    <a
+        href="{{ app.request.basepath }}/news/{{news.id}}/delete"
+        role="button"
+        class="btn btn-default"
+        data-toggle="confirmation"
+        data-btn-ok-label="Oui"
+        data-btn-ok-icon="glyphicon glyphicon-share-alt"
+        data-btn-ok-class="btn-success"
+        data-btn-cancel-label="Non"
+        data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
+        data-btn-cancel-class="btn-danger">
+        Supprimer
+    </a>
+
+    {% endif %}
     </div>
     <hr/>
     <div class="news-body">
@@ -62,5 +80,11 @@
 {% block includeHead %}
 <link href="{{ app.request.basepath }}/lib/ckeditor-standard/contents.css" rel="stylesheet">
 <script src="{{ app.request.basepath }}/lib/ckeditor-standard/ckeditor.js"></script>
+{% endblock %}
+{% block includeJS %}
+<script src="{{ app.request.basepath }}/lib/bootstrap-confirm/bootstrap-confirmation.min.js"></script>
+<script>
+$('[data-toggle=confirmation]').confirmation({title:'Etes vous sure de vouloir supprimer definitivement la news?'});
+</script>
 {% endblock %}
 {% block active %}nav-news{% endblock %}
