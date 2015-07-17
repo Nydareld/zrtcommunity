@@ -10,6 +10,11 @@ class NewsDAO extends DAO{
         $this->getEm()->flush();
     }
 
+    public function remove(News $news){
+        $this->getEm()->remove($news);
+        $this->getEm()->flush();
+    }
+
     public function loadAllNews(){
         $news= $this->getEm()->getRepository('Zrtcommunity\Domain\News')->findAll();
         if ($news === null){
