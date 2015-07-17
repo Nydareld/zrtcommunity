@@ -10,10 +10,10 @@
     <h3>{{news.name}}</h3>
     {% if true %}
     <div class="btn-group">
-        <a href="{{ app.request.basepath }}/news/{{news.id}}/edit" class="btn btn-default" role="button"> Modifier</a>
+        <a href="{{ app.request.basepath }}/{{section}}/news/{{news.id}}/edit" class="btn btn-default" role="button"> Modifier</a>
     </div>
     <a
-        href="{{ app.request.basepath }}/news/{{news.id}}/delete"
+        href="{{ app.request.basepath }}/{{section}}/news/{{news.id}}/delete"
         role="button"
         class="btn btn-default"
         data-toggle="confirmation"

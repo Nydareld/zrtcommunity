@@ -119,6 +119,11 @@ $app->match('/{sectionName}/newnews', "Zrtcommunity\Controller\NewsController::a
 //News page d'édition d'un message news
 $app->match('/{sectionName}/news/editmessage/{messageid}', "Zrtcommunity\Controller\NewsController::editMessageAction");
 
+//News page de modification de news
+$app->match('/{sectionName}/news/{newsid}/edit', "Zrtcommunity\Controller\NewsController::editNewsAction");
+
+//News page de suppression
+$app->match('/{sectionName}/news/{newsid}/delete', "Zrtcommunity\Controller\NewsController::delNewsAction");
 
 //Projet page d'accueil des projets
 $app->match('/projet', "Zrtcommunity\Controller\ProjetController::projectAction");
