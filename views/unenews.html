@@ -8,10 +8,9 @@
         <br/>
     </p>
     <h3>{{news.name}}</h3>
-    {% if true %}
-    <div class="btn-group">
-        <a href="{{ app.request.basepath }}/{{section}}/news/{{news.id}}/edit" class="btn btn-default" role="button"> Modifier</a>
-    </div>
+    {% if modo %}
+    <a href="{{ app.request.basepath }}/{{section}}/news/{{news.id}}/edit" class="btn btn-default" role="button"> Modifier</a>
+
     <a
         href="{{ app.request.basepath }}/{{section}}/news/{{news.id}}/delete"
         role="button"

@@ -62,6 +62,14 @@ class NewsController{
         $section = $app['dao.section']->loadByName($sectionName);
         $news = $app['dao.news']->loadNewsById($newsid);
 
+        $modo=false;
+
+        $user = $app['security']->getToken()->getUser();
+
+        if( $section->getAdmins()->contains($user) || $section->getModos()->contains($user) || $app['security']->isGranted('ROLE_ADMIN') ){
+            $modo = true;
+        }
+
         $messages = $news->getMessages()->getValues();
 
         usort($messages ,function ($a, $b){
@@ -90,6 +98,7 @@ class NewsController{
             'title' => "News",
             'news' => $news,
             'postForm' => $messageForm->createView(),
+            "modo" => $modo,
             )
         );
     }
