@@ -133,7 +133,8 @@ class NewsController{
         return $app->redirect($request->getBasePath().'/'.$news->getSectionSite()->getName().'/news');
 
     }
-    /*public function editNewsAction($sectionName,$newsid,Request $request, Application $app){
+
+    public function editNewsAction($sectionName,$newsid,Request $request, Application $app){
         $section = $app['dao.section']->loadByName($sectionName);
         $news = $app['dao.news']->loadNewsById($newsid);
 
@@ -142,7 +143,23 @@ class NewsController{
         if( ! ($section->getAdmins()->contains($user) || $section->getModos()->contains($user) || $app['security']->isGranted('ROLE_ADMIN') )){
             throw new \Exception("Seuls les modos et admin de section peuvent editier une news");
         }
-    }*/
+
+        $newsForm = $app['form.factory']->create(new NewsType(), $news);
+        $newsForm->handleRequest($request);
+        if ( $newsForm->isSubmitted()&& $newsForm->isValid()) {
+            
+            $app['dao.news']->save($news);
+
+            return $app->redirect($request->getBasePath().'/'.$section->getName().'/news/'.$news->getId());
+        }
+        return $app['twig']->render( "basicForm.html",array(
+            'section'=>$section->getName(),
+            'title' => "Nouvelle news",
+            'form' => $newsForm->createView(),
+            'editor' => 'ckeditor-full',
+            )
+        );
+    }
 
 
 
