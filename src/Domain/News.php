@@ -31,7 +31,7 @@ class News{
      */
     private $creator;
     /**
-     * @OneToMany(targetEntity="MessageNews", mappedBy="news")
+     * @OneToMany(targetEntity="MessageNews", mappedBy="news",orphanRemoval=true)
      */
     protected $messages;
 
