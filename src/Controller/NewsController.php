@@ -120,6 +120,30 @@ class NewsController{
         );
     }
 
+    public function delNewsAction($sectionName,$newsid,Request $request, Application $app){
+        $section = $app['dao.section']->loadByName($sectionName);
+        $news = $app['dao.news']->loadNewsById($newsid);
+
+        $user = $app['security']->getToken()->getUser();
+
+        if( ! ($section->getAdmins()->contains($user) || $section->getModos()->contains($user) || $app['security']->isGranted('ROLE_ADMIN') )){
+            throw new \Exception("Seuls les modos et admin de section peuvent supprimer une news");
+        }
+        $app['dao.news']->remove($news);
+        return $app->redirect($request->getBasePath().'/'.$news->getSectionSite()->getName().'/news');
+
+    }
+    /*public function editNewsAction($sectionName,$newsid,Request $request, Application $app){
+        $section = $app['dao.section']->loadByName($sectionName);
+        $news = $app['dao.news']->loadNewsById($newsid);
+
+        $user = $app['security']->getToken()->getUser();
+
+        if( ! ($section->getAdmins()->contains($user) || $section->getModos()->contains($user) || $app['security']->isGranted('ROLE_ADMIN') )){
+            throw new \Exception("Seuls les modos et admin de section peuvent editier une news");
+        }
+    }*/
+
 
 
 }
