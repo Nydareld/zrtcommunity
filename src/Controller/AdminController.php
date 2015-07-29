@@ -233,7 +233,50 @@ class AdminController{
             $questionaire->setAccepted(true);
             $app['dao.questionaire']->save($questionaire);
             $mp->setTitre("Votre questionnaire au serveur ZrtCraft à été validé par la modération");
-            $mp->setContenu("Bienvenu sur le serveur, Votre compte a été ou est sur le point d'etre whitelisté.");
+            $mp->setContenu(
+"
+<h3>Tu es bien white-listé.</h3>
+<p>
+Tu peux dès à présent te connecter sur le serveur (en 1.8.3).
+IP serveur : 176.31.170.123:25565
+</p>
+<p>
+N'hésite pas à venir sur le TeamSpeak et à demander de l'aide aux autres joueurs.
+Et n'oublie pas de lire les règles si ce n'est pas déjà fait.
+</p>
+<p>
+Bon jeu
+</p>
+<p>
+Pour rappel :
+A ton arrivée, tu devras trouver ta parcelle par toi même ou en demandant à un modérateur/helper.
+Une fois ta parcelle trouvé, un modérateur t’attribuera cette parcelle pour que tu puisses construire ta maison.
+Après avoir construit ta maison, tu devras la faire valider par un modérateur pour créer ou avoir accès aux projets.
+Tu peux ramasser librement des ressources sur la map Ferme.
+</p>
+<p>
+N'oublie pas de rejoindre :
+<ul>
+<li>
+La page <a href=\"https://www.facebook.com/ZrTCraft\">Facebook<a>
+</li>
+
+<li>
+Notre <a href=\"https://twitter.com/ZrtCraft\">Twitter<a>
+</li>
+
+<li>
+La communauté <a href=\" https://plus.google.com/+ZrtCraft/\">Google+<a>
+</li>
+
+<li>
+Notre chaîne <a href=\"https://www.youtube.com/c/ZrtCraft\">Youtube<a>
+</li>
+
+</ul>
+</p>
+"
+);
         }else{
             $questionaire->getUser()->setQuestionaireZrtCraft(null);
             $app['dao.user']->save($questionaire->getUser());
