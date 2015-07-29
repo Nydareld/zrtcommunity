@@ -284,7 +284,7 @@ Notre chaîne <a href=\"https://www.youtube.com/c/ZrtCraft\">Youtube</a>
             $mp->setTitre("Votre questionnaire au serveur ZrtCraft à été refusé par la modération");
             $mp->setContenu(
 "
-<p>Votre questionnaire au serveur ZrtCraft à été refusé par la modération pour l'une des raisons suivante:
+<p>Votre questionnaire au serveur ZrtCraft a été refusé par la modération pour l'une des raisons suivante:
 <ul>
 <li>
 L'âge requis pour venir sur le serveur est inférieur à 12 ans
@@ -293,7 +293,7 @@ L'âge requis pour venir sur le serveur est inférieur à 12 ans
 Le compte minecraft que vous possedez n'est pas un compte officiel
 </li>
 <li>
-Le formulaire n'est pas
+Le formulaire n'est pas complet
 </li>
 </ul>
 Adressez vous a la modération pour plus d'éxplications
