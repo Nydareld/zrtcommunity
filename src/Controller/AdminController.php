@@ -258,19 +258,19 @@ Tu peux ramasser librement des ressources sur la map Ferme.
 N'oublie pas de rejoindre :
 <ul>
 <li>
-La page <a href=\"https://www.facebook.com/ZrTCraft\">Facebook<a>
+La page <a href=\"https://www.facebook.com/ZrTCraft\">Facebook</a>
 </li>
 
 <li>
-Notre <a href=\"https://twitter.com/ZrtCraft\">Twitter<a>
+Notre <a href=\"https://twitter.com/ZrtCraft\">Twitter</a>
 </li>
 
 <li>
-La communauté <a href=\" https://plus.google.com/+ZrtCraft/\">Google+<a>
+La communauté <a href=\" https://plus.google.com/+ZrtCraft/\">Google+</a>
 </li>
 
 <li>
-Notre chaîne <a href=\"https://www.youtube.com/c/ZrtCraft\">Youtube<a>
+Notre chaîne <a href=\"https://www.youtube.com/c/ZrtCraft\">Youtube</a>
 </li>
 
 </ul>
