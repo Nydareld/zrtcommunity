@@ -282,7 +282,23 @@ Notre chaîne <a href=\"https://www.youtube.com/c/ZrtCraft\">Youtube</a>
             $app['dao.user']->save($questionaire->getUser());
             $app['dao.questionaire']->remove($questionaire);
             $mp->setTitre("Votre questionnaire au serveur ZrtCraft à été refusé par la modération");
-            $mp->setContenu("Adressez vous a la modération pour plus d'éxplications");
+            $mp->setContenu(
+"
+<p>Votre questionnaire au serveur ZrtCraft à été refusé par la modération pour l'une des raisons suivante:
+<ul>
+<li>
+L'âge requis pour venir sur le serveur est inférieur à 12 ans
+</li>
+<li>
+Le compte minecraft que vous possedez n'est pas un compte officiel
+</li>
+<li>
+Le formulaire n'est pas
+</li>
+
+Adressez vous a la modération pour plus d'éxplications
+</p>
+");
         }
         $app['dao.messPrive']->save($mp);
         return $app->redirect($request->getBasePath().'/messagerie/message/'.$mp->getId());
