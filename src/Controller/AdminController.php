@@ -295,7 +295,7 @@ Le compte minecraft que vous possedez n'est pas un compte officiel
 <li>
 Le formulaire n'est pas
 </li>
-
+</ul>
 Adressez vous a la modération pour plus d'éxplications
 </p>
 ");
