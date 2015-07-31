@@ -151,6 +151,22 @@ class NewsController{
 
     }
 
+    public function hideNewsAction($sectionName,$newsid,Request $request, Application $app){
+        $section = $app['dao.section']->loadByName($sectionName);
+        $news = $app['dao.news']->loadNewsById($newsid);
+
+        $user = $app['security']->getToken()->getUser();
+
+        if( ! ($section->getAdmins()->contains($user) || $section->getModos()->contains($user) || $app['security']->isGranted('ROLE_ADMIN') )){
+            throw new \Exception("Seuls les modos et admin de section peuvent supprimer une news");
+        }
+        $news->setHidden(! $news->isHidden());
+        $app['dao.news']->save($news);
+        return $app->redirect($request->getBasePath().'/'.$section->getName().'/news/'.$news->getId());
+
+
+    }
+
     public function editNewsAction($sectionName,$newsid,Request $request, Application $app){
         $section = $app['dao.section']->loadByName($sectionName);
         $news = $app['dao.news']->loadNewsById($newsid);
