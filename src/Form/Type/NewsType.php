@@ -17,6 +17,10 @@ class NewsType extends AbstractType{
             'max_length' => 10000,
             'attr'=>array('class'=>'ckeditor')
         ))
+        ->add('hidden','choice', array(
+            'label'=>'cacher le news aux non-modos ?',
+            'choices'=>array(1=>"oui",0=>"non")
+        ))
         ->add('save', 'submit', array(
             'label' => 'Envoyer',
             'attr'=>array('class' => 'droite')
