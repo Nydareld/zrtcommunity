@@ -623,8 +623,7 @@ img.avatar-layout{
 }
 #navbar>ul>li{
     background-color: rgba(255, 255, 255, 0.8);
-
 }
-#navbar2>ul>li{
-    z-index: 1000;
+#navbar > ul > li > a{
+    background-color: #fff;
 }
