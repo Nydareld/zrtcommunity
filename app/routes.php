@@ -122,6 +122,9 @@ $app->match('/{sectionName}/news/editmessage/{messageid}', "Zrtcommunity\Control
 //News page de modification de news
 $app->match('/{sectionName}/news/{newsid}/edit', "Zrtcommunity\Controller\NewsController::editNewsAction");
 
+//News hide - dehide
+$app->match('/{sectionName}/news/{newsid}/hide', "Zrtcommunity\Controller\NewsController::hideNewsAction");
+
 //News page de suppression
 $app->match('/{sectionName}/news/{newsid}/delete', "Zrtcommunity\Controller\NewsController::delNewsAction");
 
