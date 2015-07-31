@@ -24,6 +24,11 @@
         data-btn-cancel-class="btn-danger">
         Supprimer
     </a>
+    {% if news.hidden %}
+    <a href="{{ app.request.basepath }}/{{section}}/news/{{news.id}}/hide" class="btn btn-default" role="button"> Afficher</a>
+    {% else %}
+    <a href="{{ app.request.basepath }}/{{section}}/news/{{news.id}}/hide" class="btn btn-default" role="button"> Masquer</a>
+    {% endif %}
 
     {% endif %}
     </div>
