@@ -298,7 +298,8 @@ Le formulaire n'est pas complet
 </ul>
 Adressez vous a la modération pour plus d'éxplications
 </p>
-");
+"
+);
         }
         $app['dao.messPrive']->save($mp);
         return $app->redirect($request->getBasePath().'/messagerie/message/'.$mp->getId());
