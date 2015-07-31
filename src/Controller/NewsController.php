@@ -17,6 +17,13 @@ class NewsController{
         $section = $app['dao.section']->loadByName($sectionName);
 
         $news = new News();
+
+        $user= $app['security']->getToken()->getUser();
+
+        if( !$section->getAdmins()->contains($user) && ! $section->getModos()->contains($user) ){
+            throw new \Exception("l'ajout de news est réservé a la modération");
+        }
+
         $newsForm = $app['form.factory']->create(new NewsType(), $news);
         $newsForm->handleRequest($request);
         if ( $newsForm->isSubmitted()&& $newsForm->isValid()) {
@@ -43,6 +50,15 @@ class NewsController{
 
         $news = $app['dao.news']->loadAllNewsBySection($section);
 
+        $modo=false;
+
+        $user = $app['security']->getToken()->getUser();
+
+        if( $section->getAdmins()->contains($user) || $section->getModos()->contains($user)){
+            $modo = true;
+        }
+
+
         usort($news ,function ($a, $b){
             if ( $a->getDate() == $b->getDate() ) {
                 return 0;
@@ -54,6 +70,7 @@ class NewsController{
             'section'=>$section->getName(),
             'title' => "News",
             'news' => $news,
+            'modo' => $modo
             )
         );
     }
@@ -147,7 +164,7 @@ class NewsController{
         $newsForm = $app['form.factory']->create(new NewsType(), $news);
         $newsForm->handleRequest($request);
         if ( $newsForm->isSubmitted()&& $newsForm->isValid()) {
-            
+
             $app['dao.news']->save($news);
 
             return $app->redirect($request->getBasePath().'/'.$section->getName().'/news/'.$news->getId());

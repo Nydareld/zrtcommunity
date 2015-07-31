@@ -1,7 +1,7 @@
 {% extends 'layout-'~section~'.html' %}
 {% block content %}
 <h2>Liste des news</h2>
-{% if is_granted('ROLE_MODO') %}
+{% if modo %}
 <button  class="droite boutton-news">
     <a href="{{ app.request.basepath }}/{{section}}/newnews">Ajouter</a>
 </button>
@@ -10,6 +10,7 @@
 <div id="lalist" class="box jplist">
   <div class=" list box">
 {% for unenews in news %}
+{% if not unenews.hidden or modo %}
 <div class="news list-item box">
     <div class="news-header">
     <p class="droite">
@@ -17,7 +18,7 @@
         <br/>le {{unenews.date.format('Y-m-d')}} à {{unenews.date.format('H:i:s')}}
         <br/>
     </p>
-    <h3><a href="{{ app.request.basepath }}/{{section}}/news/{{unenews.id}}">{{unenews.name}}</a></h3>
+    <h3><a href="{{ app.request.basepath }}/{{section}}/news/{{unenews.id}}">{{unenews.name}}</a>{% if unenews.hidden %} [News cachée aux non-modos] {% endif %}</h3>
     </div>
     <hr/>
     <div class="news-body">
@@ -28,6 +29,7 @@
         <p>Nombre de commentaires: {{unenews.nombrecomm}}</p>
     </div>
 </div>
+{% endif %}
 {% endfor %}
   </div>
 
