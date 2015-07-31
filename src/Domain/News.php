@@ -40,6 +40,12 @@ class News{
      */
     protected $sectionSite;
 
+    /**
+     * @Column(type="boolean")
+     * @var boolean
+     */
+    protected $hidden = false;
+
     public function getSectionSite(){
         return $this->sectionSite;
     }
@@ -98,4 +104,13 @@ class News{
     public function getNombrecomm(){
 		return count($this->messages);
 	}
+
+    public function isHidden(){
+        return $this->hidden;
+    }
+
+    public function setHidden($hidden){
+        $this->hidden = $hidden;
+    }
+
 }
