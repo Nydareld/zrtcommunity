@@ -7,7 +7,7 @@
         <br/>le {{news.date.format('Y-m-d')}} à {{news.date.format('H:i:s')}}
         <br/>
     </p>
-    <h3>{{news.name}}</h3>
+    <h3>{{news.name}} {% if news.hidden %} [News cachée aux non-modos] {% endif %} </h3>
     {% if modo %}
     <a href="{{ app.request.basepath }}/{{section}}/news/{{news.id}}/edit" class="btn btn-default" role="button"> Modifier</a>
 
